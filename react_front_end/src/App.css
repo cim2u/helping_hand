@@ -1,0 +1,147 @@
+/* General Body Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+
+/* Font Import for Vujahday Script */
+@import url('https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap');
+
+/* Font Import for Outfit */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap');
+
+/* Reset Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;  /* Global font for most elements */
+}
+
+/* Container Layout */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+}
+
+/* Form Section Styles */
+.form-section {
+  flex: 1;
+  background-color: #111;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+/* Logo and Title Styles */
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Helping (Outfit font applied to most elements, Vujahday Script for logo) */
+.helping {
+  color: #5d9cec;
+  text-shadow: 2px 2px 5px rgba(93, 156, 236, 0.5);
+  font-family: 'Outfit', sans-serif;
+  font-size: 128px;
+  font-weight: 800;
+  line-height: 161.28px;
+  text-align: left;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+}
+
+.hand {
+  font-family: "Vujahday Script", sans-serif; /* Vujahday Script for the "Hand" part */
+  font-size: 150px;
+  font-weight: 400;
+  line-height: 204px;
+  text-align: left;
+  text-decoration-skip-ink: none;
+  font-style: italic;
+}
+
+/* Subtitle and Description */
+.subtitle {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+/* Form Input Styles */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+ width: 305px;
+height: 49px;
+top: 409px;
+left: 74px;
+gap: 0px;
+border-radius: var(--CornerMedium);
+opacity: 0px
+}
+
+input:focus {
+  border-color: #5d9cec;
+}
+
+button {
+  padding: 12px;
+  background-color: #5d9cec;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4a89dc;
+}
+
+/* Terms Section Styles */
+.terms {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.terms a {
+  color: #5d9cec;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* Image Section Styles */
+.image-section {
+  flex: 1;
+  background: url("https://s3-alpha-sig.figma.com/img/e7fc/ff24/480730e0c12f9a7e63fe72479a11dd1d?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=tDpZRzoIGyclpgCzr48QNzerI-KL5F~BaERJBN-m5EnDLs9Qxmsew~rZB-AAztYEJgU0HFCtBrOUFb8HwcgeQk-b5-cS7hEWbA5MQCZO4GU~zY5xYLCV-FqeLvJwDQOsE1ER7WOvUD7ie3jHHV1S2Fso90~nU32dSqheQNsAeZOOjEbigmT3u-gjcCA-1G~5w4iDxrYCt0M~iyfmbnP6eeQsLQFW6T7r~uEqOapuMfTH2fwz-Mnv9jnu8inJcD3KZGLrhDf904JXLzSnn~6ePEaFYCuWR8pW7SLo2hcBamOVtLcCMW7Y~RisWJgRu2em1IYkrFkT~2gr6B~c5DGANw__") no-repeat center;
+  background-size: cover;
+  height: 100%;
+  box-sizing: border-box;
+  opacity: 1;
+}
