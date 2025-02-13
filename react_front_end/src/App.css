@@ -3,17 +3,20 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif;
-  background-color: #fcfcfc;
+  background-color: #fdfdfd;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  min-height: 100vh; /* Ensures full viewport height */
+  width: 100vw; /* Full viewport width */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
 }
-
 /* Container Box */
 .box {
   background-color: #cbd4ff;
   padding: 15px 30px;
-  color: white;
-  width: 75%;
+  color: #ffffff;
+  width: 89%;
   height: 1440px;
   z-index: 4;
   position: absolute;
@@ -22,79 +25,158 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 12%;
+  margin-left: 4%;
 }
 
-/* Navbar */
-.navbar {
+/* Navbar (Topbar) */
+.topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left; /* Center the buttons */
   width: 100%;
-  background: linear-gradient(to right, #263b70, #7353ba);
   padding: 15px 30px;
-  color: rgb(255, 2, 2);
-height: 23px;
-margin-top:284px;
+  height: 60px; /* Keep height for spacing */
+  margin-top: 240px;
+  background: none; /* Remove background */
+  z-index:4;
+  margin-left:200px;
 }
 
-.navbar .nav-links {
+/* Navigation Buttons */
+.topbar .nav-links {
   display: flex;
-  gap: 15px;
+  gap: 40px; /* Keep spacing between buttons */
 }
 
-.navbar a {
+.topbar button {
+  background: #65558F; /* Button background */
+  border: none;
   color: white;
-  text-decoration: none;
   font-size: 16px;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background 0.3s ease;
+  padding: 12px 20px; /* Adjust padding for better appearance */
+  border-radius: 120px; /* Rounded corners */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+
 }
 
-.navbar a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.topbar button:hover {
+  background: darkblue;
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
+
 
 /* Search Bar */
 .search-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: left;
   width: 100%;
-  margin: 10px 0;
+  margin-top: 18px; /* Adjust spacing */
+  left:23px;
 }
 
-.search-container input {
-  width: 60%;
-  max-width: 500px;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 20px;
+.search-box {
+  display: flex;
+  align-items: center;
+  background: white;
   border: 1px solid #ccc;
-  outline: none;
+  border-radius: 25px;
+  padding: 10px 15px;
+  width: 40%;
+  max-width: 400px;
+  position: relative;
+  left:43px;
 }
+
+.search-box svg {
+  font-size: 18px;
+  color: #65558F;
+  position: absolute;
+  left: 360px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 10px 10px 40px; /* Left padding to avoid overlapping icon */
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-radius: 25px;
+  
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 5px rgba(101, 85, 143, 0.5);
+}
+
 
 /* Grid Layout */
 .grid-container {
+  position: absolute;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(297px, 1fr)); /* Each item is 297px wide */
+  gap: 20px; /* Spacing between items */
   padding: 20px;
-  width: 90%;
-  max-width: 800px;
+  max-width: 2000px; /* More space for larger screens */
+  left: 29px; /* Aligns to the left */
+  width: auto; /* Ensures grid adjusts to content */
+  z-index: 4;
+  top: 31%;
 }
+
+/* Grid Items */
+.grid-item {
+  background: #f8f8f8;
+  width: 297px; /* Fixed width */
+  height: 255px; /* Fixed height */
+  padding: 20px;
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hover Effect */
+.grid-item:hover {
+  transform: scale(1.05);
+  background: #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(297px, 1fr)); /* Keeps item size consistent */
+    left: 0;
+    justify-content: center; /* Center on smaller screens */
+  }
+
+  .grid-item {
+    width: 100%; /* Makes it responsive */
+  }
+}
+
+
+
 
 /* Image */
 .image1 {
   background: url('https://s3-alpha-sig.figma.com/img/e7fc/ff24/480730e0c12f9a7e63fe72479a11dd1d?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TqMYse6WcS9WBioW99rnGU9pcmfEOeuakVyFh3PCwz-1Hg~MPV6vX49KCfu7ZtCUImuFZnJczHNXDgplPS0jEjB9uMTy2duxOf7-iBhCL86Qirrvbol2lpVnQN5w~TI9oOcA7SAwE6qzmcvG7EqIdt0UU6HgymF4nrRXhXIZ6nTii4wlOVJS~brap2E9RKxz-ClQ9OUYc1G6YajLUzrUJUzbGJofPy8oO238dhG~OYzGEkg3icq9ub0X0c-EFc4aM7sgrl7NZCqM9obPa7~C71ABlXlG3XTU~I9N09Wdk9KZH17pLUgkZH4orNmGPvUMB~mgVqQK69yj1affbWaLXA__') no-repeat center;
   background-size: cover;
-  width: 900px;
-  max-width: 900px;
+  width: 3000px;
+  max-width: 1200px;
   height: 300px;
   border-radius: 0px;
   position: absolute;
   top: 0px;  /* Adjust position above .box-help */
-  left: 510px;
+  left: 662px;
   z-index: 4; /* Ensures image is above */
 }
 
@@ -111,7 +193,7 @@ margin-top:284px;
   height: 204px;
   position: absolute;
   top: 88px;
-  left: 16px;
+  left: 90px;
   font-family: "Vujahday Script", cursive;
   font-weight: 400;
   font-size: 150px;
@@ -127,7 +209,7 @@ margin-top:284px;
   height: 141px;
   position: absolute;
   top: 20px;
-  left: 34px;
+  left: 60px;
   font-family: "Outfit", sans-serif;
   font-weight: 800;
   font-size: 128px;
@@ -145,11 +227,115 @@ margin-top:284px;
   background-color: #2e12af;
   padding: 15px 30px;
   color: white;
-  width: 75%;
+  width: 75.5%;
   height: 270px;
   z-index: 3; /* Lower than image and text */
   position: absolute;
   top: 0px; /* Lowered */
-  left: 39.7%;
+  left: 39.4%;
   transform: translateX(-50%);
+}
+/* Container for Sign Up & Login Buttons */
+.container {
+  position: absolute;
+  top: 278px;
+  right: 60px;
+  display: flex;
+  gap: 20px;
+  z-index: 4;
+}
+
+/* Button Styles */
+.login-btn,
+.sign-up-btn {
+  background-color: #65558F; /* Default button color */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-decoration: none; /* Remove underline for links */
+  display: inline-block;
+  text-align: center;
+}
+
+/* Hover Effect */
+.login-btn:hover,
+.sign-up-btn:hover {
+  background-color: darkblue;
+  transform: scale(1.05);
+}
+
+/* Stats Section (Most Purchased & Most Donated) */
+.stats-container {
+  position: absolute;
+  top: 363px; /* Below the login/signup buttons */
+  margin-left: 1260px;
+  display: flex;
+  flex-direction: absolute;
+  gap: 20px;
+  z-index: 4;
+  width:656px;
+  height:234px;
+}
+
+/* Column Styling */
+.column {
+  background: #f5f5f5; /* Light background */
+  padding: 20px;
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  height: 660px;
+}
+
+/* Column Hover Effect */
+.column:hover {
+  transform: translateY(-5px);
+}
+
+/* Heading Styling */
+.column h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Content Box */
+.content-box {
+  background: #fff;
+  height: 590px;
+  border-radius: 10px;
+  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .container {
+    position: static;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .stats-container {
+    position: static;
+    align-items: center;
+    margin-top: 20px;
+    z-index: 4;
+
+  }
+
+  .column {
+    width: 80%;
+  }
 }
