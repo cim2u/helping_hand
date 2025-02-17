@@ -1,54 +1,31 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate, Link } from "react-router-dom";
+import "./Login.css"; // Import CSS for styling
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:8000/api/login", {
-        email,
-        password,
-      });
-
-      // Save token to local storage
-      localStorage.setItem("token", response.data.token);
-      alert("Login successful!");
-
-      // Redirect to another page (e.g., Home or Dashboard)
-      navigate("/dashboard");
-    } catch (error) {
-      alert("Invalid credentials. Please try again.");
-    }
+  const handleLogin = (event) => {
+    event.preventDefault();
+    // Add login logic here (e.g., authentication API call)
+    navigate("/dashboard"); // Navigate to dashboard after login
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-container"> {/* Background Blur Container */}
+      <div className="login-box"> {/* Login Form Box */}
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+        </form>
+        <p>
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
+      </div>
     </div>
   );
 }
 
 export default Login;
-
