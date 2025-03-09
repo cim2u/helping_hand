@@ -1,359 +1,435 @@
-/* General Styles */
-body {
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&family=Vujahday+Script&display=swap');
+
+/* Reset & Global Styles */
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif, 'Outfit';
-  background-color:#cbd4ff;
-  display: flex;
-  justify-content: space-between; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  min-height: 100vh; /* Ensures full viewport height */
-  width: 100vw; /* Full viewport width */
-  overflow-x: hidden; /* Prevents horizontal scrolling */
+  box-sizing: border-box;
 }
-/* Container Box */
-.box {
-  background-color: #cbd4ff;
-  padding: 15px 30px;
-  color: #ffffff;
-  justify-content: space-between;
+
+html, body {
   width: 100%;
   height: 100%;
-  z-index: 4;
+  overflow-x: hidden;
+  font-size: 100%; /* Ensure text scaling with zoom */
+}
+
+/* Main Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+/* Background Image with Full Height Coverage */
+/* Add the background image before the content */
+.app-container::before {
+  content: ''; /* Empty content for the pseudo-element */
   position: absolute;
   top: 0;
-  left:0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 4%;
-}
-
-/* Navbar (Topbar) */
-.topbar {
-  display: flex;
-  align-items: start;
-  justify-content: left; /* Center the buttons */
+  left: 0;
   width: 100%;
-  padding: 15px 30px;
-  height: 60px; /* Keep height for spacing */
-  margin-top: 240px;
-  background: none; /* Remove background */
-  z-index:7;
-  margin-left:20px;
-  top:0px;
-  position: sticky;
-  
+  height: 100%; /* You can adjust this based on how tall you want the background */
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=eg64jsvvxWHlrxZKVtgiP-NMxo7KxCsEuUXbBjUOQb5vxYz7L4pZH7AH8Ecnz-NTjeGG2xI~YzNU6iVs-grEDQL0vFkcWabBrNFP2ZHe9MD8u8PfZtZy7LezbKKS3PzQhDNGFipfRMweiP5ypFvRRkObYeJjEEtfFAhWGM26iJQziy~tpdK4lY~2nNbwvNRJKiovyA1IygEtu0lPes4~FbdKbqoRahkEdElyrEQB4PwHrNCulN8vXOCwEwSsgzdXI7BjQu0LJAYv14qWqsr1X4hoCLViXkiEZvvscLvJwDNM8IEThcw8oumWXWTFQOeX~AF9iAQtP81rhdUXXpnPKw__');
+  background-size: cover; /* Make sure the image covers the full area */
+  background-color: rgba(255, 255, 255, 0.9); /* White with 90% opacity */
+  background-position: center center; /* Center the background image */
+  opacity: 0.9; /* Set the opacity of the background image */
+  z-index: -1; /* Ensure it's behind the content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
 }
 
-/* Navigation Buttons */
-.topbar .nav-links {
+/* Header */
+.header {
   display: flex;
-  gap: 50px; /* Keep spacing between buttons */
-  
-  
-}
-
-.topbar button {
-  background: #65558F; /* Button background */
-  border: none;
-  color: white;
-  font-size: 20px;
-  padding: 12px 20px; /* Adjust padding for better appearance */
-  border-radius: 120px; /* Rounded corners */
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  position:sticky;
-}
-
-.topbar button:hover {
-  background: darkblue;
-  transform: scale(1.05); /* Slight scale effect on hover */
-}
-
-
-/* Search Bar */
-.search-container {
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  width: 100%;
-  margin-right: 170px;
-  
-  position: sticky;
-}
-
-.search-box {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 10px 15px;
-  width: 90%;
-  max-width: 490px;
-  position: sticky;
-  left:0%;
-  margin-bottom:1000px;
-  z-index:7;
-}
-
-.search-box svg {
-  font-size: 18px;
-  color: #65558F;
-  position: absolute;
-  left: 460px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.search-box input {
+  padding: 15px 2vw;
   width: 100%;
-  padding: 10px 10px 10px 40px; /* Left padding to avoid overlapping icon */
-  font-size: 16px;
-  border: none;
-  outline: none;
-  background: transparent;
-  border-radius: 25px;
-  
+  height: 365px;
+  position: relative;
+  z-index: 1;
 }
 
-.search-box input:focus {
-  box-shadow: 0 0 5px rgba(101, 85, 143, 0.5);
-}
-
-
-/* Grid Layout */
-.grid-container {
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(297px, 1fr)); /* Each item is 297px wide */
-  gap: 20px; /* Spacing between items */
-  padding: 20px;
-  max-width: 2000px; /* More space for larger screens */
-  right: 1010px; /* Aligns to the left */
-  width: auto; /* Ensures grid adjusts to content */
-  z-index: 4;
-  top: 47%;
-}
-
-/* Grid Items */
-.grid-item {
-  background: #f8f8f8;
-  width: 297px; /* Fixed width */
-  height: 255px; /* Fixed height */
-  padding: 20px;
-  text-align: left;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Hover Effect */
-.grid-item:hover {
-  transform: scale(1.05);
-  background: #e0e0e0;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(297px, 1fr)); /* Keeps item size consistent */
-    left: 0;
-    justify-content: center; /* Center on smaller screens */
-  }
-
-  .grid-item {
-    width: 100%; /* Makes it responsive */
-  }
-}
-
-
-
-
-/* Image */
-.image1 {
-  background: url('https://s3-alpha-sig.figma.com/img/e7fc/ff24/480730e0c12f9a7e63fe72479a11dd1d?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TqMYse6WcS9WBioW99rnGU9pcmfEOeuakVyFh3PCwz-1Hg~MPV6vX49KCfu7ZtCUImuFZnJczHNXDgplPS0jEjB9uMTy2duxOf7-iBhCL86Qirrvbol2lpVnQN5w~TI9oOcA7SAwE6qzmcvG7EqIdt0UU6HgymF4nrRXhXIZ6nTii4wlOVJS~brap2E9RKxz-ClQ9OUYc1G6YajLUzrUJUzbGJofPy8oO238dhG~OYzGEkg3icq9ub0X0c-EFc4aM7sgrl7NZCqM9obPa7~C71ABlXlG3XTU~I9N09Wdk9KZH17pLUgkZH4orNmGPvUMB~mgVqQK69yj1affbWaLXA__') no-repeat center;
-  background-size: cover;
-  width: 100000px;
-  max-width: 1390px;
-  height: 300px;
-  border-radius: 0px;
-  position: absolute;
-  top: 0px;  /* Adjust position above .box-help */
-  left: 552px;
-  z-index: 4; /* Ensures image is above */
-}
-
-/* Text */
-.hand, .helping {
-  text-align: left;
-  position: absolute;
-  z-index: 5; /* Ensures text is above image */
-  
-}
-
-/* Hand Text - Above Helping */
-.hand {
-  width: 313px;
-  height: 204px;
-  position: absolute;
-  top: 88px;
-  left: 50px;
-  font-family: "Vujahday Script", cursive;
+/* Tagline */
+.hh-tagline {
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
-  font-size: 150px;
-  line-height: 204px;
-  letter-spacing: 0%;
-  box-shadow: 0px 4px 4px 0px #1c3a8500;
-  z-index: 5; /* Higher than .helping to appear above */
-}
-
-/* Helping Text - Below Hand */
-.helping {
-  width: 503px;
-  height: 141px;
+  font-size: 1vw; /* Relative font size */
   position: absolute;
-  top: 20px;
-  left: 10px;
-  font-family: "Outfit", sans-serif;
-  font-weight: 800;
-  font-size: 128px;
-  line-height: 161.28px;
-  letter-spacing: 0%;
-  background: rgba(14, 70, 255, 0);
-  border: 1px solid #ff060600;
-  box-shadow: 0px 4px 4px rgba(135, 96, 208, 0);
-  z-index: 4; /* Lower than .hand to stay below */
+  top: 68%;
+  left: 71%;
+  color: rgb(253, 253, 253);
+  padding: 10px;
+  white-space: nowrap;
+  width: auto;
 }
 
-
-/* Box Help */
-.box-help {
-  background-color: #2e12af;
-  padding: 15px 30px;
-  color: white;
-  width: 75.5%;
-  height: 270px;
-  z-index: 3; /* Lower than image and text */
+/* Navigation */
+.navbar {
+  display: none; /* Hidden by default */
+  justify-content: space-between;
+  gap: 1.5vw;
   position: absolute;
-  top: 0px; /* Lowered */
-  left: 0%;
-  transform: translateX(-50%);
-}
-.container {
-  position: absolute;
-  top: 278px;
-  right: 260px;
-  display: flex;
-  gap: 20px;
-  z-index: 10; /* Increased z-index */
-}
-.login-container {
-  pointer-events: none;
+  top: 270px;
+  left: 5vw;
+  width: auto;
 }
 
-.login-box {
-  pointer-events: auto;
+.navbar.open {
+  display: flex; /* Show when burger is clicked */
 }
 
-/* Button Styles */
-.login-btn,
-.sign-up-btn {
-  background-color: #65558F; /* Default button color */
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-size: 18px;
-  
-  font-weight: bold;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  text-decoration: none; /* Remove underline for links */
+.hh-nav-link {
   display: inline-block;
+  width: 6vw;
+  height: 5vh;
+  background: #65558F;
+  color: white;
+  font-weight: 500;
+  border-radius: 100px;
   text-align: center;
-  
+  line-height: 40px;
+  padding: 5px 10px;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  font-weight: bold;
+  font-size: 1.5vw; /* Relative font size */
 }
 
-/* Hover Effect */
-.login-btn:hover,
-.sign-up-btn:hover {
-  background-color: darkblue;
-  transform: scale(1.05);
-}
-
-/* Stats Section (Most Purchased & Most Donated) */
-.stats-container {
-  position: absolute;
-  top: 363px; /* Below the login/signup buttons */
-  right: 160px;
+/* Buttons */
+.auth-buttons {
   display: flex;
-  flex-direction: absolute;
-  gap: 20px;
-  z-index: 4;
-  width:656px;
-  height:234px;
+  gap: 0.5vw;
 }
 
-/* Column Styling */
-.column {
-  background: #f5f5f5; /* Light background */
-  padding: 20px;
-  width: 250px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
-  height: 660px;
+/* Login & Subscribe Containers */
+.login-container, .subscribe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 }
 
-/* Column Hover Effect */
-.column:hover {
-  transform: translateY(-5px);
+.login-container {
+  top: 75px;
+  left: 65%;
+  width: auto;
 }
 
-/* Heading Styling */
-.column h3 {
-  color: #333;
-  font-size: 18px;
-  margin-bottom: 10px;
+.subscribe-container {
+  top: 25px;
+  left: 80%;
 }
 
-/* Content Box */
-.content-box {
-  background: #fff;
-  height: 590px;
-  border-radius: 10px;
-  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+
+/* Burger Menu Wrapper (Circle) */
+.burger-menu {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  color: #666;
+  width: 50px;  /* Circle size */
+  height: 50px; /* Circle size */
+  border-radius: 50%; /* Makes it a perfect circle */
+  background-color:#1d4d8177; /* Background color */
+  color: white; /* Icon color */
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 89px;
+  left: 33px;
+  z-index: 10;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Responsive Styling */
+/* Hover effect */
+.burger-menu:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.1); /* Slightly enlarges */
+}
+
+/* Burger Icon */
+.burger-icon {
+  color: white; /* Ensure the icon stays white */
+  font-size: 24px; /* Adjust icon size */
+}
+
+
+/* Navbar stays for Shop */
+.navbar {
+  display: flex;
+  gap: 15px;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  position: absolute;
+  top: 277px;
+  left: 23px;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.dropdown-link {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  transition: background 0.3s ease;
+}
+
+.dropdown-link:hover {
+  background: lightgray;
+}
+
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .container {
-    position: static;
-    justify-content: center;
-    margin-top: 10px;
+  .burger-menu {
+    display: block;
   }
 
-  .stats-container {
-    position: static;
-    align-items: center;
-    margin-top: 20px;
-    z-index: 4;
+  .navbar {
+    display: none; /* Hidden by default */
+  }
+}
 
+/* Login & Subscribe Buttons */
+.hh-auth-button {
+  width: 14vw;
+  height: 7vh;
+  border-radius: 100px;
+  font-size: 1.5vw; /* Relative font size */
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.login-container .hh-auth-button {
+  background: #65558F;
+  color: white;
+}
+
+.subscribe-container .hh-auth-button {
+  background: white;
+  color: #4e4470;
+}
+
+.subscribe-container .hh-auth-button:hover {
+  background: #e67e22;
+}
+
+/* Active Button (For Login & Subscribe) */
+.hh-auth-button.active-button {
+  background-color: #ff7f00; /* Orange background for active state */
+  color: white;
+}
+
+/* Ensuring Everything Stays in Place on Different Screen Sizes */
+@media (max-width: 1440px) {
+  .hh-tagline {
+    font-size: 1.8vw; /* Adjust text size */
+  }
+  .login-container {
+    left: 75%;
+  }
+  .subscribe-container {
+    left: 90%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hh-tagline {
+    font-size: 1vw; /* Adjust text size */
+  }
+  .navbar {
+    left: 5vw;
+  }
+  .login-container {
+    left: 72%;
+  }
+  .subscribe-container {
+    left: 88%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hh-tagline {
+    font-size: 1vw; /* Larger font for smaller screens */
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  .column {
-    width: 80%;
+  .navbar {
+    flex-direction: column;
+    left: 50%;
+    transform: translateX(-50%);
   }
+
+  .hh-nav-link {
+    width: 12vw;
+    font-size: 3vw; /* Adjust button size */
+  }
+
+  .login-container, .subscribe-container {
+    left: auto;
+    right: auto;
+    top: auto;
+    position: relative;
+    margin: 2vh 0;
+  }
+}
+
+.active-button {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+}
+
+/* Search Bar Container */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid #cccccc00;
+  border-radius: 50px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0);
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  left: 120px; /* Adjust as needed */
+  top: 313px; /* Adjust as needed */
+  width: 900px; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+}
+
+/* Search Bar Input */
+.search-bar {
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+  width: 9%; /* Makes input fill the container's width */
+  background: transparent;
+  padding-left: 40px; /* Adds space for the icon inside the input */
+  border-radius: 90%; /* Rounded edges for a soft look */
+  box-sizing: border-box; /* Ensures padding doesn't affect the width */
+}
+
+
+/* Circular Search Icon Button inside the input */
+.search-icon-button {
+  background: #1d4d8100; /* Background color of the circle */
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ffffff; /* Icon color */
+  transition: color 0.3s ease-in-out;
+  position: absolute; /* Allows positioning inside the input */
+  left: 107px; /* Adjusts the horizontal position inside the input */
+  transform: translateY(-50%); /* Ensures the icon is vertically centered */
+  width: 50px; /* Width of the circle */
+  height: 50px; /* Height of the circle */
+  border-radius: 50%; /* Makes the button circular */
+  display: flex;
+  align-items: center; /* Centers the icon vertically */
+  justify-content: center; /* Centers the icon horizontally */
+}
+
+.search-icon-button:hover {
+  background: #fafafa00; /* Darker shade when hovered */
+}
+
+
+/* Wrapper for the home icon */
+.home-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;  /* Adjust size */
+  height: 50px; /* Adjust size */
+  border-radius: 50%; /* Makes the button circular */
+  background-color: #1d4d8177; /* Blue background */
+  color: white; /* Icon color */
+  text-decoration: none; /* Removes underline */
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  /* Position the circle exactly to the left */
+  position: fixed; /* Ensures it stays fixed to the viewport */
+  left: 20px;  /* Position at the left edge */
+  top: 20%;  /* Vertically center */
+  transform: translateY(-50%); /* Center the icon vertically */
+  z-index: 1000; /* Ensures it stays on top */
+}
+
+/* Hover effect */
+.home-icon-link:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.1) translateY(-50%); /* Slightly enlarges on hover */
+}
+
+/* Home icon inside */
+.home-icon {
+  font-size: 24px; /* Adjust icon size */
+}
+
+/* Profile Icon Button (Fixed at Top) */
+.profile-icon-button {
+  position: fixed; /* Ensures it stays fixed to the viewport */
+  top: 248px; /* Adjust this value to position vertically */
+  left: 20px; /* Adjust this value to position horizontally */
+  width: 60px; /* Adjust the overall size */
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1000; /* Keeps it on top */
+}
+
+/* Circular Background */
+.profile-circle {
+  width: 50px; /* Size of the circle */
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1d4d8177; /* Background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
+.profile-circle:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+/* Profile Icon */
+.profile-icon {
+  font-size: 24px;
+  color: white;
+}
+
+/* Change color when clicked */
+.profile-icon-button.clicked .profile-circle {
+  background-color: orange;
+}
+
+/* Prevent Page Scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Disables scrolling */
 }

@@ -1,153 +1,119 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 0;
-}
-
-/* Font Imports */
-@import url('https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap');
-
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #dcd6f7;
+/* Global Styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Navigation Bar */
-.navbar {
+body {
+  background: linear-gradient(to right, #f3a683, #786fa6);
+  color: #fff;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Header */
+.header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to right, #263b70, #7353ba);
-  padding: 15px 30px;
-  color: white;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.navbar .logo {
-  font-size: 28px;
+.logo {
+  font-size: 2rem;
   font-weight: bold;
 }
 
-.navbar .nav-links {
-  display: flex;
-  gap: 15px;
-}
-
 .navbar a {
-  color: white;
   text-decoration: none;
-  font-size: 16px;
-  padding: 8px 12px;
-  border-radius: 5px;
+  color: #fff;
+  margin: 0 15px;
+  font-size: 1.2rem;
+  transition: 0.3s;
 }
 
 .navbar a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffdd59;
 }
 
-/* Search Bar */
-.search-container {
+.auth-buttons {
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  gap: 10px;
 }
 
-.search-container input {
-  width: 50%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  outline: none;
-}
-
-/* Grid Layout */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-.grid-item {
-  background-color: #b8b5ff;
-  border-radius: 10px;
-  height: 120px;
-}
-
-/* Sidebar */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 20px;
-  top: 100px;
-  width: 150px;
-}
-
-.sidebar-box {
-  background-color: #8c82fc;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-  color: white;
-}
-
-/* Next Button */
-.next-btn {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
-.next-btn button {
-  background-color: #7353ba;
-  color: white;
+.login-button, .subscribe-button {
+  padding: 10px 15px;
+  font-size: 1rem;
   border: none;
-  padding: 10px 20px;
+  cursor: pointer;
   border-radius: 5px;
+  transition: 0.3s;
+}
+
+.login-button {
+  background: #ffdd59;
+  color: #000;
+}
+
+.subscribe-button {
+  background: #ff6b81;
+  color: #fff;
+}
+
+.login-button:hover {
+  background: #ffcc33;
+}
+
+.subscribe-button:hover {
+  background: #ff4757;
+}
+
+/* Responsive Navbar */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
   cursor: pointer;
 }
 
-.next-btn button:hover {
-  background-color: #5a3ea7;
-}
-/* Hand Text - Above Helping */
-.hand {
-  width: 313px;
-  height: 204px;
-  position: absolute;
-  top: 88px;
-  left: 16px;
-  font-family: "Vujahday Script", cursive;
-  font-weight: 400;
-  font-size: 150px;
-  line-height: 204px;
-  letter-spacing: 0%;
-  box-shadow: 0px 4px 4px 0px #5680E9;
-  z-index: 5; /* Higher than .helping to appear above */
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block;
+  }
+
+  .navbar {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+  }
+
+  .navbar.active {
+      display: flex;
+  }
 }
 
-/* Helping Text - Below Hand */
-.helping {
-  width: 503px;
-  height: 141px;
-  position: absolute;
-  top: 29px;
-  left: 34px;
-  font-family: "Outfit", sans-serif;
-  font-weight: 800;
-  font-size: 128px;
-  line-height: 161.28px;
-  letter-spacing: 0%;
+/* Sections */
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
 
-  
-   
+/* Footer */
+.footer {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 1rem;
 }

@@ -1,0 +1,75 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&family=Vujahday+Script&display=swap');
+
+.hh-a-content {
+  background: #1E1E1E40;
+
+  padding: 40px;
+  box-shadow: #1E1E1E40;
+  text-align: left;
+  width: 1133px;
+  max-width: 90%; /* Keeps it responsive */
+  height: 700px; /* Adjust height automatically */
+  border-radius: 79px; /* Smooth rounded edges */
+  position: relative; /* Keeps it inside normal flow */
+  margin: 50px 0; /* Adds spacing without affecting position */
+  left: 95px; /* Moves it 55px from the left */
+  z-index: 3; /* Ensures visibility */
+  color: white; /* Ensures readable text */
+}
+
+
+
+/* Centering text inside the black background */
+.hh-about-content h1 {
+    text-align: center;
+}
+
+/* "Welcome to" styling */
+.hh-welcome {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 70px;
+    letter-spacing: normal;
+    color: white; /* Ensures visibility */
+    display: block;
+    text-align: left; /* Centers the text */
+    position: relative; /* Keeps it inside normal flow */
+    left: 4px; /* Moves it 55px to the right */
+}
+
+
+/* "HelpingHand!" styling */
+.hh-helpinghand {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 100px;
+    line-height: 110px;
+    letter-spacing: normal;
+    color: white;
+    display: block;
+    text-align: left; /* Centers the text */
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+/* Text inside the black box */
+.hh-intro {
+    width: 90%;
+    height: auto;
+    position: relative; /* Ensures text stays inside the box */
+    top: 20px;
+    left: 0;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-align: left;
+    color: white;
+    padding: 20px;
+    
+}

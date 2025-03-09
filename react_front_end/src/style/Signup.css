@@ -1,38 +1,314 @@
+/* Signup.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
+}
+
 .signup-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  min-height: 100vh;
+}
+
+.signup-box {
+  background: #1E1E1ECC;
+  padding: 3rem;
+  width: 350px;
+  box-shadow: #1E1E1ECC;
+  text-align: left;
+  width: 1094px;
+  height: 904px;
+  opacity: 0.8;
+  border-top-left-radius: Corner/None;
+  border-top-right-radius: 123px;
+  border-bottom-right-radius: Corner/None;
+  border-bottom-left-radius: Corner/None;
+  margin-bottom:23px;
+}
+
+/* Title styling */
+h2 {
+  margin-bottom: 2rem;
+  color: #ffffff;
+  text-align: center; /* Centered text */
+  margin-top: 20rem;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 0.75rem;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Outfit';
+  width: 386px;
+  height: 49px;
+  top: 607px;
+  left: 74px;
+  border-radius: 10px;
+  background: #CBD4FF;
+
+}
+
+/* Full Name Fields */
+.full-name-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2;
+  margin-bottom: 5px;
+}
+
+.first-name,
+.last-name {
+  width: 48%; /* Adjust width of each field */
+}
+
+.first-name input,
+.last-name input {
+  width: 100%; /* Ensures full width within its container */
+  padding: 0.75rem;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  text-align: center;
+  width: 386px;
+  height: 49px;
+  top: 488px;
+  left: 24px;
+  border-radius: 10px;
+  background: #CBD4FF;
+  font-family: 'Outfit';
+
+
+}
+
+/* Password input container */
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  padding-right: 1.5rem;
+}
+
+.password-container span {
+  position: absolute;
+  top: 47%;
+  right: 40rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #000000;
+  font-size: 1.2rem;
+}
+
+/* Button styling */
+button {
+  padding: 0.75rem;
+  border: 2px solid #3498db;
+  border-radius: 10px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 50%;
+  text-align: center;
+  margin-top:5%;
+  margin-left:25%;
+  font-family: 'Oufit';
+}
+
+/* Disabled button */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hover effect for buttons */
+button:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+/* Box around links */
+p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center; /* Centered text for the link box */
+}
+
+p a {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid #3498db; /* Box border */
+  border-radius: 4px;
+  color: #3498db;
+  text-decoration: none;
+  text-align: center;
+}
+
+p a:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+
+/* Tagline for the signup page */
+.tagline-su {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: right; /* Adjust this to 'left', 'right', or 'center' based on your need */
+  color: #ffffff;
+  width: 267px;
+  height: 34px;
+  margin-top: 85px; /* Push it to the top */
+  margin-bottom: 23px; /* Adjust bottom margin as needed */
+  font-family: 'Outfit', sans-serif;
+  line-height: 25.2px;
+  letter-spacing: 0;
+  margin-left: 734px;
+}
+
+/* Subtitle below the tagline */
+.su-title {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 90px;
+  color: #ffffff;
+  margin-top: 160px;
+  font-family: 'Outfit';
+}
+
+/* Terms and conditions text at the bottom */
+.terms-su-1 {
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Outfit';
+}
+
+.terms-su-1 a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.terms-su-1 a:hover {
+  text-decoration: underline;
+  
+}
+
+/* Terms and conditions text at the bottom */
+.terms-su-2 {
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Outfit';
+}
+
+.terms-su-2 a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.terms-su-2 a:hover {
+  text-decoration: underline;
+  
+}
+
+
+
+
+/* CSS Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  /* Adjust container and signup box for smaller screens */
+  .signup-container {
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signup-box {
+    width: 90%; /* Make the signup box take up most of the screen width */
+    height: auto; /* Let height be automatic to avoid overflowing */
+    padding: 1.5rem; /* Reduce padding */
+    opacity: 1; /* Make the box fully visible */
+    border-radius: 10px; /* Rounded corners for mobile-friendly appearance */
+  }
+
+  /* Adjust heading for small screens */
+  h2 {
+    margin-top: 5rem; /* Reduce top margin */
+    font-size: 1.5rem; /* Smaller font size for the heading */
+  }
+
+  /* Adjust input fields for smaller screens */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    font-size: 0.9rem; /* Smaller font size for inputs */
+    padding: 0.5rem;
+  }
+
+  /* Adjust full name fields */
+  .full-name-container {
+    flex-direction: column; /* Stack name fields vertically */
+  }
+
+  .first-name, .last-name {
+    width: 100%; /* Full width for mobile */
+    margin-bottom: 10px;
+  }
+
+  /* Adjust tagline and subtitle */
+  .tagline-su {
+    font-size: 1.2rem; /* Smaller font size */
+    margin-top: 20px; /* Adjust margin */
+    margin-left: 0; /* Align tagline properly */
     text-align: center;
   }
-  
-  .signup-container h2 {
-    margin-bottom: 20px;
+
+  .su-title {
+    font-size: 1rem; /* Smaller subtitle font */
+    margin-top: 1rem;
   }
-  
-  .signup-container input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+
+  /* Adjust terms and conditions text */
+  .terms-su-1 {
+    font-size: 0.8rem; /* Smaller font size for terms */
   }
-  
-  .signup-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #65558F;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
+
+  /* Adjust button sizes */
+  button {
+    padding: 0.5rem;
+    font-size: 0.9rem; /* Smaller buttons */
   }
-  
-  .signup-container button:hover {
-    background-color: darkblue;
+
+  /* Adjust the link box for small screens */
+  p {
+    font-size: 0.8rem;
   }
-  
+
+  p a {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+
+}
+
+
+.footer {
+ bottom:  auto; /* Push the footer to the bottom */
+}
+

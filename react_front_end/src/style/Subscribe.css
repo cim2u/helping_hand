@@ -1,0 +1,18 @@
+.subscribe-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.subscribe-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.subscribe-button:hover {
+    background-color: #0056b3;
+}
