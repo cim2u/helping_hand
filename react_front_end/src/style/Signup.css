@@ -1,314 +1,81 @@
-/* Signup.css */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f8f8f8;
+@import url('../style/Logo.module.css');
+
+/* SignUp.css */
+
+/* Global styles for input fields */
+.input-field {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s ease;
 }
 
-.signup-container {
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  min-height: 100vh;
+/* Focus state for input fields */
+.input-field:focus {
+  border-color: #00bcd4;
 }
 
-.signup-box {
-  background: #1E1E1ECC;
-  padding: 3rem;
-  width: 350px;
-  box-shadow: #1E1E1ECC;
-  text-align: left;
-  width: 1094px;
-  height: 904px;
-  opacity: 0.8;
-  border-top-left-radius: Corner/None;
-  border-top-right-radius: 123px;
-  border-bottom-right-radius: Corner/None;
-  border-bottom-left-radius: Corner/None;
-  margin-bottom:23px;
+/* Background image container */
+.image-back {
+  flex: 1;
+  position: absolute; /* Position it absolutely to fill the screen */
+  top: 0;
+  left: 0;
+  opacity: 75%;
+  width: 100%;
+  height: 100vh; /* Make sure the image fills the screen */
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kjxOMWUN80t2rVIumnkecxzwLsr-ege4Pdssqp2ylLLyryEBQ6FCkK-EYu8hPgpX~zsB3St5pn3QbHvtdyMTovGHTaDyHkfqhTAwR0fDnnZt6bF4do6Sdk4RbbEymd9jYvn9cHJZr2z8NCj4UDlvPY4frYGJSeqjsqLVf-HWu20YWfYI80epiKANjvYPt9kJ0tRF1USum4wMSjBXxGgrZaJjpRaUpY9djLUFx7pP~FRIMONo4-Lb5cmqj9YGDSWEVq1ft3STthhualXDryXf3xgGLxAXK2q2h9RvnjckWR8xl3~BlsgiPEpIn22d2tRlHnBbuzs~Wmz7pcBj9U7I~g__');
+  background-size: cover; /* Ensure the image is covering the screen */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* Make sure the image stays behind the content */
 }
 
-/* Title styling */
-h2 {
-  margin-bottom: 2rem;
-  color: #ffffff;
-  text-align: center; /* Centered text */
-  margin-top: 20rem;
-}
-
-/* Input fields styling */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  padding: 0.75rem;
-  border: 2px solid #3498db;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  background-color: #fff;
-  text-align: center;
-  margin-bottom: 10px;
-  font-family: 'Outfit';
-  width: 386px;
-  height: 49px;
-  top: 607px;
-  left: 74px;
-  border-radius: 10px;
-  background: #CBD4FF;
-
-}
-
-/* Full Name Fields */
-.full-name-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 2;
-  margin-bottom: 5px;
-}
-
-.first-name,
-.last-name {
-  width: 48%; /* Adjust width of each field */
-}
-
-.first-name input,
-.last-name input {
-  width: 100%; /* Ensures full width within its container */
-  padding: 0.75rem;
-  border: 2px solid #3498db;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  background-color: #fff;
-  text-align: center;
-  width: 386px;
-  height: 49px;
-  top: 488px;
-  left: 24px;
-  border-radius: 10px;
-  background: #CBD4FF;
-  font-family: 'Outfit';
-
-
-}
-
-/* Password input container */
-.password-container {
-  position: relative;
-}
-
-.password-container input {
-  padding-right: 1.5rem;
-}
-
-.password-container span {
+/* Overlay for the right panel background */
+.image-back .h-full {
   position: absolute;
-  top: 47%;
-  right: 40rem;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #000000;
-  font-size: 1.2rem;
+  top: 0;
+  left: 0;
+  width: 567px;
+  height: 100%;
+  z-index: 2;
+  opacity: 65%;
+  background: rgba(0, 0, 0, 1);
+  border: 2px solid rgba(254, 254, 254, 1)
+  
 }
 
-/* Button styling */
+
+
+/* Button styles */
 button {
-  padding: 0.75rem;
-  border: 2px solid #3498db;
-  border-radius: 10px;
-  background-color: #3498db;
-  color: #fff;
-  font-size: 1rem;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 50%;
-  text-align: center;
-  margin-top:5%;
-  margin-left:25%;
-  font-family: 'Oufit';
 }
 
-/* Disabled button */
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+button:hover {
+  opacity: 0.9;
 }
 
-/* Hover effect for buttons */
-button:hover:not(:disabled) {
-  background-color: #2980b9;
-}
-
-/* Box around links */
-p {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #666;
-  text-align: center; /* Centered text for the link box */
-}
-
-p a {
-  display: inline-block;
-  padding: 5px 10px;
-  border: 2px solid #3498db; /* Box border */
-  border-radius: 4px;
-  color: #3498db;
-  text-decoration: none;
-  text-align: center;
-}
-
-p a:hover {
-  background-color: #3498db;
-  color: #fff;
-}
-
-/* Tagline for the signup page */
-.tagline-su {
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-align: right; /* Adjust this to 'left', 'right', or 'center' based on your need */
-  color: #ffffff;
-  width: 267px;
-  height: 34px;
-  margin-top: 85px; /* Push it to the top */
-  margin-bottom: 23px; /* Adjust bottom margin as needed */
-  font-family: 'Outfit', sans-serif;
-  line-height: 25.2px;
-  letter-spacing: 0;
-  margin-left: 734px;
-}
-
-/* Subtitle below the tagline */
-.su-title {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 90px;
-  color: #ffffff;
-  margin-top: 160px;
-  font-family: 'Outfit';
-}
-
-/* Terms and conditions text at the bottom */
-.terms-su-1 {
-  font-size: 0.9rem;
-  color: #ffffff;
-  text-align: center;
-  margin-top: 20px;
-  font-family: 'Outfit';
-}
-
-.terms-su-1 a {
-  color: #ffffff;
+/* Styling for text links */
+a {
   text-decoration: none;
 }
 
-.terms-su-1 a:hover {
+a:hover {
   text-decoration: underline;
-  
 }
 
-/* Terms and conditions text at the bottom */
-.terms-su-2 {
-  font-size: 0.9rem;
-  color: #ffffff;
-  text-align: center;
-  margin-top: 20px;
-  font-family: 'Outfit';
+/* Responsive Design */
+@media (max-width: 640px) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .image-back {
+    display: none;
+  }
 }
-
-.terms-su-2 a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.terms-su-2 a:hover {
-  text-decoration: underline;
-  
-}
-
-
-
-
-/* CSS Media Query for smaller screens */
-@media screen and (max-width: 768px) {
-  /* Adjust container and signup box for smaller screens */
-  .signup-container {
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center;
-    align-items: center;
-  }
-
-  .signup-box {
-    width: 90%; /* Make the signup box take up most of the screen width */
-    height: auto; /* Let height be automatic to avoid overflowing */
-    padding: 1.5rem; /* Reduce padding */
-    opacity: 1; /* Make the box fully visible */
-    border-radius: 10px; /* Rounded corners for mobile-friendly appearance */
-  }
-
-  /* Adjust heading for small screens */
-  h2 {
-    margin-top: 5rem; /* Reduce top margin */
-    font-size: 1.5rem; /* Smaller font size for the heading */
-  }
-
-  /* Adjust input fields for smaller screens */
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    font-size: 0.9rem; /* Smaller font size for inputs */
-    padding: 0.5rem;
-  }
-
-  /* Adjust full name fields */
-  .full-name-container {
-    flex-direction: column; /* Stack name fields vertically */
-  }
-
-  .first-name, .last-name {
-    width: 100%; /* Full width for mobile */
-    margin-bottom: 10px;
-  }
-
-  /* Adjust tagline and subtitle */
-  .tagline-su {
-    font-size: 1.2rem; /* Smaller font size */
-    margin-top: 20px; /* Adjust margin */
-    margin-left: 0; /* Align tagline properly */
-    text-align: center;
-  }
-
-  .su-title {
-    font-size: 1rem; /* Smaller subtitle font */
-    margin-top: 1rem;
-  }
-
-  /* Adjust terms and conditions text */
-  .terms-su-1 {
-    font-size: 0.8rem; /* Smaller font size for terms */
-  }
-
-  /* Adjust button sizes */
-  button {
-    padding: 0.5rem;
-    font-size: 0.9rem; /* Smaller buttons */
-  }
-
-  /* Adjust the link box for small screens */
-  p {
-    font-size: 0.8rem;
-  }
-
-  p a {
-    font-size: 0.9rem;
-    padding: 5px 10px;
-  }
-
-}
-
-
-.footer {
- bottom:  auto; /* Push the footer to the bottom */
-}
-

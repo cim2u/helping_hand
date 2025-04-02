@@ -1,0 +1,21 @@
+.logo-container {
+    position: absolute; /* Place it over other elements */
+    top: 26px; /* Adjust as needed */
+    left: 81px; /* Center horizontally */
+    
+    z-index: 150; /* Ensure it stays on top */
+  }
+  
+ /* Logo.module.css */
+.logo {
+  width: 160px; /* Default width */
+  height: auto;
+}
+
+.logoLarge {
+  width: 150px; /* Adjusted width for specific use cases */
+
+}
+
+  
+  

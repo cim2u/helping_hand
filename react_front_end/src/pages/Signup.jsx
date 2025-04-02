@@ -1,136 +1,73 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "../style/Signup.css";
-import API from "../api";
+import React from "react";
+import styles from "../style/Logo.module.css"; // Import CSS module
+import logoImage from "../assets/Logo.png"; // Assuming the logo is an image
+import "../style/SignUp.css";
+
 
 const SignUp = () => {
-  const navigate = useNavigate();
-  const [user, setUser] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: "",
-    password_confirmation: "",
-  });
-
-  const [error, setError] = useState(""); // Error state
-  const [loading, setLoading] = useState(false); // Loading state
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Check if passwords match
-    if (user.password !== user.password_confirmation) {
-      setError("Passwords do not match!"); // Show error if passwords don't match
-      return;
-    }
-
-    setError(""); // Clear any previous error
-    setLoading(true); // Set loading to true while submitting
-
-    try {
-      // Make API call to the backend to register the user
-      await API.post("/", user);
-      alert("Signup successful! Please verify your email.");
-      navigate("/shop"); // Redirect to shop after successful signup
-    } catch (error) {
-      // Handle error from API
-      setError(error.response?.data?.message || "Signup failed! Please try again.");
-    } finally {
-      setLoading(false); // End the loading state
-    }
-  };
-
   return (
-    <div className="signup-container container-hh">
-      <div className="signup-box">
-        <h2 className="tagline-su">CDO’s Marketplace for Student Talent and Creativity!</h2>
-        <h3 className="su-title">Create a free account and join our growing community!</h3>
-        {error && <p className="error-message">{error}</p>} {/* Display error message */}
-        <form onSubmit={handleSubmit}>
-          {/* Full Name Fields */}
-          <div className="full-name-container">
-            <div className="first-name">
-              <input
-                type="text"
-                name="first_name"
-                placeholder="First Name"
-                value={user.first_name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="last-name">
-              <input
-                type="text"
-                name="last_name"
-                placeholder="Last Name"
-                value={user.last_name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
+    <div className="flex h-screen">
+      {/* Left Panel - Signup Form */}
+      <div className="relative w-full sm:w-1/3 bg-black bg-opacity-50 flex flex-col justify-center p-8 rounded-r-2xl">
+        {/* Logo and Title */}
+        <div className="flex justify-center mb-6">
+          <img src={logoImage} alt="HelpingHand Logo" className={styles.logoLarge} />
+        </div>
+       
+        <p className="text-white mt-4 text-center">
+          Create a free account and join our growing community!
+        </p>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={user.email}
-            onChange={handleChange}
-            required
-          />
-
-          {/* Password Field */}
-          <div className="password-container">
+        {/* Form */}
+        <form className="mt-6 space-y-4">
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              value={user.password}
-              onChange={handleChange}
-              required
+              type="text"
+              placeholder="First Name"
+              className="input-field w-full sm:w-1/2"
             />
-            <span onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
-          </div>
-
-          {/* Confirm Password Field */}
-          <div className="password-container">
             <input
-              type={showConfirmPassword ? "text" : "password"}
-              name="password_confirmation"
-              placeholder="Confirm Password"
-              value={user.password_confirmation}
-              onChange={handleChange}
-              required
+              type="text"
+              placeholder="Last Name"
+              className="input-field w-full sm:w-1/2"
             />
-            <span onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
           </div>
+          <input type="email" placeholder="Email" className="input-field" />
+          <input type="text" placeholder="Username" className="input-field" />
+          <input type="password" placeholder="Password" className="input-field" />
+          <input type="password" placeholder="Confirm Password" className="input-field" />
 
-          <button type="submit" disabled={loading}>
-            {loading ? "Signing Up..." : "Sign Up"}
+          <button className="w-full bg-cyan-400 text-white py-2 rounded-lg hover:bg-cyan-500 transition">
+            Submit
           </button>
         </form>
-        <p className="terms-su-1">
-          By creating an account, you agree to HelpingHand’s Terms of Services and Privacy Policy.
+
+        <p className="text-white mt-4 text-sm text-center">
+          Already have an account? <a href="#" className="text-cyan-300">Login</a>
         </p>
-        <p className="terms-su-2">
-          Already have an account? <Link to="/login">Log In</Link>
+
+        <p className="text-gray-300 text-xs mt-4 text-center">
+          By creating an account, you agree to HelpingHand's{" "}
+          <a href="#" className="text-cyan-300">Terms of Service</a> and{" "}
+          <a href="#" className="text-cyan-300">Privacy Policy</a>.
         </p>
+      </div>
+
+      {/* Right Panel - Background Image */}
+      <div
+        className="image-back"
+        style={{
+          backgroundImage: "url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kjxOMWUN80t2rVIumnkecxzwLsr-ege4Pdssqp2ylLLyryEBQ6FCkK-EYu8hPgpX~zsB3St5pn3QbHvtdyMTovGHTaDyHkfqhTAwR0fDnnZt6bF4do6Sdk4RbbEymd9jYvn9cHJZr2z8NCj4UDlvPY4frYGJSeqjsqLVf-HWu20YWfYI80epiKANjvYPt9kJ0tRF1USum4wMSjBXxGgrZaJjpRaUpY9djLUFx7pP~FRIMONo4-Lb5cmqj9YGDSWEVq1ft3STthhualXDryXf3xgGLxAXK2q2h9RvnjckWR8xl3~BlsgiPEpIn22d2tRlHnBbuzs~Wmz7pcBj9U7I~g__')",
+          height: "100vh",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="h-full w-full bg-black bg-opacity-30"></div>
       </div>
     </div>
   );
 };
 
 export default SignUp;
+
