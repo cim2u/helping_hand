@@ -1,0 +1,263 @@
+@import url('../style/Logo.module.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+
+/* Container for the signup form */
+.signup-container {
+  width: 100%;
+  max-width: 1440px;
+  height: 1024px;
+  
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative; /* Allows positioning of child elements */
+}
+
+/* Form box with white background and custom top/left position */
+form {
+  width: 453px;
+  padding: 20px;
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: absolute; /* Enables precise positioning */
+  top: 338px; /* Adjust this value for vertical positioning */
+  left: 52px; /* Centers the form horizontally */
+  
+}
+
+/* Label styling */
+label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 5px;
+  text-align: left;
+  margin-left: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+
+/* Input field styling */
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: transparent; /* Makes input fields transparent */
+  color: #000000;
+}
+
+/* Input focus state */
+input:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 5px rgba(0, 188, 212, 0.4);
+}
+
+/* First Name and Last Name container */
+.name-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Adjust width for first and last name inputs */
+.name-container .form-group {
+  flex: 1;
+}
+/* Submit button styling */
+button {
+  width: 178px;
+  height: 31px;
+  padding: 8px;
+  background-color: #00bcd4;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative; /* Needed for 'top' and 'left' to work */
+  left: 113px; /* Moves the button 12px to the right */
+  top: 20px; /* Moves the button 10px downward */
+}
+
+
+
+/* Button hover effect */
+button:hover {
+  background-color: #0097a7;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .signup-container {
+    height: auto;
+    padding: 10px;
+  }
+
+  form {
+    padding: 15px;
+    max-width: 90%;
+    top: 50px; /* Adjust for smaller screens */
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
+
+
+.login-text {
+  font-size: 15px;
+  font-weight: 500; /* Set font weight to 500 */
+  font-family: 'Outfit', sans-serif; /* Apply Outfit font */
+  color: rgb(0, 0, 0); /* Black text color */
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-text a {
+  color: #00bcd4; /* Cyan color for the link */
+  text-decoration: none;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap');
+
+.by-creat-text {
+  font-family: 'Outfit', sans-serif; /* Apply Outfit font */
+  font-weight: 400; /* Set to normal weight */
+  font-size: 15px; /* Adjusted font size */
+  line-height: 100%; /* Set line height to 100% */
+  letter-spacing: 0%; /* No letter spacing */
+  text-align: center; /* Center alignment */
+  margin-top: 16px; /* Adjusted spacing */
+  width: 484px;
+  height: 49px;
+
+  /* Positioning */
+  position: absolute;
+  top: 955px; /* Adjust distance from top */
+  left: 44px; /* Center horizontally */
+  
+}
+
+.by-creat-text a {
+  color: #06b6d4; /* Cyan link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: 600; /* Slightly bolder links */
+  transition: color 0.3s ease-in-out; /* Smooth transition */
+}
+
+.by-creat-text a:hover {
+  text-decoration: underline; /* Underline on hover */
+  color: #0891b2; /* Darker cyan for hover effect */
+}
+
+
+
+
+.create-text{
+  width: 497px;
+  height: 31px;
+  position: absolute; /* Ensure top and left positioning work */
+  top: 291px;
+  left: 37px;
+  
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-align: center;
+  
+  background: rgba(255, 255, 255, 0);
+}
+/* Background image container */
+.image-back {
+  position: absolute; /* Position it absolutely to fill the screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1034px; /* Ensure fixed height for the background image */
+  
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kjxOMWUN80t2rVIumnkecxzwLsr-ege4Pdssqp2ylLLyryEBQ6FCkK-EYu8hPgpX~zsB3St5pn3QbHvtdyMTovGHTaDyHkfqhTAwR0fDnnZt6bF4do6Sdk4RbbEymd9jYvn9cHJZr2z8NCj4UDlvPY4frYGJSeqjsqLVf-HWu20YWfYI80epiKANjvYPt9kJ0tRF1USum4wMSjBXxGgrZaJjpRaUpY9djLUFx7pP~FRIMONo4-Lb5cmqj9YGDSWEVq1ft3STthhualXDryXf3xgGLxAXK2q2h9RvnjckWR8xl3~BlsgiPEpIn22d2tRlHnBbuzs~Wmz7pcBj9U7I~g__');
+  background-size: cover; /* Ensure image covers the area */
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity:95%; /* Correct opacity */
+  z-index: -1; /* Keep behind other content */
+}
+
+/* Overlay for the right panel background */
+.image-back .h-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 567px;
+  height: 1034px; /* Make sure height is the same as the image */
+  z-index: 2;
+  opacity: 0.65;
+  background: rgb(0, 0, 0); /* Overlay effect */
+  
+  border-top-right-radius: 90px;
+  border: 2px solid rgb(254, 254, 254);
+}
+
+
+/* Button styles */
+button {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Styling for text links */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .image-back {
+    display: none;
+  }
+}

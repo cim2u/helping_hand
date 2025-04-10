@@ -1,0 +1,227 @@
+@import url('../style/Logo.module.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+/* Full-page background styling */
+.login-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1024px;
+    background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kjxOMWUN80t2rVIumnkecxzwLsr-ege4Pdssqp2ylLLyryEBQ6FCkK-EYu8hPgpX~zsB3St5pn3QbHvtdyMTovGHTaDyHkfqhTAwR0fDnnZt6bF4do6Sdk4RbbEymd9jYvn9cHJZr2z8NCj4UDlvPY4frYGJSeqjsqLVf-HWu20YWfYI80epiKANjvYPt9kJ0tRF1USum4wMSjBXxGgrZaJjpRaUpY9djLUFx7pP~FRIMONo4-Lb5cmqj9YGDSWEVq1ft3STthhualXDryXf3xgGLxAXK2q2h9RvnjckWR8xl3~BlsgiPEpIn22d2tRlHnBbuzs~Wmz7pcBj9U7I~g__');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Outfit', sans-serif;
+    opacity:95%;
+}
+/* General form styling */
+.login-form {
+    width: 480px;
+    height: 225px;
+    padding: 30px 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 250px; /* Adjust based on layout */
+    left: 50%;  /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  /* Label styling */
+  .login-form label {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 5px;
+    left: 230px;
+  }
+  
+  /* Input styling */
+.login-form input {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #ffffff;
+    color: #000000;
+    width: 430px; /* Width of the input field */
+    height: 41px; /* Height of the input field */
+    
+    left: 550px; /* You can adjust this value as needed */
+  }
+  
+  
+  .login-form input:focus {
+    border-color: #00c9db;
+  }
+  
+/* Button styling */
+.login-container button {
+    background-color: rgba(54, 189, 215, 1); /* Button background color */
+    color: white; /* Text color */
+    font-size: 1rem; /* Font size */
+    font-family: 'Outfit', sans-serif; /* Font family */
+    font-weight: 500; /* Font weight */
+    border-radius: 100px; /* Rounded corners */
+    border: none; /* Remove border */
+    padding: 8px 20px; /* Padding to control the button size */
+    width: 210px; /* Button width */
+    height: 31px; /* Button height */
+    position: absolute; /* Absolute positioning */
+    top: 307px; /* Vertical position */
+    left: 135px; /* Horizontal position */
+    gap: 8px; /* Gap between the text and any potential icon */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effect */
+    text-align: center; /* Center the text */
+  }
+  
+  /* On hover effect */
+  .login-container button:hover {
+    background-color: #00acc1; /* Button color changes on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+  }
+  
+  /* On focus effect */
+  .login-container button:focus {
+    outline: none; /* Removes the focus outline */
+    box-shadow: 0 0 5px rgba(0, 201, 219, 0.7); /* Adds a subtle glow around the button */
+  }
+
+  
+
+/* Forgot password, signup, and admin login links */
+.login-container .forgot-password
+{
+  font-size: 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative; /* Ensure positioning can be adjusted */
+}
+
+.login-container .forgot-password:hover{
+  color: #00acc1;
+  text-decoration: underline;
+}
+
+/* Signup link container */
+.signup-link {
+    width: 226px; /* Width of the container */
+    height: 32px; /* Height of the container */
+    position: absolute; /* Position it absolutely */
+    top: 325px; /* Vertical position */
+    left: 129px; /* Horizontal position */
+    font-family: 'Outfit', sans-serif; /* Font family */
+    font-weight: 500; /* Font weight */
+    font-size: 16px; /* Font size */
+    line-height: 100%; /* Line height */
+    letter-spacing: 0%; /* Letter spacing */
+    color: rgba(254, 254, 254, 1); /* Background color */
+    display: flex; /* Use flex to align items */
+    align-items: center; /* Vertically align the text */
+    justify-content: center; /* Horizontally align the text */
+  }
+  
+  /* Styling the Sign Up link */
+  .signup-link a {
+    color: #00c9db; /* Link color */
+    text-decoration: none; /* Remove underline from link */
+    font-weight: 500; /* Font weight for the link */
+    font-size: 16px; /* Font size for the link */
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline; /* Underline the link when hovered */
+    color: #00acc1; /* Darker color on hover */
+  }
+  
+
+
+/* Admin login link styling */
+.login-form .admin-login {
+    position: absolute; /* Ensures the element is positioned relative to the nearest positioned ancestor */
+    left: 340px; /* Move the link to 400px from the left */
+    top: 400px; /* Adjust the top property if necessary */
+  }
+  
+  .login-form .admin-login a {
+    font-size: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .login-form .admin-login a:hover {
+    color: #00acc1;
+    text-decoration: underline;
+  }
+  
+
+ 
+  /* Additional space between the links */
+  .signup-link {
+    margin-top: 10px;
+  }
+  
+  .admin-login {
+    margin-top: 10px;
+  }
+  
+  
+
+/* Translucent login container */
+.login-container {
+    width: 480px;
+    height: 725px; /* Adjust the height here */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.384);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: absolute; /* Enables precise positioning */
+    top: 149px; /* Adjust this value for vertical positioning */
+    left: 450px; /* Center horizontally */
+    
+    font-family: 'Outfit', sans-serif;
+  }
+  
+
+
+/* Welcome text */
+.login-container h2 {
+    width: 160px; /* Set the width */
+    height: 42px; /* Set the height */
+    top:183px; /* Adjust vertical positioning */
+    left: 62px; /* Adjust horizontal positioning */
+    font-family: 'Roboto', sans-serif; /* Set font family */
+    font-weight: 900; /* Set font weight */
+    font-size: 36px; /* Set font size */
+    line-height: 100%; /* Set line height */
+    letter-spacing: 0%; /* Set letter spacing */
+    text-align: right; /* Align text to the right */
+    
+    position: absolute; /* Ensure it's positioned absolutely */
+  }
+  
+  .logo-wrapper {
+    position: absolute;
+    top: 10px;   /* Adjust this value to move the logo vertically */
+    left: 20px;  /* Adjust this value to move the logo horizontally */
+  }
+  
+
+

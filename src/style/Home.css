@@ -1,0 +1,281 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@400&display=swap');
+
+/* Container wrapper */
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1440px;
+  margin: 0 auto;
+}
+
+
+
+/* Background cover image */
+.header-cover {
+  width: 100%; /* Makes it responsive */
+  height: 274px;
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kjxOMWUN80t2rVIumnkecxzwLsr-ege4Pdssqp2ylLLyryEBQ6FCkK-EYu8hPgpX~zsB3St5pn3QbHvtdyMTovGHTaDyHkfqhTAwR0fDnnZt6bF4do6Sdk4RbbEymd9jYvn9cHJZr2z8NCj4UDlvPY4frYGJSeqjsqLVf-HWu20YWfYI80epiKANjvYPt9kJ0tRF1USum4wMSjBXxGgrZaJjpRaUpY9djLUFx7pP~FRIMONo4-Lb5cmqj9YGDSWEVq1ft3STthhualXDryXf3xgGLxAXK2q2h9RvnjckWR8xl3~BlsgiPEpIn22d2tRlHnBbuzs~Wmz7pcBj9U7I~g__');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative; /* Necessary for positioning icons */
+}
+
+
+/* Logo.module.css */
+.logoContainer {
+  position: absolute;    /* Absolute positioning */
+  top: -30px;             /* Place it at the top of header-cover */
+  left: -0px;            /* Horizontal position */
+  width: 200px;          /* Set the width of the logo (adjust as needed) */
+  height: auto;          /* Maintain aspect ratio */
+  z-index: 10;           /* Ensure it appears on top of the header */
+}
+
+
+
+/* Login button styles */
+.login-button {
+  width: 120px;                   /* Set width to 120px */
+  height: 35px;                   /* Set height to 35px */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;                     /* Adjust the font size */
+  font-weight: 400;                    /* Set font weight to normal */
+  border-radius: 100px;                /* Set border radius for a rounded button */
+  gap: 8px;                           /* Space between text and icon, if any */
+  background: rgba(254, 254, 254, 1); /* Set background to a white color */
+  color: #000000;                    /* Set text color */
+  border: none;                        /* No border */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  display: flex;
+  align-items: center;                /* Align text and icon vertically */
+  justify-content: center;            /* Center text horizontally */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for Login button */
+.login-button:hover {
+  background-color: #00bcd4; /* Blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Focus state for Login button */
+.login-button:focus {
+  outline: none; /* Remove outline when focused */
+}
+
+/* Positioning the Login button in the header */
+.login-button {
+  position: absolute;
+  top: 208px; /* Adjust top position as needed */
+  left: 1281px; /* Adjust left position as needed */
+  z-index: 10;
+}
+
+/* SignUp button styles */
+.signup-button {
+  width: 120px;                   /* Set width to 120px */
+  height: 35px;                   /* Set height to 35px */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;                     /* Adjust the font size */
+  font-weight: 400;                    /* Set font weight to normal */
+  border-radius: 100px;                /* Set border radius for a rounded button */
+  gap: 8px;                           /* Space between text and icon, if any */
+  background: rgba(254, 254, 254, 1); /* Set background to a white color */
+  color: #000000;                    /* Set text color */
+  border: none;                        /* No border */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  display: flex;
+  align-items: center;                /* Align text and icon vertically */
+  justify-content: center;            /* Center text horizontally */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for SignUp button */
+.signup-button:hover {
+  background-color: #00bcd4; /* Blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Focus state for SignUp button */
+.signup-button:focus {
+  outline: none; /* Remove outline when focused */
+}
+
+/* Positioning the SignUp button in the header */
+.signup-button {
+  position: absolute;
+  top: 208px; /* Adjust top position as needed */
+  left: 1140px; /* Adjust left position as needed */
+  z-index: 10;
+}
+
+
+.subscribe-button {
+  width: 120px;                   /* Set width to 120px */
+  height: 35px;                   /* Set height to 35px */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;                     /* Adjust the font size */
+  font-weight: 400;                    /* Set font weight to normal */
+  border-radius: 100px;                /* Set border radius for a rounded button */
+  gap: 8px;                           /* Space between text and icon, if any */
+  background: rgba(254, 254, 254, 1); /* Set background to a white color */
+  color: #000000;                    /* Set text color */
+  border: none;                        /* No border */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  display: flex;
+  align-items: center;                /* Align text and icon vertically */
+  justify-content: center;            /* Center text horizontally */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.subscribe-button:hover {
+  background-color:#00bcd4; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.subscribe-button:focus {
+  outline: none; /* Remove outline when focused */
+}
+
+/* Positioning the Subscribe button in the header */
+.subscribe-button {
+  position: absolute;
+  top: 208px; /* Adjust top position as per the provided value */
+  left: 1281px; /* Adjust left position as per the provided value */
+  z-index: 10;
+}
+
+
+
+
+
+.icon-container {
+  position: absolute;
+  top: 220px;
+  left: 50px;
+  
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  align-items: center; /* Center the icons vertically */
+  z-index: 10;
+  color: white;
+}
+
+
+
+
+
+/* Individual icon styles */
+.icon {
+  font-size: 24px; /* Adjust size of icons */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for icons */
+.icon:hover {
+  color: #00bcd4;/* Lighter purple on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+
+
+/* White overlay section */
+.white-section {
+  width: 100%; /* Makes it responsive */
+  height: 100vh;
+  background: #ffffff;
+  padding: 2rem;
+  box-sizing: border-box;
+  margin-top: 0px;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ /* Banner text section */
+  
+  /* Make sure the body and html have no margin or padding */
+  body, html {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Banner text section */
+  .banner {
+    background-color: #843b62;   /* Purple background */
+    color: white;                /* Text color */
+    padding: 1rem;               /* Padding inside the banner */
+    width: 1440px;                /* Full viewport width */
+    position: relative;          /* Allow left adjustments */
+    left: -35px;      
+                
+  }
+
+/* Separate font styling for the text inside the banner */
+.banner-text {
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: 0%;
+    font-size: 2rem;                   /* Font size */
+    text-align: justify;                /* Needed to use 'left' property */
+    margin-left: 34px;                         /* Moves the text 34px from the left edge */
+  }
+
+/* Grid layout for product cards */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+/* Each product box */
+.product-card {
+  width: 220px;
+  height: 260px;
+  background: #fefefe;
+  border-radius: 16px;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Placeholder for product image */
+.image-placeholder {
+  width: 100%;
+  height: 160px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  border: 1px dashed #ccc;
+}
+
+/* Placeholder product name */
+.product-name {
+  color: #777;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* Hidden class for when no products are available */
+.hidden {
+  display: none;
+}
+

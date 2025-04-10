@@ -1,0 +1,119 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #f3a683, #786fa6);
+  color: #fff;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 15px;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #ffdd59;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.login-button, .subscribe-button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.login-button {
+  background: #ffdd59;
+  color: #000;
+}
+
+.subscribe-button {
+  background: #ff6b81;
+  color: #fff;
+}
+
+.login-button:hover {
+  background: #ffcc33;
+}
+
+.subscribe-button:hover {
+  background: #ff4757;
+}
+
+/* Responsive Navbar */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block;
+  }
+
+  .navbar {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+  }
+
+  .navbar.active {
+      display: flex;
+  }
+}
+
+/* Sections */
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 1rem;
+}
