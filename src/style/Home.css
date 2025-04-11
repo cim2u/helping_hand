@@ -279,3 +279,77 @@
   display: none;
 }
 
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 16px; /* Added border-radius */
+  z-index: 100; /* Added z-index */
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px; /* Use a specific size instead of "Body Large/Size" */
+  line-height: 1.5; /* Adjust line height */
+  letter-spacing: 0.5px; /* Optional, adjust for spacing */
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px; /* Added thickness */
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 15px 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+/* Hover Effect */
+.sidebar-menu li:hover {
+  background-color: #f4f4f4; /* Light background on hover */
+  padding: 10px 12px;
+  border-radius: 8px; /* Slightly more rounded on hover */
+}
+
+/* Closed Sidebar (Hidden) */
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* Open Sidebar */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Close Icon Styles */
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 176px;
+}
+
+.close-icon {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.close-icon:hover {
+  color: #ff6b6b; /* Change color on hover */
+}

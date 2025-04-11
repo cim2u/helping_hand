@@ -28,15 +28,7 @@ function App() {
     <div className="app-container">
       <Routes>
         <Route path="/about" element={<About />} />
-        <Route
-          path="/home"
-          element={
-            <Home
-              isLoggedIn={isLoggedIn}
-              isSubscribed={isSubscribed}
-            />
-          }
-        />
+        <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/continue-as" element={<ContinueAs />} />

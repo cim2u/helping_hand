@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import navigation hook
 import "../style/About.css";
 import "../style/Logo.module.css";
@@ -7,10 +7,17 @@ import helpinghand from "../assets/HELPINGHand.png"; // Ensure correct path
 
 function About() {
   const navigate = useNavigate(); // Hook for navigation
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  // Check registration status when the component mounts
+  useEffect(() => {
+    const registeredStatus = localStorage.getItem('isRegistered') === 'true';
+    setIsRegistered(registeredStatus); // Set the registration state
+  }, []);
 
   // Function to handle navigation when a link is clicked
-  const handleNavigation = (destination) => {
-    navigate(`/${destination}`);
+  const handleNavigation = (page) => {
+    navigate(`/${page}`);
   };
 
   return (
@@ -43,10 +50,12 @@ function About() {
             Join HelpingHand today, where students thrive, and everyone scores amazing deals!
           </p>
 
-          {/* Sign Up Button Navigates to SignUp Page */}
-          <button className="signup-btn" onClick={() => navigate("/signup")}>
-            SIGN UP
-          </button>
+          {/* Conditionally hide Sign Up button if the user is already registered */}
+          {!isRegistered && (
+            <button className="signup-btn" onClick={() => navigate("/signup")}>
+              SIGN UP
+            </button>
+          )}
         </div>
 
         {/* Image Sections */}

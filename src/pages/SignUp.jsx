@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // ✅ Added useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../style/Logo.module.css";
 import logoImage from "../assets/Logo.png";
 import "../style/SignUp.css";
 
 // SignupForm component
-const SignupForm = ({ handleChange, formData, handleSubmit }) => (
+const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage }) => (
   <form onSubmit={handleSubmit} className="signup-form">
     <div className="name-container">
       <div className="form-group">
@@ -73,6 +73,8 @@ const SignupForm = ({ handleChange, formData, handleSubmit }) => (
       required
     />
 
+    {errorMessage && <p className="error-message">{errorMessage}</p>}
+
     <button type="submit">Submit</button>
 
     <p className="login-text">
@@ -91,7 +93,7 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
-
+  const [errorMessage, setErrorMessage] = useState("");  // For error messages
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -105,10 +107,18 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // ✅ You could add validation here
-    console.log("Form submitted", formData);
+    // Password validation
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage("Passwords do not match!");
+      return;
+    }
 
-    // ✅ Redirect after successful submission
+    // Further validation can be added here (e.g., email format, etc.)
+
+    console.log("Form submitted", formData);
+    setErrorMessage("");  // Reset error message on successful submit
+
+    // Redirect after successful submission
     navigate("/continue-as");
   };
 
@@ -123,7 +133,12 @@ const SignUp = () => {
 
         <p className="create-text">Create a free account and join our growing community!</p>
 
-        <SignupForm handleChange={handleChange} formData={formData} handleSubmit={handleSubmit} />
+        <SignupForm
+          handleChange={handleChange}
+          formData={formData}
+          handleSubmit={handleSubmit}
+          errorMessage={errorMessage}  // Pass error message to the form
+        />
 
         <p className="by-creat-text">
           By creating an account, you agree to HelpingHand's{" "}

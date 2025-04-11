@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../style/TermsAndPolicy.css";
 
 const TermsAndPolicy = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  
+  // Retrieve role from location state
   const role = location.state?.role;
 
+  // Debugging log for role
+  useEffect(() => {
+    console.log("Role passed from previous page: ", role);
+  }, [role]);
+
+  // Handle agreement based on role
   const handleAgree = () => {
-    if (role === "student") {
-      navigate("/myshop"); // Redirect student to My Shop page
-    } else if (role === "buyer") {
-      navigate("/home"); // Redirect buyer to Home page
-    } else {
+    if (!role) {
       alert("No role selected. Please go back.");
+      navigate("/continue-as");  // Redirect to the ContinueAs page if role is not selected
+      return;
+    }
+
+    if (role === "student") {
+      navigate("/myshop");  // Redirect student to My Shop page
+    } else if (role === "buyer") {
+      navigate("/home");  // Redirect buyer to Home page
+    } else {
+      alert("Invalid role selected. Please go back.");
+      navigate("/continue-as");  // Redirect to ContinueAs page if role is invalid
     }
   };
 

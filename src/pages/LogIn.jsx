@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../style/LogIn.css";
 import logoImage from "../assets/Logo.png";
 
@@ -9,14 +9,7 @@ const LogIn = () => {
     password: "",
   });
 
-  useEffect(() => {
-    // Check if the user is already logged in (by checking localStorage)
-    const user = localStorage.getItem('user');
-    if (user) {
-      // If user data exists in localStorage, redirect to the dashboard or home
-      window.location.href = '/dashboard'; // Or use navigate('/dashboard') if using react-router
-    }
-  }, []);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -30,11 +23,15 @@ const LogIn = () => {
     event.preventDefault();
     console.log("Login submitted:", formData);
 
-    // Save user data to localStorage (simulating a successful login)
-    localStorage.setItem('user', JSON.stringify(formData));
+    // ✅ Simulate successful login
+    localStorage.setItem("user", JSON.stringify(formData));
+    localStorage.setItem("loggedIn", "true");
+    
+    localStorage.setItem("isSubscribed", "false"); // default value
+    localStorage.setItem("isRegistered", "true");  // mark as registered ✅
 
-    // Redirect to dashboard
-    window.location.href = '/dashboard'; // or use navigate('/dashboard') if using react-router
+    
+    navigate("/home");
   };
 
   return (
