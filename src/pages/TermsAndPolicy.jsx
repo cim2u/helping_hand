@@ -16,6 +16,9 @@ const TermsAndPolicy = () => {
 
   // Handle agreement based on role
   const handleAgree = () => {
+    // Set isRegistered to true in localStorage
+    localStorage.setItem('isRegistered', 'true');
+    
     // Redirect to the ContinueAs page after agreeing, regardless of role
     navigate("/continue-as");  
   };

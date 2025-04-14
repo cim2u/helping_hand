@@ -106,21 +106,27 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+  
     // Password validation
     if (formData.password !== formData.confirmPassword) {
       setErrorMessage("Passwords do not match!");
       return;
     }
-
-    // Further validation can be added here (e.g., email format, etc.)
-
+  
+    // Optional: More validations can go here
+  
     console.log("Form submitted", formData);
-    setErrorMessage("");  // Reset error message on successful submit
-
-    // Redirect to terms page after successful submission
+    setErrorMessage(""); // Clear previous error
+  
+    // ✅ Store signup status in localStorage
+    localStorage.setItem("isRegistered", "true");  // Set 'isSignup' instead of 'isRegistered'
+    localStorage.setItem("loggedIn", "true");
+  
+    // ✅ Navigate to terms page
     navigate("/terms");
   };
+  
+  
 
   return (
     <div className="flex h-screen">

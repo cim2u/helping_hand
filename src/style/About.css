@@ -1,70 +1,61 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&family=Vujahday+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&family=Vujahday+Script&family=Roboto:wght@800&display=swap");
 @import url('../style/Logo.module.css');
 @import url('../style/HELPINGHand.css');
 
-
+/* Global box-sizing for layout consistency */
 * {
+  box-sizing: border-box;
+}
+
+/* Prevents horizontal scrolling on entire page */
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+ 
+    max-width: 1440px;
+
 }
 
 .about-container {
   width: 1440px;
   height: 1024px;
   background-color: rgb(255, 255, 255);
- 
-  
   background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
 .about-header {
-  position: absolute; /* Keeps it in place relative to the parent */
+  position: absolute;
   top: 0;
   left: 0;
-  
-  width:1440px;
+  width: 1440px;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
   background: rgba(126, 53, 80, 1);
-  opacity: 100%;
   border-bottom: 2px solid rgba(30, 30, 30, 0.65);
- 
 }
 
-/* Ensure content starts below the header */
 .about-content {
-  padding-top: 120px; /* Adjust based on the header's height */
+  padding-top: 120px;
 }
-
-
-
-
-
-
-
- 
-
 
 .nav-links {
   display: flex;
-  gap: 40px; /* Adjust spacing */
+  gap: 40px;
   position: absolute;
   top: 63px;
-  right: 50px; /* Aligns properly */
+  right: 50px;
   z-index: 100;
 }
 
 .nav-links a {
   color: white;
-  text-decoration: none; /* No underline by default */
+  text-decoration: none;
   font-family: "Outfit", sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -74,127 +65,105 @@
 }
 
 .nav-links a:hover {
-  text-decoration: underline; /* Underline only on hover */
+  text-decoration: underline;
   opacity: 0.8;
 }
-
-
 
 .text-section {
   flex: 1;
   padding: 20px;
   color: rgba(126, 53, 80, 1);
 }
+
 .welcome-text {
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-size: 33px;
   color: rgba(126, 53, 80, 1);
   position: absolute;
-  top: 179px; /* Adjust this as needed */
+  top: 179px;
   left: 81px;
 }
-
-
-
-
-
-
-
-
 
 .text-section p {
   width: 802px;
   height: 399px;
-  position: absolute; /* Allows positioning adjustments */
+  position: absolute;
   top: 379px;
   left: 81px;
-
   font-family: "Roboto Flex", sans-serif;
   font-weight: 900;
   font-style: italic;
   font-size: 20px;
   line-height: 40px;
   text-align: justify;
-
   display: flex;
-  align-items: flex-end; /* Aligns text to the bottom */
+  align-items: flex-end;
 }
 
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@800&display=swap');
-
 .signup-btn {
-  background-color: #36BDD7; /* Light blue */
+  background-color: #36BDD7;
   color: white;
   padding: 10px 24px;
   border: none;
   font-size: 24px;
-  font-weight: 800; /* Extra bold */
-  font-family: 'Roboto', sans-serif; /* Apply Roboto font */
+  font-weight: 800;
+  font-family: 'Roboto', sans-serif;
   cursor: pointer;
-  border-radius: 999px; /* Fully rounded button */
+  border-radius: 999px;
   width: 268px;
   height: 51px;
-  
-  /* Positioning */
   position: absolute;
   top: 860px;
   left: 81px;
+  transition: background-color 0.2s ease-in-out;
 }
 
-
-
 .signup-btn:hover {
-  background-color: #36BDD7;
+  background-color: #2CAAC4;
 }
 
 .image-section {
   position: absolute;
   top: 100px;
-  right: -63px; /* Aligns to the right */
-  z-index: 10; /* Ensures it stays above other elements */
+  right: -73px;
+  
 }
 
 .about-image {
   left: 1038px;
   width: 374px;
-  height: 924px; /* Maintain aspect ratio */
+  height: 924px;
   border-radius: 0px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  opacity: 75%;
-  border:  2px solid #7E3550;
+  border: 2px solid #7E3550;
   box-shadow: 0px 4px 4px 0px #00000040;
+  opacity: 75%;
   object-fit: cover;
-
 }
 
 .image-section-2 {
   position: absolute;
   top: 33px;
   z-index: 9;
-  left:23px;
+  left: 23px;
 }
 
 .about-image-1 {
   width: 1440px;
-  
   height: 80px;
-  position: absolute; /* Ensures precise placement */
+  position: absolute;
   top: 10px;
-  left: 0; /* Align to the left */
+  left: 0;
   opacity: 0.25;
-  border-width: 1px;
   border: 1px solid rgba(254, 254, 254, 1);
-  object-fit: cover; /* Ensures it covers the area properly */
+  object-fit: cover;
 }
 
 .about-image-2 {
-  width: 44px; /* Adjust size as needed */
-  height: 44px; /* Ensure it's a perfect circle */
-  border-radius: 50%; /* This makes it circular */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  opacity: 1; /* Full visibility */
   border: 1px solid #FEFEFE;
   object-fit: cover;
   opacity: 75%;
