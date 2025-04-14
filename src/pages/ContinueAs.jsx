@@ -9,6 +9,7 @@ const ContinueAs = () => {
   const [isFileValid, setIsFileValid] = useState(false);
   const [documentType, setDocumentType] = useState("");
   const [isStudentSelected, setIsStudentSelected] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
@@ -35,18 +36,27 @@ const ContinueAs = () => {
         return;
       }
 
+      setIsSubmitting(true);
+
+      // Save info to localStorage
       localStorage.setItem("documentFile", documentFile.name);
       localStorage.setItem("documentType", documentType);
-      navigate("/myshop", { state: { role, documentFile: documentFile.name, documentType } });
+      localStorage.setItem("authAlertShown", "false");
+
+      setTimeout(() => {
+        navigate("/myshop", {
+          state: {
+            role,
+            documentFile: documentFile.name,
+            documentType,
+          },
+        });
+        setIsSubmitting(false);
+      }, 3000);
     }
 
     if (role === "buyer") {
-      const userRole = localStorage.getItem("role");
-      if (userRole === "buyer") {
-        navigate("/home");
-      } else {
-        navigate("/login");
-      }
+      navigate("/home"); // Directly navigate to the home page for buyers
     }
   };
 
@@ -66,17 +76,17 @@ const ContinueAs = () => {
         <img src={logoImage} alt="Helping Hand Logo" className="logo-image" />
 
         {role === "student" && isStudentSelected && (
-          <span
-            className="exit-icon"
+          <button
+            type="button"
             onClick={handleCancel}
-            title="Exit and go back"
+            className="exit-icon"
+            title="Exit and reset form"
           >
-            &#10005;
-          </span>
+            ✕
+          </button>
         )}
 
         <form onSubmit={handleSubmit} className="continueas-form">
-
           {!isStudentSelected && (
             <>
               <div className="role-option">
@@ -149,21 +159,21 @@ const ContinueAs = () => {
                   Invalid file type. Please upload a PDF or image (JPG, PNG, etc.).
                 </span>
               )}
-
-              {documentFile && isFileValid && (
-                <button type="button" className="send-btn" onClick={handleSubmit}>
-                  Send
-                </button>
-              )}
             </div>
           )}
 
           <button
             type="submit"
             className="submit-btn"
-            disabled={!isFileValid && role === "student"}
+            disabled={(role === "student" && !isFileValid) || isSubmitting}
           >
-            Submit
+            {isSubmitting ? (
+              <>
+                <div className="spinner"></div> Submitting...
+              </>
+            ) : (
+              "Submit"
+            )}
           </button>
         </form>
       </div>

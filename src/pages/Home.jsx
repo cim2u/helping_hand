@@ -75,9 +75,9 @@ const Home = () => {
               <button className="signup-button" onClick={handleSignUpClick}>SIGN UP</button>
             </>
           ) : !isSubscribed ? (
-            <button className="subscribe-button" onClick={handleSubscribeClick}>SUBSCRIBE</button>
+            <button className="h-subscribe-button" onClick={handleSubscribeClick}>SUBSCRIBE</button>
           ) : (
-            <span className="subscribed-message">✅ Subscribed</span>
+            <span className="h-subscribed-message">✅ Subscribed</span>
           )}
 
           {/* No Logout button here */}

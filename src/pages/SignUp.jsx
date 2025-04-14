@@ -118,8 +118,8 @@ const SignUp = () => {
     console.log("Form submitted", formData);
     setErrorMessage("");  // Reset error message on successful submit
 
-    // Redirect after successful submission
-    navigate("/continue-as");
+    // Redirect to terms page after successful submission
+    navigate("/terms");
   };
 
   return (

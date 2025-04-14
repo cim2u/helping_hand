@@ -16,20 +16,8 @@ const TermsAndPolicy = () => {
 
   // Handle agreement based on role
   const handleAgree = () => {
-    if (!role) {
-      alert("No role selected. Please go back.");
-      navigate("/continue-as");  // Redirect to the ContinueAs page if role is not selected
-      return;
-    }
-
-    if (role === "student") {
-      navigate("/myshop");  // Redirect student to My Shop page
-    } else if (role === "buyer") {
-      navigate("/home");  // Redirect buyer to Home page
-    } else {
-      alert("Invalid role selected. Please go back.");
-      navigate("/continue-as");  // Redirect to ContinueAs page if role is invalid
-    }
+    // Redirect to the ContinueAs page after agreeing, regardless of role
+    navigate("/continue-as");  
   };
 
   return (

@@ -8,18 +8,17 @@ import ContinueAs from "./pages/ContinueAs.jsx";
 import TermsAndPolicy from "./pages/TermsAndPolicy.jsx";
 import StudentDashboard from "./pages/StudentDashboard.jsx";
 import BuyerDashboard from "./pages/BuyerDashboard.jsx";
-import Subscribe from "./pages/Subscribe.jsx"; // ✅ Import the Subscribe component
+import Subscribe from "./pages/Subscribe.jsx";
+import MyShop from "./pages/MyShop.jsx"; // ✅ Import MyShop
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-  // Load login & subscription state from localStorage
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     const userSubscribed = localStorage.getItem("isSubscribed") === "true";
-
     setIsLoggedIn(userLoggedIn);
     setIsSubscribed(userSubscribed);
   }, []);
@@ -33,6 +32,8 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/continue-as" element={<ContinueAs />} />
         <Route path="/terms" element={<TermsAndPolicy />} />
+        <Route path="/myshop" element={<MyShop />} /> {/* ✅ Add this */}
+
         <Route
           path="/student-dashboard"
           element={isLoggedIn ? <StudentDashboard /> : <Navigate to="/login" />}
@@ -42,7 +43,6 @@ function App() {
           element={isLoggedIn ? <BuyerDashboard /> : <Navigate to="/login" />}
         />
 
-        {/* ✅ Subscribe Page */}
         <Route
           path="/subscribe"
           element={

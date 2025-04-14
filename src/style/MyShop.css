@@ -1,0 +1,512 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+
+/* Header */
+.shop-header {
+  width: 100%;
+  height: 276px;
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kjxOMWUN80t2rVIumnkecxzwLsr-ege4Pdssqp2ylLLyryEBQ6FCkK-EYu8hPgpX~zsB3St5pn3QbHvtdyMTovGHTaDyHkfqhTAwR0fDnnZt6bF4do6Sdk4RbbEymd9jYvn9cHJZr2z8NCj4UDlvPY4frYGJSeqjsqLVf-HWu20YWfYI80epiKANjvYPt9kJ0tRF1USum4wMSjBXxGgrZaJjpRaUpY9djLUFx7pP~FRIMONo4-Lb5cmqj9YGDSWEVq1ft3STthhualXDryXf3xgGLxAXK2q2h9RvnjckWR8xl3~BlsgiPEpIn22d2tRlHnBbuzs~Wmz7pcBj9U7I~g__');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  z-index: 0;
+}
+
+/* Icons */
+.icon-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.icon {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar-menu li {
+  padding: 10px 0;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Shop Name Input */
+.shop-name-input {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 6px 12px;
+  width: 60%;
+  outline: none;
+  margin: 0 auto;
+}
+
+/* Subscribe Button */
+.buttons-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.subscribe-button {
+  padding: 10px 20px;
+  background-color: #0077cc;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.subscribe-button:hover {
+  background-color: #005fa3;
+}
+
+.subscribed-message {
+  font-size: 16px;
+  color: green;
+  font-weight: 500;
+}
+
+/* Profile Section */
+.shop-profile {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 16px;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f5f5f5;
+}
+
+.shop-info h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.shop-info p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.shop-nav {
+  margin-top: 8px;
+}
+
+.shop-nav a {
+  margin-right: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #0077cc;
+  transition: color 0.2s ease;
+}
+
+.shop-nav a:hover {
+  color: #005f99;
+}
+
+.shop-nav .disabled {
+  color: #ccc;
+  pointer-events: none;
+}
+
+/* Section Container */
+.product-section {
+  max-width: 1440px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+/* Section Titles */
+.product-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #6b6b6b;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  border-left: 4px solid #ccc;
+  padding-left: 10px;
+}
+
+/* Horizontal Scroll Row */
+.product-row, .products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 12px;
+  justify-content: center;
+}
+
+/* Product Card */
+.product-card {
+  width: 180px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.2s ease;
+  border: 1px solid #eee;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  border: 2px solid #f3f3f3;
+}
+
+.product-card p {
+  margin: 4px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.purchases {
+  font-size: 12px;
+  color: #888;
+}
+
+.no-products {
+  text-align: center;
+  color: #666;
+  margin: 80px 0;
+}
+
+/* Profile Banner */
+.profile-banner {
+  position: relative;
+  top: 0px;
+  margin: 0 auto;
+  width: 100%;
+  height: 145px; /* Add your desired height here */
+  background-color: #fff;
+  padding: 20px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+
+}
+/* Shop Owner Name */
+.shop-owner-name {
+  width: 172px;
+  height: 45px;
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 700; /* Bolder weight for visibility */
+  font-size: 32px;
+  line-height: 140%;
+  letter-spacing: 0;
+ 
+  color: rgba(126, 53, 80, 1)!important;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Shop Owner Handle */
+.shop-owner-handle {
+  width: 96px;
+  height: 21px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: rgba(73, 69, 79, 1) !important;
+
+  position: absolute; /* Required for top/left to work */
+  top: 65px;
+  left: 162px;
+
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+
+.profile-pic-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.default-profile-icon {
+  color: #777;
+}
+
+.animated {
+  animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseIcon {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.shop-owner-name {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.shop-owner-handle {
+  font-size: 14px;
+  margin: 0;
+  color: #888;
+}
+
+.shop-tabs {
+  display: flex;
+  gap: 1px; /* Reduced gap to 1px */
+  position: relative; /* Add relative positioning */
+  top: -115px; /* Ensures the tabs are at the top */
+  left: 400px; /* Aligns the tabs to the left of the container */
+  padding-top: 10px; /* Optional: Adds some padding to the top if needed */
+}
+
+
+
+/* Tab Style */
+.tab {
+  padding: 6px 12px;
+  background-color: rgba(243, 243, 243, 0);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: black;
+  text-decoration: none; /* Ensure no underline by default */
+
+  /* Typography */
+  font-family: 'Body', sans-serif; /* Replace 'Body' with actual font if needed */
+  font-weight: 400; /* Regular weight */
+  font-size: 14px; /* Medium */
+  line-height: 140%;
+  letter-spacing: 0%;
+
+  /* Dimensions */
+  width: 66px;
+  height: 22px;
+
+  /* Optional: fallback text color if using variable */
+  color: var(--Text-Neutral-Tertiary,  rgba(126, 53, 80, 1));
+}
+
+/* Active Tab Style */
+.tab.active {
+  background-color: rgba(0, 119, 204, 0);
+  color: black;
+  text-decoration: underline;  /* Underline only for active tab */
+}
+
+/* Hover state */
+.tab:hover {
+  color: rgba(0, 119, 204, 0.1);
+}
+
+
+
+/* Add Button */
+.add-button {
+  font-size: 16px;
+  background-color: rgba(126, 53, 80, 1);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: rgba(126, 53, 80, 1);
+}
+
+/* Background Cover */
+.background-cover {
+  position: absolute;
+  top: 421px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 1059px;
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kjxOMWUN80t2rVIumnkecxzwLsr-ege4Pdssqp2ylLLyryEBQ6FCkK-EYu8hPgpX~zsB3St5pn3QbHvtdyMTovGHTaDyHkfqhTAwR0fDnnZt6bF4do6Sdk4RbbEymd9jYvn9cHJZr2z8NCj4UDlvPY4frYGJSeqjsqLVf-HWu20YWfYI80epiKANjvYPt9kJ0tRF1USum4wMSjBXxGgrZaJjpRaUpY9djLUFx7pP~FRIMONo4-Lb5cmqj9YGDSWEVq1ft3STthhualXDryXf3xgGLxAXK2q2h9RvnjckWR8xl3~BlsgiPEpIn22d2tRlHnBbuzs~Wmz7pcBj9U7I~g__');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  z-index: -1;
+  pointer-events: none;
+}
+.upload-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+/* Product Grid */
+.product-item {
+  width: 175px;
+  height: 200px;
+  background: rgba(254, 254, 254, 1);
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+}
+
+/* Product Image */
+.product-item img {
+  width: 140px;
+  height: 135px;
+  top: 10px;  /* Adjust the image's position */
+  left: 0;
+  border-radius: 16px;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  object-fit: cover;
+}
+
+/* Product Name */
+.product-name {
+  width: 117px;
+  height: 20px;
+  top: 15px;  /* Adjust the product name's position */
+  left: 10px;
+  font-family: Outfit;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-align: center;
+  background: rgba(126, 53, 80, 1);
+  color: white;
+  padding: 2px;
+  position: absolute;
+  bottom: 5px;
+}
+
+/* Container for the Product Grid */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  margin-top: 20px;
+}
+

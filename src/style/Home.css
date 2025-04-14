@@ -116,7 +116,7 @@
 }
 
 
-.subscribe-button {
+.h-subscribe-button {
   width: 120px;                   /* Set width to 120px */
   height: 35px;                   /* Set height to 35px */
   font-family: 'Roboto', sans-serif;
@@ -125,7 +125,7 @@
   font-weight: 400;                    /* Set font weight to normal */
   border-radius: 100px;                /* Set border radius for a rounded button */
   gap: 8px;                           /* Space between text and icon, if any */
-  background: rgba(254, 254, 254, 1); /* Set background to a white color */
+  background: rgb(255, 255, 255); /* Set background to a white color */
   color: #000000;                    /* Set text color */
   border: none;                        /* No border */
   cursor: pointer;                    /* Pointer cursor on hover */
@@ -135,17 +135,17 @@
   transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
-.subscribe-button:hover {
+.h-subscribe-button:hover {
   background-color:#00bcd4; /* Darker blue on hover */
   transform: scale(1.05); /* Slight zoom effect */
 }
 
-.subscribe-button:focus {
+.h-subscribe-button:focus {
   outline: none; /* Remove outline when focused */
 }
 
 /* Positioning the Subscribe button in the header */
-.subscribe-button {
+.h-subscribe-button {
   position: absolute;
   top: 208px; /* Adjust top position as per the provided value */
   left: 1281px; /* Adjust left position as per the provided value */
