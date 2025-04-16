@@ -5,14 +5,15 @@ import logoImage from "../assets/Logo.png";
 import "../style/SignUp.css";
 
 // SignupForm component
-const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage }) => (
+const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubmitting }) => (
   <form onSubmit={handleSubmit} className="signup-form">
     <div className="name-container">
       <div className="form-group">
-        <label>First Name</label>
+        <label htmlFor="firstName">First Name</label>
         <input
           type="text"
           name="firstName"
+          id="firstName"
           placeholder="Enter first name"
           value={formData.firstName}
           onChange={handleChange}
@@ -21,10 +22,11 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage }) => (
       </div>
 
       <div className="form-group">
-        <label>Last Name</label>
+        <label htmlFor="lastName">Last Name</label>
         <input
           type="text"
           name="lastName"
+          id="lastName"
           placeholder="Enter last name"
           value={formData.lastName}
           onChange={handleChange}
@@ -33,40 +35,44 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage }) => (
       </div>
     </div>
 
-    <label>Email</label>
+    <label htmlFor="email">Email</label>
     <input
       type="email"
       name="email"
+      id="email"
       placeholder="Enter email"
       value={formData.email}
       onChange={handleChange}
       required
     />
 
-    <label>Username</label>
+    <label htmlFor="username">Username</label>
     <input
       type="text"
       name="username"
+      id="username"
       placeholder="Choose a username"
       value={formData.username}
       onChange={handleChange}
       required
     />
 
-    <label>Password</label>
+    <label htmlFor="password">Password</label>
     <input
       type="password"
       name="password"
+      id="password"
       placeholder="Enter password"
       value={formData.password}
       onChange={handleChange}
       required
     />
 
-    <label>Confirm Password</label>
+    <label htmlFor="confirmPassword">Confirm Password</label>
     <input
       type="password"
       name="confirmPassword"
+      id="confirmPassword"
       placeholder="Re-enter password"
       value={formData.confirmPassword}
       onChange={handleChange}
@@ -75,15 +81,22 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage }) => (
 
     {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-    <button type="submit">Submit</button>
+    <button
+      type="submit"
+      disabled={isSubmitting}
+      className={`submit-button ${isSubmitting ? "btn-disabled" : ""}`}
+    >
+      {isSubmitting ? "Submitting..." : "Submit"}
+    </button>
 
     <p className="login-text">
-      Already have an account? <Link to="/login" className="text-cyan-300">Login</Link>
+      Already have an account?{" "}
+      <Link to="/login" className="login-link">Login</Link>
     </p>
   </form>
 );
 
-// SignUp component
+// Main SignUp component
 const SignUp = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -93,76 +106,89 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");  // For error messages
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value.trimStart(),
     }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
-    // Password validation
-    if (formData.password !== formData.confirmPassword) {
+
+    const cleanedData = {
+      ...formData,
+      email: formData.email.trim(),
+      username: formData.username.trim(),
+    };
+
+    if (cleanedData.password !== cleanedData.confirmPassword) {
       setErrorMessage("Passwords do not match!");
       return;
     }
-  
-    // Optional: More validations can go here
-  
-    console.log("Form submitted", formData);
-    setErrorMessage(""); // Clear previous error
-  
-    // ✅ Store signup status in localStorage
-    localStorage.setItem("isRegistered", "true");  // Set 'isSignup' instead of 'isRegistered'
-    localStorage.setItem("loggedIn", "true");
-  
-    // ✅ Navigate to terms page
-    navigate("/terms");
+
+    if (cleanedData.password.length < 6) {
+      setErrorMessage("Password must be at least 6 characters.");
+      return;
+    }
+
+    setErrorMessage("");
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      console.log("Form submitted:", cleanedData);
+      localStorage.setItem("isRegistered", "true");
+      localStorage.setItem("loggedIn", "true");
+      navigate("/terms");
+    }, 1000);
   };
-  
-  
 
   return (
-    <div className="flex h-screen">
-      {/* Left Panel - Signup Form */}
-      <div className="relative w-full sm:w-1/3 bg-black bg-opacity-50 flex flex-col justify-center p-8 rounded-r-2xl">
-        {/* Logo and Title */}
-        <div className="flex justify-center mb-6">
-          <img src={logoImage} alt="HelpingHand Logo" className={styles.logoLarge} />
+    <div className="c-container">
+      <div className="flex h-screen">
+        {/* Left Panel - Signup Form */}
+        <div className="signup-left-panel">
+          <div className="flex justify-center mb-6">
+            <img src={logoImage} alt="HelpingHand Logo" className={styles.logoLarge} />
+          </div>
+
+          <p className="create-text">
+            Create a free account and join our growing community!
+          </p>
+
+          <SignupForm
+            handleChange={handleChange}
+            formData={formData}
+            handleSubmit={handleSubmit}
+            errorMessage={errorMessage}
+            isSubmitting={isSubmitting}
+          />
+
+          <p className="by-creat-text">
+            By creating an account, you agree to HelpingHand's{" "}
+            <Link to="/terms" className="text-cyan-300">Terms of Service</Link> and{" "}
+            <Link to="/terms" className="text-cyan-300">Privacy Policy</Link>.
+          </p>
         </div>
 
-        <p className="create-text">Create a free account and join our growing community!</p>
-
-        <SignupForm
-          handleChange={handleChange}
-          formData={formData}
-          handleSubmit={handleSubmit}
-          errorMessage={errorMessage}  // Pass error message to the form
-        />
-
-        <p className="by-creat-text">
-          By creating an account, you agree to HelpingHand's{" "}
-          <Link to="/terms" className="text-cyan-300">Terms of Service</Link> and{" "}
-          <Link to="/terms" className="text-cyan-300">Privacy Policy</Link>.
-        </p>
-      </div>
-
-      {/* Right Panel - Background Image */}
-      <div
-        className="image-back"
-        style={{
-          backgroundImage: "url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="h-full w-full bg-black bg-opacity-30"></div>
+        {/* Right Panel - Background Image */}
+        <div
+          className="image-back"
+          style={{
+            backgroundImage: `url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="h-full w-full bg-black bg-opacity-30"></div>
+        </div>
       </div>
     </div>
   );

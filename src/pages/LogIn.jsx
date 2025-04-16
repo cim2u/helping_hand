@@ -30,7 +30,6 @@ const LogIn = () => {
     localStorage.setItem("isSubscribed", "false"); // default value
     localStorage.setItem("isRegistered", "true");  // mark as registered ✅
 
-    
     navigate("/home");
   };
 
@@ -47,47 +46,49 @@ const LogIn = () => {
         justifyContent: "center",
       }}
     >
-      <div className="login-container">
-        <div className="logo-wrapper">
-          <img src={logoImage} alt="Helping Hand Logo" className="logo-image" />
+      <div className="b-container">
+        <div className="login-container">
+          <div className="logo-wrapper">
+            <img src={logoImage} alt="Helping Hand Logo" className="logo-image" />
+          </div>
+
+          <h2>Welcome!</h2>
+
+          <form onSubmit={handleSubmit} className="login-form">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+
+            <Link to="/forgot-password" className="forgot-password">
+              Forgot password?
+            </Link>
+
+            <button type="submit">Login</button>
+
+            <div className="signup-link">
+              Don’t have an account? <Link to="/signup">Sign Up</Link>
+            </div>
+
+            <div className="admin-login">
+              <Link to="/admin">Login as Admin</Link>
+            </div>
+          </form>
         </div>
-
-        <h2>Welcome!</h2>
-
-        <form onSubmit={handleSubmit} className="login-form">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-
-          <Link to="/forgot-password" className="forgot-password">
-            Forgot password?
-          </Link>
-
-          <button type="submit">Submit</button>
-
-          <div className="signup-link">
-            Don’t have an account? <Link to="/signup">Sign Up</Link>
-          </div>
-
-          <div className="admin-login">
-            <Link to="/admin">Login as Admin</Link>
-          </div>
-        </form>
       </div>
     </div>
   );

@@ -2,12 +2,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@400&display=swap');
 
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width:1440px;
+  height: 100%;
+  overflow-x: hidden;  /* Prevent horizontal scrolling */
+  overflow-y: auto;  /* Allow vertical scrolling */
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+.a-container {
+  width: 100%;
+  max-width: 1440px;
+  min-width: 1440px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  transform-origin: top left;
+}
+
 /* Container wrapper */
 .home-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1440px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -50,7 +71,8 @@
   background: rgba(254, 254, 254, 1); /* Set background to a white color */
   color: #000000;                    /* Set text color */
   border: none;                        /* No border */
-  cursor: pointer;                    /* Pointer cursor on hover */
+  cursor: pointer;    
+  margin-left:-73px;                /* Pointer cursor on hover */
   display: flex;
   align-items: center;                /* Align text and icon vertically */
   justify-content: center;            /* Center text horizontally */
@@ -91,6 +113,7 @@
   border: none;                        /* No border */
   cursor: pointer;                    /* Pointer cursor on hover */
   display: flex;
+  margin-left:-90px;
   align-items: center;                /* Align text and icon vertically */
   justify-content: center;            /* Center text horizontally */
   transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
@@ -113,6 +136,17 @@
   top: 208px; /* Adjust top position as needed */
   left: 1140px; /* Adjust left position as needed */
   z-index: 10;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left:100px;
+  position: absolute; /* Make it absolute so it doesn't move other elements */
+  top: 414px;
+  bottom: -20px; /* Ensure it stays below the input */
 }
 
 

@@ -107,7 +107,7 @@ const TermsAndPolicy = () => {
 
         <p>By clicking agree, you confirm your acceptance of our terms and policies.</p>
 
-        <button className="agree-button" onClick={handleAgree}>
+        <button className="c-agree-button" onClick={handleAgree}>
           I Agree
         </button>
       </div>

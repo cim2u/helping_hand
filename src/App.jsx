@@ -9,7 +9,8 @@ import TermsAndPolicy from "./pages/TermsAndPolicy.jsx";
 import StudentDashboard from "./pages/StudentDashboard.jsx";
 import BuyerDashboard from "./pages/BuyerDashboard.jsx";
 import Subscribe from "./pages/Subscribe.jsx";
-import MyShop from "./pages/MyShop.jsx"; // ✅ Import MyShop
+import MyShop from "./pages/MyShop.jsx";
+import SellerInfo from "./pages/SellerInfo.jsx"; // ✅ Import SellerInfo
 import "./App.css";
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/continue-as" element={<ContinueAs />} />
         <Route path="/terms" element={<TermsAndPolicy />} />
-        <Route path="/myshop" element={<MyShop />} /> {/* ✅ Add this */}
+        <Route path="/myshop" element={<MyShop />} />
+        <Route path="/sellerinfo" element={<SellerInfo />} /> {/* ✅ Add SellerInfo */}
 
         <Route
           path="/student-dashboard"
