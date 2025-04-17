@@ -1,84 +1,101 @@
 .d {
-    width: 1440px;
-    height: 1024px;
-  }
+  width: 1440px;
+  height: 1024px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.068);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.seller-info-container {
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Blurred background image */
+.seller-info-container::before {
+  content: "";
+  position: absolute;
+  width: 1440px;
+  height: 1024px;
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  opacity: 0.95;
   
-  .seller-info-container {
-    height: 100%;
-    width: 100%;
-    background: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .form-card {
-    background: rgba(0, 0, 0, 1); /* Dark background */
-    opacity: 0.95; /* Slight transparency */
-    border: 2px solid rgba(254, 254, 254, 1); /* White border */
+}
+
+.form-card {
+  position: absolute;
+    width: 460px;
+    height: 685px;
+    top: 166px;
+    left: 450px;
     border-radius: 28px;
-  
-    width: 480px;
-    height: 725px;
-  
-    padding: 2rem;
-    text-align: center;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-    position: relative; /* if you want to position with top/left */
-    top: 149px;
-    left: 80px;
-  }
-  
-  
-  .logo-text {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #00bcd4;
-    margin-bottom: 0.2rem;
-  }
-  
-  .logo-text span {
-    color: #ff7f50;
-    font-style: italic;
-  }
-  
-  .form-title {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-  }
-  
-  form{
-  background-color:rgba(255, 0, 0, 0.836);
-  }
-  form input {
-    width: 100%;
-    padding: 0.7rem;
-    margin: 1.5rem 0;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    font-size: 1rem;
-    width:200px;
-    margin-top: 200px;
-    background-color: #ffffff00;
-    margin-right:- 23px;
-    position: relative;
-  }
-  
-  form button {
-    width: 100%;
-    padding: 0.7rem;
-    margin-top: 1rem;
-    background-color: #00bcd4;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  form button:hover {
-    background-color: #0097a7;
-  }
-  
+    border: 2px solid rgba(254, 254, 254, 1);
+    background: rgba(0, 0, 0, 1);
+    opacity: 0.25;
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00bcd4;
+  margin-bottom: 0.2rem;
+}
+
+.logo-text span {
+  color: #ff7f50;
+  font-style: italic;
+}
+
+.form-title {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+form {
+  background-color: transparent;
+}
+
+form input {
+  width: 340px;
+  height:31px;
+  padding: 0.7rem;
+  margin: 50rem 0;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: #fff;
+  padding: 12px 14px; 
+}
+
+form button {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 1rem;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #0097a7;
+}
