@@ -10,7 +10,7 @@ import StudentDashboard from "./pages/StudentDashboard.jsx";
 import BuyerDashboard from "./pages/BuyerDashboard.jsx";
 import Subscribe from "./pages/Subscribe.jsx";
 import MyShop from "./pages/MyShop.jsx";
-import SellerInfo from "./pages/SellerInfo.jsx"; // ✅ Import SellerInfo
+import SellerInfo from "./pages/SellerInfo.jsx";
 import "./App.css";
 
 function App() {
@@ -27,24 +27,28 @@ function App() {
   return (
     <div className="app-container">
       <Routes>
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/continue-as" element={<ContinueAs />} />
         <Route path="/terms" element={<TermsAndPolicy />} />
         <Route path="/myshop" element={<MyShop />} />
-        <Route path="/sellerinfo" element={<SellerInfo />} /> {/* ✅ Add SellerInfo */}
+        <Route path="/sellerinfo" element={<SellerInfo />} />
 
         <Route
           path="/student-dashboard"
-          element={isLoggedIn ? <StudentDashboard /> : <Navigate to="/login" />}
+          element={
+            isLoggedIn ? <StudentDashboard /> : <Navigate to="/login" />
+          }
         />
         <Route
           path="/buyer-dashboard"
-          element={isLoggedIn ? <BuyerDashboard /> : <Navigate to="/login" />}
+          element={
+            isLoggedIn ? <BuyerDashboard /> : <Navigate to="/login" />
+          }
         />
-
         <Route
           path="/subscribe"
           element={
@@ -60,9 +64,6 @@ function App() {
             )
           }
         />
-
-        {/* Default redirect */}
-        <Route path="/" element={<Navigate to="/home" />} />
       </Routes>
     </div>
   );

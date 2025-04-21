@@ -36,20 +36,36 @@
 /* Form box with white background and custom top/left position */
 .signup-form {
   width: 453px;
-  height:575px;
+  height:565px;
   padding: 20px;
   background-color: #ffffff; /* White background for the form */
   border-radius: 37px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: -15px;
   position: absolute; /* Enables precise positioning */
-  top: 318px; /* Adjust this value for vertical positioning */
+  top: 358px; /* Adjust this value for vertical positioning */
   left: 52px; /* Centers the form horizontally */
   z-index: 2;
 }
 
+.name-container{
+  margin-top: -53px;
+  position:relative;
+  
+}
+.signup-form-group{
+  margin-top: 3px;
+  position: relative;
+  left:45px;
+
+}
+
+.signup-group{
+  margin-top: 23px;
+  position: relative;
+}
 /* Label styling */
 .signup-form label {
   width: 184px;
@@ -58,9 +74,9 @@
   font-size: 16px;
   font-weight: 500;
   color: #000000;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   text-align: left;
-  margin-top: -33px;
+  margin-top: 3px;
   font-family: 'Outfit', sans-serif;
   letter-spacing: 0;
   line-height: 100%;
@@ -69,7 +85,7 @@
   
 }
 /* Label styling */
-.form-group label {
+.signup-group label {
   width: 184px;
   height: 20px;
   display: block;
@@ -83,6 +99,7 @@
   letter-spacing: 0;
   line-height: 100%;
   margin-left: 7px;
+  margin-top: 3px;
   
   
 }
@@ -102,11 +119,11 @@
   letter-spacing: 0;
   line-height: 100%;
   margin-left: 7px;
-  margin-top: -10px;
+  margin-top: 15px;
   
 }
 /* Input field styling */
-.form-group input {
+.signup-group input {
   width: 166px;
   height:31px;
   padding: 10px;
@@ -133,7 +150,7 @@
 
   /* Position adjustment */
   margin-left: -20px;   /* Pushes input to the right from the left edge */
-  margin-top: 8px;   /* Pulls input upward */
+  margin-top: 2px;   /* Pulls input upward */
 }
 
 
@@ -150,10 +167,12 @@ input:focus {
   display: flex;
   gap: 10px;
   width: 100%;
+  position: relative;
+  margin-top:3px;
 }
 
 /* Adjust width for first and last name inputs */
-.name-container .form-group {
+.name-container .form-group .signup-form-group {
   flex: 1;
 }
 
@@ -183,7 +202,7 @@ input:focus {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.submit-button:hover {
+.signup-submit-button:hover {
   background-color: #0891b2; /* darker cyan */
   transform: scale(1.05);
 }

@@ -79,14 +79,14 @@ left: -24px;
 }
 
 
-form {
+.seller-info-form {
   background-color: transparent;
   position: relative;  /* or 'absolute', depending on your layout */
   top: 20px;  /* adjust this value as needed */
 }
 
 
-form input {
+.seller-info-form input {
   width: 372px;
   height: 31px;
   padding: 0.7rem;
@@ -99,7 +99,7 @@ form input {
   top:90px;
   position: relative;
 }
-form button {
+.storeinfo-submit-btn {
   width: 210px;
   height: 31px;
   padding: 0.7rem;
@@ -126,12 +126,12 @@ form button {
   justify-content: center;
 }
 
-form button:hover {
+.storeinfo-submit-btn:hover {
   background-color: #0097a7;
 }
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap');
 
-label {
+.storelabel {
   width: 289px;
   height: 20px;
   font-family: 'Outfit', sans-serif;

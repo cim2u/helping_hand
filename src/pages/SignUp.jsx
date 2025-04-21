@@ -8,7 +8,7 @@ import "../style/SignUp.css";
 const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubmitting }) => (
   <form onSubmit={handleSubmit} className="signup-form">
     <div className="name-container">
-      <div className="form-group">
+      <div className="signup-group">
         <label htmlFor="firstName">First Name</label>
         <input
           type="text"
@@ -21,7 +21,7 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         />
       </div>
 
-      <div className="form-group">
+      <div className="signup-group">
         <label htmlFor="lastName">Last Name</label>
         <input
           type="text"
