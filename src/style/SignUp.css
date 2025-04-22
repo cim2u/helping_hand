@@ -36,7 +36,7 @@
 /* Form box with white background and custom top/left position */
 .signup-form {
   width: 453px;
-  height:565px;
+  height:525px;
   padding: 20px;
   background-color: #ffffff; /* White background for the form */
   border-radius: 37px;
@@ -58,13 +58,14 @@
 .signup-form-group{
   margin-top: 3px;
   position: relative;
-  left:45px;
+  left: 10px;
 
 }
 
 .signup-group{
-  margin-top: 23px;
+  margin-top: 13px;
   position: relative;
+  left:18px;
 }
 /* Label styling */
 .signup-form label {
@@ -98,7 +99,7 @@
   font-family: 'Outfit', sans-serif;
   letter-spacing: 0;
   line-height: 100%;
-  margin-left: 7px;
+  margin-left: 5px;
   margin-top: 3px;
   
   
@@ -124,7 +125,7 @@
 }
 /* Input field styling */
 .signup-group input {
-  width: 166px;
+  width: 175px;
   height:31px;
   padding: 10px;
   border: 1px solid #000000;
@@ -188,7 +189,7 @@ input:focus {
   letter-spacing: 0;
   text-align: center;
   vertical-align: middle;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 13px;
   width: 178px !important;
   height: 31px;
