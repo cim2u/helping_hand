@@ -14,7 +14,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
           type="text"
           name="firstName"
           id="firstName"
-         
           value={formData.firstName}
           onChange={handleChange}
           required
@@ -27,7 +26,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
           type="text"
           name="lastName"
           id="lastName"
-          
           value={formData.lastName}
           onChange={handleChange}
           required
@@ -41,7 +39,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         type="email"
         name="email"
         id="email"
-       
         value={formData.email}
         onChange={handleChange}
         required
@@ -54,7 +51,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         type="text"
         name="username"
         id="username"
-        
         value={formData.username}
         onChange={handleChange}
         required
@@ -67,7 +63,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         type="password"
         name="password"
         id="password"
-        
         value={formData.password}
         onChange={handleChange}
         required
@@ -80,7 +75,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         type="password"
         name="confirmPassword"
         id="confirmPassword"
-        
         value={formData.confirmPassword}
         onChange={handleChange}
         required
@@ -100,7 +94,7 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
     <p className="signup-login-text">
       Already have an account?{" "}
       <Link to="/login" className="signup-login-link">Login</Link>
-    </p>s
+    </p>
   </form>
 );
 

@@ -34,7 +34,13 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/continue-as" element={<ContinueAs />} />
         <Route path="/terms" element={<TermsAndPolicy />} />
-        <Route path="/myshop" element={<MyShop />} />
+
+        {/* Pass form data to MyShop when navigating from SellerInfo */}
+        <Route
+          path="/myshop"
+          element={<MyShop />}
+        />
+
         <Route path="/sellerinfo" element={<SellerInfo />} />
 
         <Route
