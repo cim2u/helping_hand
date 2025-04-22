@@ -37,7 +37,7 @@ const SellerInfo = () => {
     type="text"
     id="storeName"
     name="storeName"
-    placeholder="Enter your store name"
+    
     value={formData.storeName}
     onChange={handleChange}
     required
@@ -51,7 +51,7 @@ const SellerInfo = () => {
     type="text"
     id="storeAddress"
     name="storeAddress"
-    placeholder="Enter your store address"
+   
     value={formData.storeAddress}
     onChange={handleChange}
     required
@@ -65,7 +65,7 @@ const SellerInfo = () => {
     type="email"
     id="gmail"
     name="gmail"
-    placeholder="Enter your Gmail account"
+    
     value={formData.gmail}
     onChange={handleChange}
     required
@@ -79,7 +79,7 @@ const SellerInfo = () => {
     type="tel"
     id="phone"
     name="phone"
-    placeholder="Enter your phone number"
+    
     value={formData.phone}
     onChange={handleChange}
     required

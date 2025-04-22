@@ -14,7 +14,7 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
           type="text"
           name="firstName"
           id="firstName"
-          placeholder="Enter first name"
+         
           value={formData.firstName}
           onChange={handleChange}
           required
@@ -27,7 +27,7 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
           type="text"
           name="lastName"
           id="lastName"
-          placeholder="Enter last name"
+          
           value={formData.lastName}
           onChange={handleChange}
           required
@@ -41,7 +41,7 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         type="email"
         name="email"
         id="email"
-        placeholder="Enter email"
+       
         value={formData.email}
         onChange={handleChange}
         required
@@ -54,7 +54,7 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         type="text"
         name="username"
         id="username"
-        placeholder="Choose a username"
+        
         value={formData.username}
         onChange={handleChange}
         required
@@ -67,7 +67,7 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         type="password"
         name="password"
         id="password"
-        placeholder="Enter password"
+        
         value={formData.password}
         onChange={handleChange}
         required
@@ -80,7 +80,7 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
         type="password"
         name="confirmPassword"
         id="confirmPassword"
-        placeholder="Re-enter password"
+        
         value={formData.confirmPassword}
         onChange={handleChange}
         required
