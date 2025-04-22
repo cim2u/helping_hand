@@ -146,8 +146,8 @@
     width: 226px; /* Width of the container */
     height: 32px; /* Height of the container */
     position: absolute; /* Position it absolutely */
-    top: 325px; /* Vertical position */
-    left: 129px; /* Horizontal position */
+    top: 315px; /* Vertical position */
+    left: 159px; /* Horizontal position */
     font-family: 'Outfit', sans-serif; /* Font family */
     font-weight: 200 !important; /* Font weight */
     font-size: 16px; /* Font size */
@@ -177,8 +177,8 @@
 /* Admin login link styling */
 .login-form .admin-login {
     position: absolute; /* Ensures the element is positioned relative to the nearest positioned ancestor */
-    left: 340px; /* Move the link to 400px from the left */
-    top: 360px; /* Adjust the top property if necessary */
+    left: 370px; /* Move the link to 400px from the left */
+    top: 370px; /* Adjust the top property if necessary */
   }
   
   .login-form .admin-login a {
@@ -269,7 +269,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    top:60px;
+    margin-top:-50px;
+    margin-left: 30px;
   
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
