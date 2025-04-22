@@ -35,64 +35,72 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errorMessage, isSubm
       </div>
     </div>
 
-    <label htmlFor="email">Email</label>
-    <input
-      type="email"
-      name="email"
-      id="email"
-      placeholder="Enter email"
-      value={formData.email}
-      onChange={handleChange}
-      required
-    />
+    <div className="signup-form-group">
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+    </div>
 
-    <label htmlFor="username">Username</label>
-    <input
-      type="text"
-      name="username"
-      id="username"
-      placeholder="Choose a username"
-      value={formData.username}
-      onChange={handleChange}
-      required
-    />
+    <div className="signup-form-group">
+      <label htmlFor="username">Username</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Choose a username"
+        value={formData.username}
+        onChange={handleChange}
+        required
+      />
+    </div>
 
-    <label htmlFor="password">Password</label>
-    <input
-      type="password"
-      name="password"
-      id="password"
-      placeholder="Enter password"
-      value={formData.password}
-      onChange={handleChange}
-      required
-    />
+    <div className="signup-form-group">
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Enter password"
+        value={formData.password}
+        onChange={handleChange}
+        required
+      />
+    </div>
 
-    <label htmlFor="confirmPassword">Confirm Password</label>
-    <input
-      type="password"
-      name="confirmPassword"
-      id="confirmPassword"
-      placeholder="Re-enter password"
-      value={formData.confirmPassword}
-      onChange={handleChange}
-      required
-    />
+    <div className="signup-form-group">
+      <label htmlFor="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        name="confirmPassword"
+        id="confirmPassword"
+        placeholder="Re-enter password"
+        value={formData.confirmPassword}
+        onChange={handleChange}
+        required
+      />
+    </div>
 
-    {errorMessage && <p className="error-message">{errorMessage}</p>}
+    {errorMessage && <p className="signup-error-message">{errorMessage}</p>}
 
     <button
       type="submit"
       disabled={isSubmitting}
-      className={`submit-button ${isSubmitting ? "btn-disabled" : ""}`}
+      className={`signup-submit-button ${isSubmitting ? "btn-disabled" : ""}`}
     >
       {isSubmitting ? "Submitting..." : "Submit"}
     </button>
 
-    <p className="login-text">
+    <p className="signup-login-text">
       Already have an account?{" "}
-      <Link to="/login" className="login-link">Login</Link>
-    </p>
+      <Link to="/login" className="signup-login-link">Login</Link>
+    </p>s
   </form>
 );
 

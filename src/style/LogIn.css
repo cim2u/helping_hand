@@ -46,29 +46,26 @@
     gap: 14px;
     position: absolute;
     top: 300px; /* Adjust based on layout */
-    left: 2px;  /* Center horizontally */
+    left: -29px;  /* Center horizontally */
     
     font-family: 'Outfit', sans-serif;
   }
   
- /* Label styling */
-.login-form label {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 200;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0;
-  color: #ffffff; /* White text */
-  text-align: right;
-  margin-bottom: 10px;
-  margin-top:6px;
-  margin-left:50px;
-  width: 40px;
-  height: 20px;
-
- 
-
-}
+  .login-form label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400 !important;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: left;
+  
+    margin-top: -2px;
+    
+    margin-left: 64px;
+  
+    display: block;
+  }
+  
+  
 
   
   /* Input styling */
@@ -212,32 +209,34 @@
   }
   
   
-
-/* Translucent login container */
-.login-container {
-    width: 480px;
-    height: 725px; /* Adjust the height here */
+  .login-container {
+    width: 477px;
+    height: 725px;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.23);
     border-radius: 30px;
+  
+    /* Shadow instead of border */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.685);
+  
     display: flex;
     flex-direction: column;
     gap: 12px;
-    position: absolute; /* Enables precise positioning */
-    top: 149px; /* Adjust this value for vertical positioning */
-    left: 450px; /* Center horizontally */
-    
+  
+    position: absolute;
+    top: 149px;
+    left: 480px;
+  
     font-family: 'Outfit', sans-serif;
   }
   
-
 
 /* Welcome text */
 .login-container h2 {
     width: 160px; /* Set the width */
     height: 42px; /* Set the height */
-    top:253px; /* Adjust vertical positioning */
-    left: 82px; /* Adjust horizontal positioning */
+    top:239px; /* Adjust vertical positioning */
+    left: 62px; /* Adjust horizontal positioning */
     font-family: 'Roboto', sans-serif; /* Set font family */
     font-weight: 900; /* Set font weight */
     font-size: 36px; /* Set font size */
@@ -250,11 +249,11 @@
   
   .logo-wrapper {
     position: absolute;
-    top: 10px;   /* Adjust this value to move the logo vertically */
+    top: 0px;   /* Adjust this value to move the logo vertically */
     left: 40px;  /* Adjust this value to move the logo horizontally */
    
   }
-  button[type="submit"] {
+  .login-btn {
     padding: 8px 20px;
     background-color: #00acc1; /* Cyan background */
     color: white;
@@ -270,21 +269,21 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    top:260px;
+    top:60px;
   
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
-  button[type="submit"]:hover {
+  .login-btn:hover {
     background-color: #0097a7; /* Slightly darker cyan on hover */
     transform: scale(1.05);
   }
   
-  button[type="submit"]:active {
+  .login-btn:active {
     transform: scale(0.98);
   }
   
-  button[type="submit"]:focus {
+  .login-btn:focus {
     outline: none;
     box-shadow: 0 0 8px rgba(0, 150, 255, 0.5);
   }
