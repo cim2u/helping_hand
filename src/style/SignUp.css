@@ -161,21 +161,24 @@ input:focus {
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 .signup-submit-button {
   font-family: 'Roboto', sans-serif;
-  font-weight: 200 !important;
-
+  font-weight: 500 !important;
+  display: flex; /* Added */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
   line-height: 1;
   letter-spacing: 0;
   text-align: center;
   vertical-align: middle;
-  margin-top: 23px;
-  width: 178px  !important; /* added px unit */
-  height:31px; /* added px unit */
+  margin-top: 5px;
+  margin-bottom: 13px;
+  width: 178px !important;
+  height: 31px;
   margin-left: 115px;
   padding: 0.75rem 1rem;
   background-color: #06b6d4; /* cyan-500 */
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }

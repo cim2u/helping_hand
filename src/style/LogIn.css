@@ -300,6 +300,7 @@
     color:  #00acc1;/* Or use a lighter color like #f0f0f0 */
     text-decoration: none;
     transition: color 0.3s ease;
+    left:30px;
   }
   
  
