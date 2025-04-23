@@ -16,18 +16,31 @@ html, body {
 .shop-header {
   width: 1440px;
   height: 276px;
-
-  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
   z-index: 0;
+
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.shop-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.116); /* Black background with 90% opacity */
+  z-index: -1; /* Place the overlay behind content */
+}
+
 
 /* Icons */
 .icon-container {
@@ -131,7 +144,7 @@ html, body {
   position: absolute;
   top: -65px; /* Adjust top position as per the provided value */
   left: 1205px; /* Adjust left position as per the provided value */
-  z-index: 10;
+  
 }
 
 /* Profile Section */
@@ -278,69 +291,105 @@ html, body {
   flex-wrap: wrap;
 
 }
-/* Shop Owner Name */
 .shop-owner-name {
-  width: auto;
-  height: 145px;
   font-family: 'Rowdies', sans-serif;
-  font-weight: 700; /* Bolder weight for visibility */
-  font-size: 28px !important;
-  line-height: 140%;
+  font-weight: 700 !important;
+  font-size: 32px !important;
+  line-height: 80%;
   letter-spacing: 0;
- 
-  color: rgba(126, 53, 80, 1)!important;
+  color: rgba(126, 53, 80, 1) !important;
+
   padding: 4px 8px;
   border-radius: 6px;
-  position:absolute;
-  top: 43px;
-  left: 143px;;
+
+  position: absolute;
+  top: 33px;
+  left: 173px;
+
+  display: inline-block; /* Ensures it sizes to content */
+  width: auto; /* Important: allows width to adjust with content */
+  height: 45px; /* Allow content to grow */
 }
+
+.shop-owner-name::after {
+  content: '';
+  position: absolute;
+  bottom:10px; /* Adjust to your visual needs */
+  left: 0;
+  width: 100%;
+  height:2px;
+  background-color: rgba(126, 53, 80, 1);
+}
+
 
 /* Shop Owner Handle */
 .shop-owner-handle {
   width: 96px;
   height: 31px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 700;
+  font-weight: 700 !important;
   font-size: 15px;
   line-height: 140%;
   letter-spacing: 0;
   color: rgba(73, 69, 79, 1) !important;
 
   position: absolute; /* Required for top/left to work */
-  top: 79px;
-  left: 156px;
-
+  top: 72px;
+  left: 190px;
+  width: auto;
+  height: auto;
   padding: 2px 6px;
   border-radius: 4px;
 }
 
 
+
+
 .profile-pic-wrapper {
-  width: 100px;
-  height: 100px;
+  width: 92px;
+  height: 92px; /* fixed typo: 'make the border vivible92px' */
   border-radius: 50%;
   overflow: hidden;
-  background-color: #f0f0f000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 3px solid rgba(126, 53, 80, 1) !important;
+  margin-left: 15px;
 }
 
+
 .profile-pic {
-  width: 92px;
-  height: 92px;
-  object-fit: cover;
+  width: 94px;
+  height: 95px;
   border-radius: 50%;
+  margin-left: -2px;
+  margin-top: -4px;
+  position: relative;
+ 
 }
 
 .default-profile-icon {
-  color: #ffffff00;
+  color: rgba(126, 53, 80, 1);
 }
 
 .animated {
   animation: pulseIcon 1.5s ease-in-out infinite;
 }
+
+.default-profile-icon {
+  color: rgba(126, 53, 80, 1);
+}
+
+.animated {
+  animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+
+.default-profile-icon {
+  color: rgba(126, 53, 80, 1);
+}
+
+.animated {
+  animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
 
 @keyframes pulseIcon {
   0% {
@@ -357,68 +406,93 @@ html, body {
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
 
 .shop-tabs {
+  position: absolute;
+  left: 457px;
+  top: -99px;
+  width: 182px;
+  height: 30px;
+
   display: flex;
-  gap: 1px; /* Reduced gap to 1px */
-  position: relative; /* Add relative positioning */
-  top: -115px; /* Ensures the tabs are at the top */
-  left: 400px; /* Aligns the tabs to the left of the container */
-  padding-top: 10px; /* Optional: Adds some padding to the top if needed */
-}
+  justify-content: space-between;
+  align-items: center;
 
-
-
-/* Tab Style */
-.tab {
-  padding: 6px 12px;
-  background-color: rgba(243, 243, 243, 0);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  color: black;
-  text-decoration: none; /* Ensure no underline by default */
-  top:15px;
+  background-color: transparent;
+  border-radius: 6px;
+  padding: 0 8px;
   position: relative;
-  font-family: 'Body', sans-serif; /* Replace 'Body' with actual font if needed */
-  font-weight: 400; /* Regular weight */
-  font-size: 18px; /* Medium */
-  line-height: 140%;
-  letter-spacing: 0%;
 
-  /* Dimensions */
-  width: 86px;
-  height: 22px;
-
-  /* Optional: fallback text color if using variable */
-  color: var(--Text-Neutral-Tertiary,  rgba(126, 53, 80, 1));
+  font-family: 'Inter', sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 16px;
 }
 
-/* Active Tab Style */
-.tab.active {
-  background-color: rgba(0, 119, 204, 0);
+.shop-tabs::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensure both lines take up the same width */
+  height: 2px;
+  background-color: #B2B2B2; /* Gray line */
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.shop-tabs .tab {
+  flex: 1;
+  text-align: center;
+  padding: 1.75rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #B2B2B2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.shop-tabs .tab.active {
   color: black;
-  text-decoration: underline;  /* Underline only for active tab */
 }
 
-/* Hover state */
-.tab:hover {
-  color: rgba(0, 119, 204, 0.1);
+/* Active underline indicator */
+.shop-tabs .tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Align the black line under the tab */
+  width: 100%; /* Match the width of the gray line */
+  height: 2px;
+  background-color: black; /* Black line */
+  transition: all 0.3s ease;
+  z-index: 1;
 }
-
-
 
 /* Add Button */
 .add-button {
-  
   background-color: rgba(126, 53, 80, 1);
   color: white;
   border: none;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
+  width: 32px;  /* Larger circle size */
+  height: 32px; /* Larger circle size */
+  
+  display: flex;
+  justify-content: center; /* Horizontally centers the content */
+  align-items: center; /* Vertically centers the content */
+
   transition: background-color 0.3s ease;
+  position: absolute; /* Position it absolutely relative to the parent */
+  left: 1269px; /* Adjust the horizontal position */
+  top: 50px;  /* Adjust the vertical position */
+}
+
+/* Icon (plus) */
+.add-button .fa-plus {
+  font-size: 20px; /* Smaller plus icon */
 }
 
 .add-button:hover {
@@ -428,21 +502,17 @@ html, body {
 }
 
 
+
+
 /* Background Cover */
 .background-cover {
-  position: absolute;
-  top: 421px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed; /* Keeps the background fixed */
+  top: 0; /* Adjusted to make it start from the top */
+  left: 0;
   width: 100%;
-  height: 714px;
-  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 25%;
+  height: 100%; /* Ensures it covers the full height */
+ background-color: white;
   z-index: -1;
-  pointer-events: none;
 }
 .upload-modal {
   position: fixed;
@@ -473,16 +543,16 @@ html, body {
 }
 
 /* Product Grid */
-.popular-product-item {
+.product-item {
   width: 175px;
   height: 200px;
   top:-420px;
-  background: rgb(255, 255, 255);
+  background: rgb(224, 0, 0);
   border: 2px solid rgba(30, 30, 30, 0.65);
   border-radius: 16px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 10px;
   margin: 10px;
@@ -490,19 +560,10 @@ html, body {
   left:30px;
 }
 
-/* Product Image */
-.popular-product-item img {
-  width: 140px;
-  height: 135px;
-  top: 10px;  /* Adjust the image's position */
-  left: 0;
-  border-radius: 16px;
-  border: 2px solid rgba(30, 30, 30, 0.65);
-  object-fit: cover;
-}
+
 
 /* Product Name */
-.popular-product-name {
+.product-name {
   width: auto;
   height: 20px;
   top: 150px;
@@ -516,20 +577,28 @@ html, body {
   text-align: center;
   color: rgba(126, 53, 80, 1);
 }
-/* Product Grid */
+
+.product-list {
+  display: flex; /* or grid */
+  flex-wrap: wrap;
+  gap: 15px !important; /* this creates a gap between each .product-item */
+  justify-content: flex-start;
+  left: -13px;
+  position: relative;
+  top:23px;
+}
+
 .product-item {
   width: 175px;
   height: 200px;
-  top:56px;
+  top: 56px;
   background: rgb(255, 255, 255);
-  border: 2px solid rgba(30, 30, 30, 0.65);
+  border: 2px solid rgba(0, 0, 0, 0.65);
   border-radius: 16px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  margin: 10px;
+  align-items: left;
   position: relative;
 }
 
@@ -690,7 +759,6 @@ html, body {
   transform: scale(1.05);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
-
 
 
 
