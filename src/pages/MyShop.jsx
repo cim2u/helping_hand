@@ -23,7 +23,11 @@ const MyShop = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [profileImage, setProfileImage] = useState(localStorage.getItem("profileImage") || "");
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const [scrolledRight, setScrolledRight] = useState(false);
+  const [scrolledRightProduct2, setScrolledRightProduct2] = useState(false);
 
+  const productListRef = useRef(null);
+  const productList2Ref = useRef(null);  // For Product2
   const productsRef = useRef(null);
   const servicesRef = useRef(null);
 
@@ -56,7 +60,6 @@ const MyShop = () => {
     document.getElementById(tab)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Move underline on tab change
   useEffect(() => {
     const activeRef = activeTab === "products" ? productsRef : servicesRef;
     if (activeRef.current) {
@@ -87,7 +90,6 @@ const MyShop = () => {
     }
   };
 
-  // Popular products data
   const popularProducts = [
     {
       id: 1,
@@ -119,6 +121,16 @@ const MyShop = () => {
       name: "Popular Product 6",
       image: "path/to/popular-product6.jpg",
     },
+  ];
+
+  const product2 = [
+    { id: 1, name: "Product 2A", image: "path/to/product2-a.jpg" },
+    { id: 2, name: "Product 2B", image: "path/to/product2-b.jpg" },
+    { id: 3, name: "Product 2C", image: "path/to/product2-c.jpg" },
+    { id: 4, name: "Product 2D", image: "path/to/product2-d.jpg" },
+    { id: 5, name: "Product 2E", image: "path/to/product2-e.jpg" },
+    { id: 6, name: "Product 2F", image: "path/to/product2-f.jpg" },
+    { id: 7, name: "Product 2G", image: "path/to/product2-g.jpg" },
   ];
 
   return (
@@ -159,7 +171,7 @@ const MyShop = () => {
         <div className="profile-info">
           <div className="profile-pic-wrapper" onClick={() => setIsModalOpen(true)}>
             <img
-              src={profileImage || "https://s3-alpha-sig.figma.com/img/1291/8283/db5584e1491b3ce3d07e5a6f324db4bd?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HVRy5RDLTa-M77wznKozpmRxGMMXtIXkRpwiobui~F3TNVaF6JRxKABszJQglZXGqC7URh-mzj3Ub1QG20dxJC4t9zwp~WscTBbq9r35-nRdwTkIkW0fOgZ9wg2eckW7t6TsEZwwy8FV0W0R5Gqho-XL4y-B999cRtPVI7VQsnk4~Adnl~lWAeAkTn98fYPbBqyb78H0Mc-hnzVfBvJhKVMEVCbD~0ezEsVHNI-YrTf6Zdt-E0nxV6ejvn0yqOE553hxkZ2ZDmnVxsHuiq0yott0aOH1pP-H4ygdOYsYvJiUg0EB9GGjNhyPtW~cTjNp3l7pQUhqRnsI6vgfUQghJQ__"}
+              src={profileImage || "https://path/to/default-profile.jpg"}
               alt="Profile"
               className="profile-pic"
             />
@@ -179,7 +191,7 @@ const MyShop = () => {
           <FontAwesomeIcon 
             icon={faPlus} 
             className="add-button" 
-            style={{ fontSize: "18px" }} // Smaller plus icon size
+            style={{ fontSize: "18px" }} 
             onClick={() => setIsModalOpen(true)} 
           />
         </div>
@@ -187,28 +199,115 @@ const MyShop = () => {
 
       {/* Popular Products Section */}
       <div className="popular-products">
-        <h3>Popular Products</h3>
-        <div className="product-list">
-          {popularProducts.map((product) => (
-            <div key={product.id} className="product-item">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="product-image"
-              />
-              <div className="product-details">
-                <h4>{product.name}</h4>
+        <span className="popular-label">POPULAR</span>
+        <span className="product-label">PRODUCT</span>
+
+        <div className="relative">
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            className={`scroll-arrow ${scrolledRight ? "rotate-180" : ""}`}
+            onClick={() => {
+              const scrollEl = productListRef.current;
+              if (scrollEl) {
+                if (scrolledRight) {
+                  scrollEl.scrollTo({ left: 0, behavior: "smooth" });
+                } else {
+                  const seventhItem = scrollEl.children[6];
+                  if (seventhItem) {
+                    const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
+                    scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
+                  }
+                }
+                setScrolledRight(!scrolledRight);
+              }
+            }}
+          />
+
+          <div
+            ref={productListRef}
+            className="product-list no-scrollbar"
+            style={{
+              overflowX: "auto",
+              scrollBehavior: "smooth",
+              display: "flex",
+              gap: "16px",
+              paddingRight: "40px",
+            }}
+          >
+            {popularProducts.map((product) => (
+              <div key={product.id} className="product-item">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="product-image"
+                />
+                <div className="product-details">
+                  <h4>{product.name}</h4>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Upload Modal with Overlay */}
+      {/* Product2 Section (Updated) */}
+      <div className="product2-section">
+        <span className="popular-label">PRODUCT 2</span>
+        <span className="product-label">PRODUCT</span>
+
+        <div className="relative">
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            className={`scroll-arrow ${scrolledRightProduct2 ? "rotate-180" : ""}`}
+            onClick={() => {
+              const scrollEl = productList2Ref.current;
+              if (scrollEl) {
+                if (scrolledRightProduct2) {
+                  scrollEl.scrollTo({ left: 0, behavior: "smooth" });
+                } else {
+                  const seventhItem = scrollEl.children[6];
+                  if (seventhItem) {
+                    const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
+                    scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
+                  }
+                }
+                setScrolledRightProduct2(!scrolledRightProduct2);
+              }
+            }}
+          />
+
+          <div
+            ref={productList2Ref}
+            className="product2-list no-scrollbar"
+            style={{
+              overflowX: "auto",
+              scrollBehavior: "smooth",
+              display: "flex",
+              gap: "16px",
+              paddingRight: "40px",
+            }}
+          >
+            {product2.map((product) => (
+              <div key={product.id} className="product2-item">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="product2-image"
+                />
+                <div className="product2-details">
+                  <h4>{product.name}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Upload Modal */}
       {isModalOpen && (
         <div className="upload-modal-overlay" onClick={() => setIsModalOpen(false)}>
           <div className="upload-modal">
-            <div className="modal-content">
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={() => setIsModalOpen(false)} />
               <h3>Upload Profile Image</h3>
               <input type="file" accept="image/*" onChange={handleImageUpload} />
@@ -217,7 +316,7 @@ const MyShop = () => {
         </div>
       )}
 
-      {/* Tabs (hidden when modal is open) */}
+      {/* Tabs */}
       {!isModalOpen && (
         <div className="shop-tabs">
           <a
