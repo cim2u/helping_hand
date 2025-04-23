@@ -94,7 +94,8 @@ const MyShop = () => {
     {
       id: 1,
       name: "Popular Product 1",
-      image: "path/to/popular-product1.jpg",
+      image: "/images/7a8bd1b7a6df6b4f310dd752db6d34fada743dca.jpg"
+
     },
     {
       id: 2,
@@ -130,7 +131,7 @@ const MyShop = () => {
     { id: 4, name: "Product 2D", image: "path/to/product2-d.jpg" },
     { id: 5, name: "Product 2E", image: "path/to/product2-e.jpg" },
     { id: 6, name: "Product 2F", image: "path/to/product2-f.jpg" },
-    { id: 7, name: "Product 2G", image: "path/to/product2-g.jpg" },
+    
   ];
 
   return (
@@ -200,7 +201,7 @@ const MyShop = () => {
       {/* Popular Products Section */}
       <div className="popular-products">
         <span className="popular-label">POPULAR</span>
-        <span className="product-label">PRODUCT</span>
+        
 
         <div className="relative">
           <FontAwesomeIcon
@@ -250,58 +251,52 @@ const MyShop = () => {
         </div>
       </div>
 
-      {/* Product2 Section (Updated) */}
-      <div className="product2-section">
-        <span className="popular-label">PRODUCT 2</span>
-        <span className="product-label">PRODUCT</span>
+     {/* Product2 Section */}
+<div className="product2-section">
+  
+  <span className="product2-sub-label">PRODUCT</span>
 
-        <div className="relative">
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            className={`scroll-arrow ${scrolledRightProduct2 ? "rotate-180" : ""}`}
-            onClick={() => {
-              const scrollEl = productList2Ref.current;
-              if (scrollEl) {
-                if (scrolledRightProduct2) {
-                  scrollEl.scrollTo({ left: 0, behavior: "smooth" });
-                } else {
-                  const seventhItem = scrollEl.children[6];
-                  if (seventhItem) {
-                    const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
-                    scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
-                  }
-                }
-                setScrolledRightProduct2(!scrolledRightProduct2);
-              }
-            }}
+  <div className="product2-wrapper relative">
+    <FontAwesomeIcon
+      icon={faArrowRight}
+      className={`product2-arrow ${scrolledRightProduct2 ? "rotate-180 left-arrow" : "right-arrow"}`}
+      onClick={() => {
+        const scrollEl = productList2Ref.current;
+        if (scrollEl) {
+          if (scrolledRightProduct2) {
+            scrollEl.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            const seventhItem = scrollEl.children[6];
+            if (seventhItem) {
+              const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
+              scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
+            }
+          }
+          setScrolledRightProduct2(!scrolledRightProduct2);
+        }
+      }}
+    />
+
+    <div
+      ref={productList2Ref}
+      className="product2-list no-scrollbar"
+    >
+      {product2.map((product) => (
+        <div key={product.id} className="product2-item">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="product2-image"
           />
-
-          <div
-            ref={productList2Ref}
-            className="product2-list no-scrollbar"
-            style={{
-              overflowX: "auto",
-              scrollBehavior: "smooth",
-              display: "flex",
-              gap: "16px",
-              paddingRight: "40px",
-            }}
-          >
-            {product2.map((product) => (
-              <div key={product.id} className="product2-item">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="product2-image"
-                />
-                <div className="product2-details">
-                  <h4>{product.name}</h4>
-                </div>
-              </div>
-            ))}
+          <div className="product2-details">
+            <h4>{product.name}</h4>
           </div>
         </div>
-      </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 
       {/* Upload Modal */}
       {isModalOpen && (
