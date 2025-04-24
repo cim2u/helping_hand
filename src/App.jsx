@@ -11,6 +11,7 @@ import BuyerDashboard from "./pages/BuyerDashboard.jsx";
 import Subscribe from "./pages/Subscribe.jsx";
 import MyShop from "./pages/MyShop.jsx";
 import SellerInfo from "./pages/SellerInfo.jsx";
+import ProductDetail from "./components/ProductDetail.jsx"; // ✅ Import Product Detail page
 import "./App.css";
 
 function App() {
@@ -34,14 +35,11 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/continue-as" element={<ContinueAs />} />
         <Route path="/terms" element={<TermsAndPolicy />} />
-
-        {/* Pass form data to MyShop when navigating from SellerInfo */}
-        <Route
-          path="/myshop"
-          element={<MyShop />}
-        />
-
+        <Route path="/myshop" element={<MyShop />} />
         <Route path="/sellerinfo" element={<SellerInfo />} />
+
+        {/* ✅ Add route for product detail */}
+        <Route path="/product/:id" element={<ProductDetail />} />
 
         <Route
           path="/student-dashboard"

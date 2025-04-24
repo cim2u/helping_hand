@@ -57,16 +57,15 @@ html, body {
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
   top: 0;
-  right: 0;
+  position: absolute;
   width: 220px;
-  height: 100%;
-  background-color: #ffffff;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-  z-index: 2000;
-  padding: 20px;
-  transition: transform 0.3s ease;
+  height: 400px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  overflow-y: auto;  /* Added overflow for scrolling if content exceeds height */
 }
 
 .sidebar-header {
@@ -79,6 +78,7 @@ html, body {
   cursor: pointer;
 }
 
+/* Sidebar Menu */
 .sidebar-menu {
   list-style: none;
   padding: 0;
@@ -86,11 +86,79 @@ html, body {
 }
 
 .sidebar-menu li {
-  padding: 10px 0;
+  padding: 12px 0;  /* Increased padding */
   font-weight: 500;
   color: #333;
   cursor: pointer;
+  text-decoration: underline;
+  font-family: 'Roboto', sans-serif;
 }
+
+/* Menu Item (Fixed Styles for all) */
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 16px;  /* Increased padding */
+  width: 100%;
+  height: 56px;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #49454F;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #E0E0E0;
+  /* No hover effect or transition */
+}
+
+
+.menu-item .label {
+  display: inline-block;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.menu-item .divider {
+  height: 1px;
+  width: 100%;
+  background-color: #E0E0E0;
+  margin: 10px 0;
+}
+
+/* Menu States */
+.menu-item.active {
+  font-weight: 700;
+  color: #007BFF;
+}
+
+.menu-item.disabled {
+  color: #B0B0B0;
+  cursor: not-allowed;
+}
+
+.menu-item .icon {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  display: none;
+}
+
+.menu-item .supporting-text {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #49454F;
+  display: inline-block;
+}
+
+.menu-item .trailing-element {
+  width: 24px;
+  height: 24px;
+  display: none;
+}
+
 
 /* Shop Name Input */
 .shop-name-input {
@@ -407,69 +475,80 @@ html, body {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
-
+/* Tabs container */
 .shop-tabs {
-  
-  left: 457px;
-  top: -617px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  position: absolute;
   width: 182px;
   height: 30px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background-color: transparent;
-  border-radius: 6px;
-  padding: 0 8px;
-  position: relative;
-
-  font-family: 'Inter', sans-serif;
-  font-weight: 400; /* Regular */
-  font-size: 16px;
+  left: 457px;
+  top: 312px;
 }
 
-.shop-tabs::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%; /* Ensure both lines take up the same width */
-  height: 2px;
-  background-color: #B2B2B2; /* Gray line */
-  border-radius: 2px;
-  z-index: 0;
-}
-
+/* General Tab styling */
 .shop-tabs .tab {
-  flex: 1;
-  text-align: center;
-  padding: 1.75rem 0;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #B2B2B2;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  width: 90px;
+  height: 30px;
+  border-bottom: 1px solid #B2B2B2;
+  border-radius: 4px 4px 0px 0px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: #767676;
   text-decoration: none;
   cursor: pointer;
-  transition: color 0.3s ease;
-  position: relative;
-  z-index: 2;
+  transition: all 0.3s ease;
 }
 
+/* Active tab */
 .shop-tabs .tab.active {
-  color: black;
+  color: #303030;
+  border-bottom: 1px solid #303030;
 }
 
-/* Active underline indicator */
+/* Label inside tabs */
+.shop-tabs .tab label {
+  width: 66px;
+  height: 22px;
+  font-size: 16px;
+  line-height: 140%;
+  color: inherit;
+}
+
+/* Hide inactive tabs by default */
+.shop-tabs .tab.hidden {
+  display: none;
+}
+
+/* Tab indicator for active tab */
 .shop-tabs .tab-indicator {
   position: absolute;
   bottom: 0;
-  left: 0; /* Align the black line under the tab */
-  width: 100%; /* Match the width of the gray line */
+  left: 0;
+  width: 100%;
   height: 2px;
   background-color: black; /* Black line */
   transition: all 0.3s ease;
   z-index: 1;
 }
+
+/* Adjustments for tabs container */
+.shop-tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 .scroll-arrow {
   position: absolute;
@@ -623,7 +702,8 @@ html, body {
 .product-item {
   width: 170px;
   height: 200px;
-  top: -10px;
+  left:23px;
+  top: -330px;
   background: rgb(255, 255, 255);
   border: 2px solid rgba(0, 0, 0, 0.65);
   border-radius: 16px;
@@ -634,16 +714,27 @@ html, body {
   position: relative;
 }
 
-
-/* Product Image */
-.product-item img {
+.product-image {
   width: 140px;
   height: 135px;
-  margin-top:8px;  /* Adjust the image's position */
+  margin-top: 8px;
   left: 0;
   border-radius: 16px;
   border: 2px solid rgba(30, 30, 30, 0.65);
   object-fit: cover;
+}
+
+
+/* Product Image */
+.product-item img {
+    width: 140px;
+    height: 135px;
+    margin-top:8px;  /* Adjust the image's position */
+    left: 0;
+    border-radius: 16px;
+    border: 2px solid rgba(30, 30, 30, 0.65);
+    object-fit: cover;
+    z-index: 2;
 }
 
 /* Product Name */
@@ -679,6 +770,10 @@ html, body {
   gap: 20px;
   padding: 20px;
 }
+.product-item:hover .product-image  {
+  opacity: 0.9;
+}
+
 
 .product-grid {
   width: 100%; /* Responsive width instead of fixed */
@@ -704,6 +799,7 @@ html, body {
 .popular-product-grid::-webkit-scrollbar {
   display: none; /* For Chrome, Safari */
 }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@800&display=swap');
 .popular-section-title {
@@ -814,32 +910,45 @@ html, body {
 
 
 
-/* Product2 Section Title */
-.product2-section .popular-label,
-.product2-section .product-label {
-  font-size: 18px;
-  font-weight: 700;
-  font-family: 'Outfit', sans-serif;
-  color: rgba(126, 53, 80, 1);
-  margin-left: 10px;
-}
 
-/* Product2 List Grid */
-.product2-list {
-  display: flex; /* or grid */
-  flex-wrap: wrap;
-  gap: 45px !important; /* this creates a gap between each .product-item */
-  justify-content: flex-start;
-  left: 23px;
+
+
+
+/* Style for the product2-section */
+.product2-section {
   position: relative;
-  top:2px;
+  top: -340px; /* To make it appear at the top */
+  padding: 20px 0; /* Add padding for spacing */
+  background-color: #f9f9f900; /* Light background color */
+  border-top: 2px solid   #ffffff00; /* Optional border at the top */
+  height: 400px;
 }
 
-/* Individual Product2 Item */
+/* Style for the product grid inside product2-section */
+.product2-grid {
+  width: 100%; /* Responsive width instead of fixed */
+  
+  height: 239px;
+  margin-top: 306px;
+  margin-left: -10px;
+  margin-right: auto;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  
+  
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* For Firefox */
+}
+
+/* Style for each product item */
 .product2-item {
   width: 170px;
   height: 200px;
-  top: -10px;
+  left:23px;
+  top: -330px;
   background: rgb(255, 255, 255);
   border: 2px solid rgba(0, 0, 0, 0.65);
   border-radius: 16px;
@@ -850,37 +959,42 @@ html, body {
   position: relative;
 }
 
-/* Product2 Image */
+.product2-item:hover {
+  transform: translateY(-10px); /* Lift the item on hover */
+}
+
+/* Style for product images */
 .product2-image {
   width: 140px;
   height: 135px;
-  margin-top: 20px;
-  margin-left: auto;   /* Center the image horizontally */
-  margin-right: auto;  /* Center the image horizontally */
+  margin-top:19px;  /* Adjust the image's position */
+  margin-left: 13px;
   border-radius: 16px;
   border: 2px solid rgba(30, 30, 30, 0.65);
   object-fit: cover;
+  z-index: 2;
 }
 
-
-/* Product2 Details */
-.product2-details h4 {
-  width: 100%;
-  text-align: center;
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: rgba(126, 53, 80, 1);
-  margin: 5px 0;
+.product2-item:hover .product2-image {
+  opacity: 0.9; /* Slight fade effect on hover */
 }
 
-/* Product2 Details */
-.product-details h4 {
-  width: 100%;
-  text-align: center;
+/* Style for product names */
+.product2-name {
+  width: auto;
+  height: 20px;
+  top: 160px;
+  left:25px;
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
   font-weight: 700;
+  font-style: normal; /* Prevent italics */
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-align: center;
   color: rgba(126, 53, 80, 1);
-  margin: 5px 0;
+
+  padding: 2px;
+  position: absolute;
+  bottom: 5px;
 }

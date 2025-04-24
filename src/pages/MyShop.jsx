@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../assets/Logo.png";
 
+
+
 const MyShop = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -90,49 +92,7 @@ const MyShop = () => {
     }
   };
 
-  const popularProducts = [
-    {
-      id: 1,
-      name: "Popular Product 1",
-      image: "/images/7a8bd1b7a6df6b4f310dd752db6d34fada743dca.jpg"
 
-    },
-    {
-      id: 2,
-      name: "Popular Product 2",
-      image: "path/to/popular-product2.jpg",
-    },
-    {
-      id: 3,
-      name: "Popular Product 3",
-      image: "path/to/popular-product3.jpg",
-    },
-    {
-      id: 4,
-      name: "Popular Product 4",
-      image: "path/to/popular-product4.jpg",
-    },
-    {
-      id: 5,
-      name: "Popular Product 5",
-      image: "path/to/popular-product5.jpg",
-    },
-    {
-      id: 6,
-      name: "Popular Product 6",
-      image: "path/to/popular-product6.jpg",
-    },
-  ];
-
-  const product2 = [
-    { id: 1, name: "Product 2A", image: "path/to/product2-a.jpg" },
-    { id: 2, name: "Product 2B", image: "path/to/product2-b.jpg" },
-    { id: 3, name: "Product 2C", image: "path/to/product2-c.jpg" },
-    { id: 4, name: "Product 2D", image: "path/to/product2-d.jpg" },
-    { id: 5, name: "Product 2E", image: "path/to/product2-e.jpg" },
-    { id: 6, name: "Product 2F", image: "path/to/product2-f.jpg" },
-    
-  ];
 
   return (
     <div className="shop-container">
@@ -167,12 +127,14 @@ const MyShop = () => {
         </div>
       )}
 
+      
+
       {/* Profile Banner */}
       <div className="profile-banner">
         <div className="profile-info">
           <div className="profile-pic-wrapper" onClick={() => setIsModalOpen(true)}>
             <img
-              src={profileImage || "https://path/to/default-profile.jpg"}
+              src={profileImage || "https://s3-alpha-sig.figma.com/img/1291/8283/db5584e1491b3ce3d07e5a6f324db4bd?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HVRy5RDLTa-M77wznKozpmRxGMMXtIXkRpwiobui~F3TNVaF6JRxKABszJQglZXGqC7URh-mzj3Ub1QG20dxJC4t9zwp~WscTBbq9r35-nRdwTkIkW0fOgZ9wg2eckW7t6TsEZwwy8FV0W0R5Gqho-XL4y-B999cRtPVI7VQsnk4~Adnl~lWAeAkTn98fYPbBqyb78H0Mc-hnzVfBvJhKVMEVCbD~0ezEsVHNI-YrTf6Zdt-E0nxV6ejvn0yqOE553hxkZ2ZDmnVxsHuiq0yott0aOH1pP-H4ygdOYsYvJiUg0EB9GGjNhyPtW~cTjNp3l7pQUhqRnsI6vgfUQghJQ__"}
               alt="Profile"
               className="profile-pic"
             />
@@ -198,65 +160,82 @@ const MyShop = () => {
         </div>
       </div>
 
-      {/* Popular Products Section */}
-      <div className="popular-products">
-        <span className="popular-label">POPULAR</span>
-        
 
-        <div className="relative">
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            className={`scroll-arrow ${scrolledRight ? "rotate-180" : ""}`}
-            onClick={() => {
-              const scrollEl = productListRef.current;
-              if (scrollEl) {
-                if (scrolledRight) {
-                  scrollEl.scrollTo({ left: 0, behavior: "smooth" });
-                } else {
-                  const seventhItem = scrollEl.children[6];
-                  if (seventhItem) {
-                    const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
-                    scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
-                  }
-                }
-                setScrolledRight(!scrolledRight);
-              }
-            }}
-          />
+  {/* Popular Products Section */}
+<div className="popular-products">
+  <span className="popular-label">POPULAR</span>
 
-          <div
-            ref={productListRef}
-            className="product-list no-scrollbar"
-            style={{
-              overflowX: "auto",
-              scrollBehavior: "smooth",
-              display: "flex",
-              gap: "16px",
-              paddingRight: "40px",
-            }}
-          >
-            {popularProducts.map((product) => (
-              <div key={product.id} className="product-item">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="product-image"
-                />
-                <div className="product-details">
-                  <h4>{product.name}</h4>
-                </div>
-              </div>
-            ))}
+  <div className="relative">
+    <FontAwesomeIcon
+      icon={faArrowRight}
+      className={`scroll-arrow ${scrolledRight ? "rotate-180" : ""}`}
+      onClick={() => {
+        const scrollEl = productListRef.current;
+        if (scrollEl) {
+          if (scrolledRight) {
+            // Scroll back to the start
+            scrollEl.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            // Scroll to the seventh product (if exists)
+            const seventhItem = scrollEl.children[6];
+            if (seventhItem) {
+              const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
+              scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
+            }
+          }
+          setScrolledRight(!scrolledRight);
+        }
+      }}
+    />
+
+    <div
+      ref={productListRef}
+      className="product-list no-scrollbar"
+      style={{
+        overflowX: "auto",
+        scrollBehavior: "smooth",
+        display: "flex",
+        gap: "0px",
+        paddingRight: "40px",
+      }}
+    >
+      {/* PRODUCT SECTION - shows only when "products" is active */}
+      {activeTab === "products" && (
+        <>
+          <div className="product-grid">
+            {/* Product 1 */}
+            <div className="product-item">
+              <img
+                src="https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UColHrM4-CRvdCCPTBH63CswPqYJ5RNZRge7rMeyjBCFjiw0-uoCZDjfaR6CRbfvRHEHWfeSp9~h2fwNO1v3OR1fGsycyUaeQRXbTeo-6-osU60z3b6lE2yduAcQkjxqkA0f2YHszHb3tHT3GWv6lOcxHMaft5ZzdWYsL2yGOTnzI5qIz0SaZzAO~Aj1-UM-x-xTgvpIkuX-nH9BhP1RYA4wOSF0abbAhFYVO2eexMKiOyx5Ot6xkHmoAOr32bCE-7uv7TmowZTeDVn4cmeh0V96J56qzBWpzusW1q7y77rOgr~IC5Cr-xHsgDaWMqaOnTIei7AtF10jqPidtX~7XQ"
+                alt="Ribbon Keychain"
+                className="product-image"
+              />
+              <div className="product-name">Ribbon Keychain</div>
+            </div>
+            {/* Product 2 */}
+            <div className="product-item">
+              <img
+                src="https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HqnOSKBPbWe-~OuAn7WZQGAehGp~l4~D4hpohOnMQknH5MGA1XbjR7GEaOW8xGUO-zNGaZn8QrzF4Fi0I4wAzrH1A5oGV~57e9FrtpixDhhDsIUsjwSGVRQeQPjpETKnBzbLOD9VxKaERq-LWyFnTBWYHBnYQXRcnbmdsrqWk4yWPy6KGptmkyWQnCZTN8GX4SwZiXHpiQ5~9AWAHdKpcOmfhSVlK2FQ3nhM38EKM72fU4L-2UrUuoVGlnEvO8mJnNykJqhy9tak4P~shxu0Jhw8FX~yYs75grTZXu57vyKxyqTgJfYImdJilk9i0Lp9q3gg5X-E2Ww3r1RYbaZygA__"
+                alt="Flower Bouquet"
+                className="product-image"
+              />
+              <div className="product-name">Mini Flower Vase</div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
+    </div>
+  </div>
+</div>
 
-     {/* Product2 Section */}
+
+{/* Product2 Section */}
 <div className="product2-section">
-  
+  {/* Label for Product Section */}
   <span className="product2-sub-label">PRODUCT</span>
 
   <div className="product2-wrapper relative">
+    {/* Arrow for scrolling */}
     <FontAwesomeIcon
       icon={faArrowRight}
       className={`product2-arrow ${scrolledRightProduct2 ? "rotate-180 left-arrow" : "right-arrow"}`}
@@ -277,22 +256,42 @@ const MyShop = () => {
       }}
     />
 
+    {/* PRODUCT SECTION - shows only when "products" is active */}
+    {activeTab === "products" && (
+      <div className="product2-grid">
+        {/* Product 1 */}
+        <div className="product2-item">
+          <img
+            src="https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UColHrM4-CRvdCCPTBH63CswPqYJ5RNZRge7rMeyjBCFjiw0-uoCZDjfaR6CRbfvRHEHWfeSp9~h2fwNO1v3OR1fGsycyUaeQRXbTeo-6-osU60z3b6lE2yduAcQkjxqkA0f2YHszHb3tHT3GWv6lOcxHMaft5ZzdWYsL2yGOTnzI5qIz0SaZzAO~Aj1-UM-x-xTgvpIkuX-nH9BhP1RYA4wOSF0abbAhFYVO2eexMKiOyx5Ot6xkHmoAOr32bCE-7uv7TmowZTeDVn4cmeh0V96J56qzBWpzusW1q7y77rOgr~IC5Cr-xHsgDaWMqaOnTIei7AtF10jqPidtX~7XQ"
+            alt="Ribbon Keychain"
+            className="product2-image"
+          />
+          <div className="product2-name">Ribbon Keychain</div>
+        </div>
+
+        {/* Product 2 */}
+        <div className="product2-item">
+          <img
+            src="https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HqnOSKBPbWe-~OuAn7WZQGAehGp~l4~D4hpohOnMQknH5MGA1XbjR7GEaOW8xGUO-zNGaZn8QrzF4Fi0I4wAzrH1A5oGV~57e9FrtpixDhhDsIUsjwSGVRQeQPjpETKnBzbLOD9VxKaERq-LWyFnTBWYHBnYQXRcnbmdsrqWk4yWPy6KGptmkyWQnCZTN8GX4SwZiXHpiQ5~9AWAHdKpcOmfhSVlK2FQ3nhM38EKM72fU4L-2UrUuoVGlnEvO8mJnNykJqhy9tak4P~shxu0Jhw8FX~yYs75grTZXu57vyKxyqTgJfYImdJilk9i0Lp9q3gg5X-E2Ww3r1RYbaZygA__"
+            alt="Flower Bouquet"
+            className="product2-image"
+          />
+          <div className="product2-name">Mini Flower Vase</div>
+        </div>
+      </div>
+    )}
+ 
+
+
     <div
       ref={productList2Ref}
       className="product2-list no-scrollbar"
     >
-      {product2.map((product) => (
-        <div key={product.id} className="product2-item">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="product2-image"
-          />
-          <div className="product2-details">
-            <h4>{product.name}</h4>
-          </div>
-        </div>
-      ))}
+
+     
+          
+         
+  
     </div>
   </div>
 </div>
@@ -310,31 +309,36 @@ const MyShop = () => {
           </div>
         </div>
       )}
+{/* Tabs */}
+{!isModalOpen && (
+  <div className="shop-tabs">
+    <a
+      ref={productsRef}
+      href="#products"
+      className={`tab ${activeTab === "products" ? "active" : ""}`}
+      onClick={(e) => {
+        e.preventDefault();
+        setActiveTab("products");
+      }}
+    >
+      Products
+    </a>
+    <a
+      ref={servicesRef}
+      href="#services"
+      className={`tab ${activeTab === "services" ? "active" : ""}`}
+      onClick={(e) => {
+        e.preventDefault();
+        setActiveTab("services");
+      }}
+    >
+      Services
+    </a>
 
-      {/* Tabs */}
-      {!isModalOpen && (
-        <div className="shop-tabs">
-          <a
-            ref={productsRef}
-            href="#products"
-            className={`tab ${activeTab === "products" ? "active" : ""}`}
-            onClick={() => handleTabClick("products")}
-          >
-            Products
-          </a>
-          <a
-            ref={servicesRef}
-            href="#services"
-            className={`tab ${activeTab === "services" ? "active" : ""}`}
-            onClick={() => handleTabClick("services")}
-          >
-            Services
-          </a>
-
-          <div className="tab-indicator" style={indicatorStyle}></div>
-        </div>
-      )}
-    </div>
+    <div className="tab-indicator" style={indicatorStyle}></div>
+  </div>
+)}
+</div>
   );
 };
 
