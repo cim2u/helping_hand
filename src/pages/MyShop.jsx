@@ -12,8 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../assets/Logo.png";
 
-
-
 const MyShop = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -32,6 +30,7 @@ const MyShop = () => {
   const productList2Ref = useRef(null);  // For Product2
   const productsRef = useRef(null);
   const servicesRef = useRef(null);
+  const sidebarRef = useRef(null); // Reference for sidebar
 
   const shopName = localStorage.getItem("shopName") || state?.storeName || "SHOP NAME";
   const sellerUsername = localStorage.getItem("sellerUsername") || state?.username || "Shey Andrews";
@@ -50,6 +49,21 @@ const MyShop = () => {
 
     setIsSubscribed(localStorage.getItem("isSubscribed") === "true");
   }, [state]);
+
+  useEffect(() => {
+    // Close sidebar if clicked outside of it
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleSubscribeClick = () => {
     localStorage.setItem("isSubscribed", "true");
@@ -92,8 +106,6 @@ const MyShop = () => {
     }
   };
 
-
-
   return (
     <div className="shop-container">
       {/* Header */}
@@ -113,21 +125,25 @@ const MyShop = () => {
 
       {/* Sidebar */}
       {isSidebarOpen && (
-        <div className="sidebar">
+        <div className="sidebar" ref={sidebarRef}>
           <div className="sidebar-header">
             <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={() => setIsSidebarOpen(false)} />
           </div>
           <ul className="sidebar-menu">
-            {["/", "/about", "/support", "/settings", "/"].map((route, i) => (
-              <li key={i} onClick={() => handleMenuClick(route)}>
-                {["HOME", "ABOUT", "SUPPORT", "SETTINGS", "LOGOUT"][i]}
+            {[
+              { label: "ABOUT", route: "/about" },
+              { label: "HOME", route: "/home" },
+              { label: "SHOPS", route: "/" },
+              { label: "SUPPORT", route: "/support" },
+              { label: "SETTINGS", route: "/settings" }, // You can change this or handle it specially
+            ].map((item, index) => (
+              <li key={index} onClick={() => handleMenuClick(item.route)}>
+                {item.label}
               </li>
             ))}
           </ul>
         </div>
       )}
-
-      
 
       {/* Profile Banner */}
       <div className="profile-banner">
@@ -151,16 +167,59 @@ const MyShop = () => {
             )}
           </div>
           <FontAwesomeIcon icon={faArrowRight} className="always-visible-arrow" />
-          <FontAwesomeIcon 
-            icon={faPlus} 
-            className="add-button" 
-            style={{ fontSize: "18px" }} 
-            onClick={() => setIsModalOpen(true)} 
+          <FontAwesomeIcon
+            icon={faPlus}
+            className="add-button"
+            style={{ fontSize: "18px" }}
+            onClick={() => setIsModalOpen(true)}
           />
         </div>
       </div>
 
 
+      {/* Rest of your components remain the same... */}
+
+      {/* Upload Modal */}
+      {isModalOpen && (
+        <div className="upload-modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="upload-modal">
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={() => setIsModalOpen(false)} />
+              <h3>Upload Profile Image</h3>
+              <input type="file" accept="image/*" onChange={handleImageUpload} />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tabs */}
+      {!isModalOpen && (
+        <div className="shop-tabs">
+          <a
+            ref={productsRef}
+            href="#products"
+            className={`tab ${activeTab === "products" ? "active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveTab("products");
+            }}
+          >
+            PRODUCTS
+          </a>
+          <a
+            ref={servicesRef}
+            href="#services"
+            className={`tab ${activeTab === "services" ? "active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveTab("services");
+            }}
+          >
+            SERVICES
+          </a>
+        </div>
+      )}
+      
   {/* Popular Products Section */}
 <div className="popular-products">
   <span className="popular-label">POPULAR</span>
@@ -294,52 +353,13 @@ const MyShop = () => {
   
     </div>
   </div>
-</div>
+</div>  
+    </div>
 
-
-      {/* Upload Modal */}
-      {isModalOpen && (
-        <div className="upload-modal-overlay" onClick={() => setIsModalOpen(false)}>
-          <div className="upload-modal">
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={() => setIsModalOpen(false)} />
-              <h3>Upload Profile Image</h3>
-              <input type="file" accept="image/*" onChange={handleImageUpload} />
-            </div>
-          </div>
-        </div>
-      )}
-{/* Tabs */}
-{!isModalOpen && (
-  <div className="shop-tabs">
-    <a
-      ref={productsRef}
-      href="#products"
-      className={`tab ${activeTab === "products" ? "active" : ""}`}
-      onClick={(e) => {
-        e.preventDefault();
-        setActiveTab("products");
-      }}
-    >
-      Products
-    </a>
-    <a
-      ref={servicesRef}
-      href="#services"
-      className={`tab ${activeTab === "services" ? "active" : ""}`}
-      onClick={(e) => {
-        e.preventDefault();
-        setActiveTab("services");
-      }}
-    >
-      Services
-    </a>
-
-    <div className="tab-indicator" style={indicatorStyle}></div>
-  </div>
-)}
-</div>
+    
   );
+
+  
 };
 
 export default MyShop;
