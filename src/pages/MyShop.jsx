@@ -165,6 +165,38 @@ const MyShop = () => {
                 Subscribe
               </button>
             )}
+
+{/* Tabs */}
+{!isModalOpen && (
+  <div className="shop-tabs">
+    <a
+      ref={productsRef}
+      href="#products"
+      className={`tab ${activeTab === "products" ? "active" : ""}`}
+      onClick={(e) => {
+        e.preventDefault();
+        setActiveTab("products");
+        document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
+      }}
+    >
+      PRODUCTS
+    </a>
+    <a
+      ref={servicesRef}
+      href="#services"
+      className={`tab ${activeTab === "services" ? "active" : ""}`}
+      onClick={(e) => {
+        e.preventDefault();
+        setActiveTab("services");
+        document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+      }}
+    >
+      SERVICES
+    </a>
+  </div>
+)}
+
+      
           </div>
           <FontAwesomeIcon icon={faArrowRight} className="always-visible-arrow" />
           <FontAwesomeIcon
@@ -192,34 +224,7 @@ const MyShop = () => {
         </div>
       )}
 
-      {/* Tabs */}
-      {!isModalOpen && (
-        <div className="shop-tabs">
-          <a
-            ref={productsRef}
-            href="#products"
-            className={`tab ${activeTab === "products" ? "active" : ""}`}
-            onClick={(e) => {
-              e.preventDefault();
-              setActiveTab("products");
-            }}
-          >
-            PRODUCTS
-          </a>
-          <a
-            ref={servicesRef}
-            href="#services"
-            className={`tab ${activeTab === "services" ? "active" : ""}`}
-            onClick={(e) => {
-              e.preventDefault();
-              setActiveTab("services");
-            }}
-          >
-            SERVICES
-          </a>
-        </div>
-      )}
-      
+     
   {/* Popular Products Section */}
 <div className="popular-products">
   <span className="popular-label">POPULAR</span>
@@ -300,20 +305,60 @@ const MyShop = () => {
       className={`product2-arrow ${scrolledRightProduct2 ? "rotate-180 left-arrow" : "right-arrow"}`}
       onClick={() => {
         const scrollEl = productList2Ref.current;
-        if (scrollEl) {
-          if (scrolledRightProduct2) {
-            scrollEl.scrollTo({ left: 0, behavior: "smooth" });
-          } else {
-            const seventhItem = scrollEl.children[6];
-            if (seventhItem) {
-              const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
-              scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
-            }
+        if (scrolledRightProduct2) {
+          scrollEl.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          const seventhItem = scrollEl.children[6];
+          if (seventhItem) {
+            const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
+            scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
           }
-          setScrolledRightProduct2(!scrolledRightProduct2);
         }
+        setScrolledRightProduct2(!scrolledRightProduct2);
+      }
+    }
+  />
+
+   {/* Horizontally scrolling container */}
+   <div
+      ref={productList2Ref}
+      className="product2-list no-scrollbar"
+      style={{
+        overflowX: "auto",
+        scrollBehavior: "smooth",
+        display: "flex",
+        gap: "0px",
+        paddingRight: "40px",
       }}
-    />
+    ></div>
+ {/* SERVICE SECTION - shows only when "services" is active */}
+{activeTab === "services" && (
+  <>
+    <span className="service-label">SERVICES</span>
+    <div className="service-grid">
+      {/* Service 1 */}
+      <div className="service-item">
+        <img
+          src="https://via.placeholder.com/300x300?text=Gift+Wrap"
+          alt="Gift Wrapping"
+          className="service-image"
+        />
+        <div className="service-name">Gift Wrapping</div>
+      </div>
+
+      {/* Service 2 */}
+      <div className="service-item">
+        <img
+          src="https://via.placeholder.com/300x300?text=Custom+Card"
+          alt="Customized Card"
+          className="service-image"
+        />
+        <div className="service-name">Customized Cards</div>
+      </div>
+    </div>
+  </>
+)}
+
 
     {/* PRODUCT SECTION - shows only when "products" is active */}
     {activeTab === "products" && (

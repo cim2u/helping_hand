@@ -8,10 +8,12 @@ import ContinueAs from "./pages/ContinueAs.jsx";
 import TermsAndPolicy from "./pages/TermsAndPolicy.jsx";
 import StudentDashboard from "./pages/StudentDashboard.jsx";
 import BuyerDashboard from "./pages/BuyerDashboard.jsx";
-import Subscribe from "./pages/Subscribe.jsx";
+import Subscribe from "./pages/Subscribe.jsx";  // ✅ Import Subscribe page
 import MyShop from "./pages/MyShop.jsx";
 import SellerInfo from "./pages/SellerInfo.jsx";
-import ProductDetail from "./components/ProductDetail.jsx"; // ✅ Import Product Detail page
+import ProductDetail from "./components/ProductGrid.jsx"; // ✅ Import Product Detail page
+import Settings from "./pages/Settings.jsx";
+
 import "./App.css";
 
 function App() {
@@ -37,6 +39,9 @@ function App() {
         <Route path="/terms" element={<TermsAndPolicy />} />
         <Route path="/myshop" element={<MyShop />} />
         <Route path="/sellerinfo" element={<SellerInfo />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/subscribe" element={<Subscribe />} />
+
 
         {/* ✅ Add route for product detail */}
         <Route path="/product/:id" element={<ProductDetail />} />
@@ -53,21 +58,9 @@ function App() {
             isLoggedIn ? <BuyerDashboard /> : <Navigate to="/login" />
           }
         />
-        <Route
-          path="/subscribe"
-          element={
-            isLoggedIn && !isSubscribed ? (
-              <Subscribe
-                onSubscribe={() => {
-                  setIsSubscribed(true);
-                  localStorage.setItem("isSubscribed", "true");
-                }}
-              />
-            ) : (
-              <Navigate to="/home" />
-            )
-          }
-        />
+
+      
+      
       </Routes>
     </div>
   );

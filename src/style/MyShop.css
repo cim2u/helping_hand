@@ -60,11 +60,12 @@ html, body {
   top: 0;
   position: absolute;
   width: 200px;
-  height: 296px; /* Adjust to fill the entire height of the screen */
+  height: 266px; /* Adjust to fill the entire height of the screen */
   background: #F3EDF7;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  margin-left: -3px;
   padding-top: 20px; /* Space from top */
   padding-left: 20px; /* Padding for left side */
 }
@@ -440,16 +441,18 @@ html, body {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
 /* Tabs container */
 .shop-tabs {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0;
-  position: absolute;
+  position: relative;
+  top: -75px;
+  left: 457px;
   width: 182px;
   height: 30px;
-  left: 457px;
-  top: 312px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0;
+  z-index: 999; /* ensures it's on top */
 }
+
 
 /* General Tab styling */
 .shop-tabs .tab {
@@ -513,20 +516,7 @@ html, body {
 }
 
 
-.scroll-arrow {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  z-index: 1;
-  font-size: 24px;
-  transition: transform 0.3s ease;
-}
 
-.scroll-arrow.rotate-180 {
-  transform: translateY(-50%) rotate(180deg);
-}
 
 /* Add Button */
 .add-button {
@@ -614,6 +604,35 @@ html, body {
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+.service-grid {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.service-item {
+  min-width: 200px;
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.service-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.service-name {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 /* Product Grid */

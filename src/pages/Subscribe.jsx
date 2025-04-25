@@ -1,30 +1,61 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import '../style/Subscribe.css';
 
 const Subscribe = () => {
-  const [isSubscribed, setIsSubscribed] = useState(false); // Track subscription status
-  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
-  // Handle subscription action
-  const handleSubscribe = () => {
-    setIsSubscribed(true); // Set subscription status to true
-    navigate('/'); // Redirect back to home after subscription
+  const handleSubscribeClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
-    <div className="subscribe-wrapper">
-      <h2>Subscribe to Access Premium Features</h2>
-      <p>If you are not yet subscribed, click the button below to subscribe!</p>
+    <div className="subscribe-container-subscribe">
+      {/* Main content */}
+      <div className="top-bar-subscribe" />
+      <div className="top-bar-logo-subscribe" />
+      <div className="nav-about-subscribe">About</div>
+      <div className="nav-support-subscribe">Support</div>
+      <div className="nav-home-subscribe">Home</div>
+      <div className="card-container-subscribe" />
+      <div className="premium-badge-subscribe" />
+      <div className="premium-text-subscribe">Premium</div>
+      <div className="price-subscribe">₱100</div>
+      <div className="per-month-subscribe">per month</div>
+      <div className="features-subscribe">
+        Customizable Themes<br />
+        Prioritized Support<br />
+        Loyalty Points<br />
+        Display Badges
+      </div>
+      <div className="divider-top-subscribe" />
+      <div className="divider-bottom-subscribe" />
 
-      {/* Only show this button if the user hasn't subscribed yet */}
-      {!isSubscribed && (
-        <button className="subscribe-button" onClick={handleSubscribe}>
-          Subscribe Now
-        </button>
+      <button className="subscribe-button-subscribe" onClick={handleSubscribeClick}>
+        Subscribe
+      </button>
+      <div className="gcash-note-subscribe">Pay through GCash</div>
+      <div className="heading-subscribe">Subscribe to HELPINGHand!</div>
+      <div className="thank-you-message-subscribe">
+        Stay tuned for more updates! THANK YOU for supporting HelpingHand.
+      </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-subscribe">
+          <div className="modal-container-subscribe">
+            <div className="modal-content-subscribe">
+              <h2 className="modal-title-subscribe">Are you sure?</h2>
+              <button className="modal-button-subscribe" onClick={handleCloseModal}>
+                SUBSCRIBE
+              </button>
+            </div>
+          </div>
+        </div>
       )}
-
-      {/* If already subscribed, show a message */}
-      {isSubscribed && <p>Thank you for subscribing!</p>}
     </div>
   );
 };

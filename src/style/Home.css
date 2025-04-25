@@ -164,6 +164,7 @@ body, html {
   border: none;                        /* No border */
   cursor: pointer;                    /* Pointer cursor on hover */
   display: flex;
+  margin-left: -83px;
   align-items: center;                /* Align text and icon vertically */
   justify-content: center;            /* Center text horizontally */
   transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
@@ -319,7 +320,7 @@ body, html {
   top: 0;
   left: 0;
   width: 250px;
-  height: 100%;
+  height: 396px;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   padding: 20px;
@@ -386,4 +387,210 @@ body, html {
 
 .close-icon:hover {
   color: #ff6b6b; /* Change color on hover */
+}
+/* General container for profile wrapper */
+.profile-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 435px;
+  height: 959px;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay effect */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+
+
+/* Profile card */
+.profile-card {
+  position: relative;
+  width: 435px;
+  height: 959px;
+  background: #ffffff;
+  border: 2px solid #7e3550;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  overflow-y: auto;
+}
+
+/* Background of profile card */
+.profile-card-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Profile picture styling */
+.profile-picture {
+  position: absolute;
+  width: 171px;
+  height: 171px;
+  left: 132px;
+  top: 94px;
+  background: #ffffff url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__") no-repeat center center;
+  background-size: cover;
+  border: 2px solid #7e3550;
+  border-radius: 100%;
+}
+
+/* Label text for profile */
+.label {
+  position: absolute;
+  width: 150px;
+  height: 39px;
+  left: 143px;
+  top: 261px;
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #7e3550;
+  text-align: center;
+}
+
+/* Circle next to status */
+.circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 298px;
+  top: 275px;
+}
+
+.status-primary {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: calc(50% - 8px);
+  top: calc(50% - 8px);
+  background: #5680e9;
+  border-radius: 50%;
+}
+
+.check-primary {
+  position: absolute;
+  width: 10.5px;
+  height: 7.5px;
+  left: calc(50% - 10.5px / 2 + 0.25px);
+  top: calc(50% - 7.5px / 2 - 0.25px);
+  background: #fefefe;
+  border-radius: 50%;
+}
+
+/* Address label */
+.address-label {
+  position: absolute;
+  width: 157px;
+  height: 18px;
+  left: 145px;
+  top: 327px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #7e3550;
+}
+
+/* Sections like Orders, Personal Info */
+.orders-purchases-title,
+.personal-info-title {
+  position: absolute;
+  width: 178px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7e3550;
+}
+
+.orders-purchases-title {
+  top: 419px;
+}
+
+.personal-info-title {
+  top: 540px;
+}
+
+/* Links for "Order" and "Cart" */
+.cart-order-link {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration-line: underline;
+  color: #fefefe;
+}
+
+.cart-order-link:nth-of-type(1) {
+  left: 201px;
+  top: 470px;
+}
+
+.cart-order-link:nth-of-type(2) {
+  left: 96px;
+  top: 470px;
+}
+
+/* Email, Name, Phone Number, Address */
+.email-name,
+.phone-number,
+.address {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+  color: #fefefe;
+}
+
+.email-name:nth-of-type(1) {
+  top: 590px;
+}
+
+.email-name:nth-of-type(2) {
+  top: 617px;
+}
+
+.phone-number {
+  top: 644px;
+}
+
+.address {
+  top: 671px;
+}
+
+/* Log out link with class name */
+.logout-container {
+  position: absolute;
+  width: 516px;
+  height: 21px;
+  left: 345px;
+  top: 912px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  color: #7e3550;
+  cursor: pointer;
+}
+
+.logout-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Styling for Order & Cart icon */
+.bag-shopping {
+  position: absolute;
+  width: 21px;
+  height: 24px;
+  left: 162px;
+  top: 468px;
+}
+
+.bag-shopping::after {
+  content: url;
+  width: 21px;
+  height: 24px;
 }
