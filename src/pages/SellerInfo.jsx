@@ -68,7 +68,7 @@ const SellerInfo = () => {
             </div>
 
             <div>
-              <label htmlFor="gmail" className="storelabel">Gmail Account</label>
+              <label htmlFor="gmail" className="storelabel">Email Account</label>
               <input
                 type="email"
                 id="gmail"

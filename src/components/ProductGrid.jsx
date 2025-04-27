@@ -1,26 +1,63 @@
 import React from 'react';
-import '../style/ProductGrid.css';
 
 const ProductGrid = ({ products }) => {
   return (
-    <div className="frame-20-home">
-      <div className="group-55-home">
-        {products && products.length > 0 ? (
-          products.map((product, index) => (
-            <div className="product-card-home" key={index}>
-              <img
-                src={product.image}
-                alt={product.name}
-                className="product-image-home"
-              />
-              <div className="product-title-home">{product.name}</div>
-              <div className="product-description-home">{product.description}</div>
+    <div style={{ position: 'relative', display: 'flex', gap: '40px', padding: '40px' }}>
+      {products.length > 0 ? (
+        products.map((product, index) => (
+          <div
+            key={index}
+            style={{
+              position: 'relative',
+              width: '220px',
+              height: '260px',
+              background: '#FEFEFE',
+              border: '2px solid rgba(30, 30, 30, 0.65)',
+              boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+              borderRadius: '16px',
+              padding: '10px',
+            }}
+          >
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              style={{
+                position: 'absolute',
+                width: '170px',
+                height: '170px',
+                left: '25px',
+                top: '30px',
+                border: '2px solid rgba(30, 30, 30, 0.65)',
+                borderRadius: '16px',
+                objectFit: 'cover',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                top: '220px',
+                left: '32px',
+                width: '155px',
+                height: '20px',
+                fontFamily: 'Outfit',
+                fontWeight: '700',
+                fontSize: '20px',
+                lineHeight: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                letterSpacing: '0.1px',
+                color: '#7E3550',
+                textAlign: 'center',
+              }}
+            >
+              {product.name}
             </div>
-          ))
-        ) : (
-          <p className="no-products-home">No products available.</p>
-        )}
-      </div>
+          </div>
+        ))
+      ) : (
+        <div>No products available</div>
+      )}
     </div>
   );
 };

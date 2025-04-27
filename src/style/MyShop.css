@@ -980,3 +980,124 @@ html, body {
   position: absolute;
   bottom: 5px;
 }
+/* ProfileWrapper */
+.profileWrapper {
+  position: fixed; /* Always fixed to screen */
+  top: 0;
+  left: 0;
+  width: 435px;
+  height: 959px;
+  overflow-y: scroll;
+  z-index: 2000;
+  background: transparent; /* No background because profileCard has its own */
+}
+
+/* ProfileCard */
+.profileCard {
+  position: absolute;
+  width: 435px;
+  height: 959px;
+  left: 0;
+  top: 0;
+  background: #FFFFFF;
+  border: 2px solid #7E3550;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+/* Profile Picture */
+.profilePicture {
+  position: absolute;
+  width: 171px;
+  height: 171px;
+  left: 132px;
+  top: 94px;
+  background: #FFFFFF;
+  border: 2px solid #7E3550;
+  border-radius: 1000px;
+}
+
+/* Profile Label (Profile Name) */
+.profileLabel {
+  position: absolute;
+  width: 150px;
+  height: 39px;
+  left: 143px;
+  top: 261px;
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 140%;
+  color: #7E3550;
+}
+
+/* Profile Address */
+.profileAddressLabel {
+  position: absolute;
+  width: 157px;
+  height: 18px;
+  left: 145px;
+  top: 327px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #7E3550;
+}
+
+/* Orders & Purchases Title */
+.profileOrdersTitle {
+  position: absolute;
+  width: 178px;
+  height: 25px;
+  left: 43px;
+  top: 417px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7E3550;
+}
+
+/* Personal Information Title */
+.profileInfoTitle {
+  position: absolute;
+  width: 192px;
+  height: 25px;
+  left: 43px;
+  top: 540px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7E3550;
+}
+
+/* Profile Links like Order, Cart */
+.profileLink {
+  position: relative;
+  margin: 10px 0 0 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+
+/* Profile Email and Phone */
+.profileEmail, .profilePhone, .profileAddress {
+  position: relative;
+  margin: 5px 0 0 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  color: #7E3550;
+}
+
+/* Profile Logout Button */
+.profileLogout {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: #7E3550;
+  cursor: pointer;
+  text-decoration: underline;
+}
