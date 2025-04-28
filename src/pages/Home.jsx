@@ -164,7 +164,7 @@ const Home = () => {
           {isRegistered && <h1 className="banner-text">WELCOME TO HELPING HAND!</h1>}
         </div>
 
-        <div className="product-grid">
+        <div className="products-grid">
   {/* Display dynamically fetched products or fallback if empty */}
   {products.length > 0 ? (
     products.map((product) => (

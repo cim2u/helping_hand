@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for routing
 import '../style/Subscribe.css';
 
 const Subscribe = () => {
   const [showModal, setShowModal] = useState(false);
+  const modalRef = useRef(null);
 
   const handleSubscribeClick = () => {
     setShowModal(true);
@@ -12,14 +14,41 @@ const Subscribe = () => {
     setShowModal(false);
   };
 
+  // Close the modal if clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setShowModal(false);
+      }
+    };
+
+    // Add event listener for click outside
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Clean up event listener on component unmount
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="subscribe-container-subscribe">
       {/* Main content */}
       <div className="top-bar-subscribe" />
       <div className="top-bar-logo-subscribe" />
-      <div className="nav-about-subscribe">About</div>
-      <div className="nav-support-subscribe">Support</div>
-      <div className="nav-home-subscribe">Home</div>
+      
+      {/* Navigation Links */}
+      <div className="nav-about-subscribe">
+        <Link to="/about" style={{ color: '#FFF', textDecoration: 'underline' }}>About</Link>
+      </div>
+      <div className="nav-home-subscribe">
+        <Link to="/" style={{ color: '#FFF', textDecoration: 'underline' }}>Home</Link>
+      </div>
+      <div className="nav-support-subscribe">
+        <Link to="/support" style={{ color: '#FFF', textDecoration: 'underline' }}>Support</Link>
+      </div>
+
+      {/* Subscription Details */}
       <div className="card-container-subscribe" />
       <div className="premium-badge-subscribe" />
       <div className="premium-text-subscribe">Premium</div>
@@ -46,7 +75,7 @@ const Subscribe = () => {
       {/* Modal */}
       {showModal && (
         <div className="modal-subscribe">
-          <div className="modal-container-subscribe">
+          <div className="modal-container-subscribe" ref={modalRef}>
             <div className="modal-content-subscribe">
               <h2 className="modal-title-subscribe">Are you sure?</h2>
               <button className="modal-button-subscribe" onClick={handleCloseModal}>

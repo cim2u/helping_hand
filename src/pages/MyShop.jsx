@@ -25,12 +25,51 @@ const MyShop = () => {
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const [scrolledRight, setScrolledRight] = useState(false);
   const [scrolledRightProduct2, setScrolledRightProduct2] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+const [selectedProduct, setSelectedProduct] = useState(null);
+
 
   const productListRef = useRef(null);
   const productList2Ref = useRef(null);  // For Product2
   const productsRef = useRef(null);
   const servicesRef = useRef(null);
   const sidebarRef = useRef(null); // Reference for sidebar
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    setIsModalVisible(true);
+  };
+  
+  const closeModal = () => {
+    setIsModalVisible(false);
+    setSelectedProduct(null);
+  };
+  
+  const [isProfileVisible, setIsProfileVisible] = useState(false);
+  const profileRef = useRef(null);
+  
+  const toggleProfile = () => {
+    setIsProfileVisible(!isProfileVisible);
+  };
+  
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setIsProfileVisible(false);
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+  
+  const handleLogoutClick = () => {
+    // Example logout logic
+    console.log('Logging out...');
+    
+  };
+  
 
   const shopName = localStorage.getItem("shopName") || state?.storeName || "SHOP NAME";
   const sellerUsername = localStorage.getItem("sellerUsername") || state?.username || "Shey Andrews";
@@ -393,13 +432,57 @@ const MyShop = () => {
     >
 
      
-          
+         
+      {isModalVisible && selectedProduct && (
+        <div className="product-modal">
+          <div className="modal-content">
+            <button className="close-modal" onClick={closeModal}>X</button>
+            <h2>{selectedProduct.name}</h2>
+            <img
+              src={selectedProduct.image}
+              alt={selectedProduct.name}
+              className="modal-product-image"
+            />
+            <p>{selectedProduct.description}</p>
+            <p>Price: ${selectedProduct.price}</p>
+            {/* Add more product details if needed */}
+          </div>
+        </div>
+      )}  
+
+
+      { isProfileVisible && (
+        <div className="profileWrapper" ref={profileRef}>
+          <div className="profileCard">
+            <div className="profileBackground">
+              <div className="profilePicture" />
+              <div className="profileLabel">Profile</div>
+              <div className="profileCircle">
+                <div className="statusPrimary">
+                  <div className="checkPrimary" />
+                </div>
+              </div>
+              <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
+              <div className="profileOrdersTitle">Orders & Purchases</div>
+              <div className="profileInfoTitle">Personal Information</div>
+              <div className="profileLink">Order</div>
+              <div className="profileLink">Cart</div>
+              <div className="profileEmail">Name: Sissy Shey</div>
+              <div className="profileEmail">Email: shelayamba@gmail.com</div>
+              <div className="profilePhone">Phone Number: 63+ 9771234545</div>
+              <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
+              <div className="profileLogout" onClick={handleLogoutClick}>Log out</div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
          
   
     </div>
   </div>
 </div>  
-    </div>
+
 
     
   );
