@@ -182,39 +182,194 @@ const Home = () => {
       </div>
     ))
   ) : (
-    <div className="no-products">No products available at the moment.</div>
+    <div className="no-products">.</div>
   )}
 
-  {/* Manually added product 1: Ribbon Keychain */}
+
+  {/* Row 1 */}
   <div className="product-item" onClick={() => handleProductClick({
     name: "Ribbon Keychain",
-    image: "https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UColHrM4-CRvdCCPTBH63CswPqYJ5RNZRge7rMeyjBCFjiw0-uoCZDjfaR6CRbfvRHEHWfeSp9~h2fwNO1v3OR1fGsycyUaeQRXbTeo-6-osU60z3b6lE2yduAcQkjxqkA0f2YHszHb3tHT3GWv6lOcxHMaft5ZzdWYsL2yGOTnzI5qIz0SaZzAO~Aj1-UM-x-xTgvpIkuX-nH9BhP1RYA4wOSF0abbAhFYVO2eexMKiOyx5Ot6xkHmoAOr32bCE-7uv7TmowZTeDVn4cmeh0V96J56qzBWpzusW1q7y77rOgr~IC5Cr-xHsgDaWMqaOnTIei7AtF10jqPidtX~7XQ",
+    image: "https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?...",
     description: "A cute ribbon keychain, perfect for gifting.",
     price: 15.00
   })}>
-    <img
-      src="https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UColHrM4-CRvdCCPTBH63CswPqYJ5RNZRge7rMeyjBCFjiw0-uoCZDjfaR6CRbfvRHEHWfeSp9~h2fwNO1v3OR1fGsycyUaeQRXbTeo-6-osU60z3b6lE2yduAcQkjxqkA0f2YHszHb3tHT3GWv6lOcxHMaft5ZzdWYsL2yGOTnzI5qIz0SaZzAO~Aj1-UM-x-xTgvpIkuX-nH9BhP1RYA4wOSF0abbAhFYVO2eexMKiOyx5Ot6xkHmoAOr32bCE-7uv7TmowZTeDVn4cmeh0V96J56qzBWpzusW1q7y77rOgr~IC5Cr-xHsgDaWMqaOnTIei7AtF10jqPidtX~7XQ"
-      alt="Ribbon Keychain"
-      className="product-image"
-    />
+    <img src="https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?..." alt="Ribbon Keychain" className="product-image" />
     <div className="product-name">Ribbon Keychain</div>
   </div>
 
-  {/* Manually added product 2: Mini Flower Vase */}
   <div className="product-item" onClick={() => handleProductClick({
     name: "Mini Flower Vase",
-    image: "https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HqnOSKBPbWe-~OuAn7WZQGAehGp~l4~D4hpohOnMQknH5MGA1XbjR7GEaOW8xGUO-zNGaZn8QrzF4Fi0I4wAzrH1A5oGV~57e9FrtpixDhhDsIUsjwSGVRQeQPjpETKnBzbLOD9VxKaERq-LWyFnTBWYHBnYQXRcnbmdsrqWk4yWPy6KGptmkyWQnCZTN8GX4SwZiXHpiQ5~9AWAHdKpcOmfhSVlK2FQ3nhM38EKM72fU4L-2UrUuoVGlnEvO8mJnNykJqhy9tak4P~shxu0Jhw8FX~yYs75grTZXu57vyKxyqTgJfYImdJilk9i0Lp9q3gg5X-E2Ww3r1RYbaZygA__",
+    image: "https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?...",
     description: "A beautiful mini flower vase that adds charm to any space.",
     price: 25.00
   })}>
-    <img
-      src="https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HqnOSKBPbWe-~OuAn7WZQGAehGp~l4~D4hpohOnMQknH5MGA1XbjR7GEaOW8xGUO-zNGaZn8QrzF4Fi0I4wAzrH1A5oGV~57e9FrtpixDhhDsIUsjwSGVRQeQPjpETKnBzbLOD9VxKaERq-LWyFnTBWYHBnYQXRcnbmdsrqWk4yWPy6KGptmkyWQnCZTN8GX4SwZiXHpiQ5~9AWAHdKpcOmfhSVlK2FQ3nhM38EKM72fU4L-2UrUuoVGlnEvO8mJnNykJqhy9tak4P~shxu0Jhw8FX~yYs75grTZXu57vyKxyqTgJfYImdJilk9i0Lp9q3gg5X-E2Ww3r1RYbaZygA__"
-      alt="Mini Flower Vase"
-      className="product-image"
-    />
+    <img src="https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?..." alt="Mini Flower Vase" className="product-image" />
     <div className="product-name">Mini Flower Vase</div>
   </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Beaded Bracelet",
+    image: "https://via.placeholder.com/150",
+    description: "Handmade bracelet with colorful beads.",
+    price: 10.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Beaded Bracelet" className="product-image" />
+    <div className="product-name">Beaded Bracelet</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Crafted Notebook",
+    image: "https://via.placeholder.com/150",
+    description: "Handcrafted notebook made from recycled materials.",
+    price: 18.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Crafted Notebook" className="product-image" />
+    <div className="product-name">Crafted Notebook</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Wooden Coasters",
+    image: "https://via.placeholder.com/150",
+    description: "Set of 4 wooden coasters with a rustic feel.",
+    price: 12.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Wooden Coasters" className="product-image" />
+    <div className="product-name">Wooden Coasters</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Mini Canvas Art",
+    image: "https://via.placeholder.com/150",
+    description: "Tiny artwork perfect for small spaces and gifts.",
+    price: 22.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Mini Canvas Art" className="product-image" />
+    <div className="product-name">Mini Canvas Art</div>
+  </div>
+
+  {/* Row 2 */}
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Leather Wallet",
+    image: "https://via.placeholder.com/150",
+    description: "Stylish and durable leather wallet.",
+    price: 30.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Leather Wallet" className="product-image" />
+    <div className="product-name">Leather Wallet</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Eco Tote Bag",
+    image: "https://via.placeholder.com/150",
+    description: "Reusable eco-friendly tote bag.",
+    price: 20.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Eco Tote Bag" className="product-image" />
+    <div className="product-name">Eco Tote Bag</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Scented Candle",
+    image: "https://via.placeholder.com/150",
+    description: "Relaxing scented candle for home.",
+    price: 16.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Scented Candle" className="product-image" />
+    <div className="product-name">Scented Candle</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Handmade Soap",
+    image: "https://via.placeholder.com/150",
+    description: "Organic handmade soap bars.",
+    price: 8.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Handmade Soap" className="product-image" />
+    <div className="product-name">Handmade Soap</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Ceramic Mug",
+    image: "https://via.placeholder.com/150",
+    description: "Cute ceramic mugs for coffee lovers.",
+    price: 14.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Ceramic Mug" className="product-image" />
+    <div className="product-name">Ceramic Mug</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Art Print",
+    image: "https://via.placeholder.com/150",
+    description: "High-quality wall art print.",
+    price: 28.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Art Print" className="product-image" />
+    <div className="product-name">Art Print</div>
+  </div>
+
+  {/* Row 3 */}
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Planner 2025",
+    image: "https://via.placeholder.com/150",
+    description: "Minimalist 2025 planner.",
+    price: 20.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Planner 2025" className="product-image" />
+    <div className="product-name">Planner 2025</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Knitted Scarf",
+    image: "https://via.placeholder.com/150",
+    description: "Warm and cozy knitted scarf.",
+    price: 35.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Knitted Scarf" className="product-image" />
+    <div className="product-name">Knitted Scarf</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Pocket Mirror",
+    image: "https://via.placeholder.com/150",
+    description: "Small pocket mirror for everyday use.",
+    price: 5.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Pocket Mirror" className="product-image" />
+    <div className="product-name">Pocket Mirror</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Handcrafted Ring",
+    image: "https://via.placeholder.com/150",
+    description: "Elegant handcrafted ring.",
+    price: 45.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Handcrafted Ring" className="product-image" />
+    <div className="product-name">Handcrafted Ring</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Succulent Plant",
+    image: "https://via.placeholder.com/150",
+    description: "Low-maintenance succulent plant.",
+    price: 18.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Succulent Plant" className="product-image" />
+    <div className="product-name">Succulent Plant</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Fridge Magnets",
+    image: "https://via.placeholder.com/150",
+    description: "Cute fridge magnets set.",
+    price: 6.00
+  })}>
+    <img src="https://via.placeholder.com/150" alt="Fridge Magnets" className="product-image" />
+    <div className="product-name">Fridge Magnets</div>
+  </div>
 </div>
+
 
       </section>
       {isModalVisible && selectedProduct && (
@@ -239,18 +394,23 @@ const Home = () => {
         <div className="profileWrapper" ref={profileRef}>
           <div className="profileCard">
             <div className="profileBackground">
+               
               <div className="profilePicture" />
               <div className="profileLabel">Profile</div>
               <div className="profileCircle">
                 <div className="statusPrimary">
                   <div className="checkPrimary" />
                 </div>
-              </div>
+              </div >
+              <div className="profileBanner"/>
+              <div className="profileBanner_1"/>
+              <div className="profileRec"/>
+              <div className="profileSellerLabel">Seller</div>
               <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
               <div className="profileOrdersTitle">Orders & Purchases</div>
               <div className="profileInfoTitle">Personal Information</div>
-              <div className="profileLink">Order</div>
-              <div className="profileLink">Cart</div>
+              <div className="profileLinkOr">Order</div>
+              <div className="profileLinkCar">Cart</div>
               <div className="profileEmail">Name: Sissy Shey</div>
               <div className="profileEmail">Email: shelayamba@gmail.com</div>
               <div className="profilePhone">Phone Number: 63+ 9771234545</div>

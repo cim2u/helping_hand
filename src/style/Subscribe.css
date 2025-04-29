@@ -1,7 +1,18 @@
 
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 1440px;
+  max-width:1440px;
+  height: 100%;
+  overflow-x: hidden;  /* Prevent horizontal scrolling */
+  overflow-y: auto;  /* Allow vertical scrolling */
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
 .subscribe-container-subscribe {
     position: relative;
-    width: 1440px;
+    width: 100%;
     height: 1024px;
     background: #FEFEFE;
     font-family: 'Outfit', sans-serif;
@@ -9,24 +20,27 @@
   
   .top-bar-subscribe {
     position: absolute;
-    width: 1440px;
+    width: 100%;
     height: 100px;
     left: 0;
     top: 0;
     background: rgba(126, 53, 80, 0.85);
     border: 1px solid rgba(30, 30, 30, 0.65);
   }
-  
   .top-bar-logo-subscribe {
-    position: absolute;
-    width: 1461px;
+    width: 100%;
     height: 80px;
-    left: -21px;
+    position: absolute;
     top: 10px;
+    left: 0;
     background: url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__");
+    background-size: cover;
+    background-position: center;
+    object-fit: cover; /* Will not affect divs directly but kept in case used on images */
     opacity: 0.25;
     border: 1px solid #FEFEFE;
   }
+  
   
   .nav-about-subscribe,
   .nav-support-subscribe,
@@ -39,6 +53,7 @@
     letter-spacing: 0.03em;
     text-decoration: underline;
     color: #FFFFFF;
+    margin-left: -80px;
   }
   
   .nav-about-subscribe {

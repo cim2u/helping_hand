@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap');
 
 
 body, html {
@@ -296,7 +297,7 @@ body, html {
     background-color: #843b62;   /* Purple background */
     color: white;                /* Text color */
     padding: 1rem;               /* Padding inside the banner */
-    width: 1344px;                /* Full viewport width */
+    width: 1345px;                /* Full viewport width */
     position: relative;          /* Allow left adjustments */
     left: -35px;      
                 
@@ -405,17 +406,6 @@ body, html {
 }
 
 
-/* Profile card */
-.profile-card {
-  position: relative;
-  width: 435px;
-  height: 959px;
-  background: #ffffff;
-  border: 2px solid #7e3550;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
-  overflow-y: auto;
-}
 
 /* Background of profile card */
 .profile-card-background {
@@ -427,12 +417,12 @@ body, html {
 }
 
 /* Profile picture styling */
-.profile-picture {
+.profilePicture {
   position: absolute;
-  width: 171px;
-  height: 171px;
-  left: 132px;
-  top: 94px;
+  width: 121px!important;
+  height: 121px!important;
+  left: 152px !important;
+  top: 194px;
   background: #ffffff url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__") no-repeat center center;
   background-size: cover;
   border: 2px solid #7e3550;
@@ -440,7 +430,7 @@ body, html {
 }
 
 /* Label text for profile */
-.label {
+.profileLabel {
   position: absolute;
   width: 150px;
   height: 39px;
@@ -478,7 +468,7 @@ body, html {
   height: 7.5px;
   left: calc(50% - 10.5px / 2 + 0.25px);
   top: calc(50% - 7.5px / 2 - 0.25px);
-  background: #fefefe;
+  background: #d80000;
   border-radius: 50%;
 }
 
@@ -514,25 +504,7 @@ body, html {
   top: 540px;
 }
 
-/* Links for "Order" and "Cart" */
-.cart-order-link {
-  position: absolute;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  text-decoration-line: underline;
-  color: #fefefe;
-}
 
-.cart-order-link:nth-of-type(1) {
-  left: 201px;
-  top: 470px;
-}
-
-.cart-order-link:nth-of-type(2) {
-  left: 96px;
-  top: 470px;
-}
 
 /* Email, Name, Phone Number, Address */
 .email-name,
@@ -581,41 +553,92 @@ body, html {
 
 /* ProfileWrapper */
 .profileWrapper {
-  position: fixed; /* Always fixed to screen */
+  position: fixed !important;
   top: 0;
   left: 0;
-  width: 435px;
-  height: 959px !important;
-  overflow-y: hidden; /* Disable vertical scrolling */
-  z-index: 2000;
-  background: transparent; /* No background because profileCard has its own */
+  width: 415px !important;
+  height: 880px !important;
+  overflow: hidden !important; /* Wrapper remains fixed and hidden */
+  z-index: 1;
+  background: transparent;
+}
+/* Seller */
+.profileSellerLabel {
+  position: absolute;
+  width: 516px;
+  height: 18px;
+  left: -49px;
+  top: 299px;
+  font-family: 'Outfit', sans-serif; /* Ensuring Outfit font is used */
+  font-style: normal;
+  font-weight: 600; /* Bold */
+  font-size: 14px;
+  line-height: 18px; /* Ensures the text aligns with the box height */
+  color:#7E3550!important; /* Sets the color of the text */
 }
 
 
-/* ProfileCard */
 .profileCard {
-  position: absolute;
-  width: 435px;
-  height: 559px !important;
+  position: absolute !important;
+  width: 415px !important;
+  height: 790px !important;
   left: 0;
   top: 0;
   background: #FFFFFF;
   border: 2px solid #7E3550;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  overflow-y: hidden; /* Disable vertical scrolling */
   border-radius: 16px;
+  overflow-y: scroll; /* Enable vertical scroll */
+  padding: 16px; /* Optional: adds spacing inside */
 }
 
-/* Profile Picture */
+/* Hide scrollbar but keep scroll functionality */
+.profileCard::-webkit-scrollbar {
+  width: 0px; /* Hides the scrollbar */
+  height: 0px; /* Hides the scrollbar */
+}
+
+.profileCard::-webkit-scrollbar-thumb {
+  background: transparent; /* Hide the thumb */
+}
+
+/* Optional: For Firefox (using scrollbar-width) */
+.profileCard {
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+.profileBackground {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Optional spacing between elements */
+}
+
+
 .profilePicture {
   position: absolute;
-  width: 171px;
-  height: 171px;
-  left: 132px;
-  top: 94px;
-  background: #FFFFFF;
+  width: 171px !important;
+  height: 171px !important;
+  left: 125px !important;
+  top: 84px !important;
+  
+  background-image: url('https://i.imgur.com/OTvEGFs.png') !important;
+  background-size: cover;
+  background-position: center;
   border: 2px solid #7E3550;
   border-radius: 1000px;
+}
+
+/* Rectangle 85 */
+.profileRec{
+  box-sizing: border-box;
+  position: absolute;
+  width: 378px;
+  height: 846px;
+  left: 14px;
+  top: 25px !important;
+  background: #fefefe00;
+  border: 2px solid #7E3550;
+  border-radius: 8px;
 }
 
 /* Profile Label (Profile Name) */
@@ -623,13 +646,25 @@ body, html {
   position: absolute;
   width: 150px;
   height: 39px;
-  left: 243px;
-  top: 261px;
+  left: 135px!important;
+  top: 251px!important;
   font-family: 'Rowdies', sans-serif;
   font-weight: 700;
   font-size: 28px;
   line-height: 140%;
   color: #7E3550;
+}
+
+
+.profileBanner {
+  position: absolute;
+  width: 342px;
+  height: 141px;
+  left: 30px;
+  top: 574px;
+
+  background: #7E3550; /* This will override the earlier background-color */
+  border-radius: 12px;
 }
 
 /* Profile Address */
@@ -638,7 +673,7 @@ body, html {
   width: 157px;
   height: 18px;
   left: 145px;
-  top: 327px;
+  top: 314px !important;
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -673,33 +708,64 @@ body, html {
 }
 
 /* Profile Links like Order, Cart */
-.profileLink {
+.profileLinkOr {
   position: relative;
   margin: 10px 0 0 50px;
   font-family: 'Outfit', sans-serif;
   font-size: 18px;
-  color: #FFFFFF;
+  color: #ffffff !important;
+  top:429px!important;
+  left:-5px;
+  text-decoration: underline; /* Adds underline */
 }
+/* Profile Links like Order, Cart */
+.profileLinkCar {
+  position: relative;
+  left: -83px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: #ffffff !important;
+  top: 395px!important;
+  text-decoration: underline; /* Adds underline */
+}
+
+/* Rectangle 82 */
+.profileBanner_1 {
+  position: absolute;
+  width: 348px;
+  height: 64px;
+  left: 29px;
+  top: 448px;
+  background: #7E3550;
+  border-radius: 12px;
+}
+
 
 /* Profile Email and Phone */
 .profileEmail, .profilePhone, .profileAddress {
   position: relative;
-  margin: 5px 0 0 50px;
+  margin-left: 30px !important;
+  top: 475px !important;
   font-family: 'Outfit', sans-serif;
   font-size: 16px;
-  color: #7E3550;
+  color: #fffafa !important;
+  text-align: left;
+  margin-bottom: -12px !important; /* 2px gap between each row */
+  
+ 
 }
 /* Profile Logout Tab Styling */
-.profileLogoutTab {
+.profileLogout {
   cursor: pointer;
-  color: #ff4d4d;
+  color:  #7E3550 !important;
   text-decoration: underline;
-  margin-top: 15px;
+  top: 25px !important;
   font-size: 1rem;
-  font-weight: bold;
+  left:345px !important;
+  font-weight: 400;
 }
 
-.profileLogoutTab:hover {
+.profileLogout:hover {
   color: #d33;
 }
 /* Product Modal */
@@ -854,35 +920,32 @@ body, html {
   color: #7e3550;
   margin-top: 10px;
 }
+
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Responsive grid */
-  gap: 1.5rem;
-  justify-items: left;
-  margin-top: 23rem;
-  margin-left: -1204px;
+  grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
+  gap: 15px !important;
+  justify-items: left; /* aligns each item to the left of its grid cell */
+  padding: 1rem 0;
+  margin-top: 333px;
+  margin-left:-100px; /* No need for -0px */
 }
 
+
 .product-item {
-  width: 220px;
-  height: 260px;
-  background: #fefefe;
-  border-radius: 16px;
-  border: 2px solid rgba(30, 30, 30, 0.65);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem;
   text-align: center;
-  padding: 1rem;
-  gap:23px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .product-image {
   width: 100%;
   height: 160px;
-  background-color: #f0f0f0;
+ 
   border-radius: 10px;
   border: 1px dashed #ccc;
 }
