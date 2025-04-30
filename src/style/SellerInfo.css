@@ -52,11 +52,14 @@ left: -24px;
   opacity: 0.95;
   border: 2px solid rgba(254, 254, 254, 0.527);
   border-radius: 28px;
-  width: 480px;
+  width: 480px; /* fixed */
   height: 725px;
   padding: 2rem;
   text-align: center;
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.25);
+  position: absolute; /* added */
+  top: 40px;
+  left: 480px;
   z-index: 1;
 }
 
@@ -72,8 +75,8 @@ left: -24px;
   color: #ffffff;
   margin-bottom: 1.5rem;
   position: absolute;
-  top: 359px;
-  left: 485px;
+  top: 203px;
+  left:5px;
   width: 296px;
   height: 28px;
 }

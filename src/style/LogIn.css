@@ -9,7 +9,7 @@
   padding: 30px; /* Padding inside the container */
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
   width: 1440px;
-  height:1024px;
+  height: 900px;
   opacity:75;
   margin-left:-153px;
   max-width: 1440px; /* Ensure the container doesn’t go off the screen on smaller devices */
@@ -24,7 +24,7 @@
   top: 0;
   left: 0;
   width: 1440px;
-  height: 1024px;
+  height: 900px;
   background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
   background-size: cover;
   background-position: center;
@@ -224,7 +224,7 @@
     gap: 12px;
   
     position: absolute;
-    top: 149px;
+    top: 111;
     left: 480px;
   
     font-family: 'Outfit', sans-serif;
