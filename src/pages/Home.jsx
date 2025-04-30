@@ -15,6 +15,7 @@ const Home = () => {
   const [userRole, setUserRole] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false); // Modal visibility state
   const [selectedProduct, setSelectedProduct] = useState(null); // Selected product for the modal
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // default is false, change based on user login status
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -121,8 +122,16 @@ const Home = () => {
 
         <div className="icon-container">
           <FontAwesomeIcon icon={faBars} className="icon" onClick={toggleSidebar} />
-          <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
-          <FontAwesomeIcon icon={faCartShopping} className="icon" />
+          
+          {loggedIn && (
+  <>
+  <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
+    <FontAwesomeIcon icon={faCartShopping} className="icon" />
+    
+  </>
+)}
+
+
         </div>
 
         <div className="buttons-container">
@@ -186,208 +195,237 @@ const Home = () => {
   )}
 
 
-  {/* Row 1 */}
+{/* Row 1 */}
   <div className="product-item" onClick={() => handleProductClick({
     name: "Ribbon Keychain",
-    image: "https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?...",
+    image: "https://i.imgur.com/YP2DSeS.png",
     description: "A cute ribbon keychain, perfect for gifting.",
     price: 15.00
   })}>
-    <img src="https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?..." alt="Ribbon Keychain" className="product-image" />
+    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
     <div className="product-name">Ribbon Keychain</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Mini Flower Vase",
-    image: "https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?...",
+    name: "Handmade Flower Bouquet",
+    image: "https://i.imgur.com/NVsvQPC.png",
     description: "A beautiful mini flower vase that adds charm to any space.",
     price: 25.00
   })}>
-    <img src="https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?..." alt="Mini Flower Vase" className="product-image" />
-    <div className="product-name">Mini Flower Vase</div>
+    <img src="https://i.imgur.com/NVsvQPC.png" alt="Handmade Flower Bouquet" className="product-image" />
+    <div className="product-name">Handmade Flower Bouquet</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Beaded Bracelet",
-    image: "https://via.placeholder.com/150",
+    name: "Handmade Flower Bouquet",
+    image: "https://i.imgur.com/63rt8SJ.png",
     description: "Handmade bracelet with colorful beads.",
     price: 10.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Beaded Bracelet" className="product-image" />
-    <div className="product-name">Beaded Bracelet</div>
+    <img src="https://i.imgur.com/63rt8SJ.png" alt="Handmade Flower Bouquet" className="product-image" />
+    <div className="product-name">Handmade Flower Bouquet</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Crafted Notebook",
-    image: "https://via.placeholder.com/150",
+    name: "Handmade Flower Bouquet",
+    image: "https://i.imgur.com/mLTxJQf.png",
     description: "Handcrafted notebook made from recycled materials.",
     price: 18.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Crafted Notebook" className="product-image" />
-    <div className="product-name">Crafted Notebook</div>
+    <img src="https://i.imgur.com/mLTxJQf.png" alt="handmade Flower Bouquet" className="product-image" />
+    <div className="product-name">Handmade Flower Bouquet</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Wooden Coasters",
-    image: "https://via.placeholder.com/150",
+    name: "Handmade Flower Bouquet",
+    image: "https://i.imgur.com/Tc4gW95.png",
     description: "Set of 4 wooden coasters with a rustic feel.",
     price: 12.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Wooden Coasters" className="product-image" />
-    <div className="product-name">Wooden Coasters</div>
+    <img src="https://i.imgur.com/Tc4gW95.png" alt="Handmade Flower Bouquet" className="product-image" />
+    <div className="product-name">Handmade Flower Bouquet</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Mini Canvas Art",
-    image: "https://via.placeholder.com/150",
+    name: "Mini Petals",
+    image: "https://i.imgur.com/BrjdqNZ.png",
     description: "Tiny artwork perfect for small spaces and gifts.",
     price: 22.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Mini Canvas Art" className="product-image" />
-    <div className="product-name">Mini Canvas Art</div>
+    <img src="https://i.imgur.com/BrjdqNZ.png" alt="Mini Petals" className="product-image" />
+    <div className="product-name">Mini Petals</div>
   </div>
 
   {/* Row 2 */}
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Leather Wallet",
-    image: "https://via.placeholder.com/150",
+    name: "Keychain",
+    image: "https://i.imgur.com/gIXWMdd.jpeg",
     description: "Stylish and durable leather wallet.",
     price: 30.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Leather Wallet" className="product-image" />
-    <div className="product-name">Leather Wallet</div>
+    <img src="https://i.imgur.com/gIXWMdd.jpeg" alt="Keychain" className="product-image" />
+    <div className="product-name">Keychain</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Eco Tote Bag",
-    image: "https://via.placeholder.com/150",
+    name: "Ukay-Ukay",
+    image: "https://i.imgur.com/v1VcOJ8.jpeg",
     description: "Reusable eco-friendly tote bag.",
     price: 20.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Eco Tote Bag" className="product-image" />
-    <div className="product-name">Eco Tote Bag</div>
+    <img src="https://i.imgur.com/v1VcOJ8.jpeg" alt="Ukay-Ukay" className="product-image" />
+    <div className="product-name">Ukay-Ukay</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Scented Candle",
-    image: "https://via.placeholder.com/150",
+    name: "Pants",
+    image: "https://i.imgur.com/uImIE0Y.jpeg",
     description: "Relaxing scented candle for home.",
     price: 16.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Scented Candle" className="product-image" />
-    <div className="product-name">Scented Candle</div>
+    <img src="https://i.imgur.com/uImIE0Y.jpeg" alt="Pants" className="product-image" />
+    <div className="product-name">Pants</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Handmade Soap",
-    image: "https://via.placeholder.com/150",
+    name: "Crochet",
+    image: "https://i.imgur.com/661gPWE.jpeg",
     description: "Organic handmade soap bars.",
     price: 8.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Handmade Soap" className="product-image" />
-    <div className="product-name">Handmade Soap</div>
+    <img src="https://i.imgur.com/661gPWE.jpeg" alt="Crochet" className="product-image" />
+    <div className="product-name">Knitted Keychain</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Ceramic Mug",
-    image: "https://via.placeholder.com/150",
+    name: "Crochet",
+    image: "https://i.imgur.com/vCRDjPq.jpeg",
     description: "Cute ceramic mugs for coffee lovers.",
     price: 14.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Ceramic Mug" className="product-image" />
-    <div className="product-name">Ceramic Mug</div>
+    <img src="https://i.imgur.com/vCRDjPq.jpeg" alt="Crochet" className="product-image" />
+    <div className="product-name">Knitted Keychain</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Art Print",
-    image: "https://via.placeholder.com/150",
+    name: "Stickers",
+    image: "https://i.imgur.com/1yi1ssN.jpeg",
     description: "High-quality wall art print.",
     price: 28.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Art Print" className="product-image" />
-    <div className="product-name">Art Print</div>
+    <img src="https://i.imgur.com/1yi1ssN.jpeg" alt="Stickers" className="product-image" />
+    <div className="product-name">Stickers</div>
   </div>
 
   {/* Row 3 */}
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Planner 2025",
-    image: "https://via.placeholder.com/150",
+    name: "School Materials",
+    image: "https://i.imgur.com/tC6O2qZ.jpeg",
     description: "Minimalist 2025 planner.",
     price: 20.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Planner 2025" className="product-image" />
-    <div className="product-name">Planner 2025</div>
+    <img src="https://i.imgur.com/tC6O2qZ.jpeg" alt="School Materials" className="product-image" />
+    <div className="product-name">School Materials</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
-    name: "Knitted Scarf",
-    image: "https://via.placeholder.com/150",
+    name: "School Materials",
+    image: "https://i.imgur.com/GrvU80B.jpeg",
     description: "Warm and cozy knitted scarf.",
     price: 35.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Knitted Scarf" className="product-image" />
-    <div className="product-name">Knitted Scarf</div>
+    <img src="https://i.imgur.com/GrvU80B.jpeg" alt="School Materials" className="product-image" />
+    <div className="product-name">School Materials</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
     name: "Pocket Mirror",
-    image: "https://via.placeholder.com/150",
+    image: "https://i.imgur.com/btWOA37.jpeg",
     description: "Small pocket mirror for everyday use.",
     price: 5.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Pocket Mirror" className="product-image" />
-    <div className="product-name">Pocket Mirror</div>
+    <img src="https://i.imgur.com/btWOA37.jpeg" alt="Pocket Mirror" className="product-image" />
+    <div className="product-name">Knitted Keychain</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
     name: "Handcrafted Ring",
-    image: "https://via.placeholder.com/150",
+    image: "https://i.imgur.com/iHduEMf.jpeg",
     description: "Elegant handcrafted ring.",
     price: 45.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Handcrafted Ring" className="product-image" />
-    <div className="product-name">Handcrafted Ring</div>
+    <img src="https://i.imgur.com/iHduEMf.jpeg" alt="Handcrafted Ring" className="product-image" />
+    <div className="product-name">Handcrafted Beads Keychain</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
     name: "Succulent Plant",
-    image: "https://via.placeholder.com/150",
+    image: "https://i.imgur.com/5y2lqgD.png",
     description: "Low-maintenance succulent plant.",
     price: 18.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Succulent Plant" className="product-image" />
-    <div className="product-name">Succulent Plant</div>
+    <img src="https://i.imgur.com/5y2lqgD.png" alt="Succulent Plant" className="product-image" />
+    <div className="product-name">Handmade Flower Bouquet</div>
   </div>
 
   <div className="product-item" onClick={() => handleProductClick({
     name: "Fridge Magnets",
-    image: "https://via.placeholder.com/150",
+    image: "https://i.imgur.com/K9DMTgI.png",
     description: "Cute fridge magnets set.",
     price: 6.00
   })}>
-    <img src="https://via.placeholder.com/150" alt="Fridge Magnets" className="product-image" />
-    <div className="product-name">Fridge Magnets</div>
+    <img src="https://i.imgur.com/K9DMTgI.png" alt="Fridge Magnets" className="product-image" />
+    <div className="product-name">Handmade Flower Bouquet</div>
   </div>
 </div>
+</section>
 
-
-      </section>
-      {isModalVisible && selectedProduct && (
-        <div className="product-modal">
-          <div className="modal-content">
-            <button className="close-modal" onClick={closeModal}>X</button>
-            <h2>{selectedProduct.name}</h2>
-            <img
-              src={selectedProduct.image}
-              alt={selectedProduct.name}
-              className="modal-product-image"
-            />
-            <p>{selectedProduct.description}</p>
-            <p>Price: ${selectedProduct.price}</p>
-            {/* Add more product details if needed */}
+{isModalVisible && selectedProduct && (
+  <div className="product-modal">
+    {isLoggedIn?(
+      // Registered user - show product details
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="close-modal" onClick={closeModal}>X</button>
+        <h2>{selectedProduct.name}</h2>
+        <img
+          src={selectedProduct.image}
+          alt={selectedProduct.name}
+          className="modal-product-image"
+        />
+        <p>{selectedProduct.description}</p>
+        <p>Price: ₱{selectedProduct.price}</p>
+        {/* Add more product details if needed */}
+      </div>
+    ) : (
+      // Unregistered user - show sign-up modal
+      <div className="unregisteredModalHome" onClick={(e) => e.stopPropagation()}>
+        <div className="unregisteredModalInnerHome">
+          <div className="unregisteredMessageHome">
+            Please create an account before proceeding
+          </div>
+          <div
+            className="unregisteredSignupFrameHome"
+            onClick={() => navigate('/signup')}
+          >
+            <span className="unregisteredSignupTextHome">Sign Up</span>
+          </div>
+          <div className="unregisteredLoginPromptHome">
+            Already have an account?{' '}
+            <span
+              onClick={() => navigate('/login')}
+              style={{ cursor: 'pointer', textDecoration: 'underline' }}
+            >
+              Log In
+            </span>
           </div>
         </div>
-      )}  
+      </div>
+    )}
+  </div>
+)}
+
+
+
 
 
       {loggedIn && isProfileVisible && (

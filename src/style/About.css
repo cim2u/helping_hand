@@ -22,7 +22,7 @@ body html {
 /* Header */
 .about-header {
   width: 1440px; /* Full width */
-  height: 204px;
+  height: 104px;
   padding: 48px 2rem;
   background-color: rgba(126, 53, 80, 1);
   border-bottom: 2px solid rgba(30, 30, 30, 0.65);

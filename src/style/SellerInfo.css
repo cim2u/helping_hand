@@ -1,6 +1,6 @@
 .d {
   width: 1440px;
-  height: 1024px;
+  height: 800px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -15,7 +15,7 @@
 
 .seller-info-container {
   width: 1440px;
-  height: 1024px;
+  height: 800px;
   position: relative;
   
   overflow: hidden;
@@ -150,6 +150,4 @@ left: -24px;
 
  
 }
-
-
 

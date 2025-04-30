@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap');
@@ -779,7 +778,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+ 
 }
 
 .product-modal-content {
@@ -817,6 +816,154 @@ body, html {
   color: #49454F;
   margin-bottom: 10px;
 }
+
+.product-price {
+  font-family: 'Outfit';
+  font-weight: 800;
+  font-size: 48px;
+  color: #7E3550;
+  margin-bottom: 20px;
+}
+
+.product-description {
+  font-family: 'Roboto';
+  font-size: 14px;
+  color: #49454F;
+  margin-bottom: 20px;
+}
+
+/* Close Icon */
+.close-icon {
+  cursor: pointer;
+  color: #7E3550;
+  font-size: 24px;
+}
+
+
+/* Modal background */
+.product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Modal content container */
+.modal-content {
+  position: relative;
+  width: 600px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Close button (X) in the top right */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #7e3550;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background 0.3s;
+}
+
+.close-modal:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+/* Product name (title) */
+.modal-content h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #7e3550;
+  margin: 20px 0;
+}
+
+/* Product image styling */
+.modal-product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Product description */
+.modal-content p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #49454f;
+  margin: 10px 0;
+}
+
+/* Price styling */
+.modal-content .product-price {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: #7e3550;
+  margin-top: 10px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
+  gap: 15px !important;
+  justify-items: left; /* aligns each item to the left of its grid cell */
+  padding: 1rem 0;
+  margin-top: 333px;
+  margin-left:-100px; /* No need for -0px */
+}
+
+
+.product-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.product-image {
+  width: 100%;
+  height: 160px;
+ 
+  border-radius: 10px;
+  border: 1px dashed #ccc;
+}
+
+.product-name {
+  margin-top: 15px;
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #7E3550;
+}
+
 
 .product-price {
   font-family: 'Outfit';
@@ -962,5 +1109,87 @@ body, html {
   justify-content: center;
   text-align: center;
   letter-spacing: 0.1px;
+  color: #7E3550;
+}
+/* Modal for Unregistered User */
+.unregisteredModalHome {
+  position: absolute;
+  width: 457.93px;
+  height: 295.16px;
+  left: 0;
+  top: -6px;
+  border-radius: 28px;
+  background: #FEFEFE;
+  border: 1px solid #7E3550;
+  backdrop-filter: blur(2px);
+  z-index: 999;
+}
+
+/* Inner Rectangle */
+.unregisteredModalInnerHome {
+  box-sizing: border-box;
+  position: absolute;
+  width: 409.1px;
+  height: 250.67px;
+  left: 23.87px;
+  top: 16.79px;
+  background: #FEFEFE;
+  border: 2px solid #7E3550;
+  border-radius: 28px;
+}
+
+/* Message */
+.unregisteredMessageHome {
+  position: absolute;
+  width: 208.35px;
+  height: 54.26px;
+  left: 65.11px;
+  top: 49.34px;
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+  color: #7E3550;
+}
+
+/* Sign Up Button Container */
+.unregisteredSignupFrameHome {
+  position: absolute;
+  width: 100px;
+  height: 31px;
+  left: 65px;
+  top: 182px;
+  background: #36BDD7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Sign Up Text */
+.unregisteredSignupTextHome {
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  color: #FEFEFE;
+}
+
+/* Login Prompt */
+.unregisteredLoginPromptHome {
+  position: absolute;
+  width: 216px;
+  height: 19px;
+  left: 65px;
+  top: 222px;
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  text-align: right;
   color: #7E3550;
 }
