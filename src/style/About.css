@@ -1,40 +1,36 @@
-body, html {
+body html {
+  height: 400px;
   margin: 0;
   padding: 0;
-  width: 100%;
-  max-width:1440px;
-  
-  overflow-x: hidden;  /* Prevent horizontal scrolling */
-  
-  font-family: "Roboto", sans-serif;
   box-sizing: border-box;
-  
 }
+
 
 .about-container {
   width: 100%;
   max-width: 1440px; 
   height:2;
-  
+  height: 792px;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   box-sizing: border-box;
   padding: 0 2rem;
-  position: relative;
+  position: absolute;
 }
 
 /* Header */
 .about-header {
   width: 1440px; /* Full width */
-  height: 104px;
-  padding: 1.5rem 2rem;
+  height: 204px;
+  padding: 48px 2rem;
   background-color: rgba(126, 53, 80, 1);
   border-bottom: 2px solid rgba(30, 30, 30, 0.65);
   display: flex;
   align-items: left;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-top:0px;
   box-sizing: border-box;
   margin-left:-33px;
  
@@ -168,12 +164,12 @@ body, html {
 .about-image {
   width: 370px;
   max-width: 374px;
-  height: 917px;
+  height: 680px;
   border-radius: 0px;
   border: 2px solid #7E3550;
   box-shadow: 0px 4px 4px 0px #00000040;
   opacity: 75%;
-  margin-top:-0px;
+  margin-top:23px;
   object-fit: cover;
   margin-right:93px;
   
