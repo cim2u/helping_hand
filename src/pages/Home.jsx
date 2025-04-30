@@ -3,7 +3,14 @@ import '../style/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logoImage from "../assets/Logo.png";
+import logoImage from "../assets/Logo.png"; 
+import { Outlet } from 'react-router-dom';  
+import Profile from '../components/ProfileModal'; // Adjust path as needed
+
+
+
+import { faCartPlus, faBagShopping } from '@fortawesome/free-solid-svg-icons';
+
 
 const Home = () => {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -424,42 +431,24 @@ const Home = () => {
   </div>
 )}
 
+{/* profile icon */}
+<FontAwesomeIcon 
+  icon={faUser} 
+  onClick={() => setIsProfileVisible(!isProfileVisible)} 
+/>
 
+/* Profile Modal */
+<Profile 
+  loggedIn={loggedIn}
+  isVisible={isProfileVisible}
+  onClose={() => setIsProfileVisible(false)}
+  handleLogoutClick={handleLogoutClick}
+/>
 
-
-
-      {loggedIn && isProfileVisible && (
-        <div className="profileWrapper" ref={profileRef}>
-          <div className="profileCard">
-            <div className="profileBackground">
-               
-              <div className="profilePicture" />
-              <div className="profileLabel">Profile</div>
-              <div className="profileCircle">
-                <div className="statusPrimary">
-                  <div className="checkPrimary" />
-                </div>
-              </div >
-              <div className="profileBanner"/>
-              <div className="profileBanner_1"/>
-              <div className="profileRec"/>
-              <div className="profileSellerLabel">Seller</div>
-              <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
-              <div className="profileOrdersTitle">Orders & Purchases</div>
-              <div className="profileInfoTitle">Personal Information</div>
-              <div className="profileLinkOr">Order</div>
-              <div className="profileLinkCar">Cart</div>
-              <div className="profileEmail">Name: Sissy Shey</div>
-              <div className="profileEmail">Email: shelayamba@gmail.com</div>
-              <div className="profilePhone">Phone Number: 63+ 9771234545</div>
-              <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
-              <div className="profileLogout" onClick={handleLogoutClick}>Log out</div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+          
+        <Outlet /> {/* Render nested routes here */}
+      </div>
+    );
 };
 
 export default Home;
