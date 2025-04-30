@@ -1,4 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+/* General background styles */
+.background-overlay {
+    position: absolute;
+    width: 787px;
+    height: 735px;
+    left: 496px;
+    top: 154px;
+    background: linear-gradient(180deg, #000000 0%, #7E3550 58%);
+    opacity: 0.5;
+    border-radius: 28px;
+  }
+  
+  /* Group 13 / Form Container */
+  .account-info-group {
+    position: absolute;
+    width: 373px;
+    height: 351px;
+    left: 566px;
+    top: 183px;
+  }
+  
+  /* Title */
+  .account-info-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-79px);
+    top: 183px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 24px;
+    color: #FEFEFE;
+  }
+  
+  /* Common styles for labels and inputs */
+  .label {
+    font-family: 'Outfit';
+    font-weight: 500;
+    font-size: 15px;
+    color: #FEFEFE;
+    text-align: right;
+    margin-bottom: 4px;
+  }
+  
+  .input-box {
+    width: 100%;
+    height: 31px;
+    background: #FEFEFE;
+    border-radius: 8px;
+    border: none;
+    padding: 6px 10px;
+  }
+  
+  /* Sections */
+  .input-section {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  /* Positioning each field */
+  .first-name-section { left: 566px; top: 229px; width: 171px; }
+  .last-name-section { left: 767px; top: 229px; width: 172px; }
+  .email-section { left: 567px; top: 309px; width: 372px; }
+  .username-section { left: 567px; top: 389px; width: 372px; }
+  .password-section { left: 566px; top: 469px; width: 372px; }
+  
+  /* Business Information */
+  .business-info-title {
+    position: absolute;
+    left: 567px;
+    top: 566px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 24px;
+    color: #FEFEFE;
+  }
+  
+  .store-name-section { left: 566px; top: 621px; width: 372px; }
+  .store-address-section { left: 567px; top: 709px; width: 372px; }
+  .gmail-account-section { left: 567px; top: 787px; width: 372px; }
+  
+  .input-section input {
+    width: 100%;
+  }
+  
+
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
 

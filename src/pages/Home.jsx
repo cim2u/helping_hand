@@ -6,6 +6,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import logoImage from "../assets/Logo.png"; 
 import { Outlet } from 'react-router-dom';  
 import Profile from '../components/ProfileModal'; // Adjust path as needed
+import Cart from '../components/CartModal';  // Adjust the path if necessary
+import LoginForm from "../pages/LogIn.jsx"
+
 
 
 
@@ -23,12 +26,19 @@ const Home = () => {
   const [isModalVisible, setIsModalVisible] = useState(false); // Modal visibility state
   const [selectedProduct, setSelectedProduct] = useState(null); // Selected product for the modal
   const [isLoggedIn, setIsLoggedIn] = useState(false); // default is false, change based on user login status
+  const [isCartVisible, setIsCartVisible] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
   const sidebarRef = useRef(null);
   const profileRef = useRef(null);
 
+  // Function to handle login success
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    setIsModalVisible(false); // Close the modal after login
+    navigate("/home"); // Optional: Redirect user to home page after successful login
+  };
   useEffect(() => {
     const registeredStatus = localStorage.getItem('isRegistered') === 'true';
     const subscribedStatus = localStorage.getItem('isSubscribed') === 'true';
@@ -388,12 +398,11 @@ const Home = () => {
 </section>
 
 {isModalVisible && selectedProduct && (
-  <div className="product-modal">
-    {isLoggedIn?(
+  <div className="product-modal" onClick={closeModal}>
+    {isRegistered? (
       // Registered user - show product details
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="close-modal" onClick={closeModal}>X</button>
-        <h2>{selectedProduct.name}</h2>
         <img
           src={selectedProduct.image}
           alt={selectedProduct.name}
@@ -445,7 +454,22 @@ const Home = () => {
   handleLogoutClick={handleLogoutClick}
 />
 
-          
+<div>
+      {/* Cart Icon */}
+      <FontAwesomeIcon 
+        icon={faCartShopping} 
+        onClick={() => setIsCartVisible(!isCartVisible)} 
+        className="icon"
+      />
+
+      {/* Cart Modal */}
+      {isCartVisible && (
+        <Cart 
+          isVisible={isCartVisible}
+          onClose={() => setIsCartVisible(false)}
+        />
+      )}
+    </div>
         <Outlet /> {/* Render nested routes here */}
       </div>
     );
