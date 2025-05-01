@@ -30,50 +30,44 @@ const AccountInfo = () => {
         <div className="section-title">USER</div>
         <div className="menu-item" onClick={() => navigate("/logout")}>LOG OUT</div>
 
-        {/* Account Info Form */}
-        <div className="account-info-title">Account Info</div>
+        <div className="profile-form-accountinfo">
+      {/* Background */}
+      <div className="background-accountinfo" />
 
-        <div className="input-section first-name-section">
-          <label className="label">First Name</label>
-          <input type="text" className="input-box" />
-        </div>
+      {/* Group 13 */}
+      <div className="group-13-accountinfo" />
 
-        <div className="input-section last-name-section">
-          <label className="label">Last Name</label>
-          <input type="text" className="input-box" />
-        </div>
+      {/* Account Info */}
+      <div className="account-info-accountinfo">
+        <div className="section-title-accountinfo">MY ACCOUNT</div>
+        <div className="menu-item-accountinfo">Account Info</div>
+      </div>
 
-        <div className="input-section email-section">
-          <label className="label">Email</label>
-          <input type="email" className="input-box" />
-        </div>
+      {/* Personal Information */}
+      <div className="personal-info-accountinfo">
+        <div className="label-accountinfo">First Name</div>
+        <div className="input-frame-accountinfo" />
+        <div className="label-accountinfo">Last Name</div>
+        <div className="input-frame-accountinfo" />
+        <div className="label-accountinfo">Email</div>
+        <div className="input-frame-accountinfo" />
+        <div className="label-accountinfo">Username</div>
+        <div className="input-frame-accountinfo" />
+        <div className="label-accountinfo">Password</div>
+        <div className="input-frame-accountinfo" />
+      </div>
 
-        <div className="input-section username-section">
-          <label className="label">Username</label>
-          <input type="text" className="input-box" />
-        </div>
-
-        <div className="input-section password-section">
-          <label className="label">Password</label>
-          <input type="password" className="input-box" />
-        </div>
-
-        <div className="business-info-title">Business Information</div>
-
-        <div className="input-section store-name-section">
-          <label className="label">Store Name</label>
-          <input type="text" className="input-box" />
-        </div>
-
-        <div className="input-section store-address-section">
-          <label className="label">Store Address</label>
-          <input type="text" className="input-box" />
-        </div>
-
-        <div className="input-section gmail-account-section">
-          <label className="label">Gmail Account</label>
-          <input type="email" className="input-box" />
-        </div>
+      {/* Business Information */}
+      <div className="business-info-accountinfo">
+        <div className="section-title-accountinfo">BUSINESS INFORMATION</div>
+        <div className="label-accountinfo">Store Name</div>
+        <div className="input-frame-accountinfo" />
+        <div className="label-accountinfo">Store Address</div>
+        <div className="input-frame-accountinfo" />
+        <div className="label-accountinfo">Gmail Account</div>
+        <div className="input-frame-accountinfo" />
+      </div>
+    </div>
         
       </div>
       <button className="backhome-button" onClick={handleBackHome}>Back Home</button>

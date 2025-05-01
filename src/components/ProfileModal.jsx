@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import "../style/ProfileModal.css";
 
 const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
   const profileRef = useRef(null);

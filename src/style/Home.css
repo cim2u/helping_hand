@@ -385,6 +385,7 @@ body, html {
   color: #ff6b6b; /* Change color on hover */
 }
 /* General container for profile wrapper */
+
 .profile-wrapper {
   position: fixed;
   top: 0;
@@ -560,8 +561,8 @@ body, html {
   width: 415px !important;
   height: 880px !important;
   overflow: hidden !important; /* Wrapper remains fixed and hidden */
-  z-index: 1;
-  background: transparent;
+  
+  background: white;
 }
 /* Seller */
 .profileSellerLabel {

@@ -238,3 +238,94 @@
   letter-spacing: 0.1px;
  -background-color:white;   
 }
+
+/* General Styles */
+.profile-form-accountinfo {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+.background-accountinfo {
+  position: absolute;
+  width: 787px;
+  height: 735px;
+  left: 497px;
+  top: 151px;
+  background: linear-gradient(180deg, #000000 0%, #7E3550 58%);
+  opacity: 0.5;
+  border-radius: 28px;
+}
+
+.group-13-accountinfo {
+  position: absolute;
+  width: 373px;
+  height: 351px;
+  left: 567px;
+  top: 180px;
+}
+
+.section-title-accountinfo {
+  position: absolute;
+  width: 150px;
+  height: 24px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #FEFEFE;
+}
+
+.menu-item-accountinfo {
+  position: absolute;
+  width: 150px;
+  height: 24px;
+  left: calc(50% - 150px/2 - 78px);
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 24px;
+  color: #FEFEFE;
+  cursor: pointer;
+}
+
+/* Personal Info Styles */
+.personal-info-accountinfo .label-accountinfo {
+  font-family: 'Outfit';
+  font-weight: 500;
+  font-size: 15px;
+  color: #FEFEFE;
+  margin-bottom: 10px;
+}
+
+.input-frame-accountinfo {
+  width: 171px;
+  height: 31px;
+  background: #FEFEFE;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.input-frame-accountinfo.large {
+  width: 372px;
+}
+
+/* Business Info Styles */
+.business-info-accountinfo .label-accountinfo {
+  font-family: 'Outfit';
+  font-weight: 500;
+  font-size: 15px;
+  color: #FEFEFE;
+  margin-bottom: 10px;
+}
+
+.input-frame-accountinfo-business {
+  width: 372px;
+  height: 31px;
+  background: #FEFEFE;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.input-frame-accountinfo-business.large {
+  width: 374px;
+}

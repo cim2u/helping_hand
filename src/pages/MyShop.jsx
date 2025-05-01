@@ -11,6 +11,7 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../assets/Logo.png";
+import Profile from '../components/ProfileModal'; // Adjust path as needed
 
 const MyShop = () => {
   const location = useLocation();
@@ -27,6 +28,9 @@ const MyShop = () => {
   const [scrolledRightProduct2, setScrolledRightProduct2] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 const [selectedProduct, setSelectedProduct] = useState(null);
+const [userRole, setUserRole] = useState("student"); // Can be "student", "seller", or "buyer"
+const [loggedIn, setLoggedIn] = useState(false); // or set it to true based on your logic
+
 
 
   const productListRef = useRef(null);
@@ -154,7 +158,17 @@ const [selectedProduct, setSelectedProduct] = useState(null);
           {!isBuyer && (
             <FontAwesomeIcon icon={faBars} className="icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
           )}
-          <FontAwesomeIcon icon={faUser} className="icon" />
+          <FontAwesomeIcon icon={faUser} className="icon" 
+  
+onClick={() => setIsProfileVisible(!isProfileVisible)} 
+/>
+
+<Profile 
+loggedIn={loggedIn}
+isVisible={isProfileVisible}
+onClose={() => setIsProfileVisible(false)}
+handleLogoutClick={handleLogoutClick}
+/>
           <FontAwesomeIcon icon={faCartShopping} className="icon" />
         </div>
       </header>
@@ -237,13 +251,28 @@ const [selectedProduct, setSelectedProduct] = useState(null);
 
       
           </div>
-          <FontAwesomeIcon icon={faArrowRight} className="always-visible-arrow" />
-          <FontAwesomeIcon
-            icon={faPlus}
-            className="add-button"
-            style={{ fontSize: "18px" }}
-            onClick={() => setIsModalOpen(true)}
-          />
+          
+               
+<div>
+  {/* Only show button if the user is a student or seller */}
+  {(userRole === "student" || userRole === "seller") && (
+    <FontAwesomeIcon
+      icon={faPlus}
+      className="add-button"
+      style={{ fontSize: "18px" }}
+      onClick={() => setIsModalOpen(true)}
+    />
+  )}
+
+  {/* Only show subscribe button if the user is a buyer */}
+  {userRole === "buyer" && (
+    <button className="subscribe-button">
+      Subscribe
+    </button>
+  )}
+
+      </div>
+
         </div>
       </div>
 

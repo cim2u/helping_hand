@@ -28,7 +28,7 @@ const Home = () => {
   const [selectedProduct, setSelectedProduct] = useState(null); // Selected product for the modal
   const [isLoggedIn, setIsLoggedIn] = useState(false); // default is false, change based on user login status
   const [isCartVisible, setIsCartVisible] = useState(false);
-
+  
   const navigate = useNavigate();
   const location = useLocation();
   const sidebarRef = useRef(null);
@@ -58,6 +58,8 @@ const Home = () => {
         return;
       }
     }
+
+    
 
     setIsRegistered(registeredStatus);
     setIsSubscribed(subscribedStatus);
@@ -175,17 +177,21 @@ const Home = () => {
             <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={toggleSidebar} />
           </div>
           <ul className="sidebar-menu">
-            <li onClick={() => navigate('/about')}>ABOUT</li>
-            <li onClick={() => navigate('/home')}>HOME</li>
-            <li onClick={() => navigate('/support')}>SUPPORT</li>
-            {isRegistered && (
-              <>
-                <li onClick={() => navigate('/shop')}>SHOPS</li>
-                {userRole === 'student' && <li onClick={() => navigate('/myshop')}>MYSHOP</li>}
-                <li onClick={() => navigate('/settings')}>SETTINGS</li>
-              </>
-            )}
-          </ul>
+  <li onClick={() => navigate('/about')}>ABOUT</li>
+  <li onClick={() => navigate('/home')}>HOME</li>
+  <li onClick={() => navigate('/support')}>SUPPORT</li>
+  {isRegistered && (
+    <>
+      <li onClick={() => navigate('/shop')}>SHOPS</li>
+      {userRole === 'student' &&  (
+        <li onClick={() => navigate('/myshop')}>MYSHOP</li>
+      )}
+      <li onClick={() => navigate('/settings')}>SETTINGS</li>
+    </>
+  )}
+</ul>
+
+
         </aside>
       )}
 

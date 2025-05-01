@@ -151,3 +151,198 @@
   letter-spacing: 0.1px;
  background-color:white;   
 }
+
+/* Background */
+.background-theme {
+    position: absolute;
+    width: 787px;
+    height: 735px;
+    left: 496px;
+    top: 154px;
+    background: linear-gradient(180deg, #000000 0%, #7E3550 58%);
+    opacity: 0.5;
+    border-radius: 28px;
+  }
+  
+  /* Themes */
+  .themes-theme {
+    position: absolute;
+    width: 122px;
+    height: 24px;
+    left: calc(50% - 122px/2 + 170px);
+    top: 180px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    color: #FEFEFE;
+  }
+  
+  /* Group 8 */
+  .group-8-theme {
+    position: absolute;
+    width: 271px;
+    height: 216px;
+    left: 580px;
+    top: 277px;
+  }
+  
+  .rectangle-77-theme {
+    position: absolute;
+    width: 271px;
+    height: 160px;
+    left: 580px;
+    top: 277px;
+    background: rgba(30, 30, 30, 0.65);
+  }
+  
+  /* Morning */
+  .morning-theme {
+    position: absolute;
+    width: 173px;
+    height: 23px;
+    left: calc(50% - 173px/2 - 30.5px);
+    top: 458px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+  }
+  
+  /* Radio buttons */
+  .radio-buttons-theme {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 794px;
+    top: 445px;
+  }
+  
+  .container-theme {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+  }
+  
+  .state-layer-theme {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .icon-theme {
+    width: 24px;
+    height: 24px;
+    opacity: 0.38;
+    background: #1D1B20;
+  }
+  
+  /* Group 9 */
+  .group-9-theme {
+    position: absolute;
+    width: 271px;
+    height: 216px;
+    left: 929px;
+    top: 277px;
+  }
+  
+  .rectangle-77-theme {
+    position: absolute;
+    width: 271px;
+    height: 160px;
+    left: 929px;
+    top: 277px;
+    background: rgba(30, 30, 30, 0.65);
+  }
+  
+  /* Lilac */
+  .lilac-theme {
+    position: absolute;
+    width: 173px;
+    height: 23px;
+    left: calc(50% - 173px/2 + 318.5px);
+    top: 458px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+  }
+  
+  /* Group 10 */
+  .group-10-theme {
+    position: absolute;
+    width: 271px;
+    height: 216px;
+    left: 580px;
+    top: 550px;
+  }
+  
+  .rectangle-77-theme {
+    position: absolute;
+    width: 271px;
+    height: 160px;
+    left: 580px;
+    top: 550px;
+    background: rgba(30, 30, 30, 0.65);
+  }
+  
+  /* Group 11 */
+  .group-11-theme {
+    position: absolute;
+    width: 271px;
+    height: 216px;
+    left: 929px;
+    top: 550px;
+  }
+  
+  .rectangle-77-theme {
+    position: absolute;
+    width: 271px;
+    height: 160px;
+    left: 929px;
+    top: 550px;
+    background: rgba(30, 30, 30, 0.65);
+  }
+  
+  /* More themes */
+  .more-themes-theme {
+    position: absolute;
+    width: 218px;
+    height: 24px;
+    left: 959px;
+    top: 618px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+  }
+  

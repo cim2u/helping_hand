@@ -1,0 +1,486 @@
+/* Shop Container */
+.shop-container {
+    position: relative;
+    width: 1440px;
+    height: 1024px;
+    background: #FEFEFE;
+  }
+  
+  /* Text */
+  .shop-text {
+    position: absolute;
+    width: 0px;
+    height: 16px;
+    left: 211px;
+    top: 565px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-decoration-line: underline;
+    color: #7E3550;
+  }
+  
+  /* Rectangle 98 */
+  .shop-rectangle98 {
+    position: absolute;
+    width: 1441px;
+    height: 66px;
+    left: 0px;
+    top: 295px;
+    background: #7E3550;
+  }
+  
+  /* SHOPS */
+  .shop-shops {
+    position: absolute;
+    width: 128px;
+    height: 45px;
+    left: 34px;
+    top: 305px;
+    font-family: 'Rowdies';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+    color: #FFFFFF;
+  }
+  
+  /* Group 24 */
+  .shop-group24 {
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 34px;
+    top: 411px;
+  }
+  
+  .shop-rectangle100 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 34px;
+    top: 411px;
+    background: #FEFEFE;
+    border: 2px solid #7E3550;
+    border-radius: 16px;
+  }
+  
+  .shop-image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 66px;
+    top: 427px;
+    background: url();
+    border: 2px solid #7E3550;
+    border-radius: 100px;
+  }
+  
+  .shop-storeName {
+    position: absolute;
+    width: 107px;
+    height: 25px;
+    left: 191px;
+    top: 469px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #7E3550;
+  }
+  
+  /* Group 25 */
+  .shop-group25 {
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 35px;
+    top: 609px;
+  }
+  
+  .shop-rectangle100 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 35px;
+    top: 609px;
+    background: #FEFEFE;
+    border: 2px solid #7E3550;
+    border-radius: 16px;
+  }
+  
+  .shop-image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 66px;
+    top: 625px;
+    background: rgba(172, 180, 215, 0.5);
+    border: 2px solid #7E3550;
+    border-radius: 100px;
+  }
+  
+  .shop-storeName {
+    position: absolute;
+    width: 111px;
+    height: 25px;
+    left: 191px;
+    top: 667px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #7E3550;
+  }
+  
+  /* Group 26 */
+  .shop-group26 {
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 388px;
+    top: 411px;
+  }
+  
+  .shop-rectangle100 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 388px;
+    top: 411px;
+    background: #FEFEFE;
+    border: 2px solid #7E3550;
+    border-radius: 16px;
+  }
+  
+  .shop-image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 420px;
+    top: 427px;
+    background: rgba(172, 180, 215, 0.5);
+    border: 2px solid #7E3550;
+    border-radius: 100px;
+  }
+  
+  .shop-storeName {
+    position: absolute;
+    width: 111px;
+    height: 25px;
+    left: 545px;
+    top: 469px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #7E3550;
+  }
+  
+  /* Group 28 */
+  .shop-group28 {
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 1094px;
+    top: 411px;
+  }
+  
+  .shop-rectangle100 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 1094px;
+    top: 411px;
+    background: #FEFEFE;
+    border: 2px solid #7E3550;
+    border-radius: 16px;
+  }
+  
+  .shop-image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 1126px;
+    top: 427px;
+    background: rgba(172, 180, 215, 0.5);
+    border: 2px solid #7E3550;
+    border-radius: 100px;
+  }
+  
+  .shop-storeName {
+    position: absolute;
+    width: 111px;
+    height: 25px;
+    left: 1251px;
+    top: 469px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #7E3550;
+  }
+  
+  /* Group 29 */
+  .shop-group29 {
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 740px;
+    top: 411px;
+  }
+  
+  .shop-rectangle100 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 740px;
+    top: 411px;
+    background: #FEFEFE;
+    border: 2px solid #7E3550;
+    border-radius: 16px;
+  }
+  
+  .shop-image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 772px;
+    top: 427px;
+    background: rgba(172, 180, 215, 0.5);
+    border: 2px solid #7E3550;
+    border-radius: 100px;
+  }
+  
+  .shop-storeName {
+    position: absolute;
+    width: 111px;
+    height: 25px;
+    left: 897px;
+    top: 469px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #7E3550;
+  }
+  
+  /* Primary */
+  .shop-primary {
+    position: absolute;
+    width: 21px;
+    height: 18.01px;
+    left: calc(50% - 21px / 2 + 666.5px);
+    top: calc(50% - 18.01px / 2 - 184px);
+    background: #FEFEFE;
+  }
+  
+  /* Menu */
+  .shop-menu {
+    position: absolute;
+    width: 35px;
+    height: 40px;
+    left: 51px;
+    top: 210px;
+  }
+  
+  /* Icon */
+  .shop-icon {
+    position: absolute;
+    visibility: hidden;
+    left: 12.5%;
+    right: 12.5%;
+    top: 25%;
+    bottom: 25%;
+    background: #FEFEFE;
+  }
+  
+  /* Helping Hand */
+  .shop-helping {
+    position: absolute;
+    width: 503px;
+    height: 141px;
+    left: 45px;
+    top: 15px;
+    font-family: 'Rowdies';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 119px;
+    color: #36BDD7;
+    border: 2px solid #FEFEFE;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .shop-hand {
+    display: inline;
+    font-family: 'Outfit';
+    font-weight: 800;
+  }
+  
+  /* User Icon */
+  .shop-user {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    left: 1370px;
+    top: 36px;
+  }
+  
+  .shop-icon {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    left: 0px;
+    top: 0px;
+    background: url(); /* Change icon URL here */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  /* Subscribe Button */
+  .shop-button {
+    position: absolute;
+    width: 183px;
+    height: 53px;
+    left: calc(50% - 183px / 2 + 0px);
+    top: 935px;
+    background: #7E3550;
+    border-radius: 40px;
+  }
+  
+  .shop-state-layer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .shop-subscribe {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  
+  /* Group 38 */
+  .shop-group38 {
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 34px;
+    top: 783px;
+  }
+  
+  .shop-rectangle100 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 34px;
+    top: 783px;
+    background: #FEFEFE;
+    border: 2px solid #7E3550;
+    border-radius: 16px;
+  }
+  
+  .shop-image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 66px;
+    top: 799px;
+    background: rgba(172, 180, 215, 0.5);
+    border: 2px solid #7E3550;
+    border-radius: 100px;
+  }
+  
+  .shop-storeName {
+    position: absolute;
+    width: 111px;
+    height: 25px;
+    left: 191px;
+    top: 841px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #7E3550;
+  }
+  
+  /* Group 39 */
+  .shop-group39 {
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 388px;
+    top: 783px;
+  }
+  
+  .shop-rectangle100 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 142px;
+    left: 388px;
+    top: 783px;
+    background: #FEFEFE;
+    border: 2px solid #7E3550;
+    border-radius: 16px;
+  }
+  
+  .shop-image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 420px;
+    top: 799px;
+    background: rgba(172, 180, 215, 0.5);
+    border: 2px solid #7E3550;
+    border-radius: 100px;
+  }
+  
+  .shop-storeName {
+    position: absolute;
+    width: 111px;
+    height: 25px;
+    left: 545px;
+    top: 841px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #7E3550;
+  }
+  

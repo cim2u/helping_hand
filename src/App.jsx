@@ -17,7 +17,11 @@ import SellerInfo from "./pages/SellerInfo.jsx";
 import ProductDetail from "./components/ProductGrid.jsx"; // ✅ Import Product Detail page
 import Settings from "./pages/Settings.jsx";
 import Cart from "./components/CartModal.jsx";
-import Support from './pages/Support';
+import Support from './pages/Support.jsx';
+import AccountInfo from './pages/AccountInfo.jsx';
+import MyPurchases from './pages/MyPurchases.jsx';
+import CustomizeThemes from './pages/CustomizeThemes.jsx';
+import Shop from './pages/Shop.jsx';
 import "./App.css";
 
 function App() {
@@ -53,6 +57,10 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/account-info" element={<AccountInfo />} />
+        <Route path="/my-purchases" element={<MyPurchases />} />
+        <Route path="/customize-themes"element={<CustomizeThemes/>}/>
+        <Route path="/shop"element={<Shop/>}/>
 
 
         {/* Product Details Route */}
