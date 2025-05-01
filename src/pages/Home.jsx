@@ -7,6 +7,7 @@ import logoImage from "../assets/Logo.png";
 import { Outlet } from 'react-router-dom';  
 import Profile from '../components/ProfileModal'; // Adjust path as needed
 import Cart from '../components/CartModal';  // Adjust the path if necessary
+import { Link } from 'react-router-dom';
 import LoginForm from "../pages/LogIn.jsx"
 
 
@@ -143,7 +144,10 @@ const Home = () => {
           {loggedIn && (
   <>
   <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
-    <FontAwesomeIcon icon={faCartShopping} className="icon" />
+  <Link to="/cart">
+  <FontAwesomeIcon icon={faCartShopping} className="icon" />
+</Link>
+
     
   </>
 )}
@@ -442,11 +446,10 @@ const Home = () => {
 
 {/* profile icon */}
 <FontAwesomeIcon 
-  icon={faUser} 
+  
   onClick={() => setIsProfileVisible(!isProfileVisible)} 
 />
 
-/* Profile Modal */
 <Profile 
   loggedIn={loggedIn}
   isVisible={isProfileVisible}
@@ -454,22 +457,7 @@ const Home = () => {
   handleLogoutClick={handleLogoutClick}
 />
 
-<div>
-      {/* Cart Icon */}
-      <FontAwesomeIcon 
-        icon={faCartShopping} 
-        onClick={() => setIsCartVisible(!isCartVisible)} 
-        className="icon"
-      />
 
-      {/* Cart Modal */}
-      {isCartVisible && (
-        <Cart 
-          isVisible={isCartVisible}
-          onClose={() => setIsCartVisible(false)}
-        />
-      )}
-    </div>
         <Outlet /> {/* Render nested routes here */}
       </div>
     );

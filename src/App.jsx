@@ -16,7 +16,8 @@ import MyShop from "./pages/MyShop.jsx";
 import SellerInfo from "./pages/SellerInfo.jsx";
 import ProductDetail from "./components/ProductGrid.jsx"; // ✅ Import Product Detail page
 import Settings from "./pages/Settings.jsx";
-
+import Cart from "./components/CartModal.jsx";
+import Support from './pages/Support';
 import "./App.css";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
 
         {/* Other Pages */}
         <Route path="/about" element={<About />} />
+        <Route path="/support" element={<Support />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/continue-as" element={<ContinueAs />} />
@@ -50,6 +52,8 @@ function App() {
         <Route path="/sellerinfo" element={<SellerInfo />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/subscribe" element={<Subscribe />} />
+        <Route path="/cart" element={<Cart />} />
+
 
         {/* Product Details Route */}
         <Route path="/product/:id" element={<ProductDetail />} />

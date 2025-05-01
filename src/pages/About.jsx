@@ -32,7 +32,7 @@ function About() {
 
         {/* Navigation Links (Separate from the Header) */}
         <div className="nav-container">
-          <nav className="nav-links">
+          <nav className="nav-links-h">
             <a href="#" onClick={() => handleNavigation("about")}>About</a>
             <a href="#" onClick={() => handleNavigation("support")}>Support</a>
             <a href="#" onClick={() => handleNavigation("home")}>Home</a>
