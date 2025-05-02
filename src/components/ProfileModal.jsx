@@ -55,7 +55,7 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
           <div className="profilePhone">Phone Number: 63+ 9771234545</div>
           <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
 
-          <div className="profileLogout" onClick={handleLogoutClick}>Log out</div>
+          <div className="profileLogout1" onClick={handleLogoutClick}>Log out</div>
         </div>
       </div>
     </div>
