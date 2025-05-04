@@ -11,12 +11,17 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../assets/Logo.png";
-import Profile from '../components/ProfileModal'; // Adjust path as needed
+import ProfileModal from '../components/ProfileModal';
+import { Link } from 'react-router-dom';
+
+
 
 const MyShop = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { state } = location;
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Or false depending on logic
+
 
   const [activeTab, setActiveTab] = useState("products");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -30,6 +35,8 @@ const MyShop = () => {
 const [selectedProduct, setSelectedProduct] = useState(null);
 const [userRole, setUserRole] = useState("student"); // Can be "student", "seller", or "buyer"
 const [loggedIn, setLoggedIn] = useState(false); // or set it to true based on your logic
+const [showProfile, setShowProfile] = useState(false);
+
 
 
 
@@ -42,6 +49,11 @@ const [loggedIn, setLoggedIn] = useState(false); // or set it to true based on y
     setSelectedProduct(product);
     setIsModalVisible(true);
   };
+
+  const toggleProfileVisibility = () => {
+    setShowProfile(!showProfile);
+  };
+  
   
   const closeModal = () => {
     setIsModalVisible(false);
@@ -149,29 +161,44 @@ const [loggedIn, setLoggedIn] = useState(false); // or set it to true based on y
     }
   };
 
+  
   return (
     <div className="shop-container">
       {/* Header */}
       <header className="shop-header">
-        <img src={logoImage} alt="Helping Hand Banner" className="logoLarge" />
-        <div className="icon-container">
-          {!isBuyer && (
-            <FontAwesomeIcon icon={faBars} className="icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
-          )}
-          <FontAwesomeIcon icon={faUser} className="icon" 
-  
-onClick={() => setIsProfileVisible(!isProfileVisible)} 
-/>
+  <img src={logoImage} alt="Helping Hand Banner" className="logoLarge" />
 
-<Profile 
-loggedIn={loggedIn}
-isVisible={isProfileVisible}
-onClose={() => setIsProfileVisible(false)}
-handleLogoutClick={handleLogoutClick}
-/>
-          <FontAwesomeIcon icon={faCartShopping} className="icon" />
-        </div>
-      </header>
+  <div className="icon-container">
+    {!isBuyer && (
+      <FontAwesomeIcon
+        icon={faBars}
+        className="icon"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      />
+    )}
+
+    {/* Profile icon */}
+    <FontAwesomeIcon
+      icon={faUser}
+      className="icon"
+      onClick={toggleProfileVisibility}
+    />
+
+    {/* Profile Modal */}
+    <ProfileModal
+      isVisible={isProfileVisible}
+      loggedIn={isLoggedIn}
+      onClose={() => setIsProfileVisible(false)}
+      handleLogoutClick={handleLogoutClick}
+    />
+
+    {/* Cart icon that navigates to /cart */}
+    <Link to="/cart">
+      <FontAwesomeIcon icon={faCartShopping} className="icon" />
+    </Link>
+  </div>
+</header>
+
 
       {/* Background */}
       <div className="background-cover"></div>
@@ -186,7 +213,7 @@ handleLogoutClick={handleLogoutClick}
             {[
               { label: "ABOUT", route: "/about" },
               { label: "HOME", route: "/home" },
-              { label: "SHOPS", route: "/" },
+              { label: "SHOPS", route: "/shop" },
               { label: "SUPPORT", route: "/support" },
               { label: "SETTINGS", route: "/settings" }, // You can change this or handle it specially
             ].map((item, index) => (

@@ -52,7 +52,7 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/continue-as" element={<ContinueAs />} />
         <Route path="/terms" element={<TermsAndPolicy />} />
-        <Route path="/myshop" element={<MyShop />} />
+        <Route path="/store" element={<MyShop />} />
         <Route path="/sellerinfo" element={<SellerInfo />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/subscribe" element={<Subscribe />} />
@@ -65,7 +65,7 @@ function App() {
 
         {/* Product Details Route */}
         <Route path="/product/:id" element={<ProductDetail />} />
-
+        <Route path="/store/:storeName" element={<MyShop />} />
         {/* Protected Routes for Dashboards */}
         <Route
           path="/student-dashboard"

@@ -1,0 +1,270 @@
+/* Container */
+.payment-container {
+  position: relative;
+  width: 584px;
+  height: 1024px;
+  background: #ffffff;
+  border-radius: 28px;
+}
+
+/* Place Order Button */
+.payment-order-button {
+  position: absolute;
+  width: 156px;
+  height: 29px;
+  left: 402px;
+  top: 972px;
+  background: #7e3550;
+  border-radius: 28px;
+}
+
+.payment-order-button-text {
+  position: absolute;
+  width: 109px;
+  height: 16px;
+  left: 426px;
+  top: 979px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  color: #ffffff;
+}
+
+/* Address Input */
+.payment-address-label {
+  position: absolute;
+  width: 243px;
+  height: 20px;
+  left: 27px;
+  top: 35px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: #7e3550;
+}
+
+.payment-input-field {
+  position: absolute;
+  width: 531px;
+  height: 40px;
+  left: 27px;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.payment-input-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 16px;
+  width: 531px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #7e3550;
+  border-radius: 8px;
+}
+
+.payment-input-value {
+  width: 499px;
+  height: 16px;
+  flex-grow: 1;
+}
+
+/* Product Group */
+.payment-purchase-details-title {
+  position: absolute;
+  width: 191px;
+  height: 20px;
+  left: 27px;
+  top: 234px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: #7e3550;
+}
+
+.payment-product-card {
+  position: absolute;
+  width: 157px;
+  height: 162.69px;
+  left: 27px;
+  top: 279px;
+  background: #fefefe;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+.payment-product-image {
+  position: absolute;
+  width: 121px;
+  height: 123px;
+  left: 45px;
+  top: 297px;
+  background-image: url('');
+  background-size: cover;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  border-radius: 16px;
+}
+
+.payment-product-title {
+  position: absolute;
+  width: 155px;
+  height: 24px;
+  left: 212px;
+  top: 297px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  color: #7e3550;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.payment-product-seller {
+  position: absolute;
+  left: 212px;
+  top: 321px;
+  width: 122px;
+  height: 20px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #7e3550;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.1px;
+}
+
+.payment-product-quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  margin-left: 8px;
+  background-color: black;
+}
+
+.payment-qty-btn {
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.payment-qty-value {
+  min-width: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Dropdown */
+.payment-select-field {
+  position: absolute;
+  width: 240px;
+  height: 30px;
+  left: 212px;
+  top: 390px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.payment-select-box {
+  display: flex;
+  align-items: center;
+  padding: 12px 12px 12px 16px;
+  width: 240px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+}
+
+.payment-select-value {
+  flex-grow: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #1e1e1e;
+}
+
+.payment-chevron-down {
+  width: 16px;
+  height: 16px;
+  border: 1.6px solid #1e1e1e;
+}
+
+/* Summary Text */
+.payment-summary-text {
+  position: absolute;
+  width: 227px;
+  height: 160px;
+  left: 44px;
+  top: 483px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: #7e3550;
+}
+
+/* Payment Methods */
+.payment-payment-methods-title {
+  position: absolute;
+  width: 198px;
+  height: 20px;
+  left: 27px;
+  top: 746px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: #7e3550;
+}
+
+.payment-checkbox-field {
+  position: absolute;
+  width: 240px;
+  height: 28px;
+  left: 55px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-checkbox-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  width: 240px;
+  height: 28px;
+}
+
+.payment-checkbox {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border: 1px solid #757575;
+  border-radius: 4px;
+}
+
+.payment-checkbox-label {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  color: #7e3550;
+}

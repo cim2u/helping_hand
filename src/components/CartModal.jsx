@@ -1,32 +1,47 @@
-import React from 'react';
-import '../style/CartModal.css'; // if you're using the CSS directly
+import React, { useRef } from 'react';
+import PaymentConfirmationModal from './PaymentConfirmationModal';
+import '../style/CartModal.css';
 
 const CartModal = () => {
+  const paymentModalRef = useRef();
+
+  const handleBuyNow = () => {
+    if (paymentModalRef.current) {
+      paymentModalRef.current.open();
+    }
+  };
+
   return (
-    <div className="cart">
-      <div className="header">
-        <div className="logo">
-          <h1 className="helping">Helping</h1>
-          <h1 className="hand">Hand</h1>
+    <>
+      <div className="cart">
+        <div className="header">
+          <div className="logo">
+            <h1 className="helping">Helping</h1>
+            <h1 className="hand">Hand</h1>
+          </div>
+          <button className="subscribe-btn">SUBSCRIBE</button>
         </div>
-        <button className="subscribe-btn">SUBSCRIBE</button>
+
+        <div className="product-card">
+          <img
+            className="product-img"
+            src=""
+            alt="Ribbon Keychain"
+          />
+          <div className="product-details">
+            <h2 className="product-name">Ribbon Keychain</h2>
+            <p className="seller-name">Seller: Sissy Shey</p>
+            <p className="quantity">Quantity:</p>
+            {/* Dropdown can be added here if needed */}
+            <button className="buy-now-btn" onClick={handleBuyNow}>
+              BUY NOW
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className="product-card">
-        <img
-          className="product-img"
-          src="484589002_2153466115094869_6556585425154466136_n.jpg"
-          alt="Ribbon Keychain"
-        />
-        <div className="product-details">
-          <h2 className="product-name">Ribbon Keychain</h2>
-          <p className="seller-name">Seller: Sissy Shey</p>
-          <p className="quantity">Quantity:</p>
-          {/* Select dropdown can go here */}
-          <button className="buy-now-btn">BUY NOW</button>
-        </div>
-      </div>
-    </div>
+      <PaymentConfirmationModal ref={paymentModalRef} />
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../style/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCartShopping, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faStore,faCartShopping, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logoImage from "../assets/Logo.png"; 
 import { Outlet } from 'react-router-dom';  
@@ -29,6 +29,9 @@ const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // default is false, change based on user login status
   const [isCartVisible, setIsCartVisible] = useState(false);
   
+
+
+  
   const navigate = useNavigate();
   const location = useLocation();
   const sidebarRef = useRef(null);
@@ -46,7 +49,7 @@ const Home = () => {
     const loggedInStatus = localStorage.getItem('loggedIn') === 'true';
     let role = localStorage.getItem('userRole');
 
-    if (location.pathname === '/myshop') {
+    if (location.pathname === '/store') {
       if (role !== 'student') {
         alert('You must be a student to access this page!');
         navigate('/home');
@@ -149,7 +152,13 @@ const Home = () => {
   <Link to="/cart">
   <FontAwesomeIcon icon={faCartShopping} className="icon" />
 </Link>
-
+{userRole === "buyer" ? (
+  <FontAwesomeIcon icon={faCartShopping} className="icon" />
+) : (
+  <Link to="/store">
+    <FontAwesomeIcon icon={faStore} className="icon" />
+  </Link>
+)}
     
   </>
 )}

@@ -79,7 +79,7 @@ const Subscribe = () => {
             <div className="modal-content-subscribe">
               <h2 className="modal-title-subscribe">Are you sure?</h2>
               <button className="modal-button-subscribe" onClick={handleCloseModal}>
-                SUBSCRIBE
+                Confirm
               </button>
             </div>
           </div>
