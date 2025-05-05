@@ -192,9 +192,7 @@ const Home = () => {
   {isRegistered && (
     <>
       <li onClick={() => navigate('/shop')}>SHOPS</li>
-      {userRole === 'student' &&  (
-        <li onClick={() => navigate('/myshop')}>MYSHOP</li>
-      )}
+      
       <li onClick={() => navigate('/settings')}>SETTINGS</li>
     </>
   )}

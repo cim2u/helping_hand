@@ -149,15 +149,15 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
- -background-color:white;   
+  background-color:white;   
 }
 
 .backgroundOverlayPurchases {
     position: absolute;
-    width: 756px;
-    height: 730px;
-    left: 496px;
-    top: 159px;
+    width: 887px;
+    height: 680px;
+    left: 420px;
+    top: 39px;
     background: linear-gradient(180deg, #000000 0%, #7E3550 58%);
     opacity: 0.5;
     border-radius: 28px;
@@ -166,13 +166,13 @@
   .myPurchasesTitle {
     position: absolute;
     width: 164px;
-    height: 24px;
-    left: calc(50% - 164px/2 - 109px);
-    top: 203px;
+    height: 40px;
+    left: 450px;
+    top: 60px;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 23px;
     line-height: 24px;
     display: flex;
     align-items: center;
@@ -182,10 +182,10 @@
   
   .rectangleMain {
     position: absolute;
-    width: 706px;
-    height: 613px;
-    left: 521px;
-    top: 247px;
+    width: 828px;
+    height: 600px;
+    left: 450px;
+    top: 110px !important;
     background: rgba(30, 30, 30, 0.65);
     opacity: 0.5;
   }
@@ -193,18 +193,22 @@
   .purchaseBlock {
     box-sizing: border-box;
     position: absolute;
-    width: 689px;
+    width: 805px;
     height: 176px;
     background: rgba(30, 30, 30, 0.65);
     opacity: 0.75;
     border: 1px solid #FEFEFE;
+    left: 460px !important;
+    margin-top: -140px;
   }
   
   .lineSeparator {
     position: absolute;
-    width: 689px;
+    width: 805px;
     height: 0px;
     border: 1px solid #FEFEFE;
+    left: 460px !important;
+    margin-top: -145px;
   }
   
   .sellerName {
@@ -220,6 +224,8 @@
     align-items: center;
     letter-spacing: 1px;
     color: #FEFEFE;
+    left: 470px !important;
+    margin-top: -140px;
   }
   
   .productName {
@@ -235,5 +241,7 @@
     align-items: center;
     letter-spacing: 1px;
     color: #FEFEFE;
+    left: 470px !important;
+    margin-top: -65px;
   }
   

@@ -6,6 +6,15 @@ const Settings = () => {
 
   const navigate = useNavigate();
 
+  const handleLogoutClick = () => {
+    // 1. Clear authentication token or session data
+    localStorage.removeItem("authToken"); // adjust key if different
+    sessionStorage.clear(); // optional, if you store session data here
+  
+    // 2. Redirect to login page
+    navigate("/login");
+  };
+
   const handleBackHome = () => {
     navigate("/"); // this navigates to the homepage
 
@@ -22,14 +31,15 @@ const Settings = () => {
 
       <div className="section-title">PREMIUM</div>
       <div className="menu-item" onClick={() => navigate("/customize-themes")}>CUSTOMIZE THEMES</div>
-      <div className="menu-item" onClick={() => navigate("/badges")}>BADGES</div>
+    
 
       <div className="section-title">SUPPORT</div>
       <div className="menu-item" onClick={() => navigate("/help-center")}>HELP CENTER</div>
       <div className="menu-item" onClick={() => navigate("/about")}>ABOUT</div>
 
       <div className="section-title">USER</div>
-      <div className="menu-item" onClick={() => navigate("/logout")}>LOG OUT</div>
+     <div className="menu-item" onClick={handleLogoutClick}>LOG OUT</div>
+
       </div>
       <button className="backhome-button" onClick={handleBackHome}>      Back Home
     </button>

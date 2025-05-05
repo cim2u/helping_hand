@@ -5,9 +5,15 @@
 .settings-wrapper {
   position: relative;
   width: 1440px;
-  height: 1024px;
+  height: 24px!important;
   background: #fdfdfd;
   font-family: 'Roboto', sans-serif;
+}
+
+.background-overlay {
+  /* REMOVE THIS: background-color: rgba(255, 255, 255, 0.62)!important; */
+  background-color: rgba(0, 0, 0, 0.5); /* darken instead */
+  backdrop-filter: blur(4px); /* optional modern blur effect */
 }
 
 /* Background image */
@@ -30,25 +36,33 @@
   position: absolute;
   width: 383px;
   height: 730px;
-  left: 134px;
+  left: 95px !important;
   top: 30px;
   background: linear-gradient(180deg, #000000 42%, #7E3550 54%);
-  opacity: 0.5;
+
   border-radius: 28px;
 }
 
-/* Panel box */
 .settings-panel {
   position: absolute;
-  width: 280px;
+  width: 245px !important;
   height: 640px;
-  left: 190px;
+  left: 150px !important;
   top: 80px;
-  background: #000000;
-  opacity: 0.45;
-  border-radius: 20px 20px 20px 20px;
+  background: rgba(0, 0, 0, 0.45)!important; /* fix: only background is transparent */
+  border-radius: 20px;
   padding: 20px;
 }
+
+.settings-title,
+.section-title,
+.menu-item {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
 
 /* Settings Title */
 .settings-title {
@@ -60,12 +74,11 @@
   font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-weight: 900 !important;
-  font-size: 30px;
+  font-size: 50px !important;
   line-height: 24px;
   display: flex;
   align-items: center;
   letter-spacing: 1px;
-
   color: #FEFEFE;
 }
 
@@ -76,18 +89,19 @@
   font-size: 25px;
   line-height: 24px;
   letter-spacing: 0.5px;
-  color: #FFFFFF;
+  color: #ffffff !important;
   font-family: 'Outfit', sans-serif;
   margin-top: 20px;  /* controls spacing above */
   margin-bottom: 8px; /* spacing below */
   text-align: left; /* Aligns text to the left */
   margin-left: -10px;
+  
 }
 
 
 .menu-item {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 15px !important;
   line-height: 24px;
   letter-spacing: 0.5px;
   color: #FEFEFE;  /* default text color */

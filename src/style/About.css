@@ -49,7 +49,7 @@ body html {
   color: rgb(246, 246, 246);
   position: absolute; /* Corrected spelling */
   top: 44px; /* Align the nav at the top of the page */
-  left: 495px; /* Align to the left side */
+  left: 569px; /* Align to the left side */
   z-index: 1; /* Make sure it's on top of other content */
 }
 
@@ -175,7 +175,7 @@ body html {
   opacity: 75%;
   margin-top:23px;
   object-fit: cover;
-  margin-right:93px;
+  margin-right:103px;
   
 }
 

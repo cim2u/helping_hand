@@ -1,15 +1,6 @@
 /* General background styles */
-.background-overlay {
-    position: absolute;
-    width: 787px;
-    height: 735px;
-    left: 496px;
-    top: 154px;
-    background: linear-gradient(180deg, #000000 0%, #7E3550 58%);
-    opacity: 0.5;
-    border-radius: 28px;
-  }
-  
+ 
+
   /* Group 13 / Form Container */
   .account-info-group {
     position: absolute;
@@ -72,7 +63,7 @@
     top: 566px;
     font-family: 'Roboto';
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     color: #FEFEFE;
   }
   
@@ -115,10 +106,10 @@
 /* Background gradient box */
 .settings-background {
   position: absolute;
-  width: 383px;
-  height: 730px;
+  width:1252px !important;
+  height:750px !important;
   left: 134px;
-  top: 30px;
+  top: 10px !important;
   background: linear-gradient(180deg, #000000 42%, #7E3550 54%);
   opacity: 0.5;
   border-radius: 28px;
@@ -131,7 +122,7 @@
   height: 640px;
   left: 190px;
   top: 80px;
-  background: #000000;
+  background: #910a8f;
   opacity: 0.45;
   border-radius: 20px 20px 20px 20px;
   padding: 20px;
@@ -147,7 +138,7 @@
   font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-weight: 900 !important;
-  font-size: 30px;
+  font-size: 40px !important;
   line-height: 24px;
   display: flex;
   align-items: center;
@@ -197,8 +188,8 @@
 
 .backhome-button {
   position: absolute;
-  right: 150px;
-  top: 700px;
+  right: 100px !important;
+  top: 721px !important;
   width: 160px;
   height: 34px;
   background: #7E3550;
@@ -236,7 +227,7 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
- -background-color:white;   
+  background-color:white;   
 }
 
 /* General Styles */
@@ -247,12 +238,12 @@
 
 .background-accountinfo {
   position: absolute;
-  width: 787px;
-  height: 735px;
-  left: 497px;
-  top: 151px;
+  width: 887px;
+  height:680px;
+  left: 250px;
+  margin-top: -656px !important;
   background: linear-gradient(180deg, #000000 0%, #7E3550 58%);
-  opacity: 0.5;
+  opacity: 1 !important;
   border-radius: 28px;
 }
 
@@ -261,19 +252,22 @@
   width: 373px;
   height: 351px;
   left: 567px;
-  top: 180px;
+  top: 180px !important;
 }
 
 .section-title-accountinfo {
-  position: absolute;
-  width: 150px;
+  position: relative;
+  width: 450px;
   height: 24px;
   font-family: 'Roboto';
   font-weight: 700;
-  font-size: 24px;
+  font-size: 25px !important;
   line-height: 24px;
-  text-align: center;
   color: #FEFEFE;
+  top: -850px !important;
+  margin-left: 190px !important;
+  letter-spacing: 0px;
+
 }
 
 .menu-item-accountinfo {
@@ -286,27 +280,65 @@
   font-size: 24px;
   color: #FEFEFE;
   cursor: pointer;
+  margin-top: -630px !important;
+  margin-left: 350px !important;
 }
 
-/* Personal Info Styles */
-.personal-info-accountinfo .label-accountinfo {
+.P-AccountInfo{
+  position: relative;
+  padding: 40px;
+  background-color: 0; /* dark background for contrast */
+  border-radius: 12px;
+  width: 400px !important;
+  margin: 40px auto;
+  z-index: 239;
+  top:-650px;
+  right:-300px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  height: 300px;
+}
+
+
+.personal-info-accountinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* or center depending on your layout */
+}
+
+.label-accountinfo {
   font-family: 'Outfit';
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   color: #FEFEFE;
-  margin-bottom: 10px;
+  margin-top:5px;
+  position: relative;
+  left: -23px;
 }
-
 .input-frame-accountinfo {
-  width: 171px;
-  height: 31px;
+  width: 251px;
+  height: 25px;
   background: #FEFEFE;
   border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-left: -30px !important;
 }
 
 .input-frame-accountinfo.large {
   width: 372px;
+}
+
+.B-AccountInfo {
+  position: relative;
+  padding: 40px;
+  background-color: 0; /* dark background for contrast */
+  border-radius: 12px;
+  width: 400px;
+  margin: 40px auto;
+  z-index: 239;
+  top: -550px;
+  right: -300px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  height: 200px;
 }
 
 /* Business Info Styles */
@@ -314,18 +346,23 @@
   font-family: 'Outfit';
   font-weight: 500;
   font-size: 15px;
-  color: #FEFEFE;
-  margin-bottom: 10px;
+  color: #fffefe;
+  top: -800px !important;
+  left: 250px !important;
+  position: relative;
 }
 
-.input-frame-accountinfo-business {
-  width: 372px;
-  height: 31px;
-  background: #FEFEFE;
-  border-radius: 8px;
+.b-input-frame-accountinfo {
+  width: 251px;
+  height: 25px;
+  background: #ffffff !important  ;
+  border-radius: 8px !important;
   margin-bottom: 15px;
+  margin-left: 310px !important;
+  top: -800px !important;
+  position: relative !important;
 }
 
 .input-frame-accountinfo-business.large {
-  width: 374px;
+  width: 372px;
 }
