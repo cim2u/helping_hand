@@ -1,6 +1,7 @@
 import React from 'react';
 import '../style/MyPurchases.css';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MyPurchases = () => {
   const navigate = useNavigate();
@@ -18,25 +19,25 @@ const MyPurchases = () => {
   };
 
   return (
-    <div className="settings-wrapper">
-      <div className="background-overlay" />
-      <div className="settings-background" />
-      <div className="settings-panel">
-        <h1 className="settings-title">Settings</h1>
+    <div className="account-info-wrapper">
+    <div className="settings-container">
+      <div className="settings-background-overlay" />
+      <div className="sidebar-bg" />
+      <h1 className="settings-header">Settings</h1>
 
-        <div className="section-title">MY ACCOUNT</div>
-        <div className="menu-item" onClick={() => navigate("/account-info")}>ACCOUNT INFO</div>
-        <div className="menu-item" onClick={() => navigate("/my-purchases")}>MY PURCHASES</div>
-
-        <div className="section-title">PREMIUM</div>
-        <div className="menu-item" onClick={() => navigate("/customize-themes")}>CUSTOMIZE THEMES</div>
+      <div className="menu-box">
+        <h2 className="menu-title">MY ACCOUNT</h2>
+        <Link to="/account-info" className="menu-item">ACCOUNT INFO</Link>
+        <Link to="/my-purchases" className="menu-item">MY PURCHASES</Link>
+        <div className="menu-title">PREMIUM</div>
+        <Link to="/customize-themes" className="menu-item">CUSTOMIZE THEMES</Link>
        
 
-        <div className="section-title">SUPPORT</div>
-        <div className="menu-item" onClick={() => navigate("/help-center")}>HELP CENTER</div>
-        <div className="menu-item" onClick={() => navigate("/about")}>ABOUT</div>
+        <h2 className="menu-title">SUPPORT</h2>
+        <Link to="/support" className="menu-item">HELP CENTER</Link>
+        <Link to="/about" className="menu-item">ABOUT</Link>
 
-        <div className="section-title">USER</div>
+        <div className="menu-title">USER</div>
         <div className="menu-item" onClick={handleLogoutClick}>LOG OUT</div>
       </div>
 
@@ -66,10 +67,13 @@ const MyPurchases = () => {
         <div className="lineSeparator" style={{ left: '529px', top: '810px' }} />
         <div className="sellerName" style={{ left: '538px', top: '667px' }}>Name of seller</div>
         <div className="productName" style={{ left: '556px', top: '738px' }}>Product</div>
-
-        <button className="backhome-button" onClick={handleBackHome}>Back Home</button>
+        </div>
+        <button className="home-button" onClick={handleBackHome}>
+        <span className="subscribe-label">Back to Home</span>
+      </button>
       </div>
-    </div>
+      </div>
+    
   );
 };
 

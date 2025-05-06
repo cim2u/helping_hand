@@ -15,6 +15,7 @@ const Support = () => {
   };
 
   return (
+    <div className="account-info-wrapper"> 
     <div className="containerSupport">
       <div className="headerSupport"></div>
       <div className="headerImageSupport"></div>
@@ -41,7 +42,7 @@ const Support = () => {
         <div className="inputContainerSupport">
           <input
             type="text"
-            placeholder="Type your message here..."
+            placeholder="Please discuss your issue..."
             className="inputFieldSupport"
           />
         </div>
@@ -51,6 +52,7 @@ const Support = () => {
   Email HelpingHand at <span className="underlineEmail">HelpingHandSupport@gmail.com</span>
 </div>
 
+    </div>
     </div>
   );
 };

@@ -9,9 +9,11 @@ import {
   faTimes,
   faPlus,
   faArrowRight,
+  faBagShopping,
+  faCartPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../assets/Logo.png";
-import ProfileModal from '../components/ProfileModal';
+import Profile from '../components/ProfileModal';
 import { Link } from 'react-router-dom';
 
 
@@ -21,8 +23,14 @@ const MyShop = () => {
   const navigate = useNavigate();
   const { state } = location;
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Or false depending on logic
+ 
 
 
+  const toggleProfileVisibility = () => {
+    console.log("Profile visibility toggled:", !isProfileVisible);
+    setIsProfileVisible(!isProfileVisible);
+  };
+  
   const [activeTab, setActiveTab] = useState("products");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -50,9 +58,7 @@ const [showProfile, setShowProfile] = useState(false);
     setIsModalVisible(true);
   };
 
-  const toggleProfileVisibility = () => {
-    setShowProfile(!showProfile);
-  };
+
   
   
   const closeModal = () => {
@@ -66,6 +72,19 @@ const [showProfile, setShowProfile] = useState(false);
   const toggleProfile = () => {
     setIsProfileVisible(!isProfileVisible);
   };
+  
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setIsProfileVisible(false);
+      }
+    };
+  
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -184,13 +203,17 @@ const [showProfile, setShowProfile] = useState(false);
       onClick={toggleProfileVisibility}
     />
 
-    {/* Profile Modal */}
-    <ProfileModal
-      isVisible={isProfileVisible}
-      loggedIn={isLoggedIn}
-      onClose={() => setIsProfileVisible(false)}
-      handleLogoutClick={handleLogoutClick}
-    />
+<FontAwesomeIcon 
+  
+  onClick={() => setIsProfileVisible(!isProfileVisible)} 
+/>
+
+<Profile 
+  loggedIn={loggedIn}
+  isVisible={isProfileVisible}
+  onClose={() => setIsProfileVisible(false)}
+  handleLogoutClick={handleLogoutClick}
+/>
 
     {/* Cart icon that navigates to /cart */}
     <Link to="/cart">
@@ -365,7 +388,7 @@ const [showProfile, setShowProfile] = useState(false);
             {/* Product 1 */}
             <div className="product-item">
               <img
-                src="https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UColHrM4-CRvdCCPTBH63CswPqYJ5RNZRge7rMeyjBCFjiw0-uoCZDjfaR6CRbfvRHEHWfeSp9~h2fwNO1v3OR1fGsycyUaeQRXbTeo-6-osU60z3b6lE2yduAcQkjxqkA0f2YHszHb3tHT3GWv6lOcxHMaft5ZzdWYsL2yGOTnzI5qIz0SaZzAO~Aj1-UM-x-xTgvpIkuX-nH9BhP1RYA4wOSF0abbAhFYVO2eexMKiOyx5Ot6xkHmoAOr32bCE-7uv7TmowZTeDVn4cmeh0V96J56qzBWpzusW1q7y77rOgr~IC5Cr-xHsgDaWMqaOnTIei7AtF10jqPidtX~7XQ"
+                src="https://i.imgur.com/YP2DSeS.png"
                 alt="Ribbon Keychain"
                 className="product-image"
               />
@@ -388,10 +411,12 @@ const [showProfile, setShowProfile] = useState(false);
 </div>
 
 
-{/* Product2 Section */}
+{/* PRODUCT2 SECTION */}
 <div className="product2-section">
   {/* Label for Product Section */}
-  <span className="product2-sub-label">PRODUCT</span>
+  {activeTab === "products" && (
+    <span className="product2-sub-label">PRODUCT</span>
+  )}
 
   <div className="product2-wrapper relative">
     {/* Arrow for scrolling */}
@@ -410,9 +435,9 @@ const [showProfile, setShowProfile] = useState(false);
           }
         }
         setScrolledRightProduct2(!scrolledRightProduct2);
-      }
-    }
-  />
+      }}
+    />
+
 
    {/* Horizontally scrolling container */}
    <div
@@ -461,7 +486,7 @@ const [showProfile, setShowProfile] = useState(false);
         {/* Product 1 */}
         <div className="product2-item">
           <img
-            src="https://s3-alpha-sig.figma.com/img/4fa2/b3f8/f870a7275fbe1366a676f28195402bd6?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UColHrM4-CRvdCCPTBH63CswPqYJ5RNZRge7rMeyjBCFjiw0-uoCZDjfaR6CRbfvRHEHWfeSp9~h2fwNO1v3OR1fGsycyUaeQRXbTeo-6-osU60z3b6lE2yduAcQkjxqkA0f2YHszHb3tHT3GWv6lOcxHMaft5ZzdWYsL2yGOTnzI5qIz0SaZzAO~Aj1-UM-x-xTgvpIkuX-nH9BhP1RYA4wOSF0abbAhFYVO2eexMKiOyx5Ot6xkHmoAOr32bCE-7uv7TmowZTeDVn4cmeh0V96J56qzBWpzusW1q7y77rOgr~IC5Cr-xHsgDaWMqaOnTIei7AtF10jqPidtX~7XQ"
+            src="https://i.imgur.com/YP2DSeS.png"
             alt="Ribbon Keychain"
             className="product2-image"
           />
@@ -471,7 +496,7 @@ const [showProfile, setShowProfile] = useState(false);
         {/* Product 2 */}
         <div className="product2-item">
           <img
-            src="https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HqnOSKBPbWe-~OuAn7WZQGAehGp~l4~D4hpohOnMQknH5MGA1XbjR7GEaOW8xGUO-zNGaZn8QrzF4Fi0I4wAzrH1A5oGV~57e9FrtpixDhhDsIUsjwSGVRQeQPjpETKnBzbLOD9VxKaERq-LWyFnTBWYHBnYQXRcnbmdsrqWk4yWPy6KGptmkyWQnCZTN8GX4SwZiXHpiQ5~9AWAHdKpcOmfhSVlK2FQ3nhM38EKM72fU4L-2UrUuoVGlnEvO8mJnNykJqhy9tak4P~shxu0Jhw8FX~yYs75grTZXu57vyKxyqTgJfYImdJilk9i0Lp9q3gg5X-E2Ww3r1RYbaZygA__"
+            src="https://i.imgur.com/NVsvQPC.png"
             alt="Flower Bouquet"
             className="product2-image"
           />
@@ -509,28 +534,41 @@ const [showProfile, setShowProfile] = useState(false);
 
       { isProfileVisible && (
         <div className="profileWrapper" ref={profileRef}>
-          <div className="profileCard">
-            <div className="profileBackground">
-              <div className="profilePicture" />
-              <div className="profileLabel">Profile</div>
-              <div className="profileCircle">
-                <div className="statusPrimary">
-                  <div className="checkPrimary" />
-                </div>
-              </div>
-              <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
-              <div className="profileOrdersTitle">Orders & Purchases</div>
-              <div className="profileInfoTitle">Personal Information</div>
-              <div className="profileLink">Order</div>
-              <div className="profileLink">Cart</div>
-              <div className="profileEmail">Name: Sissy Shey</div>
-              <div className="profileEmail">Email: shelayamba@gmail.com</div>
-              <div className="profilePhone">Phone Number: 63+ 9771234545</div>
-              <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
-              <div className="profileLogout" onClick={handleLogoutClick}>Log out</div>
-            </div>
-          </div>
-        </div>
+             <div className="profileCard">
+               <div className="profileBackground">
+                 <div className="profilePicture" />
+                 <div className="profileLabel">Profile</div>
+                 <div className="profileCircle">
+                   <div className="statusPrimary">
+                     <div className="checkPrimary" />
+                   </div>
+                 </div>
+                 <div className="profileBanner" />
+                 <div className="profileBanner_1" />
+                 <div className="profileRec" />
+       
+                 <div className="profileLinkOr" onClick={() => navigate('/order')}>
+                   <FontAwesomeIcon icon={faBagShopping} className="iconStyleProfile" /> Order
+                 </div>
+       
+                 <div className="profileLinkCar" onClick={() => navigate('/cart')}>
+                   <FontAwesomeIcon icon={faCartPlus} className="iconStyleProfile" /> Cart
+                 </div>
+       
+                 <div className="profileSellerLabel">Seller</div>
+                 <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
+                 <div className="profileOrdersTitle">Orders & Purchases</div>
+                 <div className="profileInfoTitle">Personal Information</div>
+       
+                 <div className="profileEmail">Name: Sissy Shey</div>
+                 <div className="profileEmail">Email: shelayamba@gmail.com</div>
+                 <div className="profilePhone">Phone Number: 63+ 9771234545</div>
+                 <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
+       
+                 <div className="profileLogout1" onClick={handleLogoutClick}>Log out</div>
+               </div>
+             </div>
+           </div>
       )}
     </div>
          

@@ -143,8 +143,10 @@ const Home = () => {
           <img src={logoImage} alt="HelpingHand Logo" className="logoLarge" />
         </div>
 
+
         <div className="icon-container">
           <FontAwesomeIcon icon={faBars} className="icon" onClick={toggleSidebar} />
+          
           
           {loggedIn && (
   <>

@@ -38,7 +38,7 @@ body, html {
 .header-cover {
   width: 100%; /* Makes it responsive */
   height: 274px;
-  background-image: url(https://i.imgur.com/65FnVGb.png);
+  background-image: url('https://i.imgur.com/65FnVGb.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -745,25 +745,27 @@ body, html {
 }
 
 
-/* Profile Email and Phone */
-.profileEmail, .profilePhone, .profileAddress {
+.profileEmail,
+.profilePhone,
+.profileAddress {
   position: relative;
-  margin-left: 30px !important;
-  top: 475px !important;
+  top: 90px; /* Reduced for better vertical alignment */
+  margin-left: 94px; /* Slightly closer to the left */
+  margin-top: 10px;
+  margin-bottom: 4px;
   font-family: 'Outfit', sans-serif;
   font-size: 16px;
-  color: #fffafa !important;
+  color: #fffafa;
   text-align: left;
-  margin-bottom: -12px !important; /* 2px gap between each row */
-  
- 
 }
+
 /* Profile Logout Tab Styling */
-.profileLogout {
+.profileLogout1 {
   cursor: pointer;
   color:  #7E3550 !important;
   text-decoration: underline;
-  top: 25px !important;
+ margin-top: -175px !important;
+ margin-left: 283px;
   font-size: 1rem;
   left:345px !important;
   font-weight: 400;

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
-.settings-wrapper {
+.settings-container {
   position: relative;
   width: 1440px;
-  height: 1024px;
+  height: 739px!important;
   background: #fdfdfd;
   font-family: 'Roboto', sans-serif;
 }
@@ -16,7 +16,7 @@
   left: 0;
   width: 1440px;
   height: 800px;
-  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
+  background-image: url("https://i.imgur.com/Co6OYeY.png") !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -99,26 +99,6 @@
   text-decoration: underline;
 }
 
-/* Back Home Button */
-.backhome-button {
-  position: absolute;
-  right: 150px;
-  top: 700px;
-  width: 160px;
-  height: 34px;
-  background: #7E3550;
-  border: none;
-  border-radius: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: #FEFEFE;
-  white-space: nowrap;
-}
 
 /* Background gradient box */
 .settings-background {
@@ -149,14 +129,24 @@
   letter-spacing: 0.1px;
   background-color: white;
 }
+.theme-background-accountinfo {
+  position: absolute;
+  width: 827px;
+  height:680px;
+  left: 353px;
+  top:-55px !important;
+  background: linear-gradient(180deg, #0000009c 0%, #7e355092 58%);
+  opacity: 1 !important;
+  border-radius: 28px;
+}
 
 /* Theme Container */
 .theme-container {
   position: relative;
   width: 100%;
   height: 100%;
-  top: -800px;
-  left: -200px;
+  top: -190px;
+  left: -110px;
 }
 
 /* Theme Background */
@@ -164,22 +154,38 @@
   position: absolute;
   width: 741px;
   height: 585px;
-  left: 519px;
+  left: 159px;
   top: 229px;
-  background: linear-gradient(180deg, #7E3550 22.5%, #000000 75%);
+  background: linear-gradient(180deg, #7e355086 22.5%, #0000005e 75%);
 }
 
-/* Theme Group 7 */
+.theme {
+  position: absolute;
+  width: 122px;
+  height: 24px;
+  left:-363px;
+  top: 20px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  color: #FEFEFE;
+}
+
 .theme-group-7 {
   position: absolute;
-  width: 787px;
-  height: 735px;
-  left: 496px;
-  top: 154px;
+  width: 122px;
+  height: 24px;
+  left: 829px;
+  top: 180px;
   border-radius: 4px;
 }
 
-/* Theme Group 8 */
 .theme-group-8 {
   position: absolute;
   width: 271px;
@@ -192,19 +198,16 @@
   position: absolute;
   width: 271px;
   height: 160px;
-  left: 380px;
-  top: 0px;
-  background: #9B0D0D; /* Solid red background */
+  background: rgba(30, 30, 30, 0.65);
 }
 
 .theme-morning {
   position: absolute;
   width: 173px;
   height: 23px;
-  left: calc(50% - 3px / 2 - 30.5px);
-  top: 188px;
+  left: 94px;
+  top: 178px;
   font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -214,83 +217,52 @@
   color: #FFFFFF;
 }
 
-/* Theme Group 9 */
 .theme-group-9 {
   position: absolute;
   width: 271px;
   height: 216px;
   left: 929px;
-  top: 7px;
-}
-
-.theme-lilac {
-  position: absolute;
-  width: 173px;
-  height: 23px;
-  left: calc(50% - 633px / 2 + 318.5px);
-  top: 458px;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 1px;
-  color: #FFFFFF;
+  top: 277px;
 }
 
 .theme-rectangle-81 {
   position: absolute;
   width: 271px;
   height: 160px;
-  left: 929px;
-  top: 277px;
   background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
 }
 
-/* Theme Group 10 */
+.theme-lilac {
+  position: absolute;
+  width: 173px;
+  height: 23px;
+  left:124px;
+  top: 178px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+}
+
 .theme-group-10 {
   position: absolute;
   width: 271px;
   height: 216px;
-  left: 200px;
-  top: 550px;
-}
-
-.theme-rectangle-78 {
-  position: absolute;
-  width: 271px;
-  height: 160px;
   left: 580px;
   top: 550px;
-  background: #1E1E1E; /* Solid dark color */
 }
 
-/* Theme Group 11 */
-.theme-group-11 {
-  position: absolute;
-  width: 271px;
-  height: 216px;
-  left: 579px;
-  top: 550px;
-}
 
-.theme-rectangle-79 {
-  position: absolute;
-  width: 271px;
-  height: 160px;
-  left: 929px;
-  top: 550px;
-  background: #1E1E1E; /* Solid dark color */
-}
 
-/* More Themes */
 .theme-more-themes {
   position: absolute;
   width: 218px;
   height: 24px;
-  left: 959px;
+  left: 607px;
   top: 618px;
   font-family: 'Roboto';
   font-style: normal;
@@ -303,7 +275,6 @@
   color: #FFFFFF;
 }
 
-/* Theme Rectangle 80 */
 .theme-rectangle-80 {
   position: absolute;
   width: 271px;
@@ -312,4 +283,3 @@
   top: 277px;
   background: linear-gradient(180deg, #A1F0FF 0%, #FEFEFE 100%);
 }
- 

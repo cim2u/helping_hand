@@ -1,28 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+.account-info-wrapper {
+  position: relative;
+  height: 100vh; /* Keeps it within the viewport */
+  overflow-y: hidden; 
+  overflow-x: hidden; /* Prevent vertical scroll */
+  background: #000; /* or your preferred background */
+}
 
-
-.settings-wrapper {
+.settings-container {
   position: relative;
   width: 1440px;
-  height: 24px!important;
+  height: 739px!important;
   background: #fdfdfd;
   font-family: 'Roboto', sans-serif;
 }
 
-.background-overlay {
-  /* REMOVE THIS: background-color: rgba(255, 255, 255, 0.62)!important; */
-  background-color: rgba(0, 0, 0, 0.5); /* darken instead */
-  backdrop-filter: blur(4px); /* optional modern blur effect */
-}
-
-/* Background image */
-.background-overlay {
-  position: absolute;
+.settings-background-overlay {
+    position: absolute;
   top: 0;
   left: 0;
   width: 1440px;
-  height: 800px;
+  height: 739px !important;
   background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
   background-size: cover;
   background-position: center;
@@ -31,87 +28,79 @@
   background-color: rgba(255, 255, 255, 0.62)!important; /* Transparent white with 75% opacity */
 }
 
-/* Background gradient box */
-.settings-background {
+.sidebar-bg {
   position: absolute;
   width: 383px;
-  height: 730px;
-  left: 95px !important;
-  top: 30px;
+  height: 710px;
+  left: 95px;
+  top: 10px;
   background: linear-gradient(180deg, #000000 42%, #7E3550 54%);
-
+  opacity: 0.5;
   border-radius: 28px;
+  z-index: 1;
 }
 
-.settings-panel {
-  position: absolute;
-  width: 245px !important;
-  height: 640px;
-  left: 150px !important;
-  top: 80px;
-  background: rgba(0, 0, 0, 0.45)!important; /* fix: only background is transparent */
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.settings-title,
-.section-title,
-.menu-item {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-
-
-/* Settings Title */
-.settings-title {
+.settings-header {
   position: absolute;
   width: 283px;
   height: 72px;
-  margin-left: -10px;
-  top: -60px;
-  font-family: 'Outfit', sans-serif;
-  font-style: normal;
-  font-weight: 900 !important;
-  font-size: 50px !important;
+  left: 150px;
+  top: 23px;
+  font-weight: 800;
+  font-size: 40px;
   line-height: 24px;
-  display: flex;
-  align-items: center;
   letter-spacing: 1px;
   color: #FEFEFE;
+  z-index: 2;
+  display: flex;
+  align-items: center;
 }
 
+.menu-box {
+  position: absolute;
+  width: 280px;
+  height: 591px;
+  left: 150px;
+  top: 95px;
+  background: #3232324e;
+  border-radius: 0 20px 20px 20px;
+  z-index: 2;
+  padding-left: 24px; /* Left space for consistent alignment */
+  padding-top: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-
-.section-title {
-  font-weight: 700;
-  font-size: 25px;
-  line-height: 24px;
+.menu-title {
+  font-weight: 600;
+  font-size: 23px;
   letter-spacing: 0.5px;
-  color: #ffffff !important;
-  font-family: 'Outfit', sans-serif;
-  margin-top: 20px;  /* controls spacing above */
-  margin-bottom: 8px; /* spacing below */
-  text-align: left; /* Aligns text to the left */
-  margin-left: -10px;
-  
+  color: #FFFFFF;
+  margin: 20px 0 10px 0; /* Remove margin-left */
+  text-align: left; /* Ensure it aligns to the left */
 }
 
+.support-title {
+  margin-top: 40px;
+}
 
 .menu-item {
+  position: relative;
+  left: 10px;  /* Or adjust as needed */
   font-weight: 400;
-  font-size: 15px !important;
+  font-size: 18px !important;
   line-height: 24px;
   letter-spacing: 0.5px;
-  color: #FEFEFE;  /* default text color */
-  margin-top: 10px;
-  margin-bottom: -12px;
+  color: #FEFEFE;
+  margin-top: -2px !important;
+ 
   text-decoration: none;
   border-bottom: none;
   outline: none;
-  margin-left: -25px !important;
 }
+
 
 .menu-item:hover {
   color: #7E3550;  /* change text color on hover */
@@ -120,48 +109,47 @@
   
 
 
+.user-label {
+  font-weight: 600;
+  font-size: 24px;
+  color: #EEEEEE;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+}
 
+.logout-button {
+  font-size: 24px;
+  font-weight: 400;
+  color: #FEFEFE;
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  margin-top: 8px;
+  text-align: left;
+}
 
-.backhome-button {
-  position: absolute;
-  right: 150px;
-  top: 700px;
-  width: 160px;
+.home-button {
+  position: fixed;
+  left: 1179px;
+  top: 687px;
+  width: 127px;
   height: 34px;
   background: #7E3550;
-  border: none;
   border-radius: 100px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  z-index: 3;
+  border: none;
   cursor: pointer;
+}
 
-  font-family: 'Outfit', sans-serif;
+.subscribe-label {
   font-size: 14px;
   font-weight: 500;
   color: #FEFEFE;
-  white-space: nowrap; /* ensures the text stays in one line */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-}
-
-
-
-/* Button content */
-.state-layer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 24px;
-  gap: 8px;
-  width: 127px;
-  height: 34px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
   letter-spacing: 0.1px;
- background-color:white;   
+  text-align: center;
+  
 }

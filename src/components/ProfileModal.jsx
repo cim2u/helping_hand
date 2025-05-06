@@ -21,6 +21,7 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
   }, [onClose]);
 
   if (!isVisible || !loggedIn) return null;
+  
 
   return (
     <div className="profileWrapper" ref={profileRef}>
@@ -45,6 +46,7 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
             <FontAwesomeIcon icon={faCartPlus} className="iconStyleProfile" /> Cart
           </div>
 
+
           <div className="profileSellerLabel">Seller</div>
           <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
           <div className="profileOrdersTitle">Orders & Purchases</div>
@@ -56,6 +58,7 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
           <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
 
           <div className="profileLogout1" onClick={handleLogoutClick}>Log out</div>
+
         </div>
       </div>
     </div>
