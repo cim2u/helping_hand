@@ -52,7 +52,9 @@ const LogIn = () => {
             <img src={logoImage} alt="Helping Hand Logo" className="logo-image" />
           </div>
 
-          <h2>Welcome!</h2>
+          <div className="welcome-heading">
+  <h2>Welcome!</h2>
+</div>
 
           <form onSubmit={handleSubmit} className="login-form">
             <label>Email</label>

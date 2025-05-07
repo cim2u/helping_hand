@@ -92,12 +92,7 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
        
 
         {/* Order Option Dropdown (Static for now) */}
-        <div className="payment-select-field">
-          <div className="payment-select-box">
-            <span className="payment-select-value">Delivery</span>
-            <div className="payment-chevron-down" />
-          </div>
-        </div>
+   
 
         {/* Summary */}
         <div className="payment-summary-text">

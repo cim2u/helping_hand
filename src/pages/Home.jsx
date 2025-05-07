@@ -20,6 +20,8 @@ import { faCartPlus, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 
 
 const Home = () => {
+
+  
   const [isRegistered, setIsRegistered] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -307,7 +309,7 @@ const Home = () => {
   <div className="product-item" onClick={() => handleProductClick({
     name: "Ribbon Keychain",
     image: "https://i.imgur.com/YP2DSeS.png",
-    description: "A cute ribbon keychain, perfect for gifting.",
+    seller: "Sissy Shyey.",
     price: 15.00
   })}>
     <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
@@ -418,7 +420,7 @@ const Home = () => {
   <div className="product-item" onClick={() => handleProductClick({
     name: "Stickers",
     image: "https://i.imgur.com/1yi1ssN.jpeg",
-    description: "High-quality wall art print.",
+    seller: "Sissy Shey.",
     price: 28.00
   })}>
     <img src="https://i.imgur.com/1yi1ssN.jpeg" alt="Stickers" className="product-image" />
@@ -466,15 +468,26 @@ const Home = () => {
     <div className="product-name">Handcrafted Beads Keychain</div>
   </div>
 
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Succulent Plant",
-    image: "https://i.imgur.com/5y2lqgD.png",
-    description: "Low-maintenance succulent plant.",
-    price: 18.00
-  })}>
-    <img src="https://i.imgur.com/5y2lqgD.png" alt="Succulent Plant" className="product-image" />
-    <div className="product-name">Handmade Flower Bouquet</div>
-  </div>
+  <div
+  className="product-item"
+  onClick={() =>
+    handleProductClick({
+      name: "Succulent Plant",
+      image: "https://i.imgur.com/5y2lqgD.png",
+      description: "Low-maintenance succulent plant.",
+      price: 18.00,
+      unitPrice: 18.00
+    })
+  }
+>
+  <img
+    src="https://i.imgur.com/5y2lqgD.png"
+    alt="Succulent Plant"
+    className="product-image"
+  />
+  <div className="product-name">Handmade Flower Bouquet</div>
+</div>
+
 
   <div className="product-item" onClick={() => handleProductClick({
     name: "Fridge Magnets",
@@ -493,7 +506,7 @@ const Home = () => {
         <div className="product-modal" onClick={closeModal}>
           {isRegistered ? (
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="close-modal" onClick={closeModal}>X</button>
+              <div className="modal-rec"></div>
 
               {/* Check if selectedProduct exists and has an image */}
               {selectedProduct && selectedProduct.image ? (
@@ -506,8 +519,9 @@ const Home = () => {
                 <p>Image not available</p> // Fallback message if no image
               )}
 
-              <p>{selectedProduct.description}</p>
-              <p>Price: ₱{selectedProduct.price}</p>
+<p className="seller-display">{selectedProduct?.seller || "Unknown Seller"}</p>
+
+              <p className="price-display">₱{selectedProduct.price}</p>
 
               <div className="modal-actions">
                 <button className="add-to-cart-button-home" onClick={handleAddToCart}>

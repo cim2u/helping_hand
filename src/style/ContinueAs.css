@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 .d-container {
-  width: 1440px;
+  width: 1513px;
   height: 770px;
   margin: 0 auto;
   position: relative;
@@ -110,6 +110,7 @@ input[type="radio"] {
     top:5px;
     background-color: rgb(255, 255, 255);
     transition: all 0.3s ease;
+    border-color: black;
 }
 
 

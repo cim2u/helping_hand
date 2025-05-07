@@ -60,10 +60,7 @@ const CartModal = () => {
 
           <div className="cart">
             <div className="header-cart">
-              <div className="logo-cart">
-                <h1 className="helping">Helping</h1>
-                <h1 className="hand">Hand</h1>
-              </div>
+             
             </div>
 
             <div className="back-button-container"onClick={handleBackHome}>
