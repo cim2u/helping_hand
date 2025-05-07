@@ -3,23 +3,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap');
 
 
+body {
+  max-height: 90vh;
+  overflow-y: auto;
 
-.a-container {
-  width: 100%;
-  max-width: 1440px;
-  
-  margin: 0 auto;
-  overflow-x: hidden;
-  transform-origin: top left;
 }
+
+
 
 /* Container wrapper */
 .home-wrapper {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   margin: 0 auto;
+  height: 900px;
+
+  
 }
 
 
@@ -154,7 +156,8 @@
   border: none;                        /* No border */
   cursor: pointer;                    /* Pointer cursor on hover */
   display: flex;
-  margin-left: -83px;
+  margin-top:9px;
+  margin-left: 93px;
   align-items: center;                /* Align text and icon vertically */
   justify-content: center;            /* Center text horizontally */
   transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
@@ -216,7 +219,7 @@
 /* White overlay section */
 .white-section {
   width: 100%; /* Makes it responsive */
-  height: 200vh;
+  height: 100px;
   background: #ffffff;
   padding: 2rem;
   box-sizing: border-box;
@@ -226,64 +229,14 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Product Grid */
-.product-{
-  width: 175px;
-  height: 200px;
-  top:-920px;
-  background: rgb(231, 12, 12);
-  border: 2px solid rgba(30, 30, 30, 0.65);
-  border-radius: 16px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px;
-  margin: 20px;
-  position: relative;
-  left: 40px !important;;
-}
 
 
-
-
-
-.product-list {
-  display: flex; /* or grid */
-  flex-wrap: wrap;
-  gap: 23px !important; /* this creates a gap between each .product-item */
-  justify-content: flex-start;
-  left: -13px;
-  position: relative;
-  top:2px;
-}
-
-.product-item {
-  width: 170px;
-  height: 200px;
-  left:43px;
-  top: -230px;
-  background: rgb(255, 255, 255);
-  border: 2px solid rgba(0, 0, 0, 0.65);
-  border-radius: 16px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  position: relative;
-
-}
-
- /* Banner text section */
-  
- 
-  
   /* Banner text section */
   .banner {
     background-color: #843b62;   /* Purple background */
     color: white;                /* Text color */
     padding: 1rem;               /* Padding inside the banner */
-    width: 1378px;                /* Full viewport width */
+    width: 1515px;                /* Full viewport width */
     position: relative;          /* Allow left adjustments */
     left: -35px;      
                 
@@ -761,350 +714,153 @@
 .profileLogout:hover {
   color: #d33;
 }
-/* Product Modal */
+
+
+/* Product Modal background */
 .product-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
   display: flex;
   justify-content: center;
   align-items: center;
- 
+  z-index: 1000; /* Ensure it's on top of other content */
 }
 
-.product-modal-content {
-  position: relative;
-  width: 701px;
-  height: 590px;
-  background: #FFFFFF;
-  border-radius: 28px;
-  padding: 20px;
-}
-
-.product-modal-header {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.product-modal-image {
-  width: 392px;
-  height: 285px;
-  object-fit: cover;
+.add-to-cart-button-home, .buy-now-btn-home {
+  width: 48%;
+  padding: 10px;
+  font-size: 16px;
   border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-.product-modal-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.product-name {
-  font-family: 'Outfit';
-  font-weight: 800;
-  font-size: 24px;
-  color: #49454F;
-  margin-bottom: 10px;
-}
-
-.product-price {
-  font-family: 'Outfit';
-  font-weight: 800;
-  font-size: 48px;
-  color: #7E3550;
-  margin-bottom: 20px;
-}
-
-.product-description {
-  font-family: 'Roboto';
-  font-size: 14px;
-  color: #49454F;
-  margin-bottom: 20px;
-}
-
-/* Close Icon */
-.close-icon {
   cursor: pointer;
-  color: #7E3550;
-  font-size: 24px;
+  transition: background-color 0.3s ease;
 }
 
-
-/* Modal background */
-.product-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
+.add-to-cart-button-home {
+  background-color: #7e3550;
+  color: white;
+  border: none;
 }
 
-/* Modal content container */
+.add-to-cart-button-home:hover {
+  background-color: #6d2a45;
+}
+
+.buy-now-btn-home {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.buy-now-btn-home:hover {
+  background-color: #218838;
+}
+
+/* Modal content box */
 .modal-content {
-  position: relative;
-  width: 600px;
-  padding: 20px;
-  background: #ffffff;
+  background-color: #ffffff;
   border-radius: 16px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  position: relative;
+  width: 80%; /* Adjust based on your needs */
+  max-width: 435px;
+  max-height: 80vh;
+  overflow-y: auto;
   text-align: center;
-  overflow: hidden;
 }
 
-/* Close button (X) in the top right */
+/* Close button */
 .close-modal {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
+  background-color: transparent;
   border: none;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 20px;
   color: #7e3550;
   cursor: pointer;
-  padding: 5px 10px;
-  transition: background 0.3s;
 }
 
-.close-modal:hover {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-}
-
-/* Product name (title) */
-.modal-content h2 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: #7e3550;
-  margin: 20px 0;
-}
-
-/* Product image styling */
+/* Product image */
 .modal-product-image {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-  border-radius: 10px;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
   margin-bottom: 20px;
 }
 
-/* Product description */
+/* Optional: Styling for the product description and price */
 .modal-content p {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 16px;
-  color: #49454f;
+  line-height: 1.5;
+  color: #7e3550;
   margin: 10px 0;
 }
 
-/* Price styling */
-.modal-content .product-price {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: 32px;
-  color: #7e3550;
-  margin-top: 10px;
+/* Optional: If non-registered users are shown different content */
+.modal-content p {
+  color: #49454f; /* Change color for non-registered users */
+}
+
+.product-container-home {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
-  gap: 15px !important;
-  justify-items: left; /* aligns each item to the left of its grid cell */
-  padding: 1rem 0;
-  margin-top: 333px;
-  margin-left:-100px; /* No need for -0px */
+  grid-template-columns: repeat(auto-fit, minmax(220px, fr)); /* responsive columns */
+  gap: 38px!important;
+  justify-content: center !important; /* center the whole grid */
+  padding: 4rem 0px !important;
+ 
+  max-width: 2000px;
+  box-sizing: border-box;
+  margin-left: -100px!important;
+  margin-top: 293px !important;
 }
 
 
+
 .product-item {
-  background-color: #fff;
+  background-color: #ffffff !important;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 0.75rem;
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s ease;
+  width: 220px!important;
+  height: 260px !important;
 }
 
 .product-image {
-  width: 100%;
-  height: 160px;
+  width: 170px !important;
+  height: 170px !important;
  
   border-radius: 10px;
   border: 1px dashed #ccc;
 }
 
 .product-name {
-  margin-top: 15px;
+  margin-top: 45px;
   font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 20px!important;
   line-height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   letter-spacing: 0.1px;
   color: #7E3550;
 }
 
-
-.product-price {
-  font-family: 'Outfit';
-  font-weight: 800;
-  font-size: 48px;
-  color: #7E3550;
-  margin-bottom: 20px;
-}
-
-.product-description {
-  font-family: 'Roboto';
-  font-size: 14px;
-  color: #49454F;
-  margin-bottom: 20px;
-}
-
-/* Close Icon */
-.close-icon {
-  cursor: pointer;
-  color: #7E3550;
-  font-size: 24px;
-}
-
-
-/* Modal background */
-.product-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensure it appears above other content */
-}
-
-/* Modal content container */
-.modal-content {
-  position: relative;
-  width: 600px;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Close button (X) in the top right */
-.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  font-weight: bold;
-  color: #7e3550;
-  cursor: pointer;
-  padding: 5px 10px;
-  transition: background 0.3s;
-}
-
-.close-modal:hover {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-}
-
-/* Product name (title) */
-.modal-content h2 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: #7e3550;
-  margin: 20px 0;
-}
-
-/* Product image styling */
-.modal-product-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-/* Product description */
-.modal-content p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  color: #49454f;
-  margin: 10px 0;
-}
-
-/* Price styling */
-.modal-content .product-price {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: 32px;
-  color: #7e3550;
-  margin-top: 10px;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
-  gap: 15px !important;
-  justify-items: left; /* aligns each item to the left of its grid cell */
-  padding: 1rem 0;
-  margin-top: 333px;
-  margin-left:100px; /* No need for -0px */
-}
-
-
-.product-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 0.75rem;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.product-image {
-  width: 100%;
-  height: 160px;
- 
-  border-radius: 10px;
-  border: 1px dashed #ccc;
-}
-
-.product-name {
-  margin-top: 15px;
-  font-family: 'Outfit', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  letter-spacing: 0.1px;
-  color: #7E3550;
-}
 /* Modal for Unregistered User */
 .unregisteredModalHome {
   position: absolute;

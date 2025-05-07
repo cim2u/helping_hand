@@ -1,30 +1,14 @@
-.account-info-wrapper {
-  position: relative;
-  height: 100vh; /* Keeps it within the viewport */
-  overflow-y: hidden; 
-  overflow-y: hidden; /* Prevent vertical scroll */
-  background: #000; /* or your preferred background */
-}
 
-
-.settings-header {
-  position: absolute;
-  width: 283px;
-  height: 72px;
-  left: 150px;
-  top: 23px;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 24px;
-  letter-spacing: 1px;
-  color: #FEFEFE;
-  z-index: 2;
-  display: flex;
-  align-items: center;
+.settings-container {
+  position: fixed;
+  width: 1528px !important;
+  height: 739px!important;
+  background: #fdfdfd;
+  font-family: 'Roboto', sans-serif;
 }
   /* Group 13 / Form Container */
   .account-info-group {
-    position: absolute;
+    position:fixed;
     width: 373px;
     height: 351px;
     left: 566px;
@@ -119,9 +103,9 @@
 .background-accountinfo {
   position: absolute;
   width: 827px;
-  height:680px;
+  height:480px;
   left: 250px;
-  margin-top: -590px !important;
+  margin-top: -520px !important;
   background: linear-gradient(180deg, #0000009c 0%, #7e355092 58%);
   opacity: 1 !important;
   border-radius: 28px;
@@ -144,8 +128,8 @@
   font-size: 25px !important;
   line-height: 24px;
   color: #FEFEFE;
-  top: -790px !important;
-  margin-left: 190px !important;
+  top: -1075px !important;
+  margin-left: 600px !important;
   letter-spacing: 0px;
 
 }
@@ -160,7 +144,7 @@
   font-size: 24px;
   color: #FEFEFE;
   cursor: pointer;
-  margin-top: -555px !important;
+  margin-top: -500px !important;
   margin-left: 341px !important;
 }
 
@@ -172,8 +156,8 @@
   width: 400px !important;
   margin: 40px auto;
   z-index: 239;
-  top:-550px;
-  left:-225px;
+  top:-480px;
+  left:-135px;
   height: 300px;
 }
 
@@ -191,7 +175,8 @@
   color: #FEFEFE;
   margin-top:5px;
   position: relative;
-  left: -38px;
+  left: -160px;
+ 
 }
 .input-frame-accountinfo {
   width: 251px;
@@ -199,7 +184,7 @@
   background: #FEFEFE;
   border-radius: 8px;
   margin-bottom: 10px;
-  margin-left: -45px !important;
+  margin-left: -170px !important;
 }
 
 .input-frame-accountinfo.large {
@@ -231,8 +216,8 @@
   font-weight: 500;
   font-size: 15px;
   color: #fffefe;
-  top: -760px !important;
-  left: 302px !important;
+  top: -1050px !important;
+  left: 702px !important;
   position: relative;
 }
 
@@ -242,8 +227,8 @@
   background: #ffffff !important  ;
   border-radius: 8px !important;
   margin-bottom: 15px;
-  margin-left: 295px !important;
-  top: -760px !important;
+  margin-left: 702px !important;
+  top: -1045px !important;
   position: relative !important;
 }
 

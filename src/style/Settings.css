@@ -1,26 +1,27 @@
 .account-info-wrapper {
-  position: relative;
+  position: fixed;
+  width:1513px;
   height: 100%; /* Keeps it within the viewport */
   overflow-y: hidden; 
   overflow-x: hidden; /* Prevent vertical scroll */
-  background: #000; /* or your preferred background */
+  background: #00000000; /* or your preferred background */
 }
 
 .settings-container {
-  position: relative;
-  width: 1440px;
+  position: fixed;
+  width: 1528px !important;
   height: 739px!important;
   background: #fdfdfd;
   font-family: 'Roboto', sans-serif;
 }
 
 .settings-background-overlay {
-    position: absolute;
+    position: fixed;
   top: 0;
   left: 0;
-  width: 1530px;
+  width: 1528px;
   height: 739px !important;
-  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
+  background-image: url("https://i.imgur.com/3gmUPOq.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -39,14 +39,18 @@ const Support = () => {
       </div>
 
       <div className="formContainerSupport">
-        <div className="inputContainerSupport">
-          <input
-            type="text"
-            placeholder="Please discuss your issue..."
-            className="inputFieldSupport"
-          />
-        </div>
+  <div className="inputContainerSupport">
+    <textarea
+      placeholder="Please discuss your issue..."
+      className="inputFieldSupport"
+      rows={4} // You can adjust the number of rows
+    />
       </div>
+  <button className="sendButtonSupport">Send</button>
+</div>
+
+
+
 
       <div className="emailTextSupport">
   Email HelpingHand at <span className="underlineEmail">HelpingHandSupport@gmail.com</span>

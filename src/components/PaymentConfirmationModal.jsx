@@ -5,6 +5,7 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const [address, setAddress] = useState('');
 
   const unitPrice = 250;
   const deliveryFee = 50;
@@ -21,15 +22,19 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
   };
 
   const handlePlaceOrder = () => {
+    if (!address.trim()) {
+      alert("Please enter your delivery address.");
+      return;
+    }
+
     if (!paymentMethod) {
       alert("Please select a payment method.");
       return;
     }
 
     if (paymentMethod === 'Gcash') {
-      // Redirect to GCash (replace with the actual GCash payment page URL)
       alert(`Order placed using ${paymentMethod}. You will be redirected to GCash.`);
-      window.location.href = "https://www.gcash.com"; // Example URL for GCash, replace as needed
+      window.location.href = "https://www.gcash.com";
     } else {
       alert(`Order placed using ${paymentMethod}`);
     }
@@ -45,7 +50,6 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
   return (
     <div className="payment-overlay">
       <div className="payment-container">
-        {/* Close Button */}
         <button className="payment-close-button" onClick={() => setVisible(false)}>×</button>
 
         {/* Address Section */}
@@ -56,11 +60,19 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
               type="text"
               className="payment-input-value"
               placeholder="Enter your address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </div>
         </div>
 
+
         {/* Purchase Details */}
+
+        <div className="payment1">
+        </div>
+        <div className="payment2">
+        </div>
         <div className="payment-purchase-details">
           <div className="payment-purchase-details-title">Purchase Details</div>
           <div className="payment-product-card">
@@ -77,46 +89,51 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
             </div>
           </div>
         </div>
+       
 
-        {/* Order Option Dropdown */}
+        {/* Order Option Dropdown (Static for now) */}
         <div className="payment-select-field">
           <div className="payment-select-box">
             <span className="payment-select-value">Delivery</span>
-            <div className="payment-chevron-down"></div>
+            <div className="payment-chevron-down" />
           </div>
         </div>
 
         {/* Summary */}
         <div className="payment-summary-text">
-          <p>Subtotal: ₱{subtotal}</p>
-          <p>Delivery Fee: ₱{deliveryFee}</p>
-          <p><strong>Total: ₱{total}</strong></p>
+          <p>Price ₱{unitPrice  }</p>
+          <p>Shipping Fee: ₱{deliveryFee}</p>
+          <p><strong>Total Payment: ₱{total}</strong></p>
         </div>
 
         {/* Payment Method */}
         <div className="payment-methods">
           <div className="payment-methods-title">Payment Method</div>
-          <div className="checkbox-row">
+
+          <div className="payment-checkbox-row">
             <input
               type="radio"
+              id="gcash"
               name="payment"
               value="Gcash"
               checked={paymentMethod === 'Gcash'}
               onChange={() => handlePaymentChange('Gcash')}
               className="payment-checkbox"
             />
-            <label className="payment-checkbox-label">Gcash</label>
+            <label htmlFor="gcash" className="payment-checkbox-label">Gcash</label>
           </div>
+
           <div className="payment-checkbox-row">
             <input
               type="radio"
+              id="cod"
               name="payment"
               value="Cash on Delivery"
               checked={paymentMethod === 'Cash on Delivery'}
               onChange={() => handlePaymentChange('Cash on Delivery')}
               className="payment-checkbox"
             />
-            <label className="payment-checkbox-label">Cash on Delivery</label>
+            <label htmlFor="cod" className="payment-checkbox-label">Cash on Delivery</label>
           </div>
         </div>
 

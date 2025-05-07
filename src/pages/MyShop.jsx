@@ -384,7 +384,7 @@ const [showProfile, setShowProfile] = useState(false);
       {/* PRODUCT SECTION - shows only when "products" is active */}
       {activeTab === "products" && (
         <>
-          <div className="product-grid">
+          <div className="product1-grid">
             {/* Product 1 */}
             <div className="product-item">
               <img
@@ -484,23 +484,23 @@ const [showProfile, setShowProfile] = useState(false);
     {activeTab === "products" && (
       <div className="product2-grid">
         {/* Product 1 */}
-        <div className="product2-item">
+        <div className="product-item">
           <img
             src="https://i.imgur.com/YP2DSeS.png"
             alt="Ribbon Keychain"
-            className="product2-image"
+            className="product-image"
           />
-          <div className="product2-name">Ribbon Keychain</div>
+          <div className="product-name">Ribbon Keychain</div>
         </div>
 
         {/* Product 2 */}
-        <div className="product2-item">
+        <div className="product-item">
           <img
             src="https://i.imgur.com/NVsvQPC.png"
             alt="Flower Bouquet"
-            className="product2-image"
+            className="product-image"
           />
-          <div className="product2-name">Mini Flower Vase</div>
+          <div className="product-name">Mini Flower Vase</div>
         </div>
       </div>
     )}

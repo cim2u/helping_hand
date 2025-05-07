@@ -6,12 +6,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body {
-  background: linear-gradient(to right, #f3a683, #786fa6);
-  color: #fff;
-  text-align: center;
-  transition: all 0.3s ease;
-}
 
 /* Header */
 .header {
