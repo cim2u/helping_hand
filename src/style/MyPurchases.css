@@ -13,7 +13,7 @@
 .backgroundOverlayPurchases {
   position: absolute;
   width: 827px;
-  height:680px;
+  height:699px;
   left: 420px;
   margin-top: 35px !important;
   background: linear-gradient(180deg, #0000009c 0%, #7e355092 58%);
@@ -43,7 +43,7 @@
     width: 770px;
     height: 600px;
     left: 450px;
-    top: 110px !important;
+    top: 95px !important;
     background: rgba(30, 30, 30, 0.65);
     opacity: 0.5;
   }
@@ -57,7 +57,7 @@
     opacity: 0.75;
     border: 1px solid #FEFEFE;
     left: 460px !important;
-    margin-top: -140px;
+    margin-top: -160px;
   }
   
   .lineSeparator {
@@ -66,7 +66,7 @@
     height: 0px;
     border: 1px solid #FEFEFE;
     left: 460px !important;
-    margin-top: -145px;
+    margin-top: -165px;
   }
   
   .sellerName {
@@ -83,7 +83,7 @@
     letter-spacing: 1px;
     color: #FEFEFE;
     left: 470px !important;
-    margin-top: -140px;
+    margin-top: -160px;
   }
   
   .productName {
@@ -100,7 +100,7 @@
     letter-spacing: 1px;
     color: #FEFEFE;
     left: 470px !important;
-    margin-top: -65px;
+    margin-top: -85px;
   }
   
   

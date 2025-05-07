@@ -1,14 +1,15 @@
-// ProfileModal.jsx
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import "../style/ProfileModal.css";
 
-const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
+const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(loggedIn); // Set initial state based on prop
   const profileRef = useRef(null);
   const navigate = useNavigate();
 
+  // handle click outside the profile modal to close it
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
@@ -20,8 +21,19 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
+  // Logout handler
+  const handleLogoutClick = () => {
+    // Clear authentication data
+    localStorage.removeItem("authToken");
+
+    // Update state if you're tracking login status
+    setIsLoggedIn(false);
+
+    // Redirect to login page
+    navigate("/login");
+  };
+
   if (!isVisible || !loggedIn) return null;
-  
 
   return (
     <div className="profileWrapper" ref={profileRef}>
@@ -46,7 +58,6 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
             <FontAwesomeIcon icon={faCartPlus} className="iconStyleProfile" /> Cart
           </div>
 
-
           <div className="profileSellerLabel">Seller</div>
           <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
           <div className="profileOrdersTitle">Orders & Purchases</div>
@@ -58,7 +69,6 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, handleLogoutClick }) => {
           <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
 
           <div className="profileLogout1" onClick={handleLogoutClick}>Log out</div>
-
         </div>
       </div>
     </div>

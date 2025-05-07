@@ -2,17 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
 
 
-body html {
-  height: 400px;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 
 .about-container {
   width: 100%;
-  max-width: 1440px; 
+  
   height:2;
   height: 792px;
   display: flex;
@@ -25,7 +19,7 @@ body html {
 
 /* Header */
 .about-header {
-  width: 1440px; /* Full width */
+  width: 1530px; /* Full width */
   height: 104px;
   padding: 48px 2rem;
   background-color: rgba(126, 53, 80, 1);

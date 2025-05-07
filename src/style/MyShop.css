@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
-html, body {
-  width: 100%;
-  margin: 0;
-}
 
 .shop-container {
   width: 100%; /* Ensure it spans the entire width */
@@ -14,7 +10,7 @@ html, body {
 }
 /* Header */
 .shop-header {
-  width: 1440px;
+  width: 1530px;
   height: 276px;
   
   position: relative;
@@ -533,7 +529,7 @@ html, body {
 
   transition: background-color 0.3s ease;
   position: absolute; /* Position it absolutely relative to the parent */
-  left: 1299px; /* Adjust the horizontal position */
+  left: 1399px; /* Adjust the horizontal position */
   top: 50px;  /* Adjust the vertical position */
 }
 

@@ -12,14 +12,14 @@ body html {
   
 .containerSupport {
     position: relative;
-    width: 1440px;
+    width: 1530px;
     height: 744px;
     background: #FEFEFE;
   }
   
   .headerSupport {
     position: absolute;
-    width: 100%;
+    width: 1530px;
     height: 100px;
     left: 0;
     top: 0;
@@ -29,7 +29,7 @@ body html {
   }
   
   .headerImageSupport {
-    width: 100%;
+    width: 1530px;
     height: 80px;
     position: absolute;
     top: 10px;
@@ -129,7 +129,7 @@ body html {
     position: absolute;
     width: 514px;
     height: 140px;
-    left: 40px;
+    left: 80px;
     top: 350px;
     font-family: 'Outfit';
     font-style: normal;
@@ -142,8 +142,8 @@ body html {
   .formContainerSupport {
     position: absolute;
     width: 702px;
-    height: 546px;
-    left: 600px;
+    height: 486px;
+    left: 700px;
     top: 168px;
     background: #FEFEFE;
     border: 4px solid #7E3550;
@@ -179,7 +179,7 @@ body html {
     width: 407px;
     height: 22px;
     left: 870px;
-    top: 669px;
+    top: 610px;
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 500;

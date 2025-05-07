@@ -3,17 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap');
 
 
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width:1440px;
-  height: 100%;
-  overflow-x: hidden;  /* Prevent horizontal scrolling */
-  overflow-y: auto;  /* Allow vertical scrolling */
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
-}
+
 .a-container {
   width: 100%;
   max-width: 1440px;
@@ -271,7 +261,7 @@ body, html {
 .product-item {
   width: 170px;
   height: 200px;
-  left:23px;
+  left:43px;
   top: -230px;
   background: rgb(255, 255, 255);
   border: 2px solid rgba(0, 0, 0, 0.65);
@@ -281,22 +271,19 @@ body, html {
   flex-direction: column;
   align-items: left;
   position: relative;
+
 }
 
  /* Banner text section */
   
-  /* Make sure the body and html have no margin or padding */
-  body, html {
-    margin: 0;
-    padding: 0;
-  }
+ 
   
   /* Banner text section */
   .banner {
     background-color: #843b62;   /* Purple background */
     color: white;                /* Text color */
     padding: 1rem;               /* Padding inside the banner */
-    width: 1345px;                /* Full viewport width */
+    width: 1378px;                /* Full viewport width */
     position: relative;          /* Allow left adjustments */
     left: -35px;      
                 

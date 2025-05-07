@@ -19,7 +19,7 @@ function About() {
   };
 
   return (
-    <div className="a-container">
+    
       <div className="about-container">
         {/* Header */}
         <div className="about-header">
@@ -85,7 +85,7 @@ function About() {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 }
 

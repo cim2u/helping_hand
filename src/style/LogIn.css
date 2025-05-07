@@ -8,11 +8,11 @@
   border-radius: 8px; /* Rounded corners for the container */
   padding: 30px; /* Padding inside the container */
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  width: 1440px;
+  width: 1500px!important;
   height: 800px;
   opacity:75;
   margin-left:-153px;
-  max-width: 1440px; /* Ensure the container doesn’t go off the screen on smaller devices */
+  max-width: 1500px; /* Ensure the container doesn’t go off the screen on smaller devices */
   z-index:1000px;
 }
 
