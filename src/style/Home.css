@@ -239,9 +239,9 @@
   flex-direction: row;
   align-items: center;
   padding: 10px;
-  margin: 10px;
+  margin: 20px;
   position: relative;
-  left:30px;
+  left: 40px !important;;
 }
 
 
@@ -1069,7 +1069,7 @@
   justify-items: left; /* aligns each item to the left of its grid cell */
   padding: 1rem 0;
   margin-top: 333px;
-  margin-left:-100px; /* No need for -0px */
+  margin-left:100px; /* No need for -0px */
 }
 
 
