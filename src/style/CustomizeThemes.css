@@ -1,41 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 .settings-container {
   position: relative;
   width: 1440px;
-  height: 739px!important;
+  height: 739px !important;
   background: #fdfdfd;
   font-family: 'Roboto', sans-serif;
 }
 
-/* Background image */
+/* Background Image */
 .background-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 1440px;
   height: 800px;
-  background-image: url("https://i.imgur.com/Co6OYeY.png") !important;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: #FFFFFF url("https://i.imgur.com/Co6OYeY.png") no-repeat center/cover !important;
   font-family: 'Outfit', sans-serif;
-  background-color: #FFFFFF; /* Solid white background */
 }
 
-/* Background gradient box */
+/* Sidebar Gradient */
 .settings-background {
   position: absolute;
   width: 383px;
   height: 730px;
-  left: 134px;
+  left: 95px;
   top: 30px;
   background: linear-gradient(180deg, #000000 42%, #7E3550 54%);
+  opacity: 0.5;
   border-radius: 28px;
 }
 
-/* Panel box */
+/* Settings Panel Box */
 .settings-panel {
   position: absolute;
   width: 280px;
@@ -43,55 +40,49 @@
   left: 190px;
   top: 80px;
   background: #000000;
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 20px;
   padding: 20px;
 }
 
-/* Settings Title */
+/* Title */
 .settings-title {
   position: absolute;
+  top: -60px;
   width: 283px;
   height: 72px;
-  margin-left: -10px;
-  top: -60px;
   font-family: 'Outfit', sans-serif;
-  font-style: normal;
-  font-weight: 900 !important;
+  font-weight: 900;
   font-size: 30px;
   line-height: 24px;
   display: flex;
   align-items: center;
   letter-spacing: 1px;
   color: #FEFEFE;
+  margin-left: -10px;
 }
 
 /* Section Titles */
 .section-title {
+  font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 25px;
   line-height: 24px;
   letter-spacing: 0.5px;
   color: #FFFFFF;
-  font-family: 'Outfit', sans-serif;
-  margin-top: 20px;
-  margin-bottom: 8px;
+  margin: 20px 0 8px -10px;
   text-align: left;
-  margin-left: -10px;
 }
 
 /* Menu Items */
 .menu-item {
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.5px;
   color: #FEFEFE;
-  margin-top: 10px;
-  margin-bottom: -12px;
   text-decoration: none;
-  border-bottom: none;
-  outline: none;
-  margin-left: -25px !important;
+  margin: 10px 0 -12px -25px !important;
 }
 
 .menu-item:hover {
@@ -99,48 +90,35 @@
   text-decoration: underline;
 }
 
-
-/* Background gradient box */
-.settings-background {
-  position: absolute;
-  width: 383px;
-  height: 730px;
-  left: 95px !important;
-  top: 30px;
-  background: linear-gradient(180deg, #000000 42%, #7E3550 54%);
-  opacity: 0.5 !important;
-  border-radius: 28px;
-}
-
-
-/* Button content */
+/* Button */
 .state-layer {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
   gap: 8px;
   width: 127px;
   height: 34px;
+  background-color: white;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
-  background-color: white;
 }
+
+/* Theme Background Container */
 .theme-background-accountinfo {
   position: absolute;
   width: 827px;
-  height:680px;
+  height: 680px;
   left: 353px;
-  top:-55px !important;
+  top: -55px;
   background: linear-gradient(180deg, #0000009c 0%, #7e355092 58%);
-  opacity: 1 !important;
+  opacity: 1;
   border-radius: 28px;
 }
 
-/* Theme Container */
+/* Theme Section Container */
 .theme-container {
   position: relative;
   width: 100%;
@@ -149,7 +127,7 @@
   left: -110px;
 }
 
-/* Theme Background */
+/* Theme Inner Background */
 .theme-background {
   position: absolute;
   width: 741px;
@@ -157,129 +135,160 @@
   left: 159px;
   top: 229px;
   background: linear-gradient(180deg, #7e355086 22.5%, #0000005e 75%);
+  border-radius: 20px;
 }
 
+/* Theme Heading */
 .theme {
   position: absolute;
   width: 122px;
   height: 24px;
-  left:-363px;
+  left: -363px;
   top: 20px;
-
   font-family: 'Roboto';
-  font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 24px;
-  display: flex;
-  align-items: center;
   letter-spacing: 1px;
   color: #FEFEFE;
-}
-
-.theme-group-7 {
-  position: absolute;
-  width: 122px;
-  height: 24px;
-  left: 829px;
-  top: 180px;
-  border-radius: 4px;
-}
-
-.theme-group-8 {
-  position: absolute;
-  width: 271px;
-  height: 216px;
-  left: 580px;
-  top: 277px;
-}
-
-.theme-rectangle-77 {
-  position: absolute;
-  width: 271px;
-  height: 160px;
-  background: rgba(30, 30, 30, 0.65);
-}
-
-.theme-morning {
-  position: absolute;
-  width: 173px;
-  height: 23px;
-  left: 94px;
-  top: 178px;
-  font-family: 'Roboto';
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
   display: flex;
   align-items: center;
-  letter-spacing: 1px;
-  color: #FFFFFF;
 }
 
+/* Group Styles */
+.theme-group-7,
+.theme-group-8,
 .theme-group-9 {
   position: absolute;
   width: 271px;
   height: 216px;
-  left: 929px;
+  border-radius: 4px;
+}
+
+.theme-group-7 {
+  left: 290px;
   top: 277px;
 }
+
+.theme-group-8 {
+  left: 580px;
+  top: 277px;
+}
+
+.theme-group-9 {
+  left: 870px;
+  top: 277px;
+}
+
+/* Theme Rectangles */
+.theme-rectangle-77,
 
 .theme-rectangle-81 {
   position: absolute;
   width: 271px;
   height: 160px;
-  background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
+  border-radius: 6px;
+  background: rgba(30, 30, 30, 0.65);
 }
 
+
+.theme-rectangle-77 {
+  background: linear-gradient(180deg, #A1F0FF 0%, #FEFEFE 100%);
+  left:360px;
+}
+
+.theme-rectangle-81 {
+  background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
+  top:233px;
+  left:-293px;
+}
+
+
+.theme-morning,
 .theme-lilac {
   position: absolute;
   width: 173px;
   height: 23px;
-  left:124px;
-  top: 178px;
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  display: flex;
-  align-items: center;
   letter-spacing: 1px;
   color: #FFFFFF;
+  display: flex;
+  align-items: center;
 }
 
-.theme-group-10 {
-  position: absolute;
-  width: 271px;
-  height: 216px;
-  left: 580px;
-  top: 550px;
+.theme-morning {
+  top: 178px;
+  left: 364px;
 }
 
+.theme-lilac {
+  top: 398px;
+  left: -283Px;
+}
 
-
+/* More Themes Label */
 .theme-more-themes {
   position: absolute;
   width: 218px;
   height: 24px;
-  left: 607px;
-  top: 618px;
+  left: 950px;
+  top: 580px;
   font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  display: flex;
-  align-items: center;
   letter-spacing: 1px;
   color: #FFFFFF;
+  display: flex;
+  align-items: center;
 }
 
-.theme-rectangle-80 {
+.default-bg {
+  background-color: white;
+  border: 1px solid #ccc;
   position: absolute;
-  width: 271px;
+ width: 271px;
   height: 160px;
   left: 580px;
-  top: 277px;
-  background: linear-gradient(180deg, #A1F0FF 0%, #FEFEFE 100%);
+  top: 257px;
+  margin-top: 20px;
+  border-radius: 8px;
+
+}
+
+.theme-label-default {
+  position: absolute;
+  top: 458px; /* adjust to your layout */
+  left: 645px; /* align with default-bg */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.theme-default input[type="radio"] {
+  accent-color: black;
+  left:584px;
+  top:1px;
+}
+
+.theme-group-12 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top:910px;
+}
+
+.theme-morning input[type="radio"] {
+  cursor: pointer;
+  margin-right: 6px;
 }

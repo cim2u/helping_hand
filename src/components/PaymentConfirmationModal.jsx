@@ -1,21 +1,39 @@
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useState, useEffect } from 'react';
 import '../style/PaymentConfirmation.css';
 
 const PaymentConfirmationModal = forwardRef((props, ref) => {
+  const { selectedProduct } = props;
   const [visible, setVisible] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [address, setAddress] = useState('');
 
-  const unitPrice = 250;
-  const deliveryFee = 50;
+  const unitPrice = selectedProduct?.price || 0;
+  const deliveryFee = selectedProduct ? 50 : 0; // If there is a product, set delivery fee to 50, otherwise 0
   const subtotal = unitPrice * quantity;
   const total = subtotal + deliveryFee;
 
   useImperativeHandle(ref, () => ({
-    open: () => setVisible(true),
-    close: () => setVisible(false),
+    openModal: () => setVisible(true),
+    closeModal: () => setVisible(false),
   }));
+
+  useEffect(() => {
+    // Close modal when clicking outside of it
+    const handleClickOutside = (event) => {
+      if (event.target.classList.contains('payment-overlay')) {
+        setVisible(false);
+      }
+    };
+
+    if (visible) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [visible]);
 
   const handlePaymentChange = (method) => {
     setPaymentMethod(method);
@@ -51,7 +69,8 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
     <div className="payment-overlay">
       <div className="payment-container">
         <button className="payment-close-button" onClick={() => setVisible(false)}>×</button>
-
+        <div className="payment1"></div>
+        <div className="payment2"></div>
         {/* Address Section */}
         <div className="payment-address-section">
           <div className="payment-address-label">Delivery Address</div>
@@ -66,22 +85,25 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
           </div>
         </div>
 
-
         {/* Purchase Details */}
-
-        <div className="payment1">
-        </div>
-        <div className="payment2">
-        </div>
         <div className="payment-purchase-details">
           <div className="payment-purchase-details-title">Purchase Details</div>
           <div className="payment-product-card">
-            <div className="payment-product-image" />
+            {selectedProduct?.image ? (
+              <img
+                src={selectedProduct.image}
+                alt={selectedProduct.name}
+                className="payment-product-image"
+              />
+            ) : (
+              <div className="payment-product-image-placeholder">No Image</div>
+            )}
+
             <div className="payment-product-info">
-              <div className="payment-product-title">Ribbon Keychain</div>
-              <div className="payment-product-seller">by Sissy Shey</div>
+              <div className="payment-product-title">{selectedProduct?.name || "Unknown Product"}</div>
+              <div className="payment-product-seller">by {selectedProduct?.seller || "Unknown Seller"}</div>
               <div className="payment-product-quantity">
-                Quantity: 
+                Quantity:
                 <button className="payment-qty-btn" onClick={decreaseQty}>−</button>
                 <span className="payment-qty-value">{quantity}</span>
                 <button className="payment-qty-btn" onClick={increaseQty}>+</button>
@@ -89,14 +111,10 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
             </div>
           </div>
         </div>
-       
-
-        {/* Order Option Dropdown (Static for now) */}
-   
 
         {/* Summary */}
         <div className="payment-summary-text">
-          <p>Price ₱{unitPrice  }</p>
+          <p>Price ₱{unitPrice}</p>
           <p>Shipping Fee: ₱{deliveryFee}</p>
           <p><strong>Total Payment: ₱{total}</strong></p>
         </div>

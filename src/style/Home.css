@@ -34,8 +34,10 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative; /* Necessary for positioning icons */
+  position: absolute; /* Necessary for positioning icons */
+  z-index: 2;
 }
+
 
 
 /* Logo.module.css */
@@ -216,17 +218,30 @@ body {
 
 
 
-/* White overlay section */
 .white-section {
   width: 100%; /* Makes it responsive */
-  height: 100px;
-  background: #ffffff;
+  height: 910vh; /* Sets the height to 90% of the viewport height */
+
   padding: 2rem;
   box-sizing: border-box;
-  margin-top: 0px;
-  
+  margin-top: 270px;
+  z-index: -2;
   position: relative;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.white-section.default-theme {
+  background-color: white;
+  
+}
+
+.white-section.morning-theme {
+  background: linear-gradient(180deg, #A1F0FF 0%, #FEFEFE 100%);
+}
+
+.white-section.lilac-theme {
+background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
 }
 
 
@@ -458,6 +473,7 @@ body {
   font-size: 17px;
   line-height: 21px;
   color: #fefefe;
+  z-index: 2;
 }
 
 .email-name:nth-of-type(1) {
@@ -563,7 +579,7 @@ body {
   height: 171px !important;
   left: 125px !important;
   top: 84px !important;
-  
+  z-index: 1;
   background-image: url('https://i.imgur.com/OTvEGFs.png') !important;
   background-size: cover;
   background-position: center;
@@ -579,10 +595,27 @@ body {
   height: 846px;
   left: 16px;
   top: 25px !important;
+  z-index:-2px;
   background: #fefefe00;
   border: 2px solid #7E3550;
   border-radius: 8px;
 }
+
+
+.profileRec.default-theme {
+  background-color: white;
+  
+}
+
+.profileRec.morning-theme {
+  background: linear-gradient(180deg, #A1F0FF 0%, #FEFEFE 100%);
+}
+
+.profileRec.lilac-theme {
+background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
+}
+
+
 
 /* Profile Label (Profile Name) */
 .profileLabel {
@@ -595,6 +628,7 @@ body {
   font-weight: 700;
   font-size: 28px;
   line-height: 140%;
+  z-index: 1;
   color: #7E3550;
 }
 
@@ -605,7 +639,7 @@ body {
   height: 141px;
   left: 30px;
   top: 574px;
-
+  z-index: 1;
   background: #7E3550; /* This will override the earlier background-color */
   border-radius: 12px;
 }
@@ -659,18 +693,20 @@ body {
   color: #ffffff !important;
   top:445px!important;
   left:-5px;
+  z-index: 2;
   text-decoration: underline; /* Adds underline */
 }
 /* Profile Links like Order, Cart */
 .profileLinkCar {
 
   position: relative;
-  left: -83px;
+  left: 3px !important  ;
   font-family: 'Outfit', sans-serif;
   font-size: 18px;
   color: #ffffff !important;
   top: 410px!important;
   text-decoration: underline; /* Adds underline */
+  z-index: 2;
 }
 
 /* Rectangle 82 */
@@ -682,6 +718,7 @@ body {
   top: 448px;
   background: #7E3550;
   border-radius: 12px;
+  z-index: 1;
 }
 
 
@@ -697,6 +734,7 @@ body {
   font-size: 16px;
   color: #fffafa;
   text-align: left;
+  z-index: 2;
 }
 
 /* Profile Logout Tab Styling */
@@ -704,11 +742,12 @@ body {
   cursor: pointer;
   color:  #7E3550 !important;
   text-decoration: underline;
- margin-top: -175px !important;
- margin-left: 283px;
+margin-top: -175px !important;
+margin-left: 283px;
   font-size: 1rem;
   left:345px !important;
   font-weight: 400;
+  z-index: 1;
 }
 
 .profileLogout:hover {
@@ -835,7 +874,7 @@ body {
 }
 
 .modal-rec{
- 
+
   
   position: absolute;
   width: 358px;
@@ -947,7 +986,7 @@ body {
   gap: 38px!important;
   justify-content: center !important; /* center the whole grid */
   padding: 4rem 0px !important;
- 
+
   max-width: 2000px;
   box-sizing: border-box;
   margin-left: -100px!important;
@@ -971,7 +1010,7 @@ body {
 .product-image {
   width: 170px !important;
   height: 170px !important;
- 
+
   border-radius: 10px;
   border: 1px dashed #ccc;
 }

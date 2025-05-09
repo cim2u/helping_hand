@@ -108,20 +108,21 @@ input[type="radio"] {
     cursor: pointer;
     position: relative;
     top:5px;
-    background-color: rgb(255, 255, 255);
+  
     transition: all 0.3s ease;
-    border-color: black;
+    border-color: #7e3550;
 }
 
 
 
 input[type="radio"]:checked {
-    background-color: #00bfff;
-    border-color: #009acd;
+    background-color: #7e3550;
+    border-color: #7e3550;
 }
 
 input[type="radio"]:hover {
-    border-color: #009acd;
+    border-color: #7e3550;
+    background-color: #7e3550;
 }
 
 .role-title {

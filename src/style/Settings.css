@@ -74,34 +74,43 @@
   gap: 12px;
 }
 
+
 .menu-title {
+  position: relative;     /* Required to use 'top' */
+  top: -30px;              /* Adjust this value as needed */
   font-weight: 600;
   font-size: 23px;
   letter-spacing: 0.5px;
   color: #FFFFFF;
-  margin: 20px 0 10px 0; /* Remove margin-left */
-  text-align: left; /* Ensure it aligns to the left */
-  
+  margin: 20px 0 10px 0;
+  text-align: left;
 }
+
 
 .support-title {
   margin-top: 40px;
 }
-
 .menu-item {
   position: relative;
-  left: 10px;  /* Or adjust as needed */
+  top: -50px;                /* Replaces margin-top for vertical shift */
+  left: 10px;
   font-weight: 400;
   font-size: 18px !important;
   line-height: 24px;
   letter-spacing: 0.5px;
   color: #FEFEFE;
-  margin-top: -2px !important;
- 
   text-decoration: none;
   border-bottom: none;
   outline: none;
 }
+
+
+.menu-item:hover {
+  color: #7E3550;  /* change text color on hover */
+  text-decoration: underline;  /* add underline on hover */
+}
+  
+
 
 
 .menu-item:hover {

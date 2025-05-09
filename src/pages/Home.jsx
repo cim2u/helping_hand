@@ -46,7 +46,12 @@ const Home = () => {
   ]);
     const paymentModalRef = useRef();
   
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
 
+    useEffect(() => {
+      setTheme(localStorage.getItem('theme') || 'default');
+    }, []);
+    
      // Handle adding a product to the cart (increment quantity)
   const increment = (productId) => {
     setCartItems(prevItems => prevItems.map(item =>
@@ -64,16 +69,12 @@ const Home = () => {
   };
 
   // Handle "Buy Now" button click (pass the product info to the payment modal)
-  const handleBuyNow = (productId) => {
-    const product = cartItems.find(item => item.id === productId);
 
-    // Pass product details to PaymentConfirmationModal
-    if (paymentModalRef.current) {
-      paymentModalRef.current.open(product); // Open payment modal and pass product details
-    }
+  const handleBuyNow = (product) => {
+    setSelectedProduct(product);
+    paymentModalRef.current?.openModal(); // Triggers the modal
   };
-
-
+  
 
 // Add to Cart Handler
   // Add to Cart Handler
@@ -277,7 +278,9 @@ const Home = () => {
         </aside>
       )}
 
-      <section className="white-section">
+<section className={`white-section ${theme}-theme`}>
+
+
         <div className="banner">
           {isRegistered && <h1 className="banner-text">WELCOME TO HELPING HAND!</h1>}
         </div>
@@ -502,69 +505,73 @@ const Home = () => {
 </div>
 </section>
 
+
 {isModalVisible && selectedProduct && (
-        <div className="product-modal" onClick={closeModal}>
-          {isRegistered ? (
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <div className="modal-rec"></div>
+  <div className="product-modal" onClick={closeModal}>
+    {isRegistered ? (
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-rec"></div>
 
-              {/* Check if selectedProduct exists and has an image */}
-              {selectedProduct && selectedProduct.image ? (
-                <img
-                  src={selectedProduct.image}
-                  alt={selectedProduct.name}
-                  className="modal-product-image"
-                />
-              ) : (
-                <p>Image not available</p> // Fallback message if no image
-              )}
+        {/* Product Image */}
+        {selectedProduct.image ? (
+          <img
+            src={selectedProduct.image}
+            alt={selectedProduct.name}
+            className="modal-product-image"
+          />
+        ) : (
+          <p>Image not available</p>
+        )}
 
-<p className="seller-display">{selectedProduct?.seller || "Unknown Seller"}</p>
+        {/* Product Details */}
+        <p className="seller-display">{selectedProduct.seller || "Unknown Seller"}</p>
+        <p className="price-display">₱{selectedProduct.price}</p>
 
-              <p className="price-display">₱{selectedProduct.price}</p>
-
-              <div className="modal-actions">
-                <button className="add-to-cart-button-home" onClick={handleAddToCart}>
-                  Add to Cart
-                </button>
-                <button
-                  className="buy-now-btn-home"
-                  onClick={() => handleBuyNow(selectedProduct.id)} // Pass the product ID to handleBuyNow
-                >
-                  BUY NOW
-                </button>
-              </div>
-            </div>
-          ) : (
-            // Unregistered user - show sign-up modal
-            <div className="unregisteredModalHome" onClick={(e) => e.stopPropagation()}>
-              <div className="unregisteredModalInnerHome">
-                <div className="unregisteredMessageHome">
-                  Please create an account before proceeding
-                </div>
-                <div
-                  className="unregisteredSignupFrameHome"
-                  onClick={() => navigate('/signup')}
-                >
-                  <span className="unregisteredSignupTextHome">Sign Up</span>
-                </div>
-                <div className="unregisteredLoginPromptHome">
-                  Already have an account?{' '}
-                  <span
-                    onClick={() => navigate('/login')}
-                    style={{ cursor: 'pointer', textDecoration: 'underline' }}
-                  >
-                    Log In
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
+        <div className="modal-actions">
+          <button className="add-to-cart-button-home" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+          <button
+            className="buy-now-btn-home"
+            onClick={() => handleBuyNow(selectedProduct)} // Pass full product object
+          >
+            BUY NOW
+          </button>
         </div>
-      )}
+      </div>
+    ) : (
+      // Unregistered user - show sign-up modal
+      <div className="unregisteredModalHome" onClick={(e) => e.stopPropagation()}>
+        <div className="unregisteredModalInnerHome">
+          <div className="unregisteredMessageHome">
+            Please create an account before proceeding
+          </div>
+          <div
+            className="unregisteredSignupFrameHome"
+            onClick={() => navigate('/signup')}
+          >
+            <span className="unregisteredSignupTextHome">Sign Up</span>
+          </div>
+          <div className="unregisteredLoginPromptHome">
+            Already have an account?{' '}
+            <span
+              onClick={() => navigate('/login')}
+              style={{ cursor: 'pointer', textDecoration: 'underline' }}
+            >
+              Log In
+            </span>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+)}
 
-       {/* Payment Modal */}
-       <PaymentConfirmationModal ref={paymentModalRef} />
+{/* Payment Confirmation Modal (receives selected product) */}
+<PaymentConfirmationModal
+  ref={paymentModalRef}
+  selectedProduct={selectedProduct}
+/>
 
 
 {/* profile icon */}

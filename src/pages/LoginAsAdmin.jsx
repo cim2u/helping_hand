@@ -3,13 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import "../style/LogIn.css";
 import logoImage from "../assets/Logo.png";
 
-const LogIn = () => {
+const LoginAsAdmin = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [error, setError] = useState(""); // To display login errors
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -20,42 +19,26 @@ const LogIn = () => {
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Login submitted:", formData);
+    const { email, password } = formData;
 
-    try {
-      // Send login request to the backend API
-      const response = await fetch("https://your-backend-api.com/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
+    // Set your admin credentials here
+    const adminEmail = "admin@helpinghand.com";
+    const adminPassword = "admin123";
 
-      // Parse the response
-      const data = await response.json();
+    // Check if the email and password match the admin credentials
+    if (email === adminEmail && password === adminPassword) {
+      console.log("Admin login successful");
 
-      // Check if the response indicates a successful login
-      if (response.ok) {
-        // Store user data and authentication token in localStorage
-        localStorage.setItem("user", JSON.stringify(data.user)); // Example: Save user data
-        localStorage.setItem("token", data.token); // Example: Save JWT token
-        localStorage.setItem("loggedIn", "true"); // Set loggedIn status
+      // Save admin status in localStorage
+      localStorage.setItem("user", JSON.stringify({ role: "admin", email }));
+      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("isAdmin", "true");
 
-        // Navigate to the home page
-        navigate("/home");
-      } else {
-        // Display error message from backend
-        setError(data.message || "Login failed. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-      setError("An error occurred while logging in. Please try again.");
+      navigate("/admin-dashboard"); // Redirect to admin dashboard
+    } else {
+      alert("Invalid admin credentials.");
     }
   };
 
@@ -79,10 +62,8 @@ const LogIn = () => {
           </div>
 
           <div className="welcome-heading">
-            <h2>Welcome!</h2>
+            <h2>Admin Login</h2>
           </div>
-
-          {error && <div className="error-message">{error}</div>} {/* Display error message */}
 
           <form onSubmit={handleSubmit} className="login-form">
             <label htmlFor="email">Email</label>
@@ -105,18 +86,10 @@ const LogIn = () => {
               required
             />
 
-            <Link to="/forgot-password" className="forgot-password">
-              Forgot password?
-            </Link>
-
             <button type="submit" className="login-btn">Login</button>
 
-            <div className="signup-link">
-              Don’t have an account? <Link to="/signup">Sign Up</Link>
-            </div>
-
             <div className="admin-login">
-              <Link to="/login-admin">Login as Admin</Link>
+              <Link to="/login">Login as User</Link>
             </div>
           </form>
         </div>
@@ -125,4 +98,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default LoginAsAdmin;

@@ -4,25 +4,31 @@
 
 
 .c-container {
-  width: 1513px;
-  height: 1000px;
-  background-color: rgba(255, 255, 255, 0.171);
+  width: 1510px;
+  height: 700px;
+  background-color: rgba(255, 255, 255, 0);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: fixed;
   
 }
 
-
+.logo-signup{
+  width: 483px; /* Adjusted width for specific use cases */
+position: absolute; /* Required for top and left positioning */
+top: 167px;
+left: 160px;
+z-index: 150; /* Ensures it stays on top */
+}
 
 
 
 /* Container for the signup form */
 .signup-container {
   width: 100%;
-  max-width: 1440px;
-  height: 1024px;
+  width: 1510px;
+  height: 800px;
   
   display: flex;
   flex-direction: column;
@@ -45,8 +51,8 @@
   flex-direction: column;
   gap: -15px;
   position: absolute; /* Enables precise positioning */
-  top: 358px; /* Adjust this value for vertical positioning */
-  left: 52px; /* Centers the form horizontally */
+  top: 114px; /* Adjust this value for vertical positioning */
+  left: 930px; /* Centers the form horizontally */
   z-index: 2;
 }
 
@@ -81,7 +87,7 @@
   font-family: 'Outfit', sans-serif;
   letter-spacing: 0;
   line-height: 100%;
-  margin-left: 5px;
+  margin-left: 9px;
   
   
 }
@@ -134,7 +140,7 @@
   box-sizing: border-box;
   background-color: transparent; /* Makes input fields transparent */
   color: #000000;
-  margin-left: -17px;
+  margin-left: 5px;
   margin-top:5px;
 }
 
@@ -150,7 +156,7 @@
   color: #000000;
 
   /* Position adjustment */
-  margin-left: -20px;   /* Pushes input to the right from the left edge */
+  margin-left: 10px;   /* Pushes input to the right from the left edge */
   margin-top: 2px;   /* Pulls input upward */
 }
 
@@ -264,7 +270,7 @@ input:focus {
 .by-creat-text {
   font-family: 'Outfit', sans-serif; /* Apply Outfit font */
   font-weight: 200 !important; /* Set to normal weight */
-  font-size: 15px; /* Adjusted font size */
+  font-size: 20px; /* Adjusted font size */
   line-height: 100%; /* Set line height to 100% */
   letter-spacing: 0%; /* No letter spacing */
   text-align: center; /* Center alignment */
@@ -274,8 +280,8 @@ input:focus {
 
   /* Positioning */
   position: absolute;
-  top: 945px; /* Adjust distance from top */
-  left: 44px; /* Center horizontally */
+  top: 673px; /* Adjust distance from top */
+  left: 478px; /* Center horizontally */
 }
 
 .by-creat-text a {
@@ -294,12 +300,12 @@ input:focus {
   width: 497px;
   height: 31px;
   position: absolute; /* Ensure top and left positioning work */
-  top: 281px;
-  left: 37px;
+  top: 395px;
+  left: 143px;
   
   font-family: "Outfit", sans-serif;
   font-weight: 500;
-  font-size: 19px;
+  font-size: 37px;
   line-height: 100%;
   letter-spacing: 0;
   text-align: center;
@@ -309,13 +315,13 @@ input:focus {
 
 /* Background image container */
 .image-back {
-  position: absolute; /* Position it absolutely to fill the screen */
+  position: fixed; /* Position it absolutely to fill the screen */
   top: 0;
   left: 0;
-  width: 1513px;
-  height: 1000px; /* Ensure fixed height for the background image */
+  width: 1510px;
+  height: 800px; /* Ensure fixed height for the background image */
   
-  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kjxOMWUN80t2rVIumnkecxzwLsr-ege4Pdssqp2ylLLyryEBQ6FCkK-EYu8hPgpX~zsB3St5pn3QbHvtdyMTovGHTaDyHkfqhTAwR0fDnnZt6bF4do6Sdk4RbbEymd9jYvn9cHJZr2z8NCj4UDlvPY4frYGJSeqjsqLVf-HWu20YWfYI80epiKANjvYPt9kJ0tRF1USum4wMSjBXxGgrZaJjpRaUpY9djLUFx7pP~FRIMONo4-Lb5cmqj9YGDSWEVq1ft3STthhualXDryXf3xgGLxAXK2q2h9RvnjckWR8xl3~BlsgiPEpIn22d2tRlHnBbuzs~Wmz7pcBj9U7I~g__');
+  background-image: url('https://i.imgur.com/ErEQ4GI.png');
   background-size: cover; /* Ensure image covers the area */
   background-position: center;
   background-repeat: no-repeat;
@@ -332,11 +338,11 @@ input:focus {
   height: 1000px; /* Make sure height is the same as the image */
   z-index: 2;
   opacity: 0.25;
-  background: rgb(0, 0, 1); /* Overlay effect */
+  background: rgba(0, 0, 1, 0); /* Overlay effect */
   
   border-top-right-radius: 90px;
   border: 2px solid rgb(254, 254, 254);
-  box-shadow: #ffffff;
+  box-shadow: #ffffff00;
 }
 
 

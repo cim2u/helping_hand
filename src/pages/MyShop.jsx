@@ -24,7 +24,11 @@ const MyShop = () => {
   const { state } = location;
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Or false depending on logic
  
-
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
+  
+      useEffect(() => {
+        setTheme(localStorage.getItem('theme') || 'default');
+      }, []);
 
   const toggleProfileVisibility = () => {
     console.log("Profile visibility toggled:", !isProfileVisible);
@@ -182,7 +186,7 @@ const [showProfile, setShowProfile] = useState(false);
 
   
   return (
-    <div className="shop-container">
+    <section className={`shop-container ${theme}-theme`}>
       {/* Header */}
       <header className="shop-header">
   <img src={logoImage} alt="Helping Hand Banner" className="logoLarge" />
@@ -574,9 +578,8 @@ const [showProfile, setShowProfile] = useState(false);
          
   
     </div>
-  </div>
-</div>  
-
+  </div> 
+   </section>
 
     
   );

@@ -9,7 +9,13 @@ const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
   const profileRef = useRef(null);
   const navigate = useNavigate();
 
-  // handle click outside the profile modal to close it
+  // handle click outside the profile modal to close it\
+
+      const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
+    
+        useEffect(() => {
+          setTheme(localStorage.getItem('theme') || 'default');
+        }, []);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
@@ -48,7 +54,8 @@ const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
           </div>
           <div className="profileBanner" />
           <div className="profileBanner_1" />
-          <div className="profileRec" />
+          <section className={`profileRec ${theme}-theme`}>
+          </section>
 
           <div className="profileLinkOr" onClick={() => navigate('/order')}>
             <FontAwesomeIcon icon={faBagShopping} className="iconStyleProfile" /> Order

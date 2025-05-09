@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 2999;
 }
 
 .payment1 {
@@ -20,6 +20,7 @@
   top: 123px;
   background-color: #7E3550; /* deep mauve/purple color */
 }
+
 .payment-container {
   width: 584px;
   background: #ffffff;
@@ -90,7 +91,6 @@
 .payment-product-image {
   width: 123px;
   height: 123px;
-  background-image: url('');
   background-size: cover;
   background-position: center;
   border-radius: 16px;
@@ -139,15 +139,13 @@
   font-weight: bold;
 }
 
-
-
 /* Summary */
 .payment-summary-text {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: #7e3550;
-  margin-top: 86px !important  ;
+  margin-top: 86px !important;
   position: absolute;
 }
 
@@ -158,8 +156,8 @@
   font-size: 20px;
   color: #7e3550;
   margin-bottom: 12px;
-  top: 230px !important; 
   position: relative;
+  top: 230px !important;
 }
 
 .payment-checkbox-row {
@@ -167,17 +165,45 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
-  top:229px;
   position: relative;
+  top: 229px;
 }
 
 .payment-checkbox {
   width: 20px;
-  height: 90px;
+  height: 20px;
   cursor: pointer;
-
+  appearance: none;
+  border: 2px solid #7E3550; /* Purple border color */
+  border-radius: 50%;
+  position: relative;
+  transition: border-color 0.3s ease;
 }
 
+/* Circle in the center when selected */
+.payment-checkbox:checked {
+  background-color: #e1e1e1; /* Purple background when selected */
+  border-color: #7E3550; /* Purple border when selected */
+}
+
+.payment-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white; /* White circle in the center */
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Focus State for Radio Button */
+.payment-checkbox-row input[type="radio"]:focus-visible {
+  outline: 2px solid #7E3550; /* Purple outline on focus */
+}
+
+/* Label for Radio Buttons */
 .payment-checkbox-label {
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
@@ -185,9 +211,14 @@
   color: #7e3550;
 }
 
+/* Change label color when radio button is checked */
+.payment-checkbox-row input[type="radio"]:checked + .payment-checkbox-label {
+  color: #7E3550; /* Changes color of the label when selected */
+}
+
 /* Place Order Button */
 .payment-order-button {
-  margin-top:42px;
+  margin-top: 42px;
   background: #7e3550;
   border-radius: 28px;
   width: 100%;
@@ -196,9 +227,8 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  top:213px;
   position: relative;
-  
+  top: 213px;
 }
 
 .payment-order-button-text {
@@ -206,23 +236,14 @@
   font-weight: 700;
   font-size: 16px;
   color: #ffffff;
-  top:23px;
 }
 
-.payment2{
+/* Purple Border and Background for Confirmation */
+.payment2 {
   position: absolute;
   width: 586px;
   height: 31px;
   left: -2px;
   top: 513px;
   background-color: #7E3550; /* deep mauve/purple color */
-}
-
-.custom-radio {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #7E3550;
-  border-radius: 50%;
-  margin-right: 10px;
-  position: relative;
 }

@@ -1,0 +1,178 @@
+.containerAdmin {
+    position: relative;
+    width: 1440px;
+    height: 1024px;
+    background: #FEFEFE;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .headerAdmin {
+    position: absolute;
+    top: 0;
+    width: 1440px;
+    height: 85px;
+    background: #1E1E1E;
+  }
+  
+  .logoGroupAdmin {
+    position: absolute;
+    left: 23px;
+    top: 14px;
+  }
+  
+  .logoTextAdmin {
+    font-family: 'Rowdies';
+    font-weight: 700;
+    font-size: 32px;
+    color: #36BDD7;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .logoSubTextAdmin {
+    font-family: 'Molle';
+    font-size: 32px;
+    color: #FEFEFE;
+    position: absolute;
+    top: 20px;
+  }
+  
+  .titleAdmin {
+    position: absolute;
+    left: 347px;
+    top: 21px;
+    font-weight: 900;
+    font-size: 36px;
+    color: #FEFEFE;
+  }
+  
+  .sidebarAdmin {
+    position: absolute;
+    width: 308px;
+    height: 939px;
+    top: 85px;
+    background: #FEFEFE;
+    border-right: 1px solid #303030;
+  }
+  
+  .avatarAdmin {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    margin: 25px 0 0 21px;
+    background: url('') center/cover no-repeat;
+    box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1);
+  }
+  
+  .adminNameGroupAdmin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 21px;
+  }
+  
+  .adminNameAdmin {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  
+  .notificationAdmin {
+    position: relative;
+  }
+  
+  .bellIconAdmin {
+    width: 24px;
+    height: 24px;
+    border: 2.5px solid #1E1E1E;
+  }
+  
+  .badgeAdmin {
+    position: absolute;
+    top: -4px;
+    left: 14px;
+    background: #B3261E;
+    width: 16px;
+    height: 16px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .badgeLabelAdmin {
+    font-size: 11px;
+    color: #fff;
+  }
+  
+  .menuAdmin {
+    margin-top: 30px;
+  }
+  
+  .menuItemAdmin {
+    display: flex;
+    align-items: center;
+    margin: 16px 0 0 21px;
+  }
+  
+  .menuItemAdmin .iconAdmin {
+    width: 30px;
+    height: 30px;
+    border: 3.5px solid #1E1E1E;
+    margin-right: 15px;
+  }
+  
+  .menuTextAdmin {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+  }
+  
+  .menuItemAdmin.active .menuTextAdmin {
+    text-decoration: underline;
+  }
+  
+  .mainContentAdmin {
+    position: absolute;
+    left: 308px;
+    top: 85px;
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+  }
+  
+  .cardAdmin {
+    position: relative;
+    width: 450px;
+  }
+  
+  .rightAdmin {
+    margin-left: 80px;
+  }
+  
+  .cardTitleAdmin {
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #1E1E1E;
+  }
+  
+  .cardBoxAdmin {
+    width: 450px;
+    height: 289px;
+    border: 1px solid rgba(30, 30, 30, 0.65);
+    background: #FEFEFE;
+  }
+  
+  .salesAdmin {
+    position: absolute;
+    top: 480px;
+    left: 43px;
+  }
+  
+  .salesBoxAdmin {
+    width: 988px;
+    height: 426px;
+    background: #FEFEFE;
+    border: 1px solid rgba(30, 30, 30, 0.65);
+  }
+  

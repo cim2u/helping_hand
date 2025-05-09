@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-
 // Pages
 import About from "./pages/About.jsx";
 import Home from "./pages/Home.jsx";
@@ -11,17 +10,21 @@ import ContinueAs from "./pages/ContinueAs.jsx";
 import TermsAndPolicy from "./pages/TermsAndPolicy.jsx";
 import StudentDashboard from "./pages/StudentDashboard.jsx";
 import BuyerDashboard from "./pages/BuyerDashboard.jsx";
-import Subscribe from "./pages/Subscribe.jsx"; // ✅ Import Subscribe page
+import Subscribe from "./pages/Subscribe.jsx";
 import MyShop from "./pages/MyShop.jsx";
 import SellerInfo from "./pages/SellerInfo.jsx";
-import ProductDetail from "./components/ProductGrid.jsx"; // ✅ Import Product Detail page
+import ProductDetail from "./components/ProductGrid.jsx";
 import Settings from "./pages/Settings.jsx";
 import Cart from "./components/CartModal.jsx";
-import Support from './pages/Support.jsx';
-import AccountInfo from './pages/AccountInfo.jsx';
-import MyPurchases from './pages/MyPurchases.jsx';
-import CustomizeThemes from './pages/CustomizeThemes.jsx';
-import Shop from './pages/Shop.jsx';
+import Support from "./pages/Support.jsx";
+import AccountInfo from "./pages/AccountInfo.jsx";
+import MyPurchases from "./pages/MyPurchases.jsx";
+import CustomizeThemes from "./pages/CustomizeThemes.jsx";
+import OrderPage from "./pages/OrderPage.jsx";
+import Shop from "./pages/Shop.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
+import LoginAsAdmin from "./pages/LoginAsAdmin.jsx"; // ✅ Import LoginAsAdmin
+
 import "./App.css";
 
 function App() {
@@ -40,33 +43,38 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
 
-        {/* Home Page with Nested Routes */}
-        <Route path="/home" element={<Home />}>
-          {/* Add more nested routes here if needed */}
-        </Route>
+        {/* Home Page */}
+        <Route path="/home" element={<Home />} />
 
-        {/* Other Pages */}
+        {/* Public Pages */}
         <Route path="/about" element={<About />} />
         <Route path="/support" element={<Support />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/login-admin" element={<LoginAsAdmin />} /> {/* ✅ Admin login route */}
         <Route path="/continue-as" element={<ContinueAs />} />
         <Route path="/terms" element={<TermsAndPolicy />} />
+
+        {/* Shop & Store Pages */}
         <Route path="/store" element={<MyShop />} />
+        <Route path="/store/:storeName" element={<MyShop />} />
         <Route path="/sellerinfo" element={<SellerInfo />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+
+        {/* User-related Pages */}
         <Route path="/settings" element={<Settings />} />
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/account-info" element={<AccountInfo />} />
         <Route path="/my-purchases" element={<MyPurchases />} />
-        <Route path="/customize-themes"element={<CustomizeThemes/>}/>
-        <Route path="/shop"element={<Shop/>}/>
+        <Route path="/customize-themes" element={<CustomizeThemes />} />
+        <Route path="/orders" element={<OrderPage />} />
 
+        {/* Admin Dashboard */}
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
-        {/* Product Details Route */}
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/store/:storeName" element={<MyShop />} />
-        {/* Protected Routes for Dashboards */}
+        {/* Protected Routes */}
         <Route
           path="/student-dashboard"
           element={isLoggedIn ? <StudentDashboard /> : <Navigate to="/login" />}

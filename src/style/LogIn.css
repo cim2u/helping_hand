@@ -2,34 +2,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
 
-/* Add a-container styles */
-.b-container {
-  background-color:  rgba(245, 241, 241, 0.29);/* White background for the container */
-  border-radius: 8px; /* Rounded corners for the container */
-  padding: 30px; /* Padding inside the container */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  width: 1513px!important;
-  height: 800px;
-  opacity:75;
-  
-  z-index:1000px;
-}
 
 .login-container{
   background-color: rgb(255, 255, 255);
 }
 .login-page {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 1513px;
+  width: 1510px;
   height: 800px;
-  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
+  background-image: url('https://i.imgur.com/ErEQ4GI.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   font-family: 'Outfit', sans-serif;
   background-color: rgba(255, 255, 255, 0.62)!important; /* Transparent white with 75% opacity */
+
 }
 
 /* General form styling */
@@ -45,7 +34,7 @@
     gap: 20px;
     position: absolute;
     top: 285px; /* Adjust based on layout */
-    left: -19px;  /* Center horizontally */
+    left: -9px;  /* Center horizontally */
     
     font-family: 'Outfit', sans-serif;
   }
@@ -146,7 +135,7 @@
     height: 32px; /* Height of the container */
     position: absolute; /* Position it absolutely */
     top: 330px; /* Vertical position */
-    left: 159px; /* Horizontal position */
+    left: 129px; /* Horizontal position */
     font-family: 'Outfit', sans-serif; /* Font family */
     font-weight: 200 !important; /* Font weight */
     font-size: 16px; /* Font size */
@@ -210,7 +199,7 @@
   
   .login-container {
     width: 477px;
-    height: 725px;
+    height: 710px;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.23);
     border-radius: 30px;
@@ -223,8 +212,8 @@
     gap: 12px;
   
     position: absolute;
-    top: 40px;
-    left: 480px;
+    top: 20px;
+    left: 560px;
   
     font-family: 'Outfit', sans-serif;
   }
@@ -269,7 +258,7 @@
     justify-content: center;
     text-align: center;
     margin-top:-35px;
-    margin-left: 14px;
+    margin-left: -2px;
   
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
@@ -299,9 +288,13 @@
     color:  #00acc1;/* Or use a lighter color like #f0f0f0 */
     text-decoration: none;
     transition: color 0.3s ease;
-    left:30px;
+    left:-5px;
   }
 
-  .welcome-heading h2{
-    color:white;
+  .welcome-heading h2 {
+    
+    color: white;
+    width: 500px;
+    text-align: left;
+    margin-left: 0;
   }

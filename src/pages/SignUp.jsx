@@ -157,9 +157,9 @@ const SignUp = () => {
       <div className="flex h-screen">
         {/* Left Panel - Signup Form */}
         <div className="signup-left-panel">
-          <div className="flex justify-center mb-6">
-            <img src={logoImage} alt="HelpingHand Logo" className={styles.logoLarge} />
-          </div>
+            <div className="logo-signup">
+              <img src={logoImage} alt="HelpingHand Logo" className={styles.logoLarge} />
+            </div>
 
           <p className="create-text">
             Create a free account and join our growing community!
@@ -184,12 +184,12 @@ const SignUp = () => {
         <div
           className="image-back"
           style={{
-            backgroundImage: `url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__')`,
+            backgroundImage: `url('https://i.imgur.com/ErEQ4GI.png')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <div className="h-full w-full bg-black bg-opacity-30"></div>
+         
         </div>
       </div>
     </div>
