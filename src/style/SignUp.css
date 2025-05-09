@@ -4,9 +4,7 @@
 
 
 .c-container {
-  width: 1510px;
-  height: 700px;
-  background-color: rgba(255, 255, 255, 0);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -315,10 +313,10 @@ input:focus {
 
 /* Background image container */
 .image-back {
-  position: fixed; /* Position it absolutely to fill the screen */
-  top: 0;
+  position: absolute; /* Position it absolutely to fill the screen */
+  top: -25px;
   left: 0;
-  width: 1510px;
+  width: 1529px;
   height: 800px; /* Ensure fixed height for the background image */
   
   background-image: url('https://i.imgur.com/ErEQ4GI.png');
@@ -329,21 +327,6 @@ input:focus {
   z-index: -1; /* Keep behind other content */
 }
 
-/* Overlay for the right panel background */
-.image-back .h-full {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 567px;
-  height: 1000px; /* Make sure height is the same as the image */
-  z-index: 2;
-  opacity: 0.25;
-  background: rgba(0, 0, 1, 0); /* Overlay effect */
-  
-  border-top-right-radius: 90px;
-  border: 2px solid rgb(254, 254, 254);
-  box-shadow: #ffffff00;
-}
 
 
 

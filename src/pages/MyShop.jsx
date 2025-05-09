@@ -352,27 +352,7 @@ const [showProfile, setShowProfile] = useState(false);
   <span className="popular-label">POPULAR</span>
 
   <div className="relative">
-    <FontAwesomeIcon
-      icon={faArrowRight}
-      className={`scroll-arrow ${scrolledRight ? "rotate-180" : ""}`}
-      onClick={() => {
-        const scrollEl = productListRef.current;
-        if (scrollEl) {
-          if (scrolledRight) {
-            // Scroll back to the start
-            scrollEl.scrollTo({ left: 0, behavior: "smooth" });
-          } else {
-            // Scroll to the seventh product (if exists)
-            const seventhItem = scrollEl.children[6];
-            if (seventhItem) {
-              const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
-              scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
-            }
-          }
-          setScrolledRight(!scrolledRight);
-        }
-      }}
-    />
+   
 
     <div
       ref={productListRef}
@@ -385,31 +365,29 @@ const [showProfile, setShowProfile] = useState(false);
         paddingRight: "40px",
       }}
     >
-      {/* PRODUCT SECTION - shows only when "products" is active */}
-      {activeTab === "products" && (
-        <>
-          <div className="product1-grid">
-            {/* Product 1 */}
-            <div className="product-item">
-              <img
-                src="https://i.imgur.com/YP2DSeS.png"
-                alt="Ribbon Keychain"
-                className="product-image"
-              />
-              <div className="product-name">Ribbon Keychain</div>
-            </div>
-            {/* Product 2 */}
-            <div className="product-item">
-              <img
-                src="https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HqnOSKBPbWe-~OuAn7WZQGAehGp~l4~D4hpohOnMQknH5MGA1XbjR7GEaOW8xGUO-zNGaZn8QrzF4Fi0I4wAzrH1A5oGV~57e9FrtpixDhhDsIUsjwSGVRQeQPjpETKnBzbLOD9VxKaERq-LWyFnTBWYHBnYQXRcnbmdsrqWk4yWPy6KGptmkyWQnCZTN8GX4SwZiXHpiQ5~9AWAHdKpcOmfhSVlK2FQ3nhM38EKM72fU4L-2UrUuoVGlnEvO8mJnNykJqhy9tak4P~shxu0Jhw8FX~yYs75grTZXu57vyKxyqTgJfYImdJilk9i0Lp9q3gg5X-E2Ww3r1RYbaZygA__"
-                alt="Flower Bouquet"
-                className="product-image"
-              />
-              <div className="product-name">Mini Flower Vase</div>
-            </div>
-          </div>
-        </>
-      )}
+    <>
+  <div className="product1-grid">
+    {/* Product 1 */}
+    <div className="product-item">
+      <img
+        src="https://i.imgur.com/YP2DSeS.png"
+        alt="Ribbon Keychain"
+        className="product-image"
+      />
+      <div className="product-name">Ribbon Keychain</div>
+    </div>
+    {/* Product 2 */}
+    <div className="product-item">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/3ab1/c59c/1a1f07801f5115381349e63f4c14f55e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HqnOSKBPbWe-~OuAn7WZQGAehGp~l4~D4hpohOnMQknH5MGA1XbjR7GEaOW8xGUO-zNGaZn8QrzF4Fi0I4wAzrH1A5oGV~57e9FrtpixDhhDsIUsjwSGVRQeQPjpETKnBzbLOD9VxKaERq-LWyFnTBWYHBnYQXRcnbmdsrqWk4yWPy6KGptmkyWQnCZTN8GX4SwZiXHpiQ5~9AWAHdKpcOmfhSVlK2FQ3nhM38EKM72fU4L-2UrUuoVGlnEvO8mJnNykJqhy9tak4P~shxu0Jhw8FX~yYs75grTZXu57vyKxyqTgJfYImdJilk9i0Lp9q3gg5X-E2Ww3r1RYbaZygA__"
+        alt="Flower Bouquet"
+        className="product-image"
+      />
+      <div className="product-name">Mini Flower Vase</div>
+    </div>
+  </div>
+</>
+
     </div>
   </div>
 </div>
@@ -424,23 +402,7 @@ const [showProfile, setShowProfile] = useState(false);
 
   <div className="product2-wrapper relative">
     {/* Arrow for scrolling */}
-    <FontAwesomeIcon
-      icon={faArrowRight}
-      className={`product2-arrow ${scrolledRightProduct2 ? "rotate-180 left-arrow" : "right-arrow"}`}
-      onClick={() => {
-        const scrollEl = productList2Ref.current;
-        if (scrolledRightProduct2) {
-          scrollEl.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-          const seventhItem = scrollEl.children[6];
-          if (seventhItem) {
-            const leftPos = seventhItem.offsetLeft - scrollEl.offsetLeft;
-            scrollEl.scrollTo({ left: leftPos, behavior: "smooth" });
-          }
-        }
-        setScrolledRightProduct2(!scrolledRightProduct2);
-      }}
-    />
+    
 
 
    {/* Horizontally scrolling container */}
@@ -455,33 +417,25 @@ const [showProfile, setShowProfile] = useState(false);
         paddingRight: "40px",
       }}
     ></div>
- {/* SERVICE SECTION - shows only when "services" is active */}
+{/* SERVICE SECTION - shows only when "services" is active */}
 {activeTab === "services" && (
   <>
     <span className="service-label">SERVICES</span>
     <div className="service-grid">
       {/* Service 1 */}
       <div className="service-item">
-        <img
-          src="https://via.placeholder.com/300x300?text=Gift+Wrap"
-          alt="Gift Wrapping"
-          className="service-image"
-        />
-        <div className="service-name">Gift Wrapping</div>
+        <div className="service-image-container">
+          <div className="service-image-placeholder">Homework</div>
+        </div>
+        <div className="service-name">Homework</div>
       </div>
 
-      {/* Service 2 */}
-      <div className="service-item">
-        <img
-          src="https://via.placeholder.com/300x300?text=Custom+Card"
-          alt="Customized Card"
-          className="service-image"
-        />
-        <div className="service-name">Customized Cards</div>
-      </div>
+      {/* Add more services as needed */}
     </div>
   </>
 )}
+
+
 
 
     {/* PRODUCT SECTION - shows only when "products" is active */}

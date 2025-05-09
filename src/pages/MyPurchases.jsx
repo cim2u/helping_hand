@@ -51,21 +51,21 @@ const MyPurchases = () => {
         <div className="purchaseBlock" style={{ left: '529px', top: '271px' }} />
         <div className="lineSeparator" style={{ left: '529px', top: '305px' }} />
         <div className="lineSeparator" style={{ left: '529px', top: '420px' }} />
-        <div className="sellerName" style={{ left: '538px', top: '277px' }}>Name of seller</div>
+        <div className="MysellerName" style={{ left: '538px', top: '277px' }}>Name of seller</div>
         <div className="productName" style={{ left: '556px', top: '348px' }}>Product</div>
 
         {/* Purchase History Block 2 */}
         <div className="purchaseBlock" style={{ left: '529px', top: '465px' }} />
         <div className="lineSeparator" style={{ left: '529px', top: '499px' }} />
         <div className="lineSeparator" style={{ left: '529px', top: '614px' }} />
-        <div className="sellerName" style={{ left: '538px', top: '471px' }}>Name of seller</div>
+        <div className="MysellerName" style={{ left: '538px', top: '471px' }}>Name of seller</div>
         <div className="productName" style={{ left: '556px', top: '542px' }}>Product</div>
 
         {/* Purchase History Block 3 */}
         <div className="purchaseBlock" style={{ left: '529px', top: '661px' }} />
         <div className="lineSeparator" style={{ left: '529px', top: '695px' }} />
         <div className="lineSeparator" style={{ left: '529px', top: '810px' }} />
-        <div className="sellerName" style={{ left: '538px', top: '667px' }}>Name of seller</div>
+        <div className="MysellerName" style={{ left: '538px', top: '667px' }}>Name of seller</div>
         <div className="productName" style={{ left: '556px', top: '738px' }}>Product</div>
         </div>
         <button className="home-button" onClick={handleBackHome}>

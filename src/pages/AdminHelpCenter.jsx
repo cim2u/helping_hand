@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import '../style/AdminDashboard.css';
+import '../style/AdminHelpCenter.css';
 
-const AdminDashboard = () => {
+const AdminHelpCenter = () => {
   const location = useLocation();
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown(prevState => !prevState);
+  };
 
   return (
     <div className="containerAdmin">
@@ -12,7 +20,7 @@ const AdminDashboard = () => {
           <h1 className="logoTextAdmin">Helping</h1>
           <p className="logoSubTextAdmin">Hand</p>
         </div>
-        <h2 className="titleAdmin">DASHBOARD</h2>
+        <h2 className="titleAdmin">HELP CENTER</h2>
       </header>
 
       <aside className="sidebarAdmin">
@@ -50,24 +58,28 @@ const AdminDashboard = () => {
         </nav>
       </aside>
 
-      <main className="mainContentAdmin">
-        <section className="cardAdmin">
-          <h3 className="cardTitleAdmin">Monthly Earnings</h3>
-          <div className="cardBoxAdmin"></div>
-        </section>
+      {/* Help Center / Customer Reviews Section */}
+      <div className="group73HelpCenter">
+        <div className="rectangle120HelpCenter"></div>
 
-        <section className="cardAdmin rightAdmin">
-          <h3 className="cardTitleAdmin">Yearly Earnings</h3>
-          <div className="cardBoxAdmin"></div>
-        </section>
+        <h2 className="titleHelpCenter">Customer Reviews</h2>
 
-        <section className="salesAdmin">
-          <h3 className="cardTitleAdmin">National Sales</h3>
-          <div className="salesBoxAdmin"></div>
-        </section>
-      </main>
+        <div className="rectangle124HelpCenter">
+          <p className="reviewTextHelpCenter">
+            “This product really helped me organize my tasks efficiently. Highly recommended!”
+          </p>
+          <p className="reviewAuthorHelpCenter">– Jane Doe</p>
+        </div>
+
+        <div className="rectangle125HelpCenter">
+          <p className="reviewTextHelpCenter">
+            “Customer support was prompt and very helpful. Great experience overall.”
+          </p>
+          <p className="reviewAuthorHelpCenter">– John Smith</p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default AdminDashboard;
+export default AdminHelpCenter;

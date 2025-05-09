@@ -25,8 +25,8 @@ const LogIn = () => {
     console.log("Login submitted:", formData);
 
     try {
-      // Send login request to the backend API
-      const response = await fetch("https://your-backend-api.com/login", {
+      // ✅ Fix: Corrected the URL to your backend
+      const response = await fetch("https://5dad-27-110-167-200.ngrok-free.app/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,20 +37,17 @@ const LogIn = () => {
         }),
       });
 
-      // Parse the response
       const data = await response.json();
 
-      // Check if the response indicates a successful login
       if (response.ok) {
-        // Store user data and authentication token in localStorage
-        localStorage.setItem("user", JSON.stringify(data.user)); // Example: Save user data
-        localStorage.setItem("token", data.token); // Example: Save JWT token
-        localStorage.setItem("loggedIn", "true"); // Set loggedIn status
+        // Store user data and token
+        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("loggedIn", "true");
 
-        // Navigate to the home page
+        // Navigate to homepage
         navigate("/home");
       } else {
-        // Display error message from backend
         setError(data.message || "Login failed. Please try again.");
       }
     } catch (error) {
@@ -82,7 +79,7 @@ const LogIn = () => {
             <h2>Welcome!</h2>
           </div>
 
-          {error && <div className="error-message">{error}</div>} {/* Display error message */}
+          {error && <div className="error-message">{error}</div>}
 
           <form onSubmit={handleSubmit} className="login-form">
             <label htmlFor="email">Email</label>

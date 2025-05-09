@@ -1,9 +1,30 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import '../style/TransactionHistory.css'; // Corrected the CSS file import
 import '../style/AdminDashboard.css';
 
-const AdminDashboard = () => {
-  const location = useLocation();
+const TransactionHistory = () => {
+  // Sample data for transaction history
+  const transactions = [
+    {
+      name: 'Chin Chin Admin',
+      product: 'Ribbon Keychain',
+      date: '5/8/2025'
+    },
+    {
+      name: 'John Doe',
+      product: 'Helping Hand Subscription',
+      date: '5/8/2025'
+    },
+    {
+      name: 'Jane Smith',
+      product: 'Ribbon Keychain',
+      date: '5/7/2025'
+    }
+    // Add more transaction objects as needed
+  ];
+
+  const location = useLocation(); // Get the current location for highlighting active menu items
 
   return (
     <div className="containerAdmin">
@@ -12,7 +33,7 @@ const AdminDashboard = () => {
           <h1 className="logoTextAdmin">Helping</h1>
           <p className="logoSubTextAdmin">Hand</p>
         </div>
-        <h2 className="titleAdmin">DASHBOARD</h2>
+        <h2 className="titleAdmin">USER MANAGEMENT</h2>
       </header>
 
       <aside className="sidebarAdmin">
@@ -50,24 +71,25 @@ const AdminDashboard = () => {
         </nav>
       </aside>
 
-      <main className="mainContentAdmin">
-        <section className="cardAdmin">
-          <h3 className="cardTitleAdmin">Monthly Earnings</h3>
-          <div className="cardBoxAdmin"></div>
-        </section>
+      {/* Transaction History Container */}
+      <div className="transaction-history-container">
+        <div className="transaction-header">
+          <div className="transaction-avatar"></div>
+          <div className="transaction-seller-name">Seller Name’s Transaction History</div>
+        </div>
 
-        <section className="cardAdmin rightAdmin">
-          <h3 className="cardTitleAdmin">Yearly Earnings</h3>
-          <div className="cardBoxAdmin"></div>
-        </section>
-
-        <section className="salesAdmin">
-          <h3 className="cardTitleAdmin">National Sales</h3>
-          <div className="salesBoxAdmin"></div>
-        </section>
-      </main>
+        {/* Loop through the transactions */}
+        {transactions.map((transaction, index) => (
+          <div key={index} className="transaction-group">
+            <div className="transaction-rectangle">
+              <div className="transaction-item-name">Purchased "{transaction.product}"</div>
+              <div className="transaction-purchase-date">{transaction.date}</div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default AdminDashboard;
+export default TransactionHistory;

@@ -1,9 +1,31 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import '../style/AdminDashboard.css';
+import '../style/TransactionHistory.css'; // Corrected the CSS file import
 
-const AdminDashboard = () => {
-  const location = useLocation();
+import '../style/DonationHistory.css';
+
+const DonationHistory = () => {
+  // Sample data for transaction history
+  const transactions = [
+    { 
+      name: 'Chin Chin Admin',
+      product: 'Ribbon Keychain',
+      date: '5/8/2025'
+    },
+    {
+      name: 'John Doe',
+      product: 'Helping Hand Subscription',
+      date: '5/8/2025'
+    },
+    {
+      name: 'Jane Smith',
+      product: 'Ribbon Keychain',
+      date: '5/7/2025'
+    }
+    // Add more transaction objects as needed
+  ];
+
+  const location = useLocation(); // Get the current location for highlighting active menu items
 
   return (
     <div className="containerAdmin">
@@ -12,7 +34,7 @@ const AdminDashboard = () => {
           <h1 className="logoTextAdmin">Helping</h1>
           <p className="logoSubTextAdmin">Hand</p>
         </div>
-        <h2 className="titleAdmin">DASHBOARD</h2>
+        <h2 className="titleAdmin">USER MANAGEMENT</h2>
       </header>
 
       <aside className="sidebarAdmin">
@@ -50,24 +72,22 @@ const AdminDashboard = () => {
         </nav>
       </aside>
 
-      <main className="mainContentAdmin">
-        <section className="cardAdmin">
-          <h3 className="cardTitleAdmin">Monthly Earnings</h3>
-          <div className="cardBoxAdmin"></div>
-        </section>
+      <div className="donation-history-container">
+        <div className="donation-header">
+          <div className="donation-avatar"></div>
+          <div className="donation-seller-name">Seller Name’s Donation History</div>
+        </div>
 
-        <section className="cardAdmin rightAdmin">
-          <h3 className="cardTitleAdmin">Yearly Earnings</h3>
-          <div className="cardBoxAdmin"></div>
-        </section>
-
-        <section className="salesAdmin">
-          <h3 className="cardTitleAdmin">National Sales</h3>
-          <div className="salesBoxAdmin"></div>
-        </section>
-      </main>
+        {/* Render transaction history */}
+        {transactions.map((transaction, index) => (
+          <div key={index} className="donation-group donation-group-74">
+            <div className="donation-item-name">Donated to “{transaction.product}”</div>
+            <div className="donation-purchase-date">{transaction.date}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default AdminDashboard;
+export default DonationHistory;
