@@ -25,7 +25,6 @@ const LogIn = () => {
     console.log("Login submitted:", formData);
 
     try {
-      // ✅ Fix: Corrected the URL to your backend
       const response = await fetch("https://5dad-27-110-167-200.ngrok-free.app/login", {
         method: "POST",
         headers: {
@@ -48,7 +47,12 @@ const LogIn = () => {
         // Navigate to homepage
         navigate("/home");
       } else {
-        setError(data.message || "Login failed. Please try again.");
+        // Custom error for account not found
+        if (data.message === "User not found") {
+          setError("You still don’t have an account. Please sign up.");
+        } else {
+          setError(data.message || "Login failed. Please try again.");
+        }
       }
     } catch (error) {
       console.error("Error during login:", error);

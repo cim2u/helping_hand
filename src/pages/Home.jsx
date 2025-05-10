@@ -59,6 +59,18 @@ const Home = () => {
     ));
   };
 
+
+  useEffect(() => {
+  const token = localStorage.getItem("authToken");
+  if (!token) {
+    // User is logged out — optionally adjust state or UI
+    setIsLoggedIn(false); // if you're tracking it
+  } else {
+    setIsLoggedIn(true);
+  }
+}, []);
+
+  
   // Handle removing a product from the cart (decrement quantity)
   const decrement = (productId) => {
     setCartItems(prevItems => prevItems.map(item =>
@@ -185,14 +197,15 @@ const Home = () => {
   const handleSubscribeClick = () => {
     if (!isSubscribed) navigate('/subscribe');
   };
-  const handleLogoutClick = () => {
-    localStorage.clear();
-    setIsRegistered(false);
-    setIsSubscribed(false);
-    setLoggedIn(false);
-    alert("You have logged out.");
-    navigate('/about');
-  };
+const handleLogoutClick = () => {
+  localStorage.clear();         // Clear auth and role flags
+  setIsLoggedIn(false);         // Update global auth state
+  setIsSubscribed(false);       // Optional: reset subscription
+              // Optional: reset admin
+  alert("You have logged out.");
+  navigate("/about");           // Go back to About or Login
+};
+
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleProfile = () => setIsProfileVisible(!isProfileVisible);
 
@@ -222,22 +235,23 @@ const Home = () => {
           <FontAwesomeIcon icon={faBars} className="icon" onClick={toggleSidebar} />
           
           
-          {loggedIn && (
+    {loggedIn && (
   <>
-  <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
-  <Link to="/cart">
-  <FontAwesomeIcon icon={faCartShopping} className="icon" />
-</Link>
-{userRole === "buyer" ? (
-  <FontAwesomeIcon icon={faCartShopping} className="icon" />
-) : (
-  <Link to="/store">
-    <FontAwesomeIcon icon={faStore} className="icon" />
-  </Link>
-)}
-    
+    <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
+    <Link to="/cart">
+      <FontAwesomeIcon icon={faCartShopping} className="icon" />
+    </Link>
+    {userRole === "buyer" ? (
+      <></> // Nothing for buyers here if cart icon is already above
+    ) : (
+      <Link to="/store">
+        <FontAwesomeIcon icon={faStore} className="icon" />
+      </Link>
+    )}
   </>
 )}
+
+
 
 
         </div>

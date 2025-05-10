@@ -9,13 +9,12 @@ const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
   const profileRef = useRef(null);
   const navigate = useNavigate();
 
-  // handle click outside the profile modal to close it\
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
 
-      const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
-    
-        useEffect(() => {
-          setTheme(localStorage.getItem('theme') || 'default');
-        }, []);
+  useEffect(() => {
+    setTheme(localStorage.getItem('theme') || 'default');
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
@@ -28,16 +27,17 @@ const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
   }, [onClose]);
 
   // Logout handler
-  const handleLogoutClick = () => {
-    // Clear authentication data
-    localStorage.removeItem("authToken");
+  
+const handleLogoutClick = () => {
+  const confirmLogout = window.confirm("Are you sure you want to log out?");
+  if (confirmLogout) {
+    localStorage.removeItem("authToken"); // Make sure this is cleared
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("isRegistered");
+    navigate("/about");
+  }
+};
 
-    // Update state if you're tracking login status
-    setIsLoggedIn(false);
-
-    // Redirect to login page
-    navigate("/login");
-  };
 
   if (!isVisible || !loggedIn) return null;
 

@@ -299,3 +299,18 @@
     text-align: left;
     margin-left: 0;
   }
+
+  .error-message {
+    background-color: #ffe5e500;
+    color: #ff000d;
+    border: 1px solid #d8000b00;
+    padding: 12px;
+    margin-left: 55px!important;
+    border-radius: 8px;
+    margin-top: 50px!important;
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+  }
+  

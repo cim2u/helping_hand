@@ -6,6 +6,12 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.iconAdmin {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #444;
+}
+
 .headerAdmin {
   position: absolute;
   top: 0;
@@ -42,15 +48,16 @@
   font-weight: 900;
   font-size: 36px;
   color: #FEFEFE;
+  z-index:23;
 }
 
 .sidebarAdmin {
   position: absolute;
   width: 308px;
-  height: calc(100vh - 85px);
-  top: 85px;
+  height: 130vh;
+  top: 105px!important;
   background: #FEFEFE;
-  border-right: 1px solid #303030;
+  border-right: 1px solid #2e2d2d;
   padding-top: 20px;
 }
 
@@ -82,7 +89,7 @@
 .bellIconAdmin {
   width: 24px;
   height: 24px;
-  border: 2.5px solid #1E1E1E;
+  border: 2.5px solid #1e1e1e00;
   cursor: pointer;
 }
 
@@ -108,6 +115,22 @@
   margin-top: 30px;
 }
 
+.Logout-menuItemAdmin{
+    display: flex;
+    position: relative;
+    margin-left: -23px!important;
+    margin-top: 624px!important;
+  align-items: center;
+  margin: 16px 0;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+}
 .menuItemAdmin {
   display: flex;
   align-items: center;
@@ -133,7 +156,7 @@
 .iconAdmin {
   width: 30px;
   height: 30px;
-  border: 3.5px solid #1E1E1E;
+  border: 3.5px solid #1e1e1e00;
   margin-right: 15px;
 }
 

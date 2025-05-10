@@ -5,7 +5,7 @@ import logoImage from "../assets/Logo.png";
 
 const LoginAsAdmin = () => {
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -21,22 +21,20 @@ const LoginAsAdmin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { email, password } = formData;
+    const { username, password } = formData;
 
-    // Set your admin credentials here
-    const adminEmail = "admin@helpinghand.com";
+    // Admin credentials
+    const adminUsername = "admin_user01";
     const adminPassword = "admin123";
 
-    // Check if the email and password match the admin credentials
-    if (email === adminEmail && password === adminPassword) {
+    if (username === adminUsername && password === adminPassword) {
       console.log("Admin login successful");
 
-      // Save admin status in localStorage
-      localStorage.setItem("user", JSON.stringify({ role: "admin", email }));
+      localStorage.setItem("user", JSON.stringify({ role: "admin", username }));
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("isAdmin", "true");
 
-      navigate("/admin-dashboard"); // Redirect to admin dashboard
+      navigate("/admin-dashboard");
     } else {
       alert("Invalid admin credentials.");
     }
@@ -66,12 +64,12 @@ const LoginAsAdmin = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="login-form">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
-              id="email"
-              type="email"
-              name="email"
-              value={formData.email}
+              id="username"
+              type="text"
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               required
             />

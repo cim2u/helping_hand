@@ -121,29 +121,35 @@
   margin-right: auto;
   margin-top: 8rem;
 }
-
-/* Signup Button */
-.signup-btn {
+.about-signup-btn {
   background-color: #36BDD7;
-  font-family:"Roboto Flex", sans-serif;
-  font-weight:800px;
+  font-family: "Roboto Flex", sans-serif;
+  font-weight: 800; /* fixed: removed 'px' */
   color: white;
   padding: 0.7rem 1.5rem;
   border: none;
   font-size: 24px;
-  font-weight: 800;
   border-radius: 999px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   width: 268px;
-  height:51px;
+  height: 51px;
   max-width: 100%;
-  margin-left:-953px;
-  margin-top:-19px;
-  line-height:100%;
+
+  /* Remove absolute if not needed */
+  /* Consider using flexbox or grid for layout instead */
+  /* position: absolute; */
+
+  /* Remove extreme negative margin values */
+  margin-top: 2rem;
+  margin-left: 0;
+  display: block; /* ensures it's visible */
+  line-height: 100%;
+  text-align: center;
+  z-index: 10;
 }
 
-.signup-btn:hover {
+.about-signup-btn:hover {
   background-color: #2CAAC4;
 }
 
