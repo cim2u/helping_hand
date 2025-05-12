@@ -45,6 +45,7 @@ const OrderModal = ({ onClose }) => {
         <div className="bagIcon" />
         <button className="orderCloseBtn" onClick={onClose}>×</button>
 
+
         {orders.map((order) => (
           <div key={order.id}>
             <div

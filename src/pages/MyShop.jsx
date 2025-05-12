@@ -9,7 +9,7 @@ import {
   faUser,
   faCartShopping,
   faTimes,
-  faPlus,
+  faCirclePlus,
   faArrowRight,
   faBagShopping,
   faCartPlus,
@@ -17,6 +17,7 @@ import {
 import logoImage from "../assets/Logo.png";
 import Profile from '../components/ProfileModal';
 import { Link } from 'react-router-dom';
+import PostProduct from '../components/PostProduct.jsx'; // Import the PostProduct component
 
 
 
@@ -37,6 +38,20 @@ const MyShop = () => {
     console.log("Profile visibility toggled:", !isProfileVisible);
     setIsProfileVisible(!isProfileVisible);
   };
+
+    const [isRatingVisible, setIsRatingVisible] = useState(false); // State to control rating visibility
+  const [ratingValue, setRatingValue] = useState(0); // Track selected rating
+
+  const handleStarClick = (rating) => {
+    setRatingValue(rating);
+  };
+
+  const handleSubmitRating = () => {
+    // Implement your logic to submit the rating
+    console.log(`Submitted rating: ${ratingValue}`);
+    setIsRatingVisible(false); // Close rating section after submission
+  };
+
   
   const [activeTab, setActiveTab] = useState("products");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -145,6 +160,28 @@ const [showProfile, setShowProfile] = useState(false);
 
     setIsSubscribed(localStorage.getItem("isSubscribed") === "true");
   }, [state]);
+
+ 
+  const modalRef = useRef(null);
+
+  // Close modal if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOpen]);
 
   useEffect(() => {
     // Close sidebar if clicked outside of it
@@ -330,15 +367,31 @@ const [showProfile, setShowProfile] = useState(false);
                
 <div>
   {/* Only show button if the user is a student or seller */}
-  {(userRole === "student" || userRole === "seller") && (
-    <FontAwesomeIcon
-      icon={faPlus}
-      className="add-button"
-      style={{ fontSize: "18px" }}
-      onClick={() => setIsModalOpen(true)}
-    />
-  )}
+     <div>
+      {/* Add button visible only for student or seller roles */}
+      {(userRole === 'student' || userRole === 'seller') && (
+        <FontAwesomeIcon
+          icon={faCirclePlus}
+          className="home-add-button"
+          onClick={() => setIsModalOpen(true)}
+        />
+      )}
 
+      {/* Post Product Modal */}
+      {isModalOpen && (
+        <div className="post-modal-overlay">
+          <div className="post-modal-content" ref={modalRef}>
+            <PostProduct />
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="post-close-button"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   {/* Only show subscribe button if the user is a buyer */}
   {userRole === "buyer" && (
     <button className="subscribe-button">
@@ -516,7 +569,7 @@ const [showProfile, setShowProfile] = useState(false);
 
      
          
-    {isModalVisible && selectedProduct && (
+  {isModalVisible && selectedProduct && (
   <div className="product-modal" onClick={closeModal}>
     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
       <div className="modal-rec"></div>
@@ -536,6 +589,15 @@ const [showProfile, setShowProfile] = useState(false);
       <p className="seller-display">{selectedProduct.seller || "Unknown Seller"}</p>
       <p className="price-display">₱{selectedProduct.price}</p>
 
+      {/* Product Rating */}
+      <div className="rating-display">
+        <p>Rating:</p>
+        {/* Display the average rating */}
+        <span className="rating">{selectedProduct.rating || "No ratings yet"}</span>
+        {/* You can also implement a rating system (stars, etc.) here */}
+      </div>
+
+   
       <div className="modal-actions">
         <button className="add-to-cart-button-home" onClick={handleAddToCart}>
           Add to Cart

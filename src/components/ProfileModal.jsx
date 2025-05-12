@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import "../style/ProfileModal.css";
+import OrderModal from '../components/OrderModal';
 
 const ProfileModal = ({ isVisible, loggedIn, onClose, setIsLoggedIn, setIsRegistered }) => {
   const profileRef = useRef(null);
   const navigate = useNavigate();
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
-
+  const [showOrderModal, setShowOrderModal] = useState(false);
   // Update theme on mount
   useEffect(() => {
     setTheme(localStorage.getItem('theme') || 'default');
@@ -58,10 +59,15 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, setIsLoggedIn, setIsRegist
           <div className="profileBanner" />
           <div className="profileBanner_1" />
           <section className={`profileRec ${theme}-theme`} />
+            <>
 
-          <div className="profileLinkOr" onClick={() => navigate('/order')}>
-            <FontAwesomeIcon icon={faBagShopping} className="iconStyleProfile" /> Order
-          </div>
+
+         <div className="profileLinkOr" onClick={() => setShowOrderModal(true)}>
+        <FontAwesomeIcon icon={faBagShopping} className="iconStyleProfile" /> Order
+      </div>
+
+      {showOrderModal && <OrderModal onClose={() => setShowOrderModal(false)} />}
+    </>
 
           <div className="profileLinkCar" onClick={() => navigate('/cart')}>
             <FontAwesomeIcon icon={faCartPlus} className="iconStyleProfile" /> Cart

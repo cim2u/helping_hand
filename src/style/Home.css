@@ -692,20 +692,27 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   font-size: 18px;
   color: #ffffff !important;
   top:445px!important;
-  left:-5px;
+  left:90px !important;
   z-index: 2;
-  text-decoration: underline; /* Adds underline */
+  cursor:pointer;
+  text-decoration: none!important; /* Adds underline */
 }
-/* Profile Links like Order, Cart */
-.profileLinkCar {
 
+.iconStyleProfile{
+  cursor:pointer;
+
+}
+
+
+.profileLinkCar {
+  cursor:pointer;
   position: relative;
   left: 3px !important  ;
   font-family: 'Outfit', sans-serif;
   font-size: 18px;
   color: #ffffff !important;
   top: 410px!important;
-  text-decoration: underline; /* Adds underline */
+  text-decoration: none; /* Adds underline */
   z-index: 2;
 }
 

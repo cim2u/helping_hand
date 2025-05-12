@@ -512,12 +512,258 @@
 }
 
 
+/* Container for the post product form */
+.post-product {
+  position: relative;
+  width: 495px;
+  height: 701px;
+  background: #FEFEFE;
+  border-radius: 12px;
+}
+
+/* Background & layout */
+.posting-container,
+.rectangle-91 {
+  position: absolute;
+  width: 563px;
+  height: 701px;
+  left: 0;
+  top: 0;
+  background: #FEFEFE;
+  border-radius: 12px;
+}
+
+/* Header icon position */
+.primary-icon {
+  position: absolute;
+  width: 21px;
+  height: 18.01px;
+  left: calc(50% - 10.5px + 207px);
+  top: calc(50% - 9px - 301.5px);
+  background: #FEFEFE;
+}
+
+/* Title Text */
+.title {
+  position: absolute;
+  width: 516px;
+  height: 99px;
+  left: 47px;
+  top: 34px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+  color: #7E3550;
+}
+
+/* Product Box */
+.product {
+  position: absolute;
+  width: 435px;
+  height: 590px;
+  left: 30px;
+  top: 84px;
+}
+
+.rectangle-33 {
+  position: absolute;
+  width: 435px;
+  height: 590px;
+  left: 30px;
+  top: 84px;
+  background: #FEFEFE;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+/* Upload Area */
+.rectangle-66 {
+  position: absolute;
+  width: 392px;
+  height: 518px;
+  left: 52px;
+  top: 123px;
+  background: #FEFEFE;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.rectangle-90 {
+  position: absolute;
+  width: 394px;
+  height: 289px;
+  left: 52px;
+  top: 123px;
+  background: #36BDD7;
+}
+
+/* Plus Icon for Upload */
+.circle-plus {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: 230px;
+  top: 251px;
+}
+
+/* Submit Button */
+.submit-button {
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  left: 310px;
+  top: 592px;
+  background: #36BDD7;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-button .label-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+  letter-spacing: 0.1px;
+}
+
+/* Text Field Container */
+.text-field-wrapper {
+  position: absolute;
+  width: 210px;
+  height: 56px;
+  left: 68px;
+  top: 438px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 4px 4px 0 0;
+  background: #FEFEFE;
+  z-index: 0;
+}
+
+.text-field-wrapper .state-layer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 4px 0 4px 16px;
+  gap: 4px;
+  width: 100%;
+  height: 56px;
+  border-radius: 4px 4px 0 0;
+}
+
+.text-field-wrapper .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 0;
+  height: 48px;
+  width: 142px;
+}
+
+.text-field-wrapper .label-text {
+  display: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #49454F;
+}
+
+.text-field-wrapper .input-text-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 24px;
+}
+
+.text-field-wrapper .input-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #7E3550;
+  letter-spacing: 0.5px;
+}
+
+/* Trailing icon */
+.trailing-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trailing-icon .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+}
+
+.trailing-icon .state-layer {
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trailing-icon .icon {
+  width: 24px;
+  height: 24px;
+  background: #49454F;
+}
+
+/* Active indicator (bottom border) */
+.active-indicator {
+  width: 210px;
+  border: 1px solid #49454F;
+  height: 0;
+  z-index: 1;
+}
+
+/* Supporting text below input */
+.supporting-text-wrapper {
+  position: absolute;
+  bottom: -20px;
+  width: 210px;
+  height: 20px;
+  display: flex;
+  align-items: flex-start;
+  padding: 4px 16px 0;
+  gap: 10px;
+  z-index: 2;
+}
+
+.supporting-text-wrapper .supporting-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 16px;
+  color: #7E3550;
+  letter-spacing: 0.4px;
+}
 
 
 /* Add Button */
-.add-button {
-  background-color: rgba(126, 53, 80, 1);
-  color: white;
+.home-add-button {
+  background-color: rgb(255, 255, 255);
+  color:  rgba(126, 53, 80, 1);
   border: none;
   border-radius: 50%;
   width: 32px;  /* Larger circle size */
@@ -526,7 +772,7 @@
   display: flex;
   justify-content: center; /* Horizontally centers the content */
   align-items: center; /* Vertically centers the content */
-
+  cursor: pointer;
   transition: background-color 0.3s ease;
   position: absolute; /* Position it absolutely relative to the parent */
   left: 1399px; /* Adjust the horizontal position */
@@ -534,16 +780,40 @@
 }
 
 /* Icon (plus) */
-.add-button .fa-plus {
-  font-size: 20px; /* Smaller plus icon */
+.fa-plus {
+  font-size: 8px!important; /* Smaller plus icon */
 }
 
-.add-button:hover {
-  background-color: rgba(126, 53, 80, 1);
+.home-add-button:hover {
+  background-color: rgb(252, 252, 252);
   transform: scale(1.05);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+
+
+.star {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ddd;
+}
+
+.star.selected {
+  color: gold;
+}
+
+.star-rating {
+  margin-top: 10px;
+}
+
+.star-rating button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
 .product2-sub-label{
   width: 110px;

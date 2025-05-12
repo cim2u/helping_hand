@@ -7,6 +7,7 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
   const [paymentMethod, setPaymentMethod] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [address, setAddress] = useState('');
+  const [showGcashQR, setShowGcashQR] = useState(false); // State to toggle QR code visibility
 
   const unitPrice = selectedProduct?.price || 0;
   const deliveryFee = selectedProduct ? 50 : 0; // If there is a product, set delivery fee to 50, otherwise 0
@@ -51,13 +52,11 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
     }
 
     if (paymentMethod === 'Gcash') {
-      alert(`Order placed using ${paymentMethod}. You will be redirected to GCash.`);
-      window.location.href = "https://www.gcash.com";
+      setShowGcashQR(true); // Show the GCash QR code
     } else {
       alert(`Order placed using ${paymentMethod}`);
+      setVisible(false);
     }
-
-    setVisible(false);
   };
 
   const increaseQty = () => setQuantity(prev => prev + 1);
@@ -154,6 +153,21 @@ const PaymentConfirmationModal = forwardRef((props, ref) => {
         <div className="payment-order-button" onClick={handlePlaceOrder}>
           <span className="payment-order-button-text">Place Order</span>
         </div>
+
+        {/* GCash QR Code Modal */}
+        {showGcashQR && (
+          <div className="gcash-qr-modal">
+            <div className="gcash-qr-container">
+              <h2>Scan the QR Code to Pay</h2>
+              <img 
+                src="" 
+                alt="GCash QR Code" 
+                className="gcash-qr-image" 
+              />
+              <button onClick={() => setShowGcashQR(false)} className="close-qr-modal">Close</button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

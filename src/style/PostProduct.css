@@ -1,0 +1,251 @@
+.postProductContainer {
+  position: relative;
+  width: 495px;
+  height: 701px;
+  background: #FEFEFE;
+  border-radius: 12px;
+  z-index:23;   
+}
+
+.postProductCard {
+  position: absolute;
+  width: 530px;
+  height: 701px;
+  top: 0;
+  left: 0;
+  background: #FEFEFE;
+  border-radius: 12px;
+}
+
+.postHeader {
+  position: absolute;
+  top: 34px;
+  left: 47px;
+  width: 516px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+  color: #7E3550;
+}
+.inputBox {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.productForm {
+  position: absolute;
+  top: 84px;
+  left: 30px;
+  width: 435px;
+  height: 590px;
+  background: #FEFEFE;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 40px 20px;
+}
+
+
+
+.uploadPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: #36BDD7;
+  border-radius: 4px;
+}
+
+.circlePlus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+}
+
+
+/* Styling for the entire input field container */
+.textFieldPost {
+  margin-bottom: 20px; /* Adds space between input fields */
+}
+
+/* Styling for the input content (label and input) */
+.inputContentPost {
+  display: flex;
+  flex-direction: column; /* Aligns label and input vertically */
+  margin-bottom: 10px; /* Adds space between label and input */
+}
+
+/* Styling for the label */
+.inputTextPost {
+  font-size: 1rem; /* Sets font size */
+  color: #333; /* Dark text color */
+  font-weight: 500; /* Slightly bolder text */
+  margin-bottom: 8px; /* Adds space below the label */
+}
+
+/* Styling for the input field */
+.inputBoxPost {
+  width: 100%; /* Makes the input field fill its container */
+  padding: 10px; /* Adds padding inside the input */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 8px; /* Rounded corners for the input */
+  font-size: 1rem; /* Font size inside the input */
+  outline: none; /* Removes the default outline on focus */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border color */
+}
+
+/* Styling when the input is focused */
+.inputBoxPost:focus {
+  border-color: #007bff; /* Blue border when focused */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light blue shadow on focus */
+}
+
+/* Placeholder text styling */
+.inputBoxPost::placeholder {
+  color: #aaa; /* Lighter color for placeholder text */
+}
+
+
+/* Container for category selection (Product or Service) */
+.categorySelectionPost {
+  margin-bottom: 20px;
+}
+
+/* Style for the radio buttons container */
+.radioButtonsPost {
+  display: flex;
+  gap: 15px; /* Adds space between the radio buttons */
+  margin-top: 5px;
+}
+
+.radioButtonsPost label {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Styling for the radio buttons */
+.radioButtonsPost input[type="radio"] {
+  margin-right: 8px; /* Space between radio button and label */
+  accent-color:  #36BDD7; /* Sets the color of the radio button to purple */
+  border: 2px solid rgb(0, 0, 0); /* Pink border color */
+  border-radius: 50%; /* Ensures the border is rounded around the radio button */
+  width: 20px; /* Custom size for the radio button */
+  height: 20px; /* Custom size for the radio button */
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+/* Styling for when the radio button is checked */
+.radioButtonsPost input[type="radio"]:checked {
+  border-color: rgb(0, 0, 0); /* Border color remains pink when selected */
+  background-color: #36BDD7; /* Change background color to purple when checked */
+}
+
+/* Styling for radio button hover effect */
+.radioButtonsPost input[type="radio"]:hover {
+  border-color: rgb(0, 0, 0); /* Pink border on hover */
+  background-color:  #36BDD7; /* Light pink background when hovering over the radio button */
+}
+
+.textField {
+  position: absolute;
+  top: 438px;
+  left: 68px;
+  width: 210px;
+  height: 56px;
+  background: #FEFEFE;
+  border-radius: 4px 4px 0 0;
+}
+
+.inputContent {
+  padding: 4px 16px;
+}
+
+.inputText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: #7E3550;
+}
+
+.activeIndicator {
+  width: 210px;
+  border-bottom: 1px solid #49454F;
+  margin-top: 4px;
+}
+
+.supportingText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #7E3550;
+  margin-top: 4px;
+}
+
+.submitButton {
+  position: absolute;
+  top: 592px;
+  left: 310px;
+  width: 120px;
+  height: 30px;
+  background: #36BDD7;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.labelText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.circlePlusPost {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid pink;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.imageUploadSectionPost {
+    position: relative;
+  width: 392px;
+  height: 289px;
+  background: #36BDD7;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.uploadPlaceholderPost {
+  color: purple;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.circlePlusPost {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid pink;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.previewImagePost {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
