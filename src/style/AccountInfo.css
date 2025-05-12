@@ -1,0 +1,237 @@
+
+.settings-container {
+  position: fixed;
+  width: 1528px !important;
+  height: 739px!important;
+  background: #fdfdfd;
+  font-family: 'Roboto', sans-serif;
+}
+  /* Group 13 / Form Container */
+  .account-info-group {
+    position:fixed;
+    width: 373px;
+    height: 351px;
+    left: 566px;
+    top: 183px;
+  }
+  
+  /* Title */
+  .account-info-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-79px);
+    top: 183px !important;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 24px;
+    color: #FEFEFE;
+  }
+  
+  /* Common styles for labels and inputs */
+  .label {
+    font-family: 'Outfit';
+    font-weight: 500;
+    font-size: 15px !important;
+    color: #FEFEFE;
+    text-align: right;
+    margin-bottom: 4px;
+  }
+  
+  
+  .input-box {
+    width: 100%;
+    height: 31px;
+    background: #FEFEFE;
+    border-radius: 8px;
+    border: none;
+    padding: 6px 10px;
+  }
+  
+
+  /* Sections */
+  .input-section {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  /* Positioning each field */
+  .first-name-section { left: 566px; top: 229px; width: 171px; }
+  .last-name-section { left: 767px; top: 229px; width: 172px; }
+  .email-section { left: 567px; top: 309px; width: 372px; }
+  .username-section { left: 567px; top: 389px; width: 372px; }
+  .password-section { left: 566px; top: 469px; width: 372px; }
+  
+  /* Business Information */
+  .business-info-title {
+    position: absolute;
+    left: 567px;
+    top: 566px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 20px;
+    color: #FEFEFE;
+  }
+  
+  .store-name-section { left: 566px; top: 621px; width: 372px; }
+  .store-address-section { left: 567px; top: 709px; width: 372px; }
+  .gmail-account-section { left: 567px; top: 787px; width: 372px; }
+  
+  .input-section input {
+    width: 100%;
+  }
+  
+
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+
+
+
+
+
+/* General Styles */
+.profile-form-accountinfo {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  top:590px;
+  left:253px
+
+}
+
+.background-accountinfo {
+  position: absolute;
+  width: 827px;
+  height:480px;
+  left: 250px;
+  margin-top: -520px !important;
+  background: linear-gradient(180deg, #0000009c 0%, #7e355092 58%);
+  opacity: 1 !important;
+  border-radius: 28px;
+}
+
+.group-13-accountinfo {
+  position: absolute;
+  width: 373px;
+  height: 351px;
+  left: 567px ;
+  top: 180px !important;
+}
+
+.section-title-accountinfo {
+  position: relative;
+  width: 450px;
+  height: 24px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 25px !important;
+  line-height: 24px;
+  color: #FEFEFE;
+  top: -1075px !important;
+  margin-left: 600px !important;
+  letter-spacing: 0px;
+
+}
+
+.menu-item-accountinfo {
+  position: absolute;
+  width: 150px;
+  height: 24px;
+  left: -53px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 24px;
+  color: #FEFEFE;
+  cursor: pointer;
+  margin-top: -500px !important;
+  margin-left: 341px !important;
+}
+
+.P-AccountInfo{
+  position: relative;
+  padding: 40px;
+  background-color: 0; /* dark background for contrast */
+  border-radius: 12px;
+  width: 400px !important;
+  margin: 40px auto;
+  z-index: 239;
+  top:-480px;
+  left:-135px;
+  height: 300px;
+}
+
+
+.personal-info-accountinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* or center depending on your layout */
+}
+
+.label-accountinfo {
+  font-family: 'Outfit';
+  font-weight: 500;
+  font-size: 14px;
+  color: #FEFEFE;
+  margin-top:5px;
+  position: relative;
+  left: -160px;
+ 
+}
+.input-frame-accountinfo {
+  width: 251px;
+  height: 25px;
+  background: #FEFEFE;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin-left: -170px !important;
+}
+
+.input-frame-accountinfo.large {
+  width: 372px;
+}
+
+.B-AccountInfo {
+  position: relative;
+  padding: 40px;
+  background-color: 0; /* dark background for contrast */
+  border-radius: 12px;
+  width: 400px;
+  margin: 40px auto;
+  z-index: 239;
+  top: -550px;
+  right: -300px !important;
+  height: 200px;
+}
+
+.business-info-accountinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* or center depending on your layout */
+}
+
+/* Business Info Styles */
+.business-info-accountinfo .label-accountinfo {
+  font-family: 'Outfit';
+  font-weight: 500;
+  font-size: 15px;
+  color: #fffefe;
+  top: -1050px !important;
+  left: 702px !important;
+  position: relative;
+}
+
+.b-input-frame-accountinfo {
+  width: 251px;
+  height: 25px;
+  background: #ffffff !important  ;
+  border-radius: 8px !important;
+  margin-bottom: 15px;
+  margin-left: 702px !important;
+  top: -1045px !important;
+  position: relative !important;
+}
+
+.input-frame-accountinfo-business.large {
+  width: 372px;
+}

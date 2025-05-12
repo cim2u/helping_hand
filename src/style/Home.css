@@ -1,0 +1,1155 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap');
+
+
+body {
+  max-height: 90vh;
+  overflow-y: auto;
+
+}
+
+
+
+/* Container wrapper */
+.home-wrapper {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  height: 900px;
+
+  
+}
+
+
+
+/* Background cover image */
+.header-cover {
+  width: 100%; /* Makes it responsive */
+  height: 274px;
+  background-image: url('https://i.imgur.com/65FnVGb.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute; /* Necessary for positioning icons */
+  z-index: 2;
+}
+
+
+
+/* Logo.module.css */
+.logoContainer {
+  position: absolute;    /* Absolute positioning */
+  top: -30px;             /* Place it at the top of header-cover */
+  left: -0px;            /* Horizontal position */
+  width: 200px;          /* Set the width of the logo (adjust as needed) */
+  height: auto;          /* Maintain aspect ratio */
+  z-index: 10;           /* Ensure it appears on top of the header */
+}
+
+
+
+/* Login button styles */
+.home-login-button {
+  width: 120px;                   /* Set width to 120px */
+  height: 35px;                   /* Set height to 35px */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;                     /* Adjust the font size */
+  font-weight: 400;                    /* Set font weight to normal */
+  border-radius: 100px;                /* Set border radius for a rounded button */
+  gap: 8px;                           /* Space between text and icon, if any */
+  background: rgba(254, 254, 254, 1); /* Set background to a white color */
+  color: #000000;                    /* Set text color */
+  border: none;                        /* No border */
+  cursor: pointer;    
+  margin-left:-73px;                /* Pointer cursor on hover */
+  display: flex;
+  align-items: center;                /* Align text and icon vertically */
+  justify-content: center;            /* Center text horizontally */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for Login button */
+.home-login-button:hover {
+  background-color: #00bcd4; /* Blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Focus state for Login button */
+.home-login-button:focus {
+  outline: none; /* Remove outline when focused */
+}
+
+/* Positioning the Login button in the header */
+.home-login-button {
+  position: absolute;
+  top: 208px; /* Adjust top position as needed */
+  left: 1281px; /* Adjust left position as needed */
+  z-index: 10;
+}
+
+/* SignUp button styles */
+.home-signup-button {
+  width: 120px;                   /* Set width to 120px */
+  height: 35px;                   /* Set height to 35px */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;                     /* Adjust the font size */
+  font-weight: 400;                    /* Set font weight to normal */
+  border-radius: 100px;                /* Set border radius for a rounded button */
+  gap: 8px;                           /* Space between text and icon, if any */
+  background: rgba(254, 254, 254, 1); /* Set background to a white color */
+  color: #000000;                    /* Set text color */
+  border: none;                        /* No border */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  display: flex;
+  margin-left:-90px;
+  align-items: center;                /* Align text and icon vertically */
+  justify-content: center;            /* Center text horizontally */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for SignUp button */
+.home-signup-button:hover {
+  background-color: #00bcd4; /* Blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Focus state for SignUp button */
+.home-signup-button:focus {
+  outline: none; /* Remove outline when focused */
+}
+
+/* Positioning the SignUp button in the header */
+.home-signup-button {
+  position: absolute;
+  top: 208px; /* Adjust top position as needed */
+  left: 1140px; /* Adjust left position as needed */
+  z-index: 10;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left:100px;
+  position: absolute; /* Make it absolute so it doesn't move other elements */
+  top: 414px;
+  bottom: -20px; /* Ensure it stays below the input */
+}
+
+
+.h-subscribe-button {
+  width: 120px;                   /* Set width to 120px */
+  height: 35px;                   /* Set height to 35px */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;                     /* Adjust the font size */
+  font-weight: 400;                    /* Set font weight to normal */
+  border-radius: 100px;                /* Set border radius for a rounded button */
+  gap: 8px;                           /* Space between text and icon, if any */
+  background: rgb(255, 255, 255); /* Set background to a white color */
+  color: #000000;                    /* Set text color */
+  border: none;                        /* No border */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  display: flex;
+  margin-top:9px;
+  margin-left: 93px;
+  align-items: center;                /* Align text and icon vertically */
+  justify-content: center;            /* Center text horizontally */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.h-subscribe-button:hover {
+  background-color:#00bcd4; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.h-subscribe-button:focus {
+  outline: none; /* Remove outline when focused */
+}
+
+/* Positioning the Subscribe button in the header */
+.h-subscribe-button {
+  position: absolute;
+  top: 208px; /* Adjust top position as per the provided value */
+  left: 1281px; /* Adjust left position as per the provided value */
+  z-index: 10;
+}
+
+
+
+
+
+.icon-container {
+  position: absolute;
+  top: 220px;
+  left: 50px;
+  
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  align-items: center; /* Center the icons vertically */
+  z-index: 10;
+  color: white;
+}
+
+
+
+
+
+/* Individual icon styles */
+.icon {
+  font-size: 24px; /* Adjust size of icons */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for icons */
+.icon:hover {
+  color: #00bcd4;/* Lighter purple on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+
+
+.white-section {
+  width: 100%; /* Makes it responsive */
+  height: 910vh; /* Sets the height to 90% of the viewport height */
+
+  padding: 2rem;
+  box-sizing: border-box;
+  margin-top: 270px;
+  z-index: -2;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.white-section.default-theme {
+  background-color: white;
+  
+}
+
+.white-section.morning-theme {
+  background: linear-gradient(180deg, #A1F0FF 0%, #FEFEFE 100%);
+}
+
+.white-section.lilac-theme {
+background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
+}
+
+
+
+  /* Banner text section */
+  .banner {
+    background-color: #843b62;   /* Purple background */
+    color: white;                /* Text color */
+    padding: 1rem;               /* Padding inside the banner */
+    width: 1515px;                /* Full viewport width */
+    position: relative;          /* Allow left adjustments */
+    left: -35px;      
+                
+  }
+
+/* Separate font styling for the text inside the banner */
+.banner-text {
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: 0%;
+    font-size: 2rem;                   /* Font size */
+    text-align: justify;                /* Needed to use 'left' property */
+    margin-left: 34px;                         /* Moves the text 34px from the left edge */
+  }
+
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 296px!important;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 16px; /* Added border-radius */
+  z-index: 100; /* Added z-index */
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px; /* Use a specific size instead of "Body Large/Size" */
+  line-height: 1.5; /* Adjust line height */
+  letter-spacing: 0.5px; /* Optional, adjust for spacing */
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px; /* Added thickness */
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 15px 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+
+
+/* Closed Sidebar (Hidden) */
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* Open Sidebar */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Close Icon Styles */
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 176px;
+}
+
+.close-icon {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.close-icon:hover {
+  color: #ff6b6b; /* Change color on hover */
+}
+/* General container for profile wrapper */
+
+.profile-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 435px;
+  height: 959px;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay effect */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+
+.iconStyleProfile {
+  margin-right: 6px;
+  color: #333;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  gap:23px
+}
+
+
+/* Background of profile card */
+.profile-card-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Profile picture styling */
+.profilePicture {
+  position: absolute;
+  width: 121px!important;
+  height: 121px!important;
+  left: 152px !important;
+  top: 194px;
+  background: #ffffff url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__") no-repeat center center;
+  background-size: cover;
+  border: 2px solid #7e3550;
+  border-radius: 100%;
+}
+
+/* Label text for profile */
+.profileLabel {
+  position: absolute;
+  width: 150px;
+  height: 39px;
+  left: 143px;
+  top: 261px;
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #7e3550;
+  text-align: center;
+}
+
+/* Circle next to status */
+.circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 298px;
+  top: 275px;
+}
+
+.status-primary {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: calc(50% - 8px);
+  top: calc(50% - 8px);
+  background: #5680e9;
+  border-radius: 50%;
+}
+
+.check-primary {
+  position: absolute;
+  width: 10.5px;
+  height: 7.5px;
+  left: calc(50% - 10.5px / 2 + 0.25px);
+  top: calc(50% - 7.5px / 2 - 0.25px);
+  background: #d80000;
+  border-radius: 50%;
+}
+
+/* Address label */
+.address-label {
+  position: absolute;
+  width: 157px;
+  height: 18px;
+  left: 145px;
+  top: 327px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #7e3550;
+}
+
+/* Sections like Orders, Personal Info */
+.orders-purchases-title,
+.personal-info-title {
+  position: absolute;
+  width: 178px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7e3550;
+}
+
+.orders-purchases-title {
+  top: 419px;
+}
+
+.personal-info-title {
+  top: 540px;
+}
+
+
+
+/* Email, Name, Phone Number, Address */
+.email-name,
+.phone-number,
+.address {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+  color: #fefefe;
+  z-index: 2;
+}
+
+.email-name:nth-of-type(1) {
+  top: 590px;
+}
+
+.email-name:nth-of-type(2) {
+  top: 617px;
+}
+
+.phone-number {
+  top: 644px;
+}
+
+.address {
+  top: 671px;
+}
+
+
+
+/* Styling for Order & Cart icon */
+.bag-shopping {
+  position: absolute;
+  width: 21px;
+  height: 24px;
+  left: 162px;
+  top: 468px;
+}
+
+.bag-shopping::after {
+  content: url;
+  width: 21px;
+  height: 24px;
+}
+
+/* ProfileWrapper */
+.profileWrapper {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 415px !important;
+  height: 880px !important;
+  overflow: hidden !important; /* Wrapper remains fixed and hidden */
+  
+  background: white;
+}
+/* Seller */
+.profileSellerLabel {
+  position: absolute;
+  width: 516px;
+  height: 18px;
+  left: -49px;
+  top: 299px;
+  font-family: 'Outfit', sans-serif; /* Ensuring Outfit font is used */
+  font-style: normal;
+  font-weight: 600; /* Bold */
+  font-size: 14px;
+  line-height: 18px; /* Ensures the text aligns with the box height */
+  color:#7E3550!important; /* Sets the color of the text */
+}
+
+
+.profileCard {
+  position: relative!important;
+  width: 415px !important;
+  height: 790px !important;
+  left: 0;
+  top: 0;
+  background: #FFFFFF;
+  border: 2px solid #7E3550;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  overflow-y: scroll; /* Enable vertical scroll */
+  overflow-x: hidden;
+  padding: 1px; /* Optional: adds spacing inside */
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.profileCard::-webkit-scrollbar {
+  width: 0px; /* Hides the scrollbar */
+  height: 0px; /* Hides the scrollbar */
+}
+
+.profileCard::-webkit-scrollbar-thumb {
+  background: transparent; /* Hide the thumb */
+}
+
+/* Optional: For Firefox (using scrollbar-width) */
+.profileCard {
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+.profileBackground {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Optional spacing between elements */
+}
+
+
+.profilePicture {
+  position: absolute;
+  width: 171px !important;
+  height: 171px !important;
+  left: 125px !important;
+  top: 84px !important;
+  z-index: 1;
+  background-image: url('https://i.imgur.com/OTvEGFs.png') !important;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #7E3550;
+  border-radius: 1000px;
+}
+
+/* Rectangle 85 */
+.profileRec{
+  box-sizing: border-box;
+  position: absolute;
+  width: 378px;
+  height: 846px;
+  left: 16px;
+  top: 25px !important;
+  z-index:-2px;
+  background: #fefefe00;
+  border: 2px solid #7E3550;
+  border-radius: 8px;
+}
+
+
+.profileRec.default-theme {
+  background-color: white;
+  
+}
+
+.profileRec.morning-theme {
+  background: linear-gradient(180deg, #A1F0FF 0%, #FEFEFE 100%);
+}
+
+.profileRec.lilac-theme {
+background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
+}
+
+
+
+/* Profile Label (Profile Name) */
+.profileLabel {
+  position: absolute;
+  width: 150px;
+  height: 39px;
+  left: 135px!important;
+  top: 251px!important;
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 140%;
+  z-index: 1;
+  color: #7E3550;
+}
+
+
+.profileBanner {
+  position: absolute;
+  width: 342px;
+  height: 141px;
+  left: 30px;
+  top: 574px;
+  z-index: 1;
+  background: #7E3550; /* This will override the earlier background-color */
+  border-radius: 12px;
+}
+
+/* Profile Address */
+.profileAddressLabel {
+  position: absolute;
+  width: 157px;
+  height: 18px;
+  left: 145px;
+  top: 314px !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #7E3550;
+}
+
+/* Orders & Purchases Title */
+.profileOrdersTitle {
+  position: absolute;
+  width: 178px;
+  height: 25px;
+  left: 43px;
+  top: 417px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7E3550;
+}
+
+/* Personal Information Title */
+.profileInfoTitle {
+  position: absolute;
+  width: 192px;
+  height: 25px;
+  left: 43px;
+  top: 540px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7E3550;
+}
+
+/* Profile Links like Order, Cart */
+.profileLinkOr {
+  position: relative;
+  margin: 10px 0 0 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: #ffffff !important;
+  top:445px!important;
+  left:-5px;
+  z-index: 2;
+  text-decoration: underline; /* Adds underline */
+}
+/* Profile Links like Order, Cart */
+.profileLinkCar {
+
+  position: relative;
+  left: 3px !important  ;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: #ffffff !important;
+  top: 410px!important;
+  text-decoration: underline; /* Adds underline */
+  z-index: 2;
+}
+
+/* Rectangle 82 */
+.profileBanner_1 {
+  position: absolute;
+  width: 348px;
+  height: 64px;
+  left: 29px;
+  top: 448px;
+  background: #7E3550;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+
+.profileEmail,
+.profilePhone,
+.profileAddress {
+  position: relative;
+  top: 90px; /* Reduced for better vertical alignment */
+  margin-left: 94px; /* Slightly closer to the left */
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  color: #fffafa;
+  text-align: left;
+  z-index: 2;
+}
+
+/* Profile Logout Tab Styling */
+.profileLogout1 {
+  cursor: pointer;
+  color:  #7E3550 !important;
+  text-decoration: underline;
+margin-top: -175px !important;
+margin-left: 283px;
+  font-size: 1rem;
+  left:345px !important;
+  font-weight: 400;
+  z-index: 1;
+}
+
+.profileLogout:hover {
+  color: #d33;
+}
+
+
+/* Product Modal background */
+.product-modal {
+  position: fixed;
+  top: 0;
+  border-radius: 8px;;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0); /* Transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+/* Base Button Style */
+.add-to-cart-button-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  gap: 8px;
+
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  left: 39px;
+  top: 456px;
+
+  border: 1px solid #7E3550;
+  border-radius: 100px;
+
+  /* Font and text style */
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px; /* Matching label height */
+  text-align: center;
+  letter-spacing: 0.1px;
+
+  color: #000000;
+  background-color: #ffffff; /* Default background color */
+  cursor: pointer; /* Add a pointer cursor for interaction */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+/* Button Hover Effect */
+.add-to-cart-button-home:hover {
+  background-color: #7E3550; /* Background change on hover */
+  color: #ffffff; /* Text color change on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Button Active (Clicked) Effect */
+.add-to-cart-button-home:active {
+  transform: scale(0.95); /* Slight shrink effect when clicked */
+}
+
+/* Disabled Button Style */
+.add-to-cart-button-home:disabled {
+  background-color: #f0f0f0;
+  color: #d3d3d3;
+  border: 1px solid #d3d3d3;
+  cursor: not-allowed; /* Prevent interaction when disabled */
+}
+
+/* Base Button Style */
+.buy-now-btn-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  gap: 8px;
+
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  left: 39px;
+  top: 504px;
+
+  background: #7E3550; /* Button color */
+  border-radius: 100px; /* Rounded corners */
+
+  /* Font and text style */
+  font-family: 'Roboto', sans-serif; /* Font family */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  border-color: #ffffff00;
+  color: #FFFFFF; /* White text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and scale */
+}
+
+/* Hover Effect */
+.buy-now-btn-home:hover {
+  background-color: #fffbfd; /* Darker shade on hover */
+  transform: scale(1.05); /* Slight scale effect when hovered */
+  color:#7E3550
+}
+
+/* Active Effect */
+.buy-now-btn-home:active {
+  transform: scale(0.95); /* Shrink when clicked */
+}
+
+/* Disabled Button State */
+.buy-now-btn-home:disabled {
+  background-color: #D3D3D3; /* Lighter color for disabled */
+  color: #A9A9A9; /* Grey text */
+  cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+}
+
+.modal-rec{
+
+  
+  position: absolute;
+  width: 358px;
+  height: 548px;
+  left: 18px;
+  top: 20px;
+  
+  background: #fefefe00; /* Light background color */
+  border: 2px solid #7E3550; /* Darker border color */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Subtle shadow effect */
+  border-radius: 4px; /* Rounded corners */
+
+}
+
+.modal-content .price-display {
+  position: absolute;
+  width: 96px;
+  height: 40px;
+  left: 45px;
+  top: 334px;
+
+  font-family: 'Outfit', sans-serif; 
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 60px;
+
+  color: #7E3550;
+}
+
+/* Seller Display (Sissy Shey) */
+.seller-display {
+  position: absolute;
+  width: 54px;
+  height: 15px;
+  left: 285px !important ;
+  top: 370px;
+
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  
+  color: #7E3550 !important;
+}
+
+/* Modal content box */
+.modal-content {
+  border-color: #7E3550 !important; /* Ensure border color is applied */
+  background-color: #ffffff; /* White background for the modal content */
+  border-radius: 16px !important; /* Rounded corners with an important flag */
+  padding: 20px; /* Space inside the modal */
+  position: absolute; /* Allows positioning of elements inside the modal */
+  width: 301px; /* Width of the modal */
+  
+  height: 590px; /* Height of the modal */
+
+  text-align: center; /* Center text inside the modal */
+  border: 2px solid #7E3550; /* Adding solid border with a specific color */
+}
+
+
+/* Close button */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: #7e3550;
+  cursor: pointer;
+}
+
+/* Product image */
+.modal-product-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Optional: Styling for the product description and price */
+.modal-content p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #7e3550;
+  margin: 9px 0;
+}
+
+/* Optional: If non-registered users are shown different content */
+.modal-content p {
+  color: #49454f; /* Change color for non-registered users */
+}
+
+.product-container-home {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  cursor:pointer;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))!important; /* responsive columns */
+  gap: 38px!important;
+  justify-content: center !important; /* center the whole grid */
+  padding: 4rem 0px !important;
+
+  max-width: 2000px;
+  box-sizing: border-box;
+  margin-left: -100px!important;
+  margin-top: 293px !important;
+}
+
+.product-item {
+  cursor: pointer!important;
+}
+
+
+.product-item {
+  background-color: #ffffff !important;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer !important;
+  transition: transform 0.2s ease;
+  width: 220px!important;
+  height: 260px !important;
+}
+
+.product-image {
+  width: 170px !important;
+  height: 170px !important;
+
+  border-radius: 10px;
+  border: 1px dashed #ccc;
+}
+
+.product-name {
+  margin-top: 45px;
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px!important;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #7E3550;
+}
+
+/* Modal for Unregistered User */
+.unregisteredModalHome {
+  position: absolute;
+  width: 457.93px;
+  height: 295.16px;
+  left: 0;
+  top: -6px;
+  border-radius: 28px;
+  background: #FEFEFE;
+  border: 1px solid #7E3550;
+  backdrop-filter: blur(2px);
+  z-index: 999;
+}
+
+/* Inner Rectangle */
+.unregisteredModalInnerHome {
+  box-sizing: border-box;
+  position: absolute;
+  width: 409.1px;
+  height: 250.67px;
+  left: 23.87px;
+  top: 16.79px;
+  background: #FEFEFE;
+  border: 2px solid #7E3550;
+  border-radius: 28px;
+}
+
+/* Message */
+.unregisteredMessageHome {
+  position: absolute;
+  width: 208.35px;
+  height: 54.26px;
+  left: 65.11px;
+  top: 49.34px;
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+  color: #7E3550;
+}
+
+/* Sign Up Button Container */
+.unregisteredSignupFrameHome {
+  position: absolute;
+  width: 100px;
+  height: 31px;
+  left: 65px;
+  top: 182px;
+  background: #36BDD7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Sign Up Text */
+.unregisteredSignupTextHome {
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  color: #FEFEFE;
+}
+
+/* Login Prompt */
+.unregisteredLoginPromptHome {
+  position: absolute;
+  width: 216px;
+  height: 19px;
+  left: 65px;
+  top: 222px;
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  text-align: right;
+  color: #7E3550;
+}
+
+
+
+.product-card {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 16px;
+  background: #FEFEFE;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  max-width: 425px;
+}
+
+.product-image {
+  width: 121px;
+  height: 123px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #7E3550;
+}
+
+.product-title {
+  font-family: 'Outfit';
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.product-seller,
+.product-quantity {
+  font-size: 16px;
+  font-weight: 500;
+}

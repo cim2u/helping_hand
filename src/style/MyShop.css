@@ -1,0 +1,1515 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+
+.shop-container {
+  width: 100%; /* Ensure it spans the entire width */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Header */
+.shop-header {
+  width: 1530px;
+  height: 276px;
+  
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  z-index: 0;
+
+  background-image: url('https://i.imgur.com/CAEi2xo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.shop-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.116); /* Black background with 90% opacity */
+  z-index: -1; /* Place the overlay behind content */
+}
+
+
+/* Icons */
+.icon-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.icon {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  top: 0;
+  position: absolute;
+  width: 200px;
+  height: 266px; /* Adjust to fill the entire height of the screen */
+  background: #F3EDF7;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-left: -3px;
+  padding-top: 20px; /* Space from top */
+  padding-left: 20px; /* Padding for left side */
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  padding: 0;
+  margin-top:  -20px;
+  margin-left: -10px; /* Adjusted to remove negative margin */
+  text-align: left; /* Ensures all text aligns to the left */
+}
+
+/* Sidebar Menu List Item */
+.sidebar-menu li {
+  
+  cursor: default; /* Makes it look like normal text */
+  text-decoration: underline;
+  font-family: 'Roboto', sans-serif;
+  color: #49454F; /* Optional: ensure it's styled like text */
+  
+}
+
+
+
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Ensures items are aligned to the left */
+  padding: 12px 16px;
+  width: 100%;
+  height: 56px;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #49454F;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+/* Menu item hover: no layout shifting */
+.menu-item:hover {
+  background-color: #f4f4f4; /* Light background change without layout shift */
+}
+
+
+
+
+/* Shop Name Input */
+.shop-name-input {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 6px 12px;
+  width: 60%;
+  outline: none;
+  margin: 0 auto;
+}
+
+/* Subscribe Button */
+.buttons-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.h1-subscribe-button {
+  width: 120px;                   /* Set width to 120px */
+  height: 35px;                   /* Set height to 35px */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;                     /* Adjust the font size */
+  font-weight: 400;                    /* Set font weight to normal */
+  border-radius: 100px;                /* Set border radius for a rounded button */
+  gap: 8px;                           /* Space between text and icon, if any */
+  background: rgb(255, 255, 255); /* Set background to a white color */
+  color: #000000;                    /* Set text color */
+  border: none;                        /* No border */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  display: flex;
+  align-items: center;                /* Align text and icon vertically */
+  justify-content: center;            /* Center text horizontally */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.h1-subscribe-button:hover {
+  background-color:#00bcd4; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.h1-subscribe-button:focus {
+  outline: none; /* Remove outline when focused */
+}
+
+/* Positioning the Subscribe button in the header */
+.h1-subscribe-button {
+  position: absolute;
+  top: -65px; /* Adjust top position as per the provided value */
+  left: 1205px; /* Adjust left position as per the provided value */
+  
+}
+
+/* Profile Section */
+.shop-profile {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 16px;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f5f5f5;
+}
+
+.shop-info h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.shop-info p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.shop-nav {
+  margin-top: 8px;
+}
+
+.shop-nav a {
+  margin-right: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #0077cc;
+  transition: color 0.2s ease;
+}
+
+.shop-nav a:hover {
+  color: #005f99;
+}
+
+.shop-nav .disabled {
+  color: #ccc;
+  pointer-events: none;
+}
+
+/* Section Container */
+.product-section {
+  max-width: 1440px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+/* Section Titles */
+.product-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #6b6b6b;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  border-left: 4px solid #ccc;
+  padding-left: 10px;
+}
+
+/* Horizontal Scroll Row */
+.product-row, .products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 12px;
+  justify-content: center;
+}
+
+/* Product Card */
+.product-card {
+  width: 180px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.2s ease;
+  border: 1px solid #eee;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  border: 2px solid #f3f3f3;
+}
+
+.product-card p {
+  margin: 4px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.purchases {
+  font-size: 12px;
+  color: #888;
+}
+
+.no-products {
+  text-align: center;
+  color: #666;
+  margin: 80px 0;
+}
+
+/* Profile Banner */
+.profile-banner {
+  position: relative;
+  top: 0px;
+  margin: 0 auto;
+  width: 100%;
+  height: 145px; /* Add your desired height here */
+  background-color: #fff;
+  padding: 20px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+
+}
+.shop-owner-name {
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 700 !important;
+  font-size: 32px !important;
+  line-height: 80%;
+  letter-spacing: 0;
+  color: rgba(126, 53, 80, 1) !important;
+
+  padding: 4px 8px;
+  border-radius: 6px;
+
+  position: absolute;
+  top: 33px;
+  left: 173px;
+
+  display: inline-block; /* Ensures it sizes to content */
+  width: auto; /* Important: allows width to adjust with content */
+  height: 45px; /* Allow content to grow */
+}
+
+.shop-owner-name::after {
+  content: '';
+  position: absolute;
+  bottom:10px; /* Adjust to your visual needs */
+  left: 0;
+  width: 100%;
+  height:2px;
+  background-color: rgba(126, 53, 80, 1);
+}
+
+
+/* Shop Owner Handle */
+.shop-owner-handle {
+  width: 96px;
+  height: 31px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700 !important;
+  font-size: 15px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: rgba(73, 69, 79, 1) !important;
+
+  position: absolute; /* Required for top/left to work */
+  top: 72px;
+  left: 190px;
+  width: auto;
+  height: auto;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+
+
+
+.profile-pic-wrapper {
+  width: 92px;
+  height: 92px; /* fixed typo: 'make the border vivible92px' */
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(126, 53, 80, 1) !important;
+  margin-left: 15px;
+}
+
+
+.profile-pic {
+  width: 94px;
+  height: 95px;
+  border-radius: 50%;
+  margin-left: -2px;
+  margin-top: -4px;
+  position: relative;
+ 
+}
+
+.default-profile-icon {
+  color: rgba(126, 53, 80, 1);
+}
+
+.animated {
+  animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+.default-profile-icon {
+  color: rgba(126, 53, 80, 1);
+}
+
+.animated {
+  animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+
+.default-profile-icon {
+  color: rgba(126, 53, 80, 1);
+}
+
+.animated {
+  animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+
+@keyframes pulseIcon {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+/* Tabs container */
+.shop-tabs {
+  position: relative;
+  top: -75px;
+  left: 457px;
+  width: 182px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0;
+  z-index: 999; /* ensures it's on top */
+}
+
+
+/* General Tab styling */
+.shop-tabs .tab {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  width: 90px;
+  height: 30px;
+  border-bottom: 1px solid #B2B2B2;
+  border-radius: 4px 4px 0px 0px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: #767676;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Active tab */
+.shop-tabs .tab.active {
+  color: #303030;
+  border-bottom: 1px solid #303030;
+}
+
+/* Label inside tabs */
+.shop-tabs .tab label {
+  width: 66px;
+  height: 22px;
+  font-size: 16px;
+  line-height: 140%;
+  color: inherit;
+}
+
+/* Hide inactive tabs by default */
+.shop-tabs .tab.hidden {
+  display: none;
+}
+
+/* Tab indicator for active tab */
+.shop-tabs .tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black; /* Black line */
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+/* Adjustments for tabs container */
+.shop-tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+/* Add Button */
+.add-button {
+  background-color: rgba(126, 53, 80, 1);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;  /* Larger circle size */
+  height: 32px; /* Larger circle size */
+  
+  display: flex;
+  justify-content: center; /* Horizontally centers the content */
+  align-items: center; /* Vertically centers the content */
+
+  transition: background-color 0.3s ease;
+  position: absolute; /* Position it absolutely relative to the parent */
+  left: 1399px; /* Adjust the horizontal position */
+  top: 50px;  /* Adjust the vertical position */
+}
+
+/* Icon (plus) */
+.add-button .fa-plus {
+  font-size: 20px; /* Smaller plus icon */
+}
+
+.add-button:hover {
+  background-color: rgba(126, 53, 80, 1);
+  transform: scale(1.05);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+.product2-sub-label{
+  width: 110px;
+  height: 34px;
+
+  margin-top: 17px;
+  margin-bottom: 17px;
+  margin-left: 30px;
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 140%;
+  color: #7E3550;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; 
+}
+
+
+.service-label
+{
+  width: 110px;
+  height: 34px;
+
+  margin-top: 25px;
+  margin-bottom: 17px;
+  margin-left: 30px;
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 140%;
+  color: #7E3550;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; 
+}
+
+
+
+/* Service Grid */
+.service-grid {
+  display: flex;
+  gap: 0px;
+  justify-content: space-between;
+}
+
+/* Service Item */
+.service-item {
+  background-color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  border-radius: 20px;
+  padding: 0.75rem;
+  margin-left:28px !important;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  width: 220px!important;
+  height: 260px !important;
+
+}
+
+
+/* Image Container (Placeholder) */
+.service-image-container {
+  width: 170px !important;
+  height: 170px !important;
+
+  border-radius: 10px;
+  margin-top: 10px;
+  background: rgba(172, 180, 215, 0.5);
+  border: 2px solid rgba(0, 0, 0, 0.65);
+  border-radius: 16px;
+  display: flex;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Service Name */
+.service-name,
+.service-image-placeholder {
+  margin-top: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px!important;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #7E3550;
+}
+
+/* Background Cover */
+.background-cover {
+  position: fixed; /* Keeps the background fixed */
+  top: 0; /* Adjusted to make it start from the top */
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ensures it covers the full height */
+ background-color: white;
+  z-index: -1;
+}
+.upload-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+/* Product Grid */
+.product-item {
+  width: 175px;
+  height: 200px;
+  top:-920px;
+  background: rgb(231, 12, 12);
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  left:30px;
+}
+
+
+
+/* Product Name */
+.product-name {
+  width: auto;
+  height: 20px;
+  top: 150px;
+  left:25px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-style: normal; /* Prevent italics */
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-align: center;
+  color: rgba(126, 53, 80, 1);
+}
+
+.product-list {
+  display: flex; /* or grid */
+  flex-wrap: wrap;
+  gap: 23px !important; /* this creates a gap between each .product-item */
+  justify-content: flex-start;
+  left: -13px;
+  position: relative;
+  top:2px;
+}
+
+.product-item {
+  width: 170px;
+  height: 200px;
+  left:23px;
+  top: -330px;
+  background: rgb(255, 255, 255);
+  border: 2px solid rgba(0, 0, 0, 0.65);
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  position: relative;
+}
+
+.product-image {
+  width: 140px;
+  height: 135px;
+  margin-top: 8px;
+  left: 0;
+  border-radius: 16px;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  object-fit: cover;
+}
+
+
+/* Product Image */
+.product-item img {
+    width: 140px;
+    height: 135px;
+    margin-top:8px;  /* Adjust the image's position */
+    left: 0;
+    border-radius: 16px;
+    border: 2px solid rgba(30, 30, 30, 0.65);
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* Product Name */
+.product-name {
+  width: auto;
+  height: 20px;
+  top: 150px;
+  left:25px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-style: normal; /* Prevent italics */
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-align: center;
+  color: rgba(126, 53, 80, 1);
+
+  padding: 2px;
+  position: absolute;
+  bottom: 5px;
+}
+
+.popular-product-grid {
+  width: 100%; /* Responsive width instead of fixed */
+ 
+  height: 239px;
+  margin-top: -90px;
+  margin-left: -32px;
+  margin-right: auto;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+
+.product1-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto the next row if needed */
+  gap: 38px; /* Space between items */
+  justify-content: center; /* Center the items horizontally */
+  padding: 2rem 0;
+
+  max-width: 2000px;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-top: 293px !important;
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@800&display=swap');
+.popular-section-title {
+  position: relative;               /* Ensures it stays within its parent container */
+  color: rgba(126, 53, 80, 1); /* Set background as per your design */
+  padding: 20px;
+  border-radius: 10px;
+  width: 110px;                     /* Adjust width as needed */
+  height: auto;
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  top: -35px;
+  left: 0px;
+  margin-bottom:-90px;             /* Prevents any overflow */
+  
+  z-index: 10;             /* Ensures the text doesn't wrap */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@800&display=swap');
+.product-section-title {
+  position: relative;               /* Ensures it stays within its parent container */
+  color: rgba(126, 53, 80, 1); /* Set background as per your design */
+  padding: 20px;
+  border-radius: 10px;
+  width: 110px;                     /* Adjust width as needed */
+  height: auto;
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 800;
+  font-size: 32px; 
+  line-height: 140%;
+  letter-spacing: 0%;
+  top: 285px;
+  left: 0px;
+  margin-bottom:-90px;             /* Prevents any overflow */
+  
+  z-index: 10;             /* Ensures the text doesn't wrap */
+}
+
+
+.popular-product-section  {
+  background: rgba(254, 254, 254, 1);
+  padding: 20px;
+  top:486px;
+  position: absolute;
+  height: 250px; /* Set fixed height */
+  width: 100%;   /* Ensure the width takes up the full container */
+  overflow: hidden; /* Prevent scrolling and hide any overflow */
+}
+
+.product-section  {
+  background: rgba(254, 254, 254, 1);
+  padding: 20px;
+  position: absolute;
+  top: 748px;
+  height: 250px; /* Set fixed height */
+  width: 100%;   /* Ensure the width takes up the full container */
+  overflow: hidden; /* Prevent scrolling and hide any overflow */
+}
+
+
+
+
+
+.always-visible-arrow {
+  position: absolute;         /* Keeps it fixed on the screen */
+  top:  268px;               /* Distance from the top of the screen */
+  left: 1280px;              /* Distance from the left of the screen */
+  font-size: 24px;
+  background-color: #4caf4f00;
+  color: #7E355080;
+
+  padding: 9px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 9999;           /* Ensures it's on top of everything */
+}
+.always-visible-arrow:hover {
+  color: rgba(126, 53, 80, 1);
+  transform: scale(1.05);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.popular-label {
+  width: 110px;
+  height: 34px;
+
+  margin-top: 17px;
+  margin-left: 30px;
+  margin-bottom:17px;
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 140%;
+  color: #7E3550;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; /* optional for better look */
+}
+
+
+
+
+
+
+
+
+/* Style for the product2-section */
+.product2-section {
+  position: relative;
+  top: -340px; /* To make it appear at the top */
+  padding: 20px 0; /* Add padding for spacing */
+  background-color: #a8000000; /* Light background color */
+  border-top: 2px solid   #ffffff00; /* Optional border at the top */
+  height: 400px;
+}
+
+/* Style for the product grid inside product2-section */
+.product2-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto the next row if needed */
+  gap: 38px; /* Space between items */
+  justify-content: center; /* Center the items horizontally */
+  padding: 2rem 0;
+
+  max-width: 2000px;
+  box-sizing: border-box;
+  margin-left: -740px;
+  margin-top: 303px !important;
+}
+
+/* Style for each product item */
+.product2-item{
+  background-color: #ffffff !important;
+  border: 1px solid #ddd !important;
+  border-radius: 8px !important;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  width: 220px!important;
+  height: 260px !important;
+}
+
+
+/* Style for product images */
+.product2-image {
+  width: 170px !important;
+  height: 170px !important;
+ 
+  border-radius: 10px;
+  border: 1px dashed #ccc;
+}
+
+
+
+/* Style for product names */
+.product2-name {
+  margin-top: 45px;
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #7E3550;
+}
+
+
+/* ProfileWrapper */
+.profileWrapper {
+  position: fixed; /* Always fixed to screen */
+  top: 0;
+  left: 0;
+  width: 435px;
+  height: 959px;
+  overflow-y: scroll;
+  z-index: 2000;
+  background: transparent; /* No background because profileCard has its own */
+}
+
+.profileSellerLabel {
+  position: absolute;
+  width: 516px;
+  height: 18px;
+  left: -49px;
+  top: 299px;
+  font-family: 'Outfit', sans-serif; /* Ensuring Outfit font is used */
+  font-style: normal;
+  font-weight: 600; /* Bold */
+  font-size: 14px;
+  line-height: 18px; /* Ensures the text aligns with the box height */
+  color:#7E3550!important; /* Sets the color of the text */
+}
+
+/* ProfileCard */
+.profileCard {
+  position: relative!important;
+  width: 415px !important;
+  height: 790px !important;
+  left: 0;
+  top: 0;
+  background: #FFFFFF;
+  border: 2px solid #7E3550;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  overflow-y: scroll; /* Enable vertical scroll */
+  overflow-x: hidden;
+  padding: 1px; /* Optional: adds spacing inside */
+}
+/* Hide scrollbar but keep scroll functionality */
+.profileCard::-webkit-scrollbar {
+  width: 0px; /* Hides the scrollbar */
+  height: 0px; /* Hides the scrollbar */
+}
+
+.profileCard::-webkit-scrollbar-thumb {
+  background: transparent; /* Hide the thumb */
+}
+
+/* Optional: For Firefox (using scrollbar-width) */
+.profileCard {
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+.profileBackground {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Optional spacing between elements */
+}
+/* Profile Picture */
+.profilePicture {
+  position: absolute;
+  width: 171px !important;
+  height: 171px !important;
+  left: 125px !important;
+  top: 84px !important;
+  
+  background-image: url('https://i.imgur.com/OTvEGFs.png') !important;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #7E3550;
+  border-radius: 1000px;  
+}
+
+/* Rectangle 85 */
+.profileRec{
+  box-sizing: border-box;
+  position: absolute;
+  width: 378px;
+  height: 846px;
+  left: 16px;
+  top: 25px !important;
+  background: #fefefe00;
+  border: 2px solid #7E3550 !important;
+  border-radius: 8px;
+}
+
+/* Profile Label (Profile Name) */
+.profileLabel {
+  position: absolute;
+  width: 150px;
+  height: 39px;
+  left: 135px!important;
+  top: 251px!important;
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 140%;
+  color: #7E3550;
+}
+
+.profileBanner {
+  position: absolute;
+  width: 342px;
+  height: 141px;
+  left: 30px;
+  top: 574px;
+
+  background: #7E3550; /* This will override the earlier background-color */
+  border-radius: 12px;
+}
+
+/* Profile Address */
+.profileAddressLabel {
+  position: absolute;
+  width: 157px;
+  height: 18px;
+  left: 145px;
+  top: 314px !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #7E3550;
+}
+
+
+/* Orders & Purchases Title */
+.profileOrdersTitle {
+  position: absolute;
+  width: 178px;
+  height: 25px;
+  left: 43px;
+  top: 417px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7E3550;
+}
+
+/* Personal Information Title */
+.profileInfoTitle {
+  position: absolute;
+  width: 192px;
+  height: 25px;
+  left: 43px;
+  top: 540px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7E3550;
+}
+
+/* Profile Links like Order, Cart */
+.profileLinkOr {
+  position: relative;
+  margin: 10px 0 0 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: #ffffff !important;
+  top:445px!important;
+  left:-5px;
+  text-decoration: underline; /* Adds underline */
+}
+/* Profile Links like Order, Cart */
+.profileLinkCar {
+
+  position: relative;
+  left: -83px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: #ffffff !important;
+  top: 410px!important;
+  text-decoration: underline; /* Adds underline */
+}
+
+.profileBanner_1 {
+  position: absolute;
+  width: 348px;
+  height: 64px;
+  left: 29px;
+  top: 448px;
+  background: #7E3550;
+  border-radius: 12px;
+}
+
+/* Profile Email and Phone */
+.profileEmail, .profilePhone, .profileAddress {
+  position: relative;
+  margin-left: 30px !important;
+  top: 475px !important;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  color: #fffafa !important;
+  text-align: left;
+  margin-bottom: -12px !important; /* 2px gap between each row */
+  
+}
+
+/* Profile Logout Button */
+.profileLogout {
+  cursor: pointer;
+  color:  #7E3550 !important;
+  text-decoration: underline;
+  top: 25px !important;
+  font-size: 1rem;
+  left:345px !important;
+  font-weight: 400;
+}
+
+
+.profile-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 435px;
+  height: 959px;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay effect */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+
+.iconStyleProfile {
+  margin-right: 6px;
+  color: #333;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  gap:23px
+}
+
+
+/* Background of profile card */
+.profile-card-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Profile picture styling */
+.profilePicture {
+  position: absolute;
+  width: 121px!important;
+  height: 121px!important;
+  left: 152px !important;
+  top: 194px;
+  background: #ffffff url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__") no-repeat center center;
+  background-size: cover;
+  border: 2px solid #7e3550;
+  border-radius: 100%;
+}
+
+/* Label text for profile */
+.profileLabel {
+  position: absolute;
+  width: 150px;
+  height: 39px;
+  left: 143px;
+  top: 261px;
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #7e3550;
+  text-align: center;
+}
+/* Circle next to status */
+.circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 298px;
+  top: 275px;
+}
+
+.status-primary {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: calc(50% - 8px);
+  top: calc(50% - 8px);
+  background: #5680e9;
+  border-radius: 50%;
+}
+
+.check-primary {
+  position: absolute;
+  width: 10.5px;
+  height: 7.5px;
+  left: calc(50% - 10.5px / 2 + 0.25px);
+  top: calc(50% - 7.5px / 2 - 0.25px);
+  background: #d80000;
+  border-radius: 50%;
+}
+
+/* Address label */
+.address-label {
+  position: absolute;
+  width: 157px;
+  height: 18px;
+  left: 145px;
+  top: 327px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #7e3550;
+}
+
+/* Sections like Orders, Personal Info */
+.orders-purchases-title,
+.personal-info-title {
+  position: absolute;
+  width: 178px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #7e3550;
+}
+
+.orders-purchases-title {
+  top: 419px;
+}
+
+.personal-info-title {
+  top: 540px;
+}
+
+
+
+/* Email, Name, Phone Number, Address */
+.email-name,
+.phone-number,
+.address {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+  color: #fefefe;
+}
+
+.email-name:nth-of-type(1) {
+  top: 590px;
+}
+
+.email-name:nth-of-type(2) {
+  top: 617px;
+}
+
+.phone-number {
+  top: 644px;
+}
+
+.address {
+  top: 671px;
+}
+
+
+
+/* Styling for Order & Cart icon */
+.bag-shopping {
+  position: absolute;
+  width: 21px;
+  height: 24px;
+  left: 162px;
+  top: 468px;
+}
+
+.bag-shopping::after {
+  content: url;
+  width: 21px;
+  height: 24px;
+}
+
+/* Button container */
+.button-container-buyer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 8px;
+  position: absolute;
+  width: 110px;
+  height: 35px;
+  left: 1159px; /* Adjusted position */
+  top: 366px;
+  background: #7e3550;
+  border-radius: 100px;
+  transition: background 0.3s ease;
+}
+
+/* State layer for active button */
+.button-container-buyer.active {
+  background: #fefffe; /* Active state (Filled button color) */
+}
+
+/* Inner button with flexible layout */
+.button-buyer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  gap: 8px;
+  width: 110px;
+  height: 35px;
+  background: #7e3550;
+  border-radius: 100px;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 1;
+  transition: background 0.3s ease;
+}
+
+/* On hover, change button state */
+.button-container-buyer:hover .button-buyer {
+  background: #fe3550; /* Hover color */
+}
+
+/* Label text inside button */
+.button-text-buyer {
+  width: 75px;
+  height: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #FEFEFE;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .button-container-buyer {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+/* Base Button Style */
+.buy-now-btn-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  gap: 8px;
+
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  left: 39px;
+  top: 504px;
+
+  background: #7E3550; /* Button color */
+  border-radius: 100px; /* Rounded corners */
+
+  /* Font and text style */
+  font-family: 'Roboto', sans-serif; /* Font family */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  border-color: #ffffff00;
+  color: #FFFFFF; /* White text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and scale */
+}
+
+/* Hover Effect */
+.buy-now-btn-home:hover {
+  background-color: #fffbfd; /* Darker shade on hover */
+  transform: scale(1.05); /* Slight scale effect when hovered */
+  color:#7E3550
+}
+
+/* Active Effect */
+.buy-now-btn-home:active {
+  transform: scale(0.95); /* Shrink when clicked */
+}
+
+/* Disabled Button State */
+.buy-now-btn-home:disabled {
+  background-color: #D3D3D3; /* Lighter color for disabled */
+  color: #A9A9A9; /* Grey text */
+  cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+}
+
+.service-image-gradient {
+  width: 170px;
+  height: 170px;
+  border-radius: 8px;
+  background:#7E3550;
+  display: flex;
+    font-family: 'Outfit', sans-serif;
+  align-items: center;
+  border-radius: 10px;
+  margin-top:13px;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  margin-left:12px;
+  margin-bottom: 3px!important;
+  font-size: 1.2rem;
+  text-align: center;
+}

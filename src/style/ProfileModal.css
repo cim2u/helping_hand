@@ -1,0 +1,20 @@
+.profile-modal {
+  position: fixed; /* Fixed position to keep it in place even when scrolling */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 29999; /* Ensure it is on top of other elements */
+}
+
+.profile-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px; /* Adjust size as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

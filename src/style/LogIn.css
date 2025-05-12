@@ -1,0 +1,316 @@
+@import url('../style/Logo.module.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+
+.login-container{
+  background-color: rgb(255, 255, 255);
+  width: 800px;
+}
+.login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1530px;
+  height: 750px;
+  background-image: url('https://i.imgur.com/ErEQ4GI.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Outfit', sans-serif;
+  background-color: rgba(255, 255, 255, 0.62)!important; /* Transparent white with 75% opacity */
+
+}
+
+/* General form syling */
+.login-form {
+    width: 480px;
+    height: 225px;
+    padding: 30px 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(252, 248, 248, 0);
+    
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 285px; /* Adjust based on layout */
+    left: -9px;  /* Center horizontally */
+    
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  .login-form label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400 !important;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: left;
+  
+    margin-top: 14px;
+    margin-bottom:15px;
+    margin-left: 64px;
+  
+    display: block;
+  }
+  
+  
+
+  
+  /* Input styling */
+.login-form input {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #ffffff;
+    color:rgba(0, 0, 0, 0.48);
+    width: 340px; /* Width of the input field */
+    height: 31px; /* Height of the input field */
+    
+    margin-left: 50px; /* You can adjust this value as needed */
+  }
+  
+  
+  .login-form input:focus {
+    border-color: #00c9db;
+  }
+  
+/* Button styling */
+.login-container button {
+    background-color: rgba(54, 189, 215, 1); /* Button background color */
+    color: white; /* Text color */
+    font-size: 1rem; /* Font size */
+    font-family: 'Outfit', sans-serif; /* Font family */
+    font-weight: 500; /* Font weight */
+    border-radius: 100px; /* Rounded corners */
+    border: none; /* Remove border */
+    padding: 8px 20px; /* Padding to control the button size */
+    width: 210px; /* Button width */
+    height: 31px; /* Button height */
+    position: absolute; /* Absolute positioning */
+    top: 307px; /* Vertical position */
+    left: 135px; /* Horizontal position */
+    gap: 10px; /* Gap between the text and any potential icon */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effect */
+    text-align: center; /* Center the text */
+  }
+  
+  /* On hover effect */
+  .login-container button:hover {
+    background-color:rgb(1, 210, 238); /* Button color changes on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+  }
+  
+  /* On focus effect */
+  .login-container button:focus {
+    outline: none; /* Removes the focus outline */
+    box-shadow: 0 0 5px rgba(0, 201, 219, 0.7); /* Adds a subtle glow around the button */
+  }
+
+  
+
+/* Forgot password, signup, and admin login links */
+.login-container .forgot-password
+{
+  font-size: 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative; /* Ensure positioning can be adjusted */
+}
+
+.login-container .forgot-password:hover{
+  color: #00acc1;
+  text-decoration: underline;
+}
+
+/* Signup link container */
+.signup-link {
+    width: 226px; /* Width of the container */
+    height: 32px; /* Height of the container */
+    position: absolute; /* Position it absolutely */
+    top: 330px; /* Vertical position */
+    left: 129px; /* Horizontal position */
+    font-family: 'Outfit', sans-serif; /* Font family */
+    font-weight: 200 !important; /* Font weight */
+    font-size: 16px; /* Font size */
+    line-height: 100%; /* Line height */
+    letter-spacing: 0%; /* Letter spacing */
+    color: rgba(254, 254, 254, 1); /* Background color */
+    display: flex; /* Use flex to align items */
+    align-items: center; /* Vertically align the text */
+    justify-content: center; /* Horizontally align the text */
+  }
+  
+  /* Styling the Sign Up link */
+  .signup-link a {
+    color: #00c9db; /* Link color */
+    text-decoration: none; /* Remove underline from link */
+    font-weight: 500; /* Font weight for the link */
+    font-size: 16px; /* Font size for the link */
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline; /* Underline the link when hovered */
+    color: #00acc1; /* Darker color on hover */
+  }
+  
+
+
+/* Admin login link styling */
+.login-form .admin-login {
+    position: absolute; /* Ensures the element is positioned relative to the nearest positioned ancestor */
+    left: 370px; /* Move the link to 400px from the left */
+    top: 370px; /* Adjust the top property if necessary */
+  }
+  
+  .login-form .admin-login a {
+    font-size: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200 !important;
+    color: #ffffff;
+    text-decoration: none;
+    line-height:24px;
+    letter-spacing:0%;
+    text-decoration: underline;
+  }
+  
+  .login-form .admin-login a:hover {
+    color: #00acc1;
+    text-decoration: underline;
+  }
+  
+
+ 
+  /* Additional space between the links */
+  .signup-link {
+    margin-top: -20px;
+  }
+  
+  .admin-login {
+    margin-top: 10px;
+  }
+  
+  
+  .login-container {
+    width: 477px;
+    height: 710px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.23);
+    border-radius: 30px;
+  
+    /* Shadow instead of border */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.685);
+  
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  
+    position: absolute;
+    top: 20px;
+    left: 560px;
+  
+    font-family: 'Outfit', sans-serif;
+  }
+  
+
+/* Welcome text */
+.login-container h2 {
+    width: 160px; /* Set the width */
+    height: 42px; /* Set the height */
+    top:239px; /* Adjust vertical positioning */
+    left: 62px; /* Adjust horizontal positioning */
+    font-family: 'Roboto', sans-serif; /* Set font family */
+    font-weight: 900; /* Set font weight */
+    font-size: 36px; /* Set font size */
+    line-height: 100%; /* Set line height */
+    letter-spacing: 0%; /* Set letter spacing */
+    text-align: right; /* Align text to the right */
+    
+    position: absolute; /* Ensure it's positioned absolutely */
+  }
+  
+  .logo-wrapper {
+    position: absolute;
+    top: 0px;   /* Adjust this value to move the logo vertically */
+    left: 10px;  /* Adjust this value to move the logo horizontally */
+   
+  }
+  .login-btn {
+    padding: 8px 20px;
+    background-color: #00acc1; /* Cyan background */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 200 !important ;
+    width: 210px;
+    height: 31px; /* Slightly increased height for better text alignment */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top:-35px;
+    margin-left: -2px;
+  
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #0097a7; /* Slightly darker cyan on hover */
+    transform: scale(1.05);
+  }
+  
+  .login-btn:active {
+    transform: scale(0.98);
+  }
+  
+  .login-btn:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 150, 255, 0.5);
+  }
+  
+  .forgot-password {
+    display: block;
+    margin-top: 19px;
+    margin-bottom: 1px;
+    text-align: right;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 200 !important;
+    color:  #00acc1;/* Or use a lighter color like #f0f0f0 */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    left:-5px;
+  }
+
+  .welcome-heading h2 {
+    
+    color: white;
+    width: 500px;
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .error-message {
+    background-color: #ffe5e500;
+    color: #ff000d;
+    border: 1px solid #d8000b00;
+    padding: 12px;
+    margin-left: 55px!important;
+    border-radius: 8px;
+    margin-top: 50px!important;
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+  }
+  

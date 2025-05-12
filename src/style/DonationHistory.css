@@ -1,0 +1,92 @@
+/* Avatar */
+.donation-avatar {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 347px;
+    top: 108px;
+    border-radius: 9999px;
+    background: url(''); /* Replace with actual image path */
+    background-size: cover;
+}
+
+/* Shape for Avatar */
+.donation-avatar-shape {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: calc(50% - 40px / 2);
+    top: calc(50% - 40px / 2);
+    background: url(''); /* Replace with actual image path */
+}
+
+/* Seller Name’s Donation History */
+.donation-seller-name {
+    position: absolute;
+    width: 212px;
+    height: 19px;
+    left: 408px;
+    top: 121px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    color: #303030;
+}
+
+/* Group 74 */
+.donation-group-74 {
+    position: absolute;
+    width: 656px;
+    height: 74px;
+    left: 347px;
+    top: 178px;
+}
+
+/* Rectangle for Donation */
+.donation-rectangle {
+    position: absolute;
+    width: 656px;
+    height: 74px;
+    left: 347px;
+    top: 178px;
+    background: #FEFEFE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Donated to “Sissy Shey” */
+.donation-item-name {
+    position: absolute;
+    width: 165px;
+    height: 19px;
+    left: 377px;
+    top: 209px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    color: #303030;
+}
+
+/* Donation Date (e.g., 5/8/2025) */
+.donation-purchase-date {
+    position: absolute;
+    width: 65px;
+    height: 19px;
+    left: 913px;
+    top: 209px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    color: #303030;
+}

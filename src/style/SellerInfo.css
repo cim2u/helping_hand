@@ -1,0 +1,153 @@
+.d {
+  width: 1440px;
+  height: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5px;
+  opacity: 95;
+  background-color: rgba(255, 255, 255, 0.205);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.seller-info-container {
+  width: 1440px;
+  height: 800px;
+  position: relative;
+  
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Blurred background image */
+.seller-info-container::before {
+  content: "";
+  position: absolute;
+  width: 1440px;
+  height: 1024px;
+  background-image: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  opacity: 0.95;
+  z-index: -1;
+}
+
+.sellerinfo-logo-image {
+  width: 320px; 
+position: relative; /* Required for top and left positioning */
+top: 25px;
+left: -24px;
+}
+
+
+.sellerinfo-form-card {
+  background: rgba(0, 0, 0, 0.205);
+  opacity: 0.95;
+  border: 2px solid rgba(254, 254, 254, 0.527);
+  border-radius: 28px;
+  width: 480px; /* fixed */
+  height: 725px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.25);
+  position: absolute; /* added */
+  top: 40px;
+  left: 480px;
+  z-index: 1;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap');
+
+.sellerinfo-form-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 100%;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  position: absolute;
+  top: 203px;
+  left:5px;
+  width: 296px;
+  height: 28px;
+}
+
+
+.seller-info-form {
+  background-color: transparent;
+  position: relative;  /* or 'absolute', depending on your layout */
+  top: 20px;  /* adjust this value as needed */
+}
+
+
+.seller-info-form input {
+  width: 372px;
+  height: 31px;
+  padding: 0.7rem;
+  margin: 14px;
+  border: 1px solid #00000000;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  color: #000000;
+  top:90px;
+  position: relative;
+}
+.storeinfo-submit-btn {
+  width: 210px;
+  height: 31px;
+  padding: 0.7rem;
+  margin-top: 1rem;
+  position: absolute;
+  top: 440px;
+  left: 100px;
+  border-radius: 100px;
+
+  background: #36BDD7;
+  color: white;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400 !important;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.storeinfo-submit-btn:hover {
+  background-color: #0097a7;
+}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap');
+
+.storelabel {
+  width: 289px;
+  height: 20px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400 !important;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+  position: relative;
+  top: 100px; /* Move the label down */
+  margin-left: -70px; /* Adjust position horizontally */
+  display: flex;
+  flex-direction: column;
+
+ 
+}
+

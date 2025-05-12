@@ -1,0 +1,166 @@
+.account-info-wrapper {
+  position: fixed;
+  width:1513px;
+  height: 100%; /* Keeps it within the viewport */
+  overflow-y: hidden; 
+  overflow-x: hidden; /* Prevent vertical scroll */
+  background: #00000000; /* or your preferred background */
+}
+
+.settings-container {
+  position: fixed;
+  width: 1528px !important;
+  height: 739px!important;
+  background: #fdfdfd;
+  font-family: 'Roboto', sans-serif;
+}
+
+.settings-background-overlay {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 1528px;
+  height: 739px !important;
+  background-image: url("https://i.imgur.com/3gmUPOq.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Outfit', sans-serif;
+  background-color: rgba(255, 255, 255, 0.62)!important; /* Transparent white with 75% opacity */
+}
+
+.sidebar-bg {
+  position: absolute;
+  width: 383px;
+  height: 710px;
+  left: 95px;
+  top: 10px;
+  background: linear-gradient(180deg, #000000 42%, #7E3550 54%);
+  opacity: 0.5;
+  border-radius: 28px;
+  z-index: 1;
+}
+
+.settings-header {
+  position: absolute;
+  width: 283px;
+  height: 72px;
+  left: 150px;
+  top: 23px;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: #FEFEFE;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.menu-box {
+  position: absolute;
+  width: 280px;
+  height: 591px;
+  left: 150px;
+  top: 85px;
+  background: #3232324e;
+  border-radius: 0 20px 20px 20px;
+  z-index: 2;
+  padding-left: 24px; /* Left space for consistent alignment */
+  padding-top: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.menu-title {
+  position: relative;     /* Required to use 'top' */
+  top: -30px;              /* Adjust this value as needed */
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  margin: 20px 0 10px 0;
+  text-align: left;
+}
+
+
+.support-title {
+  margin-top: 40px;
+}
+.menu-item {
+  position: relative;
+  top: -50px;                /* Replaces margin-top for vertical shift */
+  left: 10px;
+  font-weight: 400;
+  font-size: 18px !important;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #FEFEFE;
+  text-decoration: none;
+  border-bottom: none;
+  outline: none;
+}
+
+
+.menu-item:hover {
+  color: #7E3550;  /* change text color on hover */
+  text-decoration: underline;  /* add underline on hover */
+}
+  
+
+
+
+.menu-item:hover {
+  color: #7E3550;  /* change text color on hover */
+  text-decoration: underline;  /* add underline on hover */
+}
+  
+
+
+.user-label {
+  font-weight: 600;
+  font-size: 24px;
+  color: #EEEEEE;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+}
+
+.logout-button {
+  font-size: 24px;
+  font-weight: 400;
+  color: #FEFEFE;
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  margin-top: 8px;
+  text-align: left;
+}
+
+.home-button {
+  position: fixed;
+  left: 1379px;
+  top: 687px;
+  width: 127px;
+  height: 34px;
+  background: #7E3550;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  border: none;
+  cursor: pointer;
+}
+
+.subscribe-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #FEFEFE;
+  letter-spacing: 0.1px;
+  text-align: center;
+  
+}

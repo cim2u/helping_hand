@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+
+.myPurchasesPage{
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  top: -13px;
+  left:83px
+ 
+  
+}
+.backgroundOverlayPurchases {
+  position: absolute;
+  width: 827px;
+  height:699px;
+  left: 420px;
+  margin-top: 35px !important;
+  background: linear-gradient(180deg, #0000009c 0%, #7e355092 58%);
+  opacity: 1 !important;
+  border-radius: 28px;
+  }
+  
+  .myPurchasesTitle {
+    position: absolute;
+    width: 164px;
+    height: 40px;
+    left: 450px;
+    top: 60px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    color: #FEFEFE;
+  }
+  
+  .rectangleMain {
+    position: absolute;
+    width: 770px;
+    height: 600px;
+    left: 450px;
+    top: 95px !important;
+    background: rgba(30, 30, 30, 0.65);
+    opacity: 0.5;
+  }
+  
+  .purchaseBlock {
+    box-sizing: border-box;
+    position: absolute;
+    width: 750px;
+    height: 176px;
+    background: rgba(30, 30, 30, 0.65);
+    opacity: 0.75;
+    border: 1px solid #FEFEFE;
+    left: 460px !important;
+    margin-top: -160px;
+  }
+  
+  .lineSeparator {
+    position: absolute;
+    width: 750px;
+    height: 0px;
+    border: 1px solid #FEFEFE;
+    left: 460px !important;
+    margin-top: -165px;
+  }
+  
+  .MysellerName {
+    position: absolute;
+    width: 270px;
+    height: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    color: #FEFEFE!important;
+    left: 470px !important;
+    margin-top: -160px;
+  }
+  
+  .productName {
+    position: absolute;
+    width: 270px;
+    height: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    color: #FEFEFE;
+    left: 470px !important;
+    margin-top: -85px;
+  }
+  
+  
+
+.subscribe-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #FEFEFE;
+  letter-spacing: 0.1px;
+  text-align: center;
+  
+}
+
+.menu-title {
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  margin: 20px 0 10px 0; /* Remove margin-left */
+  text-align: left; /* Ensure it aligns to the left */
+}
+
+.support-title {
+  margin-top: 40px;
+}
+
+.menu-item {
+  position: relative;
+  left: 10px;  /* Or adjust as needed */
+  font-weight: 400;
+  font-size: 18px !important;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #FEFEFE;
+  margin-top: -2px !important;
+ 
+  text-decoration: none;
+  border-bottom: none;
+  outline: none;
+}
+
+
+.menu-item:hover {
+  color: #7E3550;  /* change text color on hover */
+  text-decoration: underline;  /* add underline on hover */
+}
+  

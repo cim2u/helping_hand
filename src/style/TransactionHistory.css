@@ -1,0 +1,63 @@
+/* Transaction Container */
+.transaction-history-container {
+    position: absolute;
+    top:234px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 930px;
+    left:423px
+  }
+
+  
+  /* Header for the Transaction History */
+  .transaction-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .transaction-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 15px;
+  }
+  
+  .transaction-seller-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #303030;
+  }
+  
+  /* Transaction Item Style */
+  .transaction-group {
+    margin-bottom: 15px;
+  }
+  
+  .transaction-rectangle {
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .transaction-item-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #303030;
+  }
+  
+  .transaction-purchase-date {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #707070;
+  }
+  
