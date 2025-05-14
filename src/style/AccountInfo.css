@@ -37,6 +37,22 @@
     margin-bottom: 4px;
   }
   
+  .send-button-accountinfo {
+    padding: 10px 20px;
+    top:230px;
+    font-size: 16px;
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-button-accountinfo:hover {
+    background-color: #0056b3;
+  }
+  
   
   .input-box {
     width: 100%;

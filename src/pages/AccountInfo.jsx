@@ -52,30 +52,41 @@ const AccountInfo = () => {
         </div>
   
         <div className="P-AccountInfo">
-          <div className="personal-info-accountinfo">
-            <div className="label-accountinfo">First Name</div>
-            <div className="input-frame-accountinfo" />
-            <div className="label-accountinfo">Last Name</div>
-            <div className="input-frame-accountinfo" />
-            <div className="label-accountinfo">Email</div>
-            <div className="input-frame-accountinfo" />
-            <div className="label-accountinfo">Username</div>
-            <div className="input-frame-accountinfo" />
-            <div className="label-accountinfo">Password</div>
-            <div className="input-frame-accountinfo" />
-          </div>
-        </div>
-  
-        <div className="B-AccountInfo" />
-        <div className="business-info-accountinfo">
-          <div className="section-title-accountinfo">Business Information</div>
-          <div className="label-accountinfo">Store Name</div>
-          <div className="b-input-frame-accountinfo" />
-          <div className="label-accountinfo">Store Address</div>
-          <div className="b-input-frame-accountinfo" />
-          <div className="label-accountinfo">Gmail Account</div>
-          <div className="b-input-frame-accountinfo" />
-        </div>
+  <div className="personal-info-accountinfo">
+    <div className="label-accountinfo">First Name</div>
+    <input className="input-frame-accountinfo" type="text" placeholder="Enter first name" />
+
+    <div className="label-accountinfo">Last Name</div>
+    <input className="input-frame-accountinfo" type="text" placeholder="Enter last name" />
+
+    <div className="label-accountinfo">Email</div>
+    <input className="input-frame-accountinfo" type="email" placeholder="Enter email" />
+
+    <div className="label-accountinfo">Username</div>
+    <input className="input-frame-accountinfo" type="text" placeholder="Enter username" />
+
+    <div className="label-accountinfo">Password</div>
+    <input className="input-frame-accountinfo" type="password" placeholder="Enter password" />
+  </div>
+</div>
+
+<div className="B-AccountInfo" />
+<div className="business-info-accountinfo">
+  <div className="section-title-accountinfo">Business Information</div>
+
+  <div className="label-accountinfo">Store Name</div>
+  <input className="b-input-frame-accountinfo" type="text" placeholder="Enter store name" />
+
+  <div className="label-accountinfo">Store Address</div>
+  <input className="b-input-frame-accountinfo" type="text" placeholder="Enter store address" />
+
+  <div className="label-accountinfo">Gmail Account</div>
+  <input className="b-input-frame-accountinfo" type="email" placeholder="Enter Gmail account" />
+</div>
+
+<div style={{ marginTop: '20px', textAlign: 'center' }}>
+  <button className="send-button-accountinfo">Send</button>
+</div>
       </div>
     </div>
   </div> 

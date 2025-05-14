@@ -1,5 +1,4 @@
-// src/components/OrderModal.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import "../style/OrderModal.css";
 
 const orders = [
@@ -36,6 +35,21 @@ const orders = [
 ];
 
 const OrderModal = ({ onClose }) => {
+  // Close the modal if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (event.target.classList.contains("orderModalOverlay")) {
+        onClose(); // Close the modal
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
   return (
     <div className="orderModalOverlay">
       <div className="orderContainer">
@@ -44,7 +58,6 @@ const OrderModal = ({ onClose }) => {
         <div className="orderTopBar"></div>
         <div className="bagIcon" />
         <button className="orderCloseBtn" onClick={onClose}>×</button>
-
 
         {orders.map((order) => (
           <div key={order.id}>

@@ -50,7 +50,7 @@ const CartModal = () => {
   };
 
   const handleBackHome = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   return (

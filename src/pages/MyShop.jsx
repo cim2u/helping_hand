@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import "../style/MyShop.css";
 import "../style/Home.css"
 import PaymentConfirmationModal from '../components/PaymentConfirmationModal';
@@ -53,6 +54,7 @@ const MyShop = () => {
   };
 
   
+  
   const [activeTab, setActiveTab] = useState("products");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -68,6 +70,26 @@ const [loggedIn, setLoggedIn] = useState(false); // or set it to true based on y
 const [showProfile, setShowProfile] = useState(false);
 
 
+
+
+useEffect(() => {
+  if (isModalVisible) {
+    document.body.style.overflow = 'hidden'; // Lock scroll
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+  } else {
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+  }
+
+  // Cleanup on unmount or when modal closes
+  return () => {
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+  };
+}, [isModalVisible]);
 
 
   const productListRef = useRef(null);
@@ -199,9 +221,7 @@ const [showProfile, setShowProfile] = useState(false);
   }, []);
 
   const handleSubscribeClick = () => {
-    localStorage.setItem("isSubscribed", "true");
-    setIsSubscribed(true);
-    alert("You have successfully subscribed!");
+    navigate('/subscribe');
   };
 
   const handleTabClick = (tab) => {
@@ -313,7 +333,7 @@ const [showProfile, setShowProfile] = useState(false);
         <div className="profile-info">
           <div className="profile-pic-wrapper" onClick={() => setIsModalOpen(true)}>
             <img
-              src={profileImage || "https://s3-alpha-sig.figma.com/img/1291/8283/db5584e1491b3ce3d07e5a6f324db4bd?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HVRy5RDLTa-M77wznKozpmRxGMMXtIXkRpwiobui~F3TNVaF6JRxKABszJQglZXGqC7URh-mzj3Ub1QG20dxJC4t9zwp~WscTBbq9r35-nRdwTkIkW0fOgZ9wg2eckW7t6TsEZwwy8FV0W0R5Gqho-XL4y-B999cRtPVI7VQsnk4~Adnl~lWAeAkTn98fYPbBqyb78H0Mc-hnzVfBvJhKVMEVCbD~0ezEsVHNI-YrTf6Zdt-E0nxV6ejvn0yqOE553hxkZ2ZDmnVxsHuiq0yott0aOH1pP-H4ygdOYsYvJiUg0EB9GGjNhyPtW~cTjNp3l7pQUhqRnsI6vgfUQghJQ__"}
+              src={profileImage || "https://i.imgur.com/ZVPfn6h.png"}
               alt="Profile"
               className="profile-pic"
             />
@@ -321,13 +341,11 @@ const [showProfile, setShowProfile] = useState(false);
           <div>
             <h2 className="shop-owner-name">{shopName}</h2>
             <p className="shop-owner-handle">{sellerUsername}</p>
-            {isSubscribed ? (
-              <p className="h1-subscribe-button">You are subscribed</p>
-            ) : (
-              <button className="h1-subscribe-button" onClick={handleSubscribeClick}>
-                Subscribe
-              </button>
-            )}
+            {!isSubscribed && (
+        <button className="h1-subscribe-button" onClick={handleSubscribeClick}>
+          Subscribe
+        </button>
+      )}
 
 {/* Tabs */}
 {!isModalOpen && (

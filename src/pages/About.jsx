@@ -9,24 +9,23 @@ function About() {
   const navigate = useNavigate();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isFirstVisit, setIsFirstVisit] = useState(true); // default to true on first mount
-  const [isRegistered, setIsRegistered] = useState(localStorage.getItem("isRegistered") === "true"); // Check if user is registered
+  const [isFirstVisit, setIsFirstVisit] = useState(true); 
+  const [isRegistered, setIsRegistered] = useState(localStorage.getItem("isRegistered") === "true");
 
-  // Check login status and update visit state
   useEffect(() => {
     const token = localStorage.getItem("authToken");
+    const hasVisited = localStorage.getItem("isRegistered");
+
     if (token) {
       setIsLoggedIn(true);
-      setIsFirstVisit(false); // user already visited/logged in before
+      setIsFirstVisit(false);
     } else {
       setIsLoggedIn(false);
-      setIsFirstVisit(true); // first-time or not logged in
     }
 
-    const hasVisited = localStorage.getItem("isRegistered");
     if (!hasVisited) {
       setIsFirstVisit(true);
-      localStorage.setItem("isRegistered", "true"); // First time visit, set as registered
+      localStorage.setItem("isRegistered", "true");
     }
   }, []);
 
@@ -37,7 +36,6 @@ function About() {
   return (
     <div className="account-info-wrapper">
       <div className="about-container">
-        {/* Header */}
         <div className="about-header">
           <div className="about-header-1"></div>
           <div className="logo-container">
@@ -45,7 +43,6 @@ function About() {
           </div>
         </div>
 
-        {/* Navigation Links */}
         <div className="nav-container">
           <nav className="nav-links-h">
             <a href="#" onClick={() => handleNavigation("about")}>About</a>
@@ -54,12 +51,10 @@ function About() {
           </nav>
         </div>
 
-        {/* Main Content */}
         <div className="about-content">
           <div className="text-section">
             <h1 className="welcome-text">Welcome to</h1>
             <img src={helpinghand} alt="HelpingHand!" className="helping-hand-icon" />
-
             <p>
               The ultimate student-powered marketplace where dreams meet deals!
               Designed exclusively for CDO students to sell their unique creations, pre-loved items, and innovative services,
@@ -70,7 +65,6 @@ function About() {
               Join HelpingHand today, where students thrive, and everyone scores amazing deals!
             </p>
 
-            {/* Show GET STARTED only on first visit and if not logged in */}
             {isFirstVisit && !isLoggedIn && !isRegistered && (
               <button className="about-signup-btn" onClick={() => navigate("/signup")}>
                 GET STARTED
@@ -78,7 +72,6 @@ function About() {
             )}
           </div>
 
-          {/* Images */}
           <div className="image-section">
             <img
               src="https://i.imgur.com/IQ0pcft.png"

@@ -22,6 +22,9 @@ import { faCartPlus, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 const Home = () => {
 
   
+
+
+  
   const [isRegistered, setIsRegistered] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -59,7 +62,6 @@ const Home = () => {
     ));
   };
 
-  
 
   useEffect(() => {
   const token = localStorage.getItem("authToken");
@@ -81,6 +83,20 @@ const Home = () => {
     ));
   };
 
+
+  // Inside your component
+useEffect(() => {
+  if (isModalVisible) {
+    document.body.style.overflow = "hidden"; // Lock scroll
+  } else {
+    document.body.style.overflow = ""; // Restore scroll
+  }
+
+  // Clean up on unmount
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [isModalVisible]);
   // Handle "Buy Now" button click (pass the product info to the payment modal)
 
   const handleBuyNow = (product) => {
@@ -176,6 +192,8 @@ const Home = () => {
       document.body.style.overflow = 'auto';
     }
 
+    
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'auto'; // Reset scroll when component unmounts
@@ -222,6 +240,8 @@ const handleLogoutClick = () => {
     setSelectedProduct(null);
   };
 
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+
   return (
     
     <div className="home-wrapper">
@@ -236,7 +256,7 @@ const handleLogoutClick = () => {
           <FontAwesomeIcon icon={faBars} className="icon" onClick={toggleSidebar} />
           
           
-    {loggedIn && isRegistered && (
+    {loggedIn && (
   <>
     <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
     <Link to="/cart">
@@ -260,8 +280,8 @@ const handleLogoutClick = () => {
         <div className="buttons-container">
           {!isRegistered && (
             <>
-              <button className="home-login-button" onClick={handleLoginClick}>LOGIN</button>
-              <button className="home-signup-button" onClick={handleSignUpClick}>SIGN UP</button>
+              <button className="login-button" onClick={handleLoginClick}>LOGIN</button>
+              <button className="signup-button" onClick={handleSignUpClick}>SIGN UP</button>
             </>
           )}
 
@@ -326,11 +346,11 @@ const handleLogoutClick = () => {
 {/* Row 1 */}
   <div className="product-item" onClick={() => handleProductClick({
     name: "Ribbon Keychain",
-    image: "https://i.imgur.com/gIXWMdd.jpeg",
+    image: "https://i.imgur.com/YP2DSeS.png",
     seller: "Sissy Shyey.",
     price: 15.00
   })}>
-    <img src="https://i.imgur.com/gIXWMdd.jpeg" alt="Ribbon Keychain" className="product-image" />
+    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
     <div className="product-name">Ribbon Keychain</div>
   </div>
 
@@ -520,7 +540,6 @@ const handleLogoutClick = () => {
 </div>
 </section>
 
-
 {isModalVisible && selectedProduct && (
   <div className="product-modal" onClick={closeModal}>
     {isRegistered ? (
@@ -529,11 +548,13 @@ const handleLogoutClick = () => {
 
         {/* Product Image */}
         {selectedProduct.image ? (
-          <img
-            src={selectedProduct.image}
-            alt={selectedProduct.name}
-            className="modal-product-image"
-          />
+          <div className="modal-rec-product">
+            <img
+              src={selectedProduct.image}
+              alt={selectedProduct.name}
+              className="modal-product-image"
+            />
+          </div>
         ) : (
           <p>Image not available</p>
         )}
@@ -583,10 +604,14 @@ const handleLogoutClick = () => {
 )}
 
 {/* Payment Confirmation Modal (receives selected product) */}
-<PaymentConfirmationModal
-  ref={paymentModalRef}
-  selectedProduct={selectedProduct}
-/>
+{isRegistered && selectedProduct && (
+  <PaymentConfirmationModal
+    ref={paymentModalRef}
+    selectedProduct={selectedProduct}
+    onClose={() => setShowPaymentModal(false)} // Ensure modal can be closed
+  />
+)}
+
 
 
 {/* profile icon */}
@@ -597,12 +622,9 @@ const handleLogoutClick = () => {
 
 <Profile 
   loggedIn={loggedIn}
-  
-       isVisible={isProfileVisible}
-        onClose={() => setIsProfileVisible(false)}
-        handleLogoutClick={handleLogoutClick}
-        setIsLoggedIn={setIsLoggedIn}  // Pass the setter function
-        setIsRegistered={setIsRegistered}  // Pass the setter function
+  isVisible={isProfileVisible}
+  onClose={() => setIsProfileVisible(false)}
+  handleLogoutClick={handleLogoutClick}
 />
 
 

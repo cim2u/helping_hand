@@ -46,7 +46,7 @@ const PostProduct = () => {
             {imagePreview ? (
               <img src={imagePreview} alt="Preview" className="previewImagePost" />
             ) : (
-              <div className="uploadPlaceholderPost">Image Preview</div>
+              <div className="uploadPlaceholderPost">Post your image</div>
             )}
 
             <input
@@ -58,7 +58,7 @@ const PostProduct = () => {
             />
 
             <label htmlFor="imageUpload" className="circlePlusPost">
-              <FontAwesomeIcon icon={faCirclePlus} size="2x" color="purple" />
+              <FontAwesomeIcon icon={faCirclePlus} size="2x" color="#843b62" />
             </label>
           </div>
 

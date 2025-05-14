@@ -21,6 +21,46 @@ z-index: 150; /* Ensures it stays on top */
 }
 
 
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.toggle-password-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+
+
+/* Default color of the icon (when it's visible) */
+.signup-form-group .fa-eye, 
+.signup-form-group .fa-eye-slash {
+  color: #6c757d; /* Set to any color you prefer (e.g., gray) */
+  background-color: #ffffff;
+  width: 25px;
+  left:344px;
+  height:24px;
+}
+
+/* Color when hovering over the icon */
+.signup-form-group .fa-eye:hover, 
+.signup-form-group .fa-eye-slash:hover {
+  color: #000000; /* Set to your desired hover color (e.g., blue) */
+}
+
+/* Optionally, you can change color when the password field is focused */
+.signup-form-group input:focus + .fa-eye, 
+.signup-form-group input:focus + .fa-eye-slash {
+  color: #000000; /* Set focus color here */
+}
 
 /* Container for the signup form */
 .signup-container {

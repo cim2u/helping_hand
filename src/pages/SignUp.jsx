@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import styles from "../style/Logo.module.css";
 import logoImage from "../assets/Logo.png";
 import "../style/SignUp.css";
 
 // SignupForm component
-const SignupForm = ({ handleChange, formData, handleSubmit, errors, isSubmitting }) => (
+const SignupForm = ({
+  handleChange,
+  formData,
+  handleSubmit,
+  errorMessage,
+  isSubmitting,
+  showPassword,
+  showConfirmPassword,
+  togglePasswordVisibility,
+  toggleConfirmPasswordVisibility,
+}) => (
   <form onSubmit={handleSubmit} className="signup-form">
     <div className="name-container">
       <div className="signup-group">
@@ -19,7 +30,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errors, isSubmitting
           onChange={handleChange}
           required
         />
-        {errors.firstName && <p className="signup-error-message">{errors.firstName}</p>}
       </div>
 
       <div className="signup-group">
@@ -32,7 +42,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errors, isSubmitting
           onChange={handleChange}
           required
         />
-        {errors.lastName && <p className="signup-error-message">{errors.lastName}</p>}
       </div>
     </div>
 
@@ -46,7 +55,6 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errors, isSubmitting
         onChange={handleChange}
         required
       />
-      {errors.email && <p className="signup-error-message">{errors.email}</p>}
     </div>
 
     <div className="signup-form-group">
@@ -59,34 +67,70 @@ const SignupForm = ({ handleChange, formData, handleSubmit, errors, isSubmitting
         onChange={handleChange}
         required
       />
-      {errors.username && <p className="signup-error-message">{errors.username}</p>}
     </div>
 
-    <div className="signup-form-group">
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        value={formData.password}
-        onChange={handleChange}
-        required
+   {/* Password Field */}
+<div className="signup-form-group">
+  <label htmlFor="password">Password</label>
+  <div style={{ position: "relative" }}>
+    <input
+      type={showPassword ? "text" : "password"}
+      name="password"
+      id="password"
+      value={formData.password}
+      onChange={handleChange}
+      required
+    />
+    {/* Only show icon if password is not empty */}
+    {formData.password.length > 0 && (
+      <FontAwesomeIcon
+        icon={showPassword ? faEye : faEyeSlash}
+        onClick={togglePasswordVisibility}
+        style={{
+          position: "absolute",
+          right: "10px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          cursor: "pointer",
+          fontSize: "12px", // Set font size her
+        }}
       />
-      {errors.password && <p className="signup-error-message">{errors.password}</p>}
-    </div>
+    )}
+  </div>
+</div>
 
-    <div className="signup-form-group">
-      <label htmlFor="confirmPassword">Confirm Password</label>
-      <input
-        type="password"
-        name="confirmPassword"
-        id="confirmPassword"
-        value={formData.confirmPassword}
-        onChange={handleChange}
-        required
+{/* Confirm Password Field */}
+<div className="signup-form-group">
+  <label htmlFor="confirmPassword">Confirm Password</label>
+  <div style={{ position: "relative" }}>
+    <input
+      type={showConfirmPassword ? "text" : "password"}
+      name="confirmPassword"
+      id="confirmPassword"
+      value={formData.confirmPassword}
+      onChange={handleChange}
+      required
+    />
+    {/* Only show icon if confirm password is not empty */}
+    {formData.confirmPassword.length > 0 && (
+      <FontAwesomeIcon
+        icon={showConfirmPassword ? faEye : faEyeSlash}
+        onClick={toggleConfirmPasswordVisibility}
+        style={{
+          position: "absolute",
+          right: "10px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          cursor: "pointer",
+          fontSize: "12px", // Set font size her
+        }}
       />
-      {errors.confirmPassword && <p className="signup-error-message">{errors.confirmPassword}</p>}
-    </div>
+    )}
+  </div>
+</div>
+
+
+    {errorMessage && <p className="signup-error-message">{errorMessage}</p>}
 
     <button
       type="submit"
@@ -114,7 +158,9 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
@@ -126,52 +172,43 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const cleanedData = {
-      name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
-      username: formData.username.trim(),
+      ...formData,
       email: formData.email.trim(),
-      password: formData.password,
-      password_confirmation: formData.confirmPassword,
+      username: formData.username.trim(),
     };
 
-    if (cleanedData.password !== formData.confirmPassword) {
-      setErrors({ confirmPassword: "Passwords do not match." });
+    if (cleanedData.password !== cleanedData.confirmPassword) {
+      setErrorMessage("Passwords do not match!");
       return;
     }
 
     if (cleanedData.password.length < 6) {
-      setErrors({ password: "Password must be at least 6 characters." });
+      setErrorMessage("Password must be at least 6 characters.");
       return;
     }
 
-    setErrors({});
+    setErrorMessage("");
     setIsSubmitting(true);
 
-    try {
-      await axios.post("https://your-ngrok-url.ngrok.io/api/register", cleanedData, {
-        headers: { "Content-Type": "application/json" },
-      });
-
+    // Simulate API call
+    setTimeout(() => {
+      console.log("Form submitted:", cleanedData);
       localStorage.setItem("isRegistered", "true");
       localStorage.setItem("loggedIn", "true");
       navigate("/terms");
-    } catch (error) {
-      if (error.response?.data?.errors) {
-        const backendErrors = error.response.data.errors;
-        const formattedErrors = {};
-        Object.keys(backendErrors).forEach((key) => {
-          formattedErrors[key] = backendErrors[key][0];
-        });
-        setErrors(formattedErrors);
-      } else {
-        setErrors({ general: "An error occurred. Please try again." });
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1000);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
@@ -191,8 +228,12 @@ const SignUp = () => {
             handleChange={handleChange}
             formData={formData}
             handleSubmit={handleSubmit}
-            errors={errors}
+            errorMessage={errorMessage}
             isSubmitting={isSubmitting}
+            showPassword={showPassword}
+            showConfirmPassword={showConfirmPassword}
+            togglePasswordVisibility={togglePasswordVisibility}
+            toggleConfirmPasswordVisibility={toggleConfirmPasswordVisibility}
           />
 
           <p className="by-creat-text">
@@ -210,7 +251,8 @@ const SignUp = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-        ></div>
+        >
+        </div>
       </div>
     </div>
   );

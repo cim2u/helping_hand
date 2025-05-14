@@ -10,24 +10,24 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, setIsLoggedIn, setIsRegist
   const navigate = useNavigate();
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
   const [showOrderModal, setShowOrderModal] = useState(false);
-  // Update theme on mount
+
+  // Load theme on mount
   useEffect(() => {
     setTheme(localStorage.getItem('theme') || 'default');
   }, []);
 
-  // Close modal if clicking outside
+  // Close modal on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         onClose();
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
-  // Logout handler
+  // Handle logout
   const handleLogoutClick = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
@@ -35,14 +35,20 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, setIsLoggedIn, setIsRegist
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("isRegistered");
 
-     
-      setIsRegistered(false); // Notify parent to update isRegistered state
-      onClose(); // Close the modal
-      navigate("/about"); // Redirect to About page
+      if (typeof setIsRegistered === "function") {
+        setIsRegistered(false);
+      }
+
+      if (typeof setIsLoggedIn === "function") {
+        setIsLoggedIn(false);
+      }
+
+      onClose(); // Close modal
+      navigate("/login"); // Redirect to About page
     }
   };
 
-  // Don't render if hidden or not logged in
+  // Don't render if modal is hidden or user is not logged in
   if (!isVisible || !loggedIn) return null;
 
   return (
@@ -59,20 +65,31 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, setIsLoggedIn, setIsRegist
           <div className="profileBanner" />
           <div className="profileBanner_1" />
           <section className={`profileRec ${theme}-theme`} />
-            <>
 
+          {/* Icons */}
+          <div>
+            <span
+              className="profileLinkOr"
+              onClick={() => setShowOrderModal(true)}
+              title="Go to Orders"
+            >
+              <FontAwesomeIcon icon={faBagShopping} className="iconStyleProfile" />
+              <span className="iconLabel">Orders</span>
+            </span>
 
-         <div className="profileLinkOr" onClick={() => setShowOrderModal(true)}>
-        <FontAwesomeIcon icon={faBagShopping} className="iconStyleProfile" /> Order
-      </div>
+            {showOrderModal && <OrderModal onClose={() => setShowOrderModal(false)} />}
 
-      {showOrderModal && <OrderModal onClose={() => setShowOrderModal(false)} />}
-    </>
-
-          <div className="profileLinkCar" onClick={() => navigate('/cart')}>
-            <FontAwesomeIcon icon={faCartPlus} className="iconStyleProfile" /> Cart
+            <span
+              className="profileLinkCar"
+              onClick={() => navigate('/cart')}
+              title="Go to Cart"
+            >
+              <FontAwesomeIcon icon={faCartPlus} className="iconStyleProfile" />
+              <span className="iconLabel">Cart</span>
+            </span>
           </div>
 
+          {/* Static Profile Info */}
           <div className="profileSellerLabel">Seller</div>
           <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
           <div className="profileOrdersTitle">Orders & Purchases</div>
@@ -83,7 +100,9 @@ const ProfileModal = ({ isVisible, loggedIn, onClose, setIsLoggedIn, setIsRegist
           <div className="profilePhone">Phone Number: 63+ 9771234545</div>
           <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
 
-          <div className="profileLogout1" onClick={handleLogoutClick}>Log out</div>
+          <div className="profileLogout1" onClick={handleLogoutClick}>
+            Log out
+          </div>
         </div>
       </div>
     </div>

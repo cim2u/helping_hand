@@ -55,6 +55,7 @@
   }
   
   
+  
 
   
   /* Input styling */
@@ -161,6 +162,46 @@
     color: #00acc1; /* Darker color on hover */
   }
   
+/* Style for all input fields */
+input[type="password"] {
+  padding: 10px;
+  font-size: 16px;
+  
+  border-radius: 9px;
+  width: 340px;
+  box-sizing: border-box;
+ 
+}
+
+/* Focused state for password input */
+input[type="password"]:focus {
+  border-color: #00acc1;  /* Green border on focus */
+  outline: none;
+  
+}
+
+/* Password input container to adjust icon placement */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the password visibility toggle icon */
+.password-toggle-icon {
+  position: absolute;
+  right: 55px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #888; /* Icon color */
+  font-size: 18px; /* Adjust icon size */
+  transition: color 0.3s ease;
+}
+
+.password-toggle-icon:hover {
+  color: #000000; /* Change icon color on hover */
+  
+}
 
 
 /* Admin login link styling */
@@ -182,7 +223,7 @@
   }
   
   .login-form .admin-login a:hover {
-    color: #00acc1;
+    border-color: #00acc1;
     text-decoration: underline;
   }
   

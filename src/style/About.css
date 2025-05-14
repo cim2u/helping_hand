@@ -132,8 +132,8 @@
   border-radius: 999px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-  width: 268px;
-  height: 51px;
+  width: 228px;
+  height: 41px;
   max-width: 100%;
 
   /* Remove absolute if not needed */
@@ -141,8 +141,8 @@
   /* position: absolute; */
 
   /* Remove extreme negative margin values */
-  margin-top: 2rem;
-  margin-left: 0;
+  margin-top: -2rem;
+  margin-left: 2rem;
   display: block; /* ensures it's visible */
   line-height: 100%;
   text-align: center;
@@ -183,7 +183,7 @@
   position: absolute;
   top: 33px;
   z-index: 9;
-  left: 23px;
+  left: 23px!important;
 }
 
 .about-image-1 {

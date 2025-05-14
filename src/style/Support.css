@@ -10,17 +10,12 @@ body html {
   }
   
   
-.containerSupport {
-    position: relative;
-    width: 1530px;
-    height: 744px;
-    background: #FEFEFE;
-  }
+
   
   .headerSupport {
     position: absolute;
-    width: 1530px;
-    height: 100px;
+    width: 1530px !important;
+    height: 103px;
     left: 0;
     top: 0;
     background: rgba(126, 53, 80, 0.85);
@@ -29,16 +24,16 @@ body html {
   }
   
   .headerImageSupport {
-    width: 1530px;
+    width: 1513px;
     height: 80px;
     position: absolute;
     top: 10px;
     left: 0;
-    background: url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__");
+    background: url("https://i.imgur.com/8PRNbQU.png");
     background-size: cover;
     background-position: center;
     object-fit: cover; /* Will not affect divs directly but kept in case used on images */
-    opacity: 0.25;
+    opacity: 200%;
     border: 1px solid #FEFEFE;
   }
   
@@ -48,7 +43,7 @@ body html {
     border-radius: 50%;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border: 1px solid #FEFEFE;
-    background-image: url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__");
+    background-image: url("https://i.imgur.com/TiNzLCF.png");
     background-size: cover;
     background-position: center;
     opacity: 0.75;
@@ -91,8 +86,8 @@ body html {
   
   .nav-links {
     position: absolute;
-    top: 64px;
-    left: 1155px;
+    top: 60px;
+    left: 1250px;
     display: flex;
     gap: 2.9rem;
     font-family: 'Outfit';
@@ -100,6 +95,8 @@ body html {
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
+    text-decoration: none;
+  color: inherit;
     letter-spacing: 0.03em;
     color: #FFFFFF;
     padding: 0.5rem 0;
@@ -119,10 +116,11 @@ body html {
   
   .aboutSupport, .supportSupport, .homeSupport {
     cursor: pointer;
+    
   }
   
   .supportSupport {
-    text-decoration: underline;
+    text-decoration: none;
   }
   
   .headingSupport {
@@ -153,6 +151,58 @@ body html {
     flex-direction: column;
     padding: 20px;
   }
+  
+  .inputContainerSupport {
+    width: 100%;
+    height: 100%px;
+    left:23px;
+  }
+  
+  .inputFieldSupport {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: #7E3550;
+    border: none;
+    outline: none;
+  }
+  
+  .emailTextSupport {
+    position: absolute;
+    width: 407px;
+    height: 22px;
+    left: 720px;
+    top: 610px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #7E3550;
+  }
+  .underlineEmail {
+    text-decoration: underline;
+  }
+  
+  .sendButtonSupport {
+    padding: 10px 20px;
+    background-color: #7e3550;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    left: 1293px !important;;
+    margin-top:404px;
+    position: fixed;
+  }
+  
   
   .inputContainerSupport {
     width: 100%;

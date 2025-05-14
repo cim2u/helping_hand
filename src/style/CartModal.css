@@ -75,6 +75,7 @@
     padding: 1rem 0;
     left:1340px !important;
     top: 210px !important;
+    z-index: 23;
   }
   .home-btn-cart {
     width: 120px;
