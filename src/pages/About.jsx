@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../style/About.css";
 import "../style/Logo.module.css";
 import logo from "../assets/Logo.png";
@@ -9,21 +9,23 @@ function About() {
   const navigate = useNavigate();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isFirstVisit, setIsFirstVisit] = useState(true); 
-  const [isRegistered, setIsRegistered] = useState(localStorage.getItem("isRegistered") === "true");
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    const hasVisited = localStorage.getItem("isRegistered");
+    const hasRegistered = localStorage.getItem("isRegistered");
 
     if (token) {
       setIsLoggedIn(true);
+      setIsRegistered(true);
       setIsFirstVisit(false);
     } else {
       setIsLoggedIn(false);
+      setIsRegistered(false);
     }
 
-    if (!hasVisited) {
+    if (!hasRegistered) {
       setIsFirstVisit(true);
       localStorage.setItem("isRegistered", "true");
     }
@@ -45,9 +47,26 @@ function About() {
 
         <div className="nav-container">
           <nav className="nav-links-h">
-            <a href="#" onClick={() => handleNavigation("about")}>About</a>
-            <a href="#" onClick={() => handleNavigation("support")}>Support</a>
-            <a href="#" onClick={() => handleNavigation("home")}>Home</a>
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation("about");
+            }}>
+              About
+            </a>
+
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation("support");
+            }}>
+              Support
+            </a>
+
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              handleNavigation("home");
+            }}>
+              Home
+            </a>
           </nav>
         </div>
 

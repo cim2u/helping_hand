@@ -179,27 +179,18 @@ useEffect(() => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (profileRef.current && !profileRef.current.contains(event.target)) {
-        setIsProfileVisible(false);
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsSidebarOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
 
-    // Disable body scroll when modal is visible
-    if (isModalVisible) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
       document.body.style.overflow = 'auto'; // Reset scroll when component unmounts
     };
   }, [isModalVisible]);
-
   const fetchProducts = async () => {
     try {
       const response = await fetch('https://your-api.com/products');
@@ -278,14 +269,14 @@ const handleLogoutClick = () => {
         </div>
 
         <div className="buttons-container">
-          {!isRegistered && (
+          {!loggedIn && (
             <>
               <button className="login-button" onClick={handleLoginClick}>LOGIN</button>
               <button className="signup-button" onClick={handleSignUpClick}>SIGN UP</button>
             </>
           )}
 
-          {isRegistered && !isSubscribed && (
+          {loggedIn && isRegistered && !isSubscribed && (
             <button className="h-subscribe-button" onClick={handleSubscribeClick}>SUBSCRIBE</button>
           )}
         </div>
@@ -317,10 +308,10 @@ const handleLogoutClick = () => {
 
 
         <div className="banner">
-          {isRegistered && <h1 className="banner-text">WELCOME TO HELPING HAND!</h1>}
+          { loggedIn && isRegistered && <h1 className="banner-text">WELCOME TO HELPING HAND!</h1>}
         </div>
 
-    <div className="products-conatiner-home">
+   
         <div className="products-grid">
   {/* Display dynamically fetched products or fallback if empty */}
   {products.length > 0 ? (
@@ -344,6 +335,26 @@ const handleLogoutClick = () => {
 
 
 {/* Row 1 */}
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Ribbon Keychain",
+    image: "https://i.imgur.com/YP2DSeS.png",
+    seller: "Sissy Shyey.",
+    price: 15.00
+  })}>
+    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
+    <div className="product-name">Ribbon Keychain</div>
+  </div>
+
+  <div className="product-item" onClick={() => handleProductClick({
+    name: "Ribbon Keychain",
+    image: "https://i.imgur.com/YP2DSeS.png",
+    seller: "Sissy Shyey.",
+    price: 15.00
+  })}>
+    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
+    <div className="product-name">Ribbon Keychain</div>
+  </div>
+
   <div className="product-item" onClick={() => handleProductClick({
     name: "Ribbon Keychain",
     image: "https://i.imgur.com/YP2DSeS.png",
@@ -403,6 +414,7 @@ const handleLogoutClick = () => {
     <img src="https://i.imgur.com/BrjdqNZ.png" alt="Mini Petals" className="product-image" />
     <div className="product-name">Mini Petals</div>
   </div>
+  
 
   {/* Row 2 */}
   <div className="product-item" onClick={() => handleProductClick({
@@ -537,12 +549,11 @@ const handleLogoutClick = () => {
     <div className="product-name">Handmade Flower Bouquet</div>
   </div>
 </div>
-</div>
 </section>
 
 {isModalVisible && selectedProduct && (
   <div className="product-modal" onClick={closeModal}>
-    {isRegistered ? (
+    {loggedIn &&isRegistered ? (
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-rec"></div>
 

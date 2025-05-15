@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/LogIn.css";
 import logoImage from "../assets/Logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const LoginAsAdmin = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -39,6 +41,10 @@ const LoginAsAdmin = () => {
       alert("Invalid admin credentials.");
     }
   };
+   const togglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
+  };
+
 
   return (
     <div
@@ -74,15 +80,29 @@ const LoginAsAdmin = () => {
               required
             />
 
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
+           <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <div className="password-container">
+                          <input
+                            id="password"
+                            type={passwordVisible ? "text" : "password"}
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                            autoComplete="current-password"
+                            className="form-input"
+                          />
+                          {formData.password && (
+                            <FontAwesomeIcon
+                              icon={passwordVisible ? faEye : faEyeSlash}
+                              onClick={togglePasswordVisibility}
+                              className="password-toggle-icon"
+                              title={passwordVisible ? "Hide password" : "Show password"}
+                            />
+                          )}
+                        </div>
+                      </div>
 
             <button type="submit" className="login-btn">Login</button>
 

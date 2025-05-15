@@ -10,19 +10,23 @@ const ContinueAs = () => {
   const [documentType, setDocumentType] = useState("");
   const [isStudentSelected, setIsStudentSelected] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fileDisplayName, setFileDisplayName] = useState("");
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setDocumentFile(file);
+
     if (file && (file.type === "application/pdf" || file.type.startsWith("image/"))) {
       setIsFileValid(true);
+      setFileDisplayName(file.name);
     } else {
       setIsFileValid(false);
+      setFileDisplayName("Invalid file type");
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!role) {
@@ -36,41 +40,9 @@ const ContinueAs = () => {
         return;
       }
 
-      setIsSubmitting(true);
-
-      // Prepare the form data to send to the backend
-      const formData = new FormData();
-      formData.append("role", role);
-      formData.append("documentType", documentType);
-      formData.append("documentFile", documentFile);
-
-      try {
-        const response = await fetch("http://localhost:5000/submit", {
-          method: "POST",
-          body: formData,
-        });
-
-        if (response.ok) {
-          alert("Document submitted successfully.");
-          navigate("/sellerinfo", {
-            state: {
-              role,
-              documentFile: documentFile.name,
-              documentType,
-            },
-          });
-        } else {
-          alert("Failed to submit document.");
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
-        alert("An error occurred while submitting your form.");
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-
-    if (role === "buyer") {
+      alert("File is ready to be submitted .");
+      navigate("/store");
+    } else if (role === "buyer") {
       navigate("/home");
     }
   };
@@ -81,6 +53,7 @@ const ContinueAs = () => {
       setDocumentFile(null);
       setDocumentType("");
       setIsStudentSelected(false);
+      setFileDisplayName("");
     }
   };
 
@@ -160,15 +133,21 @@ const ContinueAs = () => {
                   </select>
                 </label>
 
-                <label>
-                  Upload a File
+                <div className="file-input-row">
+                  <label htmlFor="fileUpload">Upload a File:</label>
                   <input
+                    id="fileUpload"
                     type="file"
                     accept=".pdf, image/*"
                     onChange={handleFileChange}
                     required
                   />
-                </label>
+                  {fileDisplayName && (
+                    <span className={`file-name-label ${!isFileValid ? "invalid-file" : ""}`}>
+                  
+                    </span>
+                  )}
+                </div>
 
                 {!isFileValid && documentFile && (
                   <span style={{ color: "red" }}>

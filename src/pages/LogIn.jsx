@@ -14,6 +14,7 @@ const LogIn = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -26,13 +27,31 @@ const LogIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
+    setError("");
+
     try {
-      console.log("Login submitted:", formData);
-      // Add your actual login logic here
-      // await loginUser(formData);
-      // navigate("/dashboard"); // Redirect on success
+      if (formData.email && formData.password) {
+        // Simulate token and session
+        localStorage.setItem("authToken", "fake-token-123");
+        localStorage.setItem("isRegistered", "true");
+        localStorage.setItem("isLoggedIn", "true");
+
+        // Check for admin by email (you can change this condition)
+        const isAdmin = formData.email === "admin@example.com";
+        localStorage.setItem("userRole", isAdmin ? "admin" : "user");
+        setIsRegistered(true);
+
+        // Navigate based on role
+        if (isAdmin) {
+          navigate("/admin-dashboard");
+        } else {
+          navigate("/home");
+        }
+      } else {
+        setError("Please enter both email and password.");
+      }
     } catch (err) {
-      setError(err.message || "Login failed. Please try again.");
+      setError("Login failed. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -43,19 +62,26 @@ const LogIn = () => {
   };
 
   return (
-    <div className="login-page" style={{
-      backgroundImage: "url('https://i.imgur.com/ErEQ4GI.png')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      minHeight: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}>
+    <div
+      className="login-page"
+      style={{
+        backgroundImage: "url('https://i.imgur.com/ErEQ4GI.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <div className="b-container">
         <div className="login-container">
           <div className="logo-wrapper">
-            <img src={logoImage} alt="Helping Hand Logo" className="logo-image" />
+            <img
+              src={logoImage}
+              alt="Helping Hand Logo"
+              className="logo-image"
+            />
           </div>
 
           <div className="welcome-heading">
@@ -65,16 +91,15 @@ const LogIn = () => {
           {error && <div className="error-message">{error}</div>}
 
           <form onSubmit={handleSubmit} className="login-form">
-            <input 
-              type="hidden" 
-              autoComplete="off" 
-              name="login_source" 
-              value="comet_headerless_login" 
+            <input
+              type="hidden"
+              autoComplete="off"
+              name="login_source"
+              value="comet_headerless_login"
             />
 
+            <div className="login-rectangle12"></div>
 
-<div className="login-rectangle12">
-</div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -104,7 +129,7 @@ const LogIn = () => {
                 />
                 {formData.password && (
                   <FontAwesomeIcon
-                    icon={passwordVisible ? faEye : faEyeSlash} // Reversed the icons
+                    icon={passwordVisible ? faEye : faEyeSlash}
                     onClick={togglePasswordVisibility}
                     className="password-toggle-icon"
                     title={passwordVisible ? "Hide password" : "Show password"}
@@ -119,8 +144,8 @@ const LogIn = () => {
               </Link>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="login-btn"
               disabled={isSubmitting}
             >

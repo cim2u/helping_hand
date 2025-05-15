@@ -70,7 +70,14 @@ const [loggedIn, setLoggedIn] = useState(false); // or set it to true based on y
 const [showProfile, setShowProfile] = useState(false);
 
 
-
+const handleLogoutClick = () => {
+  localStorage.clear();         // Clear auth and role flags
+  setIsLoggedIn(false);         // Update global auth state
+  setIsSubscribed(false);       // Optional: reset subscription
+              // Optional: reset admin
+  alert("You have logged out.");
+  navigate("/about");           // Go back to About or Login
+};
 
 useEffect(() => {
   if (isModalVisible) {
@@ -157,12 +164,6 @@ useEffect(() => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-  
-  const handleLogoutClick = () => {
-    // Example logout logic
-    console.log('Logging out...');
-    
-  };
   
 
   const shopName = localStorage.getItem("shopName") || state?.storeName || "SHOP NAME";
@@ -282,6 +283,7 @@ useEffect(() => {
       onClick={toggleProfileVisibility}
     />
 
+{/* profile icon */}
 <FontAwesomeIcon 
   
   onClick={() => setIsProfileVisible(!isProfileVisible)} 
@@ -562,7 +564,7 @@ useEffect(() => {
     price: 15.00
   })}>
     <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
-    <div className="product-name">Ribbon Keychain</div>
+    <div className="product-name">Ribon Keychain</div>
   </div>
 
    
@@ -593,12 +595,14 @@ useEffect(() => {
       <div className="modal-rec"></div>
 
       {/* Product Image */}
-      {selectedProduct.image ? (
-        <img
-          src={selectedProduct.image}
-          alt={selectedProduct.name}
-          className="modal-product-image"
-        />
+     {selectedProduct.image ? (
+          <div className="modal-rec-product">
+            <img
+              src={selectedProduct.image}
+              alt={selectedProduct.name}
+              className="modal-product-image"
+            />
+          </div>
       ) : (
         <p>Image not available</p>
       )}
