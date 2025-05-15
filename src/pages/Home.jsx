@@ -10,6 +10,9 @@ import Cart from '../components/CartModal';  // Adjust the path if necessary
 import { Link } from 'react-router-dom';
 import LoginForm from "../pages/LogIn.jsx"
 import PaymentConfirmationModal from '../components/PaymentConfirmationModal';
+// At the top of Home.jsx
+import { useCart } from '../CartContext'; // adjust path if needed
+
 
 
 
@@ -36,8 +39,8 @@ const Home = () => {
   const [selectedProduct, setSelectedProduct] = useState(null); // Selected product for the modal
   const [isLoggedIn, setIsLoggedIn] = useState(false); // default is false, change based on user login status
   const [isCartVisible, setIsCartVisible] = useState(false);
- 
-  const [cartItems, setCartItems] = useState([
+ const [showPaymentModal, setShowPaymentModal] = useState(false); // ✅ ADD THIS LIN
+  const [setCartItems] = useState([
     {
       id: 1, // Unique ID for the product
       name: 'Ribbon Keychain',
@@ -61,6 +64,23 @@ const Home = () => {
       item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
     ));
   };
+
+const { addToCart, cartItems } = useCart();
+
+const handleAddToCart = (product) => {
+  const alreadyInCart = cartItems.some(item => item.id === product.id);
+
+  if (alreadyInCart) {
+    alert(`${product.name} is already in your cart!`);
+  } else {
+    addToCart({
+      ...product,
+      imageUrl: product.image || product.imageUrl || 'https://via.placeholder.com/100',
+    });
+    alert(`${product.name} has been added to your cart.`);
+  }
+};
+
 
 
   useEffect(() => {
@@ -105,15 +125,7 @@ useEffect(() => {
   };
   
 
-// Add to Cart Handler
-  // Add to Cart Handler
-  const handleAddToCart = () => {
-    // Logic to add the product to the cart
-    console.log('Product added to cart:', selectedProduct);
 
-    // Navigate to the /cart page after adding to cart
-    navigate('/cart');
-  };
 
 
  
@@ -231,7 +243,8 @@ const handleLogoutClick = () => {
     setSelectedProduct(null);
   };
 
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
+   
+ 
 
   return (
     
@@ -501,7 +514,7 @@ const handleLogoutClick = () => {
   <div className="product-item" onClick={() => handleProductClick({
     name: "Pocket Mirror",
     image: "https://i.imgur.com/btWOA37.jpeg",
-    description: "Small pocket mirror for everyday use.",
+    seller:"Ani",
     price: 5.00
   })}>
     <img src="https://i.imgur.com/btWOA37.jpeg" alt="Pocket Mirror" className="product-image" />
@@ -553,7 +566,7 @@ const handleLogoutClick = () => {
 
 {isModalVisible && selectedProduct && (
   <div className="product-modal" onClick={closeModal}>
-    {loggedIn &&isRegistered ? (
+    {loggedIn && isRegistered ? (
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-rec"></div>
 
@@ -574,13 +587,18 @@ const handleLogoutClick = () => {
         <p className="seller-display">{selectedProduct.seller || "Unknown Seller"}</p>
         <p className="price-display">₱{selectedProduct.price}</p>
 
+        {/* Modal Actions */}
         <div className="modal-actions">
-          <button className="add-to-cart-button-home" onClick={handleAddToCart}>
+          <button
+            className="add-to-cart-button-home"
+            onClick={() => handleAddToCart(selectedProduct)}
+          >
             Add to Cart
           </button>
+
           <button
             className="buy-now-btn-home"
-            onClick={() => handleBuyNow(selectedProduct)} // Pass full product object
+            onClick={() => handleBuyNow(selectedProduct)}
           >
             BUY NOW
           </button>
@@ -613,6 +631,7 @@ const handleLogoutClick = () => {
     )}
   </div>
 )}
+
 
 {/* Payment Confirmation Modal (receives selected product) */}
 {isRegistered && selectedProduct && (

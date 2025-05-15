@@ -1,3 +1,11 @@
+.cart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+
 .product-card-cart {
   position:absolute;
     display: flex;
@@ -5,23 +13,29 @@
     gap: 16px;
     padding: 16px;
     background: #FEFEFE;
-    border: 2px solid rgba(30, 30, 30, 0.65);
+    border: 2px solid #7E3550;
     border-radius: 19px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    max-width: 425px;
-    width:157px;
-    height: 162.69px;
+  
+    width:407px;
+    height: 232.69px;
     top:334px;
-    left: 53px !important;
+    left: 33px !important;
   }
+
+  .product-card-cart:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
   .product-image-border{
     box-sizing: border-box;
     position: absolute;
   
-    width: 125px;
-    height: 125px;
-    left: 15px;
-    top: 17px;
+    width: 150px;
+    height: 153.69px;
+    left: 13px;
+    top: 12px;
   
     background: #FEFEFE;
     border: 2px solid rgba(30, 30, 30, 0.65);
@@ -29,14 +43,34 @@
     border-radius: 19px;
 
   }
-  .product-image-cart {
-    width: 121px;
-    height: 123px;
-    border-radius: 16px;
+  .product-img-cart {
+    width: 148px;
+    height: 152px!important;
+    border-radius: 19px;
     object-fit: cover;
     border-color: #7E3550;
   }
   
+  .product-price-cart {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2a9d8f; /* teal-ish green */
+  top: 85px;
+  left:83px;
+  position: relative;
+}
+
+
+
+.product-total-cart {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e76f51; /* reddish accent */
+  top: 88px;
+  left: 80px !important;
+  position:relative;
+}
+
   
   
   .product-details-cart {
@@ -59,13 +93,17 @@
     font-family: 'Outfit';
     font-weight: 700;
     font-size: 20px;
+    position: relative;
+    width:430px;
   }
   
   .seller-name-cart
   {
- 
+    font-family: 'Outfit';
     font-size: 16px;
     font-weight: 600;
+    top:40px;
+    position:absolute;
   }
   
   .back-button-container {
@@ -108,15 +146,15 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 58px;
-    left: -5px;
+    top: 28px;
+    left: -2px;
     gap: 8px;
   }
   
   .quantity-label-cart {
     font-family: 'Outfit';
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     color: #7E3550;
     margin: 0;
     left:4px;
@@ -127,23 +165,44 @@
     display: flex;
     align-items: center;
     background: #ffffff;
-    border: 1px solid #D9D9D9;
+    border: 1px solid #d9d9d900;
     border-radius: 8px;
     padding: 4px 12px;
     gap: 16px;
     width: 140px;
-    height: 40px;
+    height: 20px;
   }
   
+  .box-product-details-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 16px;
+  border-color: #7E3550;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 360px;
+  top:230px;
+  gap: 12px;
+  position: absolute;
+  transition: transform 0.2s ease;
+}
+
+.box-product-details-cart:hover {
+  transform: scale(1.02);
+}
+
   .qty-btn-cart {
-    width: 32px;
-    height: 32px;
-    background-color: #f5f5f5;
-    border: 1px solid #d9d9d9;
+    width: 26px;
+    height: 26px;
+    background-color:  #7E3550;
+    border: 1px solid #7E3550;
     border-radius: 50%;
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
     cursor: pointer;
   }
   
@@ -158,7 +217,7 @@
     position: absolute;
     width: 156px;
     height: 29px;
-    left: -188px;
+    left: -168px;
     top: 162px;
   
     background: #7E3550;
@@ -183,8 +242,9 @@
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
- 
+    font-size: 24px;
+    margin-top:-12px;
+    left:49px;
    
   }
   
