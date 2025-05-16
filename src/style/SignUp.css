@@ -80,7 +80,7 @@ z-index: 150; /* Ensures it stays on top */
 /* Form box with white background and custom top/left position */
 .signup-form {
   width: 453px;
-  height:525px;
+  height:555px;
   padding: 20px;
   background-color: #ffffff; /* White background for the form */
   border-radius: 37px;
@@ -89,7 +89,7 @@ z-index: 150; /* Ensures it stays on top */
   flex-direction: column;
   gap: -15px;
   position: absolute; /* Enables precise positioning */
-  top: 114px; /* Adjust this value for vertical positioning */
+  margin-top: 100px; /* Adjust this value for vertical positioning */
   left: 930px; /* Centers the form horizontally */
   z-index: 2;
 }
@@ -386,8 +386,8 @@ input:focus {
 .signup-error-message {
   color: red;
   font-size: 14px;
-  
-  padding-left: 10px;
+  top:11px;
+  padding-left: 90px;
   z-index: 5;
   position: relative;
 }

@@ -20,7 +20,7 @@ import Support from "./pages/Support.jsx";
 import AccountInfo from "./pages/AccountInfo.jsx";
 import MyPurchases from "./pages/MyPurchases.jsx";
 import CustomizeThemes from "./pages/CustomizeThemes.jsx";
-import OrderPage from "./pages/OrderPage.jsx";
+import OrderPage from "./pages/Order.jsx";
 import Shop from "./pages/Shop.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import LoginAsAdmin from "./pages/LoginAsAdmin.jsx";
@@ -90,7 +90,7 @@ function App() {
         <Route path="/account-info" element={<AccountInfo />} />
         <Route path="/my-purchases" element={<MyPurchases />} />
         <Route path="/customize-themes" element={<CustomizeThemes />} />
-        <Route path="/orders" element={<OrderPage />} />
+        <Route path="/order" element={<OrderPage />} />
 
         {/* Admin Routes */}
         <Route path="/admin-dashboard" element={isAdmin ? <Navigate to="/admin/dashboard" /> : <Navigate to="/login-admin" />} />

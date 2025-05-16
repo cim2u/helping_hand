@@ -1,20 +1,51 @@
-.profile-modal {
-  position: fixed; /* Fixed position to keep it in place even when scrolling */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.profilePicture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background-color: #f9f9f9;
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  z-index: 29999; /* Ensure it is on top of other elements */
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.profile-modal-content {
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.defaultProfileIcon {
+  font-size: 48px;
+  color: #aaa;
+}
+
+.uploadText {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.cameraOverlay {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px; /* Adjust size as needed */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cameraIcon {
+  font-size: 14px;
+  color: #555;
 }

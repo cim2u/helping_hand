@@ -1,8 +1,14 @@
 import React, { useRef } from 'react';
 import PaymentConfirmationModal from './PaymentConfirmationModal';
 import '../style/CartModal.css';
+import '../style/Order.css';
+import '../style/Shop.css';
 import { useNavigate } from "react-router-dom";
 import logoImage from '../assets/Logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+
+import "../style/Home.css";
 import { useCart } from '../CartContext';
 
 const CartModal = () => {
@@ -22,7 +28,7 @@ const CartModal = () => {
   };
 
   return (
-    <>
+    <><div className="cart-shop-container">
       <div className="shop-container">
         <div className="home-wrapper">
           <header className="header-cover">
@@ -35,6 +41,12 @@ const CartModal = () => {
             <div className="back-button-container" onClick={handleBackHome}>
               <button className="home-btn-cart">BACK TO HOME</button>
             </div>
+<div className="order-banner">
+  <FontAwesomeIcon icon={faCartShopping} className="cart-icon" />
+  <h1 className="order-banner-text">Carts</h1>
+</div>
+
+            
 
            {cartItems.length === 0 ? (
   <p className="empty-cart-text">Your cart is empty.</p>
@@ -92,7 +104,7 @@ const CartModal = () => {
           </div>
         </div>
       </div>
-
+  </div>
       {/* Payment Confirmation Modal */}
       <PaymentConfirmationModal ref={paymentModalRef} />
     </>

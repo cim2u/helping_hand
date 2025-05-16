@@ -27,7 +27,7 @@
 /* Rectangle 98 */
 .shop-rectangle98 {
   position: absolute;
-  width: 1510px;
+  width: 1518px;
   height: 66px;
   left: 3px!important;
   top: 295px;
@@ -85,20 +85,7 @@
   border-radius: 100px;
 }
 
-.shop-storeName {
-  position: absolute;
-  width: 107px;
-  height: 25px;
-  left: 191px;
-  top: 469px;
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 25px;
-  text-decoration-line: underline;
-  color: #7E3550;
-}
+
 
 /* Group 25 */
 .shop-group25 {
@@ -392,6 +379,7 @@
   font-size: 16px;
   color: #FFFFFF!important;
   text-align: center;
+
 }
 
 /* Group 38 */

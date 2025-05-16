@@ -1,0 +1,190 @@
+.orderContainer {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  background: #FEFEFE;
+}
+
+/* Header Image */
+.orderHeaderImage {
+  position: absolute;
+  width: 1440px;
+  height: 250px;
+  top: 0;
+  background: url('') no-repeat center;
+  background-size: cover;
+  opacity: 0.9;
+}
+
+/* Menu Icon */
+.menuIcon {
+  position: absolute;
+  width: 35px;
+  height: 40px;
+  left: 51px;
+  top: 210px;
+}
+
+/* Helping Hand Logo */
+.helpingText {
+  position: absolute;
+  width: 503px;
+  height: 141px;
+  left: 45px;
+  top: 15px;
+  font-family: 'Rowdies';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 119px;
+  color: #36BDD7;
+  border: 2px solid #FEFEFE;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.handText {
+  position: absolute;
+  width: 257px;
+  height: 120px;
+  left: 45px;
+  top: 75px;
+  font-family: 'Molle';
+  font-size: 96px;
+  line-height: 120px;
+  color: #FEFEFE;
+}
+
+/* User Icon */
+.userIcon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 217px;
+}
+
+/* Subscribe Button */
+.subscribeButton {
+  position: absolute;
+  width: 120px;
+  height: 35px;
+  left: 1289px;
+  top: 195px;
+  background: #FEFEFE;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stateLayer {
+  display: flex;
+  padding: 10px 24px;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+ .order-banner {
+    background-color: #843b62;   /* Purple background */
+    color: white;                /* Text color */
+    padding: 1rem;               /* Padding inside the banner */
+    width: 1555px;                /* Full viewport width */
+    position: absolute;          /* Allow left adjustments */
+    left: -35px;   
+    top:299px; 
+    height:65px;  
+                
+  }
+
+  .cart-icon {
+   font-size: 24px;
+  color: #ffffff;
+  z-index: 23;
+  left: 52px;
+  top:7px;
+  position: relative;
+
+}
+  .order-icon {
+  font-size: 24px;
+  color: #ffffff;
+  z-index: 23;
+  left: 52px;
+  top:3px;
+  position: relative;
+}
+
+/* Separate font styling for the text inside the banner */
+.order-banner-text {
+  font-family: 'Rowdies', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: 0%;
+    font-size: 2rem;                   /* Font size */
+    text-align: justify;                /* Needed to use 'left' property */
+    left: 94px;  
+    top:-23px;
+    position: relative;                       /* Moves the text 34px from the left edge */
+  }
+
+.subscribeText {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #49454F;
+}
+
+/* Header Bar */
+
+/* Orders Label */
+.ordersLabel {
+  position: absolute;
+  top: 272px;
+  left: 112px;
+  font-family: 'Outfit';
+  font-size: 15px;
+  line-height: 19px;
+  color: #FEFEFE;
+}
+
+/* Order Items */
+.orderItem {
+  position: absolute;
+  left: 51px;
+  top: 382px;
+}
+
+.orderImage {
+  width: 130px;
+  height: 130px;
+  background-size: cover;
+  border: 2px solid rgba(30, 30, 30, 0.65);
+  border-radius: 16px;
+}
+
+.orderDescription {
+  position: absolute;
+  left: 160px;
+  top: 389px;
+  width: 200px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 12px;
+  color: #7E3550;
+}
+
+/* Underline Text */
+.underlineText {
+  position: absolute;
+  top: 565px;
+  left: 211px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration: underline;
+  color: #7E3550;
+}

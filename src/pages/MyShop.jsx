@@ -13,7 +13,7 @@ import {
   faCirclePlus,
   faArrowRight,
   faBagShopping,
-  faCartPlus,
+  faCartPlus,faCircleUser, faCamera
 } from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../assets/Logo.png";
 import Profile from '../components/ProfileModal';
@@ -39,6 +39,24 @@ const MyShop = () => {
     console.log("Profile visibility toggled:", !isProfileVisible);
     setIsProfileVisible(!isProfileVisible);
   };
+
+
+  const fileInputRef = useRef(null);
+
+
+const handleFileChange = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const imageUrl = URL.createObjectURL(file);
+    setProfileImage(imageUrl);
+  }
+};
+
+  const handleProfileClick = () => {
+  if (fileInputRef.current) {
+    fileInputRef.current.click();
+  }
+};
 
     const [isRatingVisible, setIsRatingVisible] = useState(false); // State to control rating visibility
   const [ratingValue, setRatingValue] = useState(0); // Track selected rating
@@ -265,7 +283,9 @@ useEffect(() => {
     <section className={`shop-container ${theme}-theme`}>
       {/* Header */}
       <header className="shop-header">
-  <img src={logoImage} alt="Helping Hand Banner" className="logoLarge" />
+   <div className="logoContainer">
+          <img src={logoImage} alt="HelpingHand Logo" className="logoLarge" />
+        </div>
 
   <div className="icon-container">
     {!isBuyer && (
@@ -275,6 +295,8 @@ useEffect(() => {
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       />
     )}
+
+    
 
     {/* Profile icon */}
     <FontAwesomeIcon
@@ -321,7 +343,7 @@ useEffect(() => {
               { label: "SUPPORT", route: "/support" },
               { label: "SETTINGS", route: "/settings" }, // You can change this or handle it specially
             ].map((item, index) => (
-              <li key={index} onClick={() => handleMenuClick(item.route)}>
+             <li key={index} onClick={() => handleMenuClick(item.route)} style={{ cursor: 'pointer' }}>
                 {item.label}
               </li>
             ))}
@@ -333,7 +355,7 @@ useEffect(() => {
       {/* Profile Banner */}
       <div className="profile-banner">
         <div className="profile-info">
-          <div className="profile-pic-wrapper" onClick={() => setIsModalOpen(true)}>
+          <div className="profile-pic-wrapper">
             <img
               src={profileImage || "https://i.imgur.com/ZVPfn6h.png"}
               alt="Profile"
@@ -345,7 +367,7 @@ useEffect(() => {
             <p className="shop-owner-handle">{sellerUsername}</p>
             {!isSubscribed && (
         <button className="h1-subscribe-button" onClick={handleSubscribeClick}>
-          Subscribe
+        SUBSCRIBE
         </button>
       )}
 
@@ -383,6 +405,7 @@ useEffect(() => {
 
       
           </div>
+          
           
                
 <div>
@@ -643,15 +666,38 @@ useEffect(() => {
 
 
       { isProfileVisible && (
-        <div className="profileWrapper" ref={profileRef}>
-             <div className="profileCard">
-               <div className="profileBackground">
-                 <div className="profilePicture" />
-                 <div className="profileLabel">Profile</div>
-                 <div className="profileCircle">
-                   <div className="statusPrimary">
-                     <div className="checkPrimary" />
-                   </div>
+         <div className="profileWrapper" ref={profileRef}>
+              <div className="profileCard">
+                <div className="profileBackground">
+        
+                  <div className="profilePicture" onClick={handleProfileClick} title="Click to change profile picture">
+          {profileImage ? (
+            <img src={profileImage} alt="Profile" className="profileImage" />
+          ) : (
+            <>
+              <FontAwesomeIcon icon={faCircleUser} className="defaultProfileIcon" />
+              <span className="uploadText">Upload Profile</span>
+            </>
+          )}
+          <div className="cameraOverlay">
+            <FontAwesomeIcon icon="fa-solid fa-camera" className="cameraIcon" />
+          </div>
+        </div>
+        
+        
+                  <input
+                    type="file"
+                    accept="image/*"
+                    ref={fileInputRef}
+                    style={{ display: 'none' }}
+                    onChange={handleFileChange}
+                  />
+        
+                  <div className="profileLabel">Profile</div>
+                  <div className="profileCircle">
+                    <div className="statusPrimary">
+                      <div className="checkPrimary" />
+                    </div>
                  </div>
                  <div className="profileBanner" />
                  <div className="profileBanner_1" />

@@ -4,28 +4,28 @@ import "../style/LogIn.css";
 import logoImage from "../assets/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+// Optional: import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 const LoginAsAdmin = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({ username: "", password: "" });
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
+  // Handle input change
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Toggle password visibility
+  const togglePasswordVisibility = () => setPasswordVisible((prev) => !prev);
+
+  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     const { username, password } = formData;
 
-    // Admin credentials
     const adminUsername = "admin_user01";
     const adminPassword = "admin123";
 
@@ -36,15 +36,15 @@ const LoginAsAdmin = () => {
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("isAdmin", "true");
 
-      navigate("/admin-dashboard");
+      // Optional: show success toast
+      // toast.success("Logged in as admin");
+
+      navigate("/admin/dashboard");
     } else {
       alert("Invalid admin credentials.");
+      // Optional: toast.error("Invalid admin credentials");
     }
   };
-   const togglePasswordVisibility = () => {
-    setPasswordVisible((prev) => !prev);
-  };
-
 
   return (
     <div
@@ -61,14 +61,17 @@ const LoginAsAdmin = () => {
     >
       <div className="b-container">
         <div className="login-container">
+          {/* Logo */}
           <div className="logo-wrapper">
             <img src={logoImage} alt="Helping Hand Logo" className="logo-image" />
           </div>
 
+          {/* Heading */}
           <div className="welcome-heading">
             <h2>Admin Login</h2>
           </div>
 
+          {/* Login Form */}
           <form onSubmit={handleSubmit} className="login-form">
             <label htmlFor="username">Username</label>
             <input
@@ -80,32 +83,34 @@ const LoginAsAdmin = () => {
               required
             />
 
-           <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <div className="password-container">
-                          <input
-                            id="password"
-                            type={passwordVisible ? "text" : "password"}
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                            autoComplete="current-password"
-                            className="form-input"
-                          />
-                          {formData.password && (
-                            <FontAwesomeIcon
-                              icon={passwordVisible ? faEye : faEyeSlash}
-                              onClick={togglePasswordVisibility}
-                              className="password-toggle-icon"
-                              title={passwordVisible ? "Hide password" : "Show password"}
-                            />
-                          )}
-                        </div>
-                      </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <div className="password-container">
+                <input
+                  id="password"
+                  type={passwordVisible ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  autoComplete="current-password"
+                  className="form-input"
+                />
+                {formData.password && (
+                  <FontAwesomeIcon
+                    icon={passwordVisible ? faEye : faEyeSlash}
+                    onClick={togglePasswordVisibility}
+                    className="password-toggle-icon"
+                    title={passwordVisible ? "Hide password" : "Show password"}
+                  />
+                )}
+              </div>
+            </div>
 
+            {/* Submit Button */}
             <button type="submit" className="login-btn">Login</button>
 
+            {/* Link to user login */}
             <div className="admin-login">
               <Link to="/login">Login as User</Link>
             </div>

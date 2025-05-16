@@ -96,21 +96,29 @@
   }
   
   .c-agree-button {
-    margin-top: 25px;
+    margin-top: 45px;
     padding: 10px 24px;
     background-color: #00bcd4;
     color: #fff;
-    font-family:'Outfit', sans-serif;
-    font-weight: 500!important;
-    width:195px;
-    height:41px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500 !important;
+    width: 195px;
+    height: 41px;
+    margin-left:623px;
+ 
     border: none;
     border-radius: 60px;
     cursor: pointer;
     font-size: 24px;
-    position: relative; /* Added this to use 'left' property */
-    left: 675px; /* Align to the left */
+    position: relative;
+    /* left: 675px; remove this if you want true centering in parent */
     transition: background 0.3s ease, transform 0.2s ease;
+  
+    /* Center text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
   
   

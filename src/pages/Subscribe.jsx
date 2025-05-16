@@ -135,7 +135,7 @@ const Subscribe = () => {
         <div className="modal-gcash">
           <div className="modal-gcash-container" ref={gcashModalRef}>
             <h2>GCash Payment</h2>
-            <p>Scan the QR code below or enter your GCash details to proceed.</p>
+            <p>Scan the QR code below.</p>
             <img src="http://i.imgur.com/CFxWTCz.png" alt="GCash QR" className="gcash-qr" />
             <br />
             <button onClick={handleAlreadyPaid} className="already-paid-button-gcash">Already Paid</button>

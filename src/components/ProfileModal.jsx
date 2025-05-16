@@ -1,15 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBagShopping, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping, faCartPlus, faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import "../style/ProfileModal.css";
 
 const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(loggedIn); // Set initial state based on prop
+  const [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
   const profileRef = useRef(null);
+  const fileInputRef = useRef(null);
   const navigate = useNavigate();
-
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
+
+  // Retrieve saved image from localStorage on load
+  const [profileImage, setProfileImage] = useState(() => {
+    return localStorage.getItem('profileImage') || null;
+  });
 
   useEffect(() => {
     setTheme(localStorage.getItem('theme') || 'default');
@@ -26,18 +31,29 @@ const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
-  // Logout handler
-  
-const handleLogoutClick = () => {
-  const confirmLogout = window.confirm("Are you sure you want to log out?");
-  if (confirmLogout) {
-    localStorage.removeItem("authToken"); // Make sure this is cleared
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("isRegistered");
-    navigate("/about");
-  }
-};
+  const handleLogoutClick = () => {
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("isRegistered");
+      localStorage.removeItem("profileImage");
+      navigate("/login");
+    }
+  };
 
+  const handleProfileClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setProfileImage(imageUrl);
+      localStorage.setItem("profileImage", imageUrl);
+    }
+  };
 
   if (!isVisible || !loggedIn) return null;
 
@@ -45,7 +61,30 @@ const handleLogoutClick = () => {
     <div className="profileWrapper" ref={profileRef}>
       <div className="profileCard">
         <div className="profileBackground">
-          <div className="profilePicture" />
+
+          <div className="profilePicture" onClick={handleProfileClick} title="Click to change profile picture">
+  {profileImage ? (
+    <img src={profileImage} alt="Profile" className="profileImage" />
+  ) : (
+    <>
+      <FontAwesomeIcon icon={faCircleUser} className="defaultProfileIcon" />
+      <span className="uploadText">Upload Profile</span>
+    </>
+  )}
+  <div className="cameraOverlay">
+    <FontAwesomeIcon icon="fa-solid fa-camera" className="cameraIcon" />
+  </div>
+</div>
+
+
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            style={{ display: 'none' }}
+            onChange={handleFileChange}
+          />
+
           <div className="profileLabel">Profile</div>
           <div className="profileCircle">
             <div className="statusPrimary">
@@ -54,8 +93,7 @@ const handleLogoutClick = () => {
           </div>
           <div className="profileBanner" />
           <div className="profileBanner_1" />
-          <section className={`profileRec ${theme}-theme`}>
-          </section>
+          <section className={`profileRec ${theme}-theme`} />
 
           <div className="profileLinkOr" onClick={() => navigate('/order')}>
             <FontAwesomeIcon icon={faBagShopping} className="iconStyleProfile" /> Order

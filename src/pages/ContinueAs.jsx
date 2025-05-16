@@ -3,6 +3,7 @@ import "../style/ContinueAs.css";
 import logoImage from "../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
 
+
 const ContinueAs = () => {
   const [role, setRole] = useState("");
   const [documentFile, setDocumentFile] = useState(null);
@@ -11,8 +12,15 @@ const ContinueAs = () => {
   const [isStudentSelected, setIsStudentSelected] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileDisplayName, setFileDisplayName] = useState("");
+
+  const [gcashQR, setGcashQR] = useState(null);
+  const [isGcashQRValid, setIsGcashQRValid] = useState(false);
+  const [gcashQRDisplayName, setGcashQRDisplayName] = useState("");
+  const [userUploadedQR, setUserUploadedQR] = useState(null);  // New state for QR preview URL
+
   const navigate = useNavigate();
 
+  // Validate document file: PDF or image
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setDocumentFile(file);
@@ -26,7 +34,33 @@ const ContinueAs = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  // Validate GCash QR file: image only & create preview URL
+  const handleGcashQRChange = (e) => {
+    const file = e.target.files[0];
+    setGcashQR(file);
+
+    if (file && file.type.startsWith("image/")) {
+      setIsGcashQRValid(true);
+      setGcashQRDisplayName(file.name);
+
+      // Create a URL for the uploaded image
+      const imageUrl = URL.createObjectURL(file);
+      setUserUploadedQR(imageUrl);
+
+      // Optional: Save to localStorage for access on other pages
+      // localStorage.setItem("userUploadedQR", imageUrl);
+    } else {
+      setIsGcashQRValid(false);
+      setGcashQRDisplayName("Invalid file type");
+      setUserUploadedQR(null);
+
+      // Optional: Remove from localStorage if invalid
+      // localStorage.removeItem("userUploadedQR");
+    }
+  };
+
+  // Submit handler with validation and simulated async
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!role) {
@@ -35,18 +69,30 @@ const ContinueAs = () => {
     }
 
     if (role === "student") {
-      if (!documentFile) {
-        alert("Please upload your Certificate of Enrollment or Student ID.");
+      if (!documentFile || !isFileValid) {
+        alert("Please upload a valid document.");
+        return;
+      }
+      if (!gcashQR || !isGcashQRValid) {
+        alert("Please upload a valid GCash QR Code.");
         return;
       }
 
-      alert("File is ready to be submitted .");
-      navigate("/store");
+      setIsSubmitting(true);
+
+      // Simulate API call or form submission delay
+      setTimeout(() => {
+        alert("Files are ready to be submitted to the admin.");
+        setIsSubmitting(false);
+        navigate("/store");
+      }, 1500);
+
     } else if (role === "buyer") {
       navigate("/home");
     }
   };
 
+  // Reset all form data on cancel
   const handleCancel = () => {
     if (window.confirm("Are you sure you want to cancel and reset the form?")) {
       setRole("");
@@ -54,6 +100,35 @@ const ContinueAs = () => {
       setDocumentType("");
       setIsStudentSelected(false);
       setFileDisplayName("");
+      setGcashQR(null);
+      setIsGcashQRValid(false);
+      setGcashQRDisplayName("");
+      setUserUploadedQR(null);
+
+      // Optional: Remove QR from localStorage on cancel
+      // localStorage.removeItem("userUploadedQR");
+    }
+  };
+
+  // When role changes, reset related state
+  const handleRoleChange = (selectedRole) => {
+    setRole(selectedRole);
+    if (selectedRole === "student") {
+      setIsStudentSelected(true);
+    } else {
+      // Reset student-specific fields when switching to buyer
+      setIsStudentSelected(false);
+      setDocumentFile(null);
+      setIsFileValid(false);
+      setFileDisplayName("");
+      setDocumentType("");
+      setGcashQR(null);
+      setIsGcashQRValid(false);
+      setGcashQRDisplayName("");
+      setUserUploadedQR(null);
+
+      // Optional: Remove QR from localStorage on role switch
+      // localStorage.removeItem("userUploadedQR");
     }
   };
 
@@ -85,10 +160,7 @@ const ContinueAs = () => {
                       name="role"
                       value="student"
                       checked={role === "student"}
-                      onChange={() => {
-                        setRole("student");
-                        setIsStudentSelected(true);
-                      }}
+                      onChange={() => handleRoleChange("student")}
                     />
                     <span className="role-title">Student</span>
                     <p className="role-description">
@@ -104,10 +176,7 @@ const ContinueAs = () => {
                       name="role"
                       value="buyer"
                       checked={role === "buyer"}
-                      onChange={() => {
-                        setRole("buyer");
-                        setIsStudentSelected(false);
-                      }}
+                      onChange={() => handleRoleChange("buyer")}
                     />
                     <span className="role-title">Buyer</span>
                     <p className="role-description">
@@ -120,6 +189,7 @@ const ContinueAs = () => {
 
             {role === "student" && isStudentSelected && (
               <div className="file-upload">
+                {/* Document Type Select */}
                 <label>
                   Select Document Type:
                   <select
@@ -133,6 +203,7 @@ const ContinueAs = () => {
                   </select>
                 </label>
 
+                {/* Document Upload */}
                 <div className="file-input-row">
                   <label htmlFor="fileUpload">Upload a File:</label>
                   <input
@@ -142,17 +213,44 @@ const ContinueAs = () => {
                     onChange={handleFileChange}
                     required
                   />
-                  {fileDisplayName && (
-                    <span className={`file-name-label ${!isFileValid ? "invalid-file" : ""}`}>
-                  
-                    </span>
-                  )}
                 </div>
 
+                {/* File Validation Message */}
                 {!isFileValid && documentFile && (
                   <span style={{ color: "red" }}>
                     Invalid file type. Please upload a PDF or image (JPG, PNG, etc.).
                   </span>
+                )}
+
+                {/* GCash QR Upload */}
+                <div className="file-input-row">
+                  <label htmlFor="gcashQRUpload">Upload GCash QR Code:</label>
+                  <input
+                    id="gcashQRUpload"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleGcashQRChange}
+                    required
+                  />
+                </div>
+
+                {/* QR Validation Message */}
+                {!isGcashQRValid && gcashQR && (
+                  <span style={{ color: "red" }}>
+                    Invalid QR Code. Please upload an image (JPG, PNG, etc.).
+                  </span>
+                )}
+
+                {/* Preview uploaded QR (optional) */}
+                {isGcashQRValid && userUploadedQR && (
+                  <div className="qr-preview">
+                    <p>Preview:</p>
+                    <img
+                      src={userUploadedQR}
+                      alt="Uploaded GCash QR"
+                      style={{ width: "150px", height: "150px", objectFit: "contain", border: "1px solid #ccc" }}
+                    />
+                  </div>
                 )}
               </div>
             )}
@@ -160,7 +258,9 @@ const ContinueAs = () => {
             <button
               type="submit"
               className="e-submit-btn"
-              disabled={(role === "student" && !isFileValid) || isSubmitting}
+              disabled={
+                (role === "student" && (!isFileValid || !isGcashQRValid || !documentType)) || isSubmitting
+              }
             >
               {isSubmitting ? (
                 <>

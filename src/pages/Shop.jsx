@@ -12,6 +12,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import logoImage from '../assets/Logo.png';
 import '../style/Shop.css';
+import '../style/Home.css';
 import Profile from '../components/ProfileModal';
 
 const Shop = () => {
@@ -160,13 +161,12 @@ const Shop = () => {
           </div>
         ))}
 
-        <div className="shop-button">
-          <div className="shop-state-layer">
-            <div className="shop-subscribe-button" onClick={handleSubscribeClick}>
+      
+            <div className="h-subscribe-button" onClick={handleSubscribeClick}>
               SUBSCRIBE
             </div>
-          </div>
-        </div>
+       
+        
 
         <div className="shop-user">
           <div className="shop-icon"></div>

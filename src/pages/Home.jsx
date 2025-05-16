@@ -12,7 +12,7 @@ import LoginForm from "../pages/LogIn.jsx"
 import PaymentConfirmationModal from '../components/PaymentConfirmationModal';
 // At the top of Home.jsx
 import { useCart } from '../CartContext'; // adjust path if needed
-
+import '../style/ProfileModal.css';
 
 
 
@@ -260,7 +260,7 @@ const handleLogoutClick = () => {
           <FontAwesomeIcon icon={faBars} className="icon" onClick={toggleSidebar} />
           
           
-    {loggedIn && (
+    {loggedIn &&  isRegistered && (
   <>
     <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
     <Link to="/cart">
@@ -282,7 +282,7 @@ const handleLogoutClick = () => {
         </div>
 
         <div className="buttons-container">
-          {!loggedIn && (
+          { !isRegistered && (
             <>
               <button className="login-button" onClick={handleLoginClick}>LOGIN</button>
               <button className="signup-button" onClick={handleSignUpClick}>SIGN UP</button>
@@ -300,18 +300,18 @@ const handleLogoutClick = () => {
           <div className="sidebar-header">
             <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={toggleSidebar} />
           </div>
-          <ul className="sidebar-menu">
-  <li onClick={() => navigate('/about')}>ABOUT</li>
-  <li onClick={() => navigate('/home')}>HOME</li>
-  <li onClick={() => navigate('/support')}>SUPPORT</li>
-  {isRegistered && (
+         <ul className="sidebar-menu">
+  <li style={{ cursor: 'pointer' }} onClick={() => navigate('/about')}>ABOUT</li>
+  <li style={{ cursor: 'pointer' }} onClick={() => navigate('/home')}>HOME</li>
+  <li style={{ cursor: 'pointer' }} onClick={() => navigate('/support')}>SUPPORT</li>
+  {isRegistered && loggedIn && (
     <>
-      <li onClick={() => navigate('/shop')}>SHOPS</li>
-      
-      <li onClick={() => navigate('/settings')}>SETTINGS</li>
+      <li style={{ cursor: 'pointer' }} onClick={() => navigate('/shop')}>SHOPS</li>
+      <li style={{ cursor: 'pointer' }} onClick={() => navigate('/settings')}>SETTINGS</li>
     </>
   )}
 </ul>
+
 
 
         </aside>
@@ -584,8 +584,11 @@ const handleLogoutClick = () => {
         )}
 
         {/* Product Details */}
-        <p className="seller-display">{selectedProduct.seller || "Unknown Seller"}</p>
-        <p className="price-display">₱{selectedProduct.price}</p>
+      <p className="product-name-display-2">{selectedProduct.name || "Product Name"}</p>
+<p className="seller-display">{selectedProduct.seller || "Unknown Seller"}</p>
+<p className="price-display">₱{selectedProduct.price}</p>
+
+
 
         {/* Modal Actions */}
         <div className="modal-actions">
