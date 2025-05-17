@@ -29,6 +29,7 @@
   margin-top:0px;
   box-sizing: border-box;
   margin-left:-33px;
+  position: fixed;
  
   
 }
@@ -93,7 +94,7 @@
   letter-spacing:2%;
   position:absolute;
   left:5rem;
-  margin-top:19;
+  margin-top:99px;
   
 }
 
@@ -119,7 +120,7 @@
   height:399px;
   margin-left: 49px;
   margin-right: auto;
-  margin-top: 8rem;
+  margin-top: 13rem;
 }
 .about-signup-btn {
   background-color: #36BDD7;
@@ -189,7 +190,7 @@
 .about-image-1 {
   width: 100%;
   height: 80px;
-  position: absolute;
+  position: fixed;
   top: 10px;
   left: 0;
   opacity: 100%;

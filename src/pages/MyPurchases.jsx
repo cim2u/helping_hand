@@ -15,7 +15,7 @@ const MyPurchases = () => {
     navigate("/login");
   };
   const handleBackHome = () => {
-    navigate("/"); // navigate to homepage
+    navigate("/home"); // navigate to homepage
   };
 
   return (

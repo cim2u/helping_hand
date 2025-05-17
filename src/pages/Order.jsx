@@ -23,14 +23,15 @@ const Order = () => {
             <div className="logoContainer">
               <img src={logoImage} alt="HelpingHand Logo" className="logoLarge" />
             </div>
+             <div className="back-button-container" onClick={handleBackHome}>
+              <button className="home-btn-cart">BACK TO HOME</button>
+            </div>
           </header>
           
 
           {/* Back Button */}
           <div className="cart">
-            <div className="back-button-container" onClick={handleBackHome}>
-              <button className="home-btn-cart">BACK TO HOME</button>
-            </div>
+           
           </div>
         </div>
       </div>

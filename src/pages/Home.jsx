@@ -603,7 +603,7 @@ const handleLogoutClick = () => {
             className="buy-now-btn-home"
             onClick={() => handleBuyNow(selectedProduct)}
           >
-            BUY NOW
+            Buy Now
           </button>
         </div>
       </div>

@@ -12,7 +12,7 @@ const Settings = () => {
   };
 
   const handleBackHome = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   return (

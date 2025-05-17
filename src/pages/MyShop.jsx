@@ -296,7 +296,11 @@ useEffect(() => {
       />
     )}
 
-    
+      {!isSubscribed && (
+        <button className="h1-subscribe-button" onClick={handleSubscribeClick}>
+        SUBSCRIBE
+        </button>
+      )}
 
     {/* Profile icon */}
     <FontAwesomeIcon
@@ -323,7 +327,10 @@ useEffect(() => {
       <FontAwesomeIcon icon={faCartShopping} className="icon" />
     </Link>
   </div>
+  
+
 </header>
+
 
 
       {/* Background */}
@@ -365,11 +372,7 @@ useEffect(() => {
           <div>
             <h2 className="shop-owner-name">{shopName}</h2>
             <p className="shop-owner-handle">{sellerUsername}</p>
-            {!isSubscribed && (
-        <button className="h1-subscribe-button" onClick={handleSubscribeClick}>
-        SUBSCRIBE
-        </button>
-      )}
+          
 
 {/* Tabs */}
 {!isModalOpen && (

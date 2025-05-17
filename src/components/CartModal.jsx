@@ -35,12 +35,13 @@ const CartModal = () => {
             <div className="logoContainer">
               <img src={logoImage} alt="HelpingHand Logo" className="logoLarge" />
             </div>
-          </header>
-
-          <div className="cart">
             <div className="back-button-container" onClick={handleBackHome}>
               <button className="home-btn-cart">BACK TO HOME</button>
             </div>
+          </header>
+
+          <div className="cart">
+            
 <div className="order-banner">
   <FontAwesomeIcon icon={faCartShopping} className="cart-icon" />
   <h1 className="order-banner-text">Carts</h1>

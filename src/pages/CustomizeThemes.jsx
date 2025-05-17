@@ -13,7 +13,7 @@ const CustomizeThemes = () => {
   };
 
   const handleBackHome = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   const handleThemeChange = (event) => {

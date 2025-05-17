@@ -289,7 +289,7 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   justify-content: flex-start;
   transition: transform 0.3s ease-in-out;
   border-radius: 16px; /* Added border-radius */
-  z-index: 100; /* Added z-index */
+  z-index: 200 !important; /* Added z-index */
   font-family: Roboto, sans-serif;
   font-weight: 400;
   font-size: 16px; /* Use a specific size instead of "Body Large/Size" */
@@ -583,7 +583,7 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   left: 125px !important;
   top: 84px !important;
   z-index: 1;
-  background-image: url('https://imgur.com/gallery/usrtr-6XF5j5c') !important;
+ background-color: #7E3550!important;
   background-size: cover;
   background-position: center;
   border: 2px solid #7E3550;
@@ -922,8 +922,8 @@ margin-left: 315px;
   position: absolute;
   width: 96px;
   height: 40px;
-  left: 45px;
-  top: 334px;
+  left: 215px;
+  top: 450px;
 
   font-family: 'Outfit', sans-serif; 
   font-style: normal;
@@ -1225,9 +1225,9 @@ margin-left: 315px;
 
 .seller-display{
   position: relative;
-  left: 93px !important;;
-  top:304px;
-  font-size:14px!important;
+  left: 20px !important;;
+  top: 298px;
+  font-size:16px!important;
 }
 .product-name-display-2 {
   font-size: 20px!important;
@@ -1235,8 +1235,8 @@ margin-left: 315px;
   width: 225px;
   margin-bottom: 4px;
   position: relative;
-  left:143px;
-  top:324px;
+  left:60px;
+  top:300px;
   color: 49454F !important;
   font-weight: 800;
   line-height: 19px;
@@ -1249,7 +1249,7 @@ margin-left: 315px;
   margin-bottom: 4px;
   position: relative;
   left:143px;
-  top:324px;
+  top:324px !important;
   color: 49454F !important;
   font-weight: 800;
   line-height: 19px;

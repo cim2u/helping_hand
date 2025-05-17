@@ -105,6 +105,13 @@ const Shop = () => {
             <img src={logoImage} alt="HelpingHand Logo" className="logoLarge" />
           </div>
 
+          
+            <div className="h-subscribe-button" onClick={handleSubscribeClick}>
+              SUBSCRIBE
+            </div>
+       
+        
+
           <div className="icon-container">
             <FontAwesomeIcon icon={faBars} className="icon" onClick={toggleSidebar} />
             <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
@@ -162,9 +169,6 @@ const Shop = () => {
         ))}
 
       
-            <div className="h-subscribe-button" onClick={handleSubscribeClick}>
-              SUBSCRIBE
-            </div>
        
         
 

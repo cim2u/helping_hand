@@ -13,7 +13,7 @@ body html {
 
   
   .headerSupport {
-    position: absolute;
+    position: fixed;
     width: 1530px !important;
     height: 103px;
     left: 0;

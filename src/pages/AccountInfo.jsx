@@ -15,7 +15,7 @@ const AccountInfo = () => {
     navigate("/login");
   };
   const handleBackHome = () => {
-    navigate("/"); // this navigates to the homepage
+    navigate("/home"); // this navigates to the homepage
   };
 
   return (
