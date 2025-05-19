@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:3306"; // Adjust if needed
+const baseURL = "http://localhost:8000"; // Adjust if needed
 
 export async function apiFetch(endpoint, options = {}) {
   const url = `${baseURL}${endpoint}`;

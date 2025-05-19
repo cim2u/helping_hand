@@ -194,8 +194,9 @@ const SignUp = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/signup', {
+      const response = await fetch('http://localhost:8000/signup', {
         method: "POST",
+        mode: 'no-cors',
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
