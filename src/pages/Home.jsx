@@ -67,19 +67,32 @@ const Home = () => {
 
 const { addToCart, cartItems } = useCart();
 
-const handleAddToCart = (product) => {
-  const alreadyInCart = cartItems.some(item => item.id === product.id);
 
-  if (alreadyInCart) {
-    alert(`${product.name} is already in your cart!`);
-  } else {
-    addToCart({
-      ...product,
-      imageUrl: product.image || product.imageUrl || 'https://via.placeholder.com/100',
-    });
-    alert(`${product.name} has been added to your cart.`);
+const handleAddToCart = (product) => {
+  const productId = product.id;
+
+  // Check if the product is already in the cart
+  const isInCart = cartItems.some(item => item.id === productId);
+  if (isInCart) {
+    alert("This product is already in your cart.");
+    return;
   }
+
+  // Build the product object with fallback values
+  const productToAdd = {
+    id: product.id,
+    name: product.name || "Unnamed Product",
+    price: product.price || 0,
+    seller: product.seller || "Unknown Seller",
+    imageUrl: product.image || product.imageUrl || "https://via.placeholder.com/100",
+    quantity: 1,
+  };
+
+  // Add to cart
+  addToCart(productToAdd);
+  alert("Product added to cart!");
 };
+
 
 
 
@@ -282,7 +295,7 @@ const handleLogoutClick = () => {
         </div>
 
         <div className="buttons-container">
-          { !isRegistered && (
+          { isRegistered &&  !loggedIn &&(
             <>
               <button className="login-button" onClick={handleLoginClick}>LOGIN</button>
               <button className="signup-button" onClick={handleSignUpClick}>SIGN UP</button>

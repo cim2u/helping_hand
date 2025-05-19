@@ -383,7 +383,7 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   height: 121px!important;
   left: 152px !important;
   top: 194px;
-  background: #ffffff url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__") no-repeat center center;
+  background: #ffffff url("") no-repeat center center;
   background-size: cover;
   border: 2px solid #7e3550;
   border-radius: 100%;
@@ -687,24 +687,21 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   color: #7E3550;
 }
 
-/* Profile link for Orders */
-.profileLinkOr {
-  position: relative;
-  margin: 10px 0 0 50px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 18px;
-  color: #ffffff !important;
-  top: 455px !important;
-  left: 180px !important;
-  z-index: 2;
-  cursor: pointer;
-  text-decoration: none !important;
-  display: flex;
-  align-items: center;
-}
 
+
+.Order{
+
+  top:454px;
+  position: relative;
+  left:234px;
+  z-index: 3;
+  color:white;
+  font-family: 'Outfit', sans-serif;
+}
 /* Icon style for both Order and Cart */
-.iconStyleProfile {
+.iconStyleOrder{
+  font-size: 20px;
+  color:rgb(255, 255, 255);
   cursor: pointer;
   margin-right: 8px;  /* Add some spacing between the icon and text */
 }
@@ -716,28 +713,31 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
 }
 
 /* Profile link for Cart */
-.profileLinkCar {
+.CartFont {
   cursor: pointer;
   position: relative;
   left: 93px !important;
   font-family: 'Outfit', sans-serif;
   font-size: 18px;
   color: #ffffff !important;
-  margin-top: 1px !important;
+  top: 434px !important;
   text-decoration: none !important;
   z-index: 2;
   display: flex;
   align-items: center;
+  margin-bottom: 33px;
 }
 
-/* Hover effects (optional) */
-.iconStyleProfile:hover {
-  transform: scale(1.1); /* Slight zoom effect */
+.iconStyleCart{
+  font-size: 24px;
+  color:rgb(255, 255, 255);
+  cursor: pointer;
+  margin-right: 8px;  /* Add some spacing between the icon and text */
 }
 
 /* Rectangle 82 */
 .profileBanner_1 {
-  position: absolute;
+  position: fixed;
   width: 348px;
   height: 64px;
   left: 29px;
@@ -752,7 +752,7 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
 .profilePhone,
 .profileAddress {
   position: relative;
-  top: 90px; /* Reduced for better vertical alignment */
+  top: 210px!important; /* Reduced for better vertical alignment */
   left: 18px !important; /* Slightly closer to the left */
   margin-top: 10px;
   margin-bottom: 4px;
@@ -768,18 +768,76 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   cursor: pointer;
   color:  #7E3550 !important;
   text-decoration: underline;
-margin-top: -175px !important;
-margin-left: 315px;
+margin-top: 25px !important;
+margin-left: 285px;
   font-size: 1rem;
-  left:345px !important;
+  left:45px !important;
   font-weight: 400;
   z-index: 1;
+  position:absolute;
 }
+
+
 
 .profileLogout:hover {
   color: #d33;
 }
 
+.profileInputEdit {
+  position: relative;
+  top: 480px !important;        /* Vertical alignment */
+  left: 48px !important;        /* Horizontal alignment */
+  margin-top: 1px;
+  margin-bottom: -3px;
+  font-family: 'Outfit', sans-serif!important;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff; /* Optional: underline style */
+  outline: none;
+  text-align: left;
+  z-index: 2;
+  width: 56%; /* Adjust as needed */
+}
+.profileInputEdit::placeholder {
+  color: #ffffff !important; /* Light color for visibility on dark backgrounds */
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  opacity: 0.9; /* Slight transparency */
+  box-shadow: rgba(255, 255, 255, 0);
+}
+
+
+.saveButton {
+  background-color: #ffffff;
+  color: #7E3550;
+  padding: 6px 14px;
+  margin-top: 10px;
+  font-family: 'Outfit', sans-serif;
+  border: none;
+  font-size:14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  z-index: 2;
+  top:669px;
+  left:300px;
+  position: absolute;
+}
+
+.editProfileLink {
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: -5px;
+  font-weight: 400;
+  text-decoration: underline;
+  z-index: 2;
+  left:320px;
+  font-family: 'Outfit', sans-serif;
+  top:474px;
+  position:relative;
+}
 
 /* Product Modal background */
 .product-modal {
@@ -1255,4 +1313,3 @@ margin-left: 315px;
   line-height: 19px;
 
 }
-

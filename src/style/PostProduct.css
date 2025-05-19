@@ -1,15 +1,45 @@
+
+body html{
+  background-color:black; /* or use background-color */
+  background-size: cover;
+  background-attachment: absolute; /* This keeps the background fixed */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .postProductContainer {
-  position: relative;
+  position: absolute;
   width: 480px!important;
   height: 701px;
-  background: #330000;
+  background: #ffffff;
   border-radius: 12px;
-  z-index:23; 
-  border-color: #843b62 ;
-  
-  top:-192px;
-  left:333px;
+  z-index:4300; 
+  border-color: #ffffff ;
+  margin-left: -525px;
+  top:-292px;
+  left:533px;
 }
+
+.imageUploadSectionPost {
+  width: 390px!important;      /* fixed width */
+  height: 250px!important;     /* fixed height */
+  border: 2px solid #ccc!important; /* example styling */
+  display: flex;
+  background-color:#843b62 ;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;  /* crop overflow if any */
+  position: relative;
+}
+
+.previewImagePost {
+  width: 100%!important;         /* Make image fill the container width */
+  height: 100%!important;        /* Make image fill the container height */
+  object-fit: contain; /* Scale image to fit inside box, preserving aspect ratio */
+  border-radius: 8px;  /* Optional: rounded corners */
+  display: block;      /* Remove inline space */
+}
+
 
 .postProductCard {
   position: absolute;
@@ -76,7 +106,9 @@
 
 /* Styling for the entire input field container */
 .textFieldPost {
-  margin-bottom: 20px; /* Adds space between input fields */
+  margin-bottom: 10px; /* Adds space between input fields */
+  margin-top:23px;
+  position: relative;
 }
 
 /* Styling for the input content (label and input) */
@@ -104,6 +136,24 @@
   outline: none; /* Removes the default outline on focus */
   transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border color */
 }
+
+/* Close Button Styling */
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 10;
+  transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+  color: #e197b700; /* Slightly lighter/different shade on hover */
+}
+
 
 /* Styling when the input is focused */
 .inputBoxPost:focus {
@@ -138,7 +188,7 @@
 .radioButtonsPost input[type="radio"] {
   margin-right: 8px; /* Space between radio button and label */
   accent-color:  #36BDD7; /* Sets the color of the radio button to purple */
-  border: 2px solid rgb(0, 0, 0); /* Pink border color */
+  border: 2px solid rgb(0, 0, 0)!important; /* Pink border color */
   border-radius: 50%; /* Ensures the border is rounded around the radio button */
   width: 20px; /* Custom size for the radio button */
   height: 20px; /* Custom size for the radio button */
@@ -147,13 +197,13 @@
 
 /* Styling for when the radio button is checked */
 .radioButtonsPost input[type="radio"]:checked {
-  border-color: rgb(0, 0, 0); /* Border color remains pink when selected */
+  border-color: rgb(255, 255, 255)!important; /* Border color remains pink when selected */
   background-color: #36BDD7; /* Change background color to purple when checked */
-}
+}y
 
 /* Styling for radio button hover effect */
 .radioButtonsPost input[type="radio"]:hover {
-  border-color: rgb(0, 0, 0); /* Pink border on hover */
+  border-color: rgb(255, 255, 255)!important; /* Pink border on hover */
   background-color:  #36BDD7; /* Light pink background when hovering over the radio button */
 }
 
@@ -222,14 +272,6 @@
   padding: 8px;
 }
 
-.imageUploadSectionPost {
-    position: relative;
-  width: 392px;
-  height: 289px;
-  background:  #843b62;
-  border-radius: 4px;
-  margin: 0 auto;
-}
 
 .uploadPlaceholderPost {
   color:  #ffffff;
@@ -248,11 +290,4 @@
   border: 2px solid rgb(255, 255, 255);
   border-radius: 50%;
   padding: 8px;
-}
-
-.previewImagePost {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
 }

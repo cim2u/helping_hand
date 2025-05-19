@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../style/PostProduct.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const PostProduct = () => {
   const [productName, setProductName] = useState('');
@@ -9,6 +9,7 @@ const PostProduct = () => {
   const [category, setCategory] = useState('product');
   const [imagePreview, setImagePreview] = useState(null);
   const [error, setError] = useState('');
+  const [isVisible, setIsVisible] = useState(true);  // For toggling visibility
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -27,7 +28,7 @@ const PostProduct = () => {
     console.log('Product Name:', productName);
     console.log('Price:', price);
     console.log('Category:', category);
-    console.log('Image:', imagePreview); // Just the preview URL for now
+    console.log('Image:', imagePreview);
 
     // Reset form fields after submission
     setProductName('');
@@ -36,9 +37,20 @@ const PostProduct = () => {
     setImagePreview(null);
   };
 
+  const handleClose = () => {
+    setIsVisible(false);
+  };
+
+  if (!isVisible) return null; // Hide component when closed
+
   return (
     <div className="postProductContainer">
       <div className="postProductCard">
+        {/* Close Button */}
+        <button className="closeButton" onClick={handleClose} aria-label="Close form">
+          <FontAwesomeIcon icon={faTimes} size="lg" color="#843b62" />
+        </button>
+
         <div className="postHeader">POST A NEW PRODUCT</div>
         <div className="productForm">
           {/* Image Upload */}
@@ -126,6 +138,39 @@ const PostProduct = () => {
           </button>
         </div>
       </div>
+
+      {/* Inline CSS styles for preview image and container */}
+      <style jsx>{`
+        .imageUploadSectionPost {
+          width: 250px;
+          height: 250px;
+          border: 2px dashed #ccc;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          position: relative;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+        }
+
+        .previewImagePost {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          border-radius: 8px;
+          display: block;
+        }
+
+        .closeButton {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+        }
+      `}</style>
     </div>
   );
 };

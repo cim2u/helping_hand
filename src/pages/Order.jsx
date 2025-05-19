@@ -4,76 +4,85 @@ import "../style/CartModal.css";
 import "../style/Home.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
+import { useCart } from '../CartContext'; // Added useCart
 
-import logoImage from '../assets/Logo.png'; // Update the path if needed
+import logoImage from '../assets/Logo.png';
 
 const Order = () => {
+  const { cartItems, decrement } = useCart();
+
   const handleBackHome = () => {
-    // You can replace this with actual navigation logic
     window.history.back();
   };
 
   return (
     <div className="cart-shop-container">
-    <div className="orderContainer">
-      {/* Header Image and Logo */}
-      <div className="shop-container">
-        <div className="home-wrapper">
-          <header className="header-cover">
-            <div className="logoContainer">
-              <img src={logoImage} alt="HelpingHand Logo" className="logoLarge" />
-            </div>
-             <div className="back-button-container" onClick={handleBackHome}>
-              <button className="home-btn-cart">BACK TO HOME</button>
-            </div>
-          </header>
-          
+      <div className="orderContainer">
+        {/* Header */}
+        <div className="shop-container">
+          <div className="home-wrapper">
+            <header className="header-cover">
+              <div className="logoContainer">
+                <img src={logoImage} alt="HelpingHand Logo" className="logoLarge" />
+              </div>
+              <div className="back-button-container" onClick={handleBackHome}>
+                <button className="home-btn-cart">BACK TO HOME</button>
+              </div>
+            </header>
 
-          {/* Back Button */}
-          <div className="cart">
-           
+            <div className="cart">
+              <div className="order-banner">
+                <FontAwesomeIcon icon={faBagShopping} className="order-icon" />
+                <h1 className="order-banner-text">Orders</h1>
+              </div>
+
+              <div className="ordersLabel">Orders</div>
+
+              {cartItems.length === 0 ? (
+                <p className="empty-cart-text">Your cart is empty.</p>
+              ) : (
+                <div className="cart-grid">
+                  {cartItems.map((item) => (
+                    <div className="product-card-cart" key={item.id}>
+                      <div className="product-image-border">
+                        <img
+                          className="product-img-cart"
+                          src={item.imageUrl || 'https://via.placeholder.com/100'}
+                          alt={item.name}
+                        />
+                      </div>
+
+                      <div className="product-details-cart">
+                        <h2 className="product-name-cart">{item.name}</h2>
+                        <p className="seller-name-cart">Seller: {item.seller}</p>
+                        <p className="product-price-cart">Price: ₱{item.price?.toFixed(2)}</p>
+                        <p className="product-total-cart">
+                          Total: ₱{(item.price * item.quantity).toFixed(2)}
+                        </p>
+
+                        <div className="quantity-wrapper-cart">
+                          <p className="quantity-label-cart">Quantity:</p>
+                          <div className="quantity-counter-cart">
+                            <button
+                              className="qty-btn-cart"
+                              onClick={() => decrement(item.id)}
+                            >
+                              –
+                            </button>
+                            <span className="qty-display-cart">{item.quantity}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="underlineText">See more orders</div>
+            </div>
           </div>
         </div>
       </div>
-
-    <div className="order-banner">
-  <FontAwesomeIcon icon={faBagShopping} className="order-icon" />
-  <h1 className="order-banner-text">Orders</h1>
-</div>
-
-
-      {/* Orders Label */}
-      <div className="ordersLabel">Orders</div>
-
-      {/* Order Item 1 */}
-      <div className="orderItem" style={{ top: '382px' }}>
-        <div
-          className="orderImage"
-          style={{ backgroundImage: 'url("484966389_666914819395756_5237641564430598218_n.jpg")' }}
-        />
-        <div className="orderDescription">
-          Flower Seller: Sissy Shey<br />
-          Quantity: 1<br />
-          Total: ₱50
-        </div>
-      </div>
-
-      {/* Order Item 2 */}
-      <div className="orderItem" style={{ top: '542px' }}>
-        <div
-          className="orderImage"
-          style={{ backgroundImage: 'url("485083742_673045595101672_5844131352349017864_n.jpg")' }}
-        />
-        <div className="orderDescription">
-          Flower Seller: Sissy Shey<br />
-          Quantity: 1<br />
-          Total: ₱50
-        </div>
-      </div>
-
-      {/* Underline Text */}
-      <div className="underlineText">See more orders</div>
-    </div>
     </div>
   );
 };

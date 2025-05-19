@@ -6,7 +6,6 @@ import styles from "../style/Logo.module.css";
 import logoImage from "../assets/Logo.png";
 import "../style/SignUp.css";
 
-// SignupForm component
 const SignupForm = ({
   handleChange,
   formData,
@@ -31,7 +30,6 @@ const SignupForm = ({
           required
         />
       </div>
-
       <div className="signup-group">
         <label htmlFor="lastName">Last Name</label>
         <input
@@ -69,66 +67,61 @@ const SignupForm = ({
       />
     </div>
 
-   {/* Password Field */}
-<div className="signup-form-group">
-  <label htmlFor="password">Password</label>
-  <div style={{ position: "relative" }}>
-    <input
-      type={showPassword ? "text" : "password"}
-      name="password"
-      id="password"
-      value={formData.password}
-      onChange={handleChange}
-      required
-    />
-    {/* Only show icon if password is not empty */}
-    {formData.password.length > 0 && (
-      <FontAwesomeIcon
-        icon={showPassword ? faEye : faEyeSlash}
-        onClick={togglePasswordVisibility}
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          cursor: "pointer",
-          fontSize: "12px", // Set font size her
-        }}
-      />
-    )}
-  </div>
-</div>
+    <div className="signup-form-group">
+      <label htmlFor="password">Password</label>
+      <div style={{ position: "relative" }}>
+        <input
+          type={showPassword ? "text" : "password"}
+          name="password"
+          id="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        {formData.password.length > 0 && (
+          <FontAwesomeIcon
+            icon={showPassword ? faEye : faEyeSlash}
+            onClick={togglePasswordVisibility}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              fontSize: "12px",
+            }}
+          />
+        )}
+      </div>
+    </div>
 
-{/* Confirm Password Field */}
-<div className="signup-form-group">
-  <label htmlFor="confirmPassword">Confirm Password</label>
-  <div style={{ position: "relative" }}>
-    <input
-      type={showConfirmPassword ? "text" : "password"}
-      name="confirmPassword"
-      id="confirmPassword"
-      value={formData.confirmPassword}
-      onChange={handleChange}
-      required
-    />
-    {/* Only show icon if confirm password is not empty */}
-    {formData.confirmPassword.length > 0 && (
-      <FontAwesomeIcon
-        icon={showConfirmPassword ? faEye : faEyeSlash}
-        onClick={toggleConfirmPasswordVisibility}
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          cursor: "pointer",
-          fontSize: "12px", // Set font size her
-        }}
-      />
-    )}
-  </div>
-</div>
-
+    <div className="signup-form-group">
+      <label htmlFor="confirmPassword">Confirm Password</label>
+      <div style={{ position: "relative" }}>
+        <input
+          type={showConfirmPassword ? "text" : "password"}
+          name="confirmPassword"
+          id="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          required
+        />
+        {formData.confirmPassword.length > 0 && (
+          <FontAwesomeIcon
+            icon={showConfirmPassword ? faEye : faEyeSlash}
+            onClick={toggleConfirmPasswordVisibility}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              fontSize: "12px",
+            }}
+          />
+        )}
+      </div>
+    </div>
 
     {errorMessage && <p className="signup-error-message">{errorMessage}</p>}
 
@@ -147,7 +140,6 @@ const SignupForm = ({
   </form>
 );
 
-// Main SignUp component
 const SignUp = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -175,18 +167,14 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const cleanedData = {
-      ...formData,
-      email: formData.email.trim(),
-      username: formData.username.trim(),
-    };
+    const { firstName, lastName, email, username, password, confirmPassword } = formData;
 
-    if (cleanedData.password !== cleanedData.confirmPassword) {
+    if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match!");
       return;
     }
 
-    if (cleanedData.password.length < 6) {
+    if (password.length < 6) {
       setErrorMessage("Password must be at least 6 characters.");
       return;
     }
@@ -194,35 +182,26 @@ const SignUp = () => {
     setErrorMessage("");
     setIsSubmitting(true);
 
-    // Simulate API call
+    // Simulate success
     setTimeout(() => {
-      console.log("Form submitted:", cleanedData);
       localStorage.setItem("isRegistered", "true");
       localStorage.setItem("loggedIn", "true");
       navigate("/terms");
     }, 1000);
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
+  const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
+  const toggleConfirmPasswordVisibility = () => setShowConfirmPassword((prev) => !prev);
 
   return (
     <div className="c-container">
       <div className="flex h-screen">
-        {/* Left Panel - Signup Form */}
         <div className="signup-left-panel">
           <div className="logo-signup">
             <img src={logoImage} alt="HelpingHand Logo" className={styles.logoLarge} />
           </div>
 
-          <p className="create-text">
-            Create a free account and join our growing community!
-          </p>
+          <p className="create-text">Create a free account and join our growing community!</p>
 
           <SignupForm
             handleChange={handleChange}
@@ -243,7 +222,6 @@ const SignUp = () => {
           </p>
         </div>
 
-        {/* Right Panel - Background Image */}
         <div
           className="image-back"
           style={{
@@ -251,8 +229,7 @@ const SignUp = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-        >
-        </div>
+        ></div>
       </div>
     </div>
   );

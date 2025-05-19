@@ -375,34 +375,33 @@ useEffect(() => {
           
 
 {/* Tabs */}
-{!isModalOpen && (
-  <div className="shop-tabs">
-    <a
-      ref={productsRef}
-      href="#products"
-      className={`tab ${activeTab === "products" ? "active" : ""}`}
-      onClick={(e) => {
-        e.preventDefault();
-        setActiveTab("products");
-        document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
-      }}
-    >
-      PRODUCTS
-    </a>
-    <a
-      ref={servicesRef}
-      href="#services"
-      className={`tab ${activeTab === "services" ? "active" : ""}`}
-      onClick={(e) => {
-        e.preventDefault();
-        setActiveTab("services");
-        document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
-      }}
-    >
-      SERVICES
-    </a>
-  </div>
-)}
+<div className="shop-tabs">
+  <a
+    ref={productsRef}
+    href="#products"
+    className={`tab ${activeTab === "products" ? "active" : ""}`}
+    onClick={(e) => {
+      e.preventDefault();
+      setActiveTab("products");
+      document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
+    }}
+  >
+    PRODUCTS
+  </a>
+  <a
+    ref={servicesRef}
+    href="#services"
+    className={`tab ${activeTab === "services" ? "active" : ""}`}
+    onClick={(e) => {
+      e.preventDefault();
+      setActiveTab("services");
+      document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+    }}
+  >
+    SERVICES
+  </a>
+</div>
+
 
 
 
