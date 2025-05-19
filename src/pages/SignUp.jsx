@@ -5,6 +5,7 @@ import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import styles from "../style/Logo.module.css";
 import logoImage from "../assets/Logo.png";
 import "../style/SignUp.css";
+import { apiFetch } from "../api";
 
 // SignupForm component
 const SignupForm = ({
@@ -69,66 +70,63 @@ const SignupForm = ({
       />
     </div>
 
-   {/* Password Field */}
-<div className="signup-form-group">
-  <label htmlFor="password">Password</label>
-  <div style={{ position: "relative" }}>
-    <input
-      type={showPassword ? "text" : "password"}
-      name="password"
-      id="password"
-      value={formData.password}
-      onChange={handleChange}
-      required
-    />
-    {/* Only show icon if password is not empty */}
-    {formData.password.length > 0 && (
-      <FontAwesomeIcon
-        icon={showPassword ? faEye : faEyeSlash}
-        onClick={togglePasswordVisibility}
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          cursor: "pointer",
-          fontSize: "12px", // Set font size her
-        }}
-      />
-    )}
-  </div>
-</div>
+    {/* Password Field */}
+    <div className="signup-form-group">
+      <label htmlFor="password">Password</label>
+      <div style={{ position: "relative" }}>
+        <input
+          type={showPassword ? "text" : "password"}
+          name="password"
+          id="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        {formData.password.length > 0 && (
+          <FontAwesomeIcon
+            icon={showPassword ? faEye : faEyeSlash}
+            onClick={togglePasswordVisibility}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              fontSize: "12px",
+            }}
+          />
+        )}
+      </div>
+    </div>
 
-{/* Confirm Password Field */}
-<div className="signup-form-group">
-  <label htmlFor="confirmPassword">Confirm Password</label>
-  <div style={{ position: "relative" }}>
-    <input
-      type={showConfirmPassword ? "text" : "password"}
-      name="confirmPassword"
-      id="confirmPassword"
-      value={formData.confirmPassword}
-      onChange={handleChange}
-      required
-    />
-    {/* Only show icon if confirm password is not empty */}
-    {formData.confirmPassword.length > 0 && (
-      <FontAwesomeIcon
-        icon={showConfirmPassword ? faEye : faEyeSlash}
-        onClick={toggleConfirmPasswordVisibility}
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          cursor: "pointer",
-          fontSize: "12px", // Set font size her
-        }}
-      />
-    )}
-  </div>
-</div>
-
+    {/* Confirm Password Field */}
+    <div className="signup-form-group">
+      <label htmlFor="confirmPassword">Confirm Password</label>
+      <div style={{ position: "relative" }}>
+        <input
+          type={showConfirmPassword ? "text" : "password"}
+          name="confirmPassword"
+          id="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          required
+        />
+        {formData.confirmPassword.length > 0 && (
+          <FontAwesomeIcon
+            icon={showConfirmPassword ? faEye : faEyeSlash}
+            onClick={toggleConfirmPasswordVisibility}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              fontSize: "12px",
+            }}
+          />
+        )}
+      </div>
+    </div>
 
     {errorMessage && <p className="signup-error-message">{errorMessage}</p>}
 
@@ -168,25 +166,26 @@ const SignUp = () => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value.trimStart(),
+      [name]: name.includes("password") ? value : value.trimStart(),
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const cleanedData = {
-      ...formData,
+      first_name: formData.firstName.trim(),
+      last_name: formData.lastName.trim(),
       email: formData.email.trim(),
       username: formData.username.trim(),
+      password: formData.password,
+      password_confirmation: formData.confirmPassword,
     };
 
-    if (cleanedData.password !== cleanedData.confirmPassword) {
+    if (cleanedData.password !== formData.confirmPassword) {
       setErrorMessage("Passwords do not match!");
       return;
-    }
-
-    if (cleanedData.password.length < 6) {
+    } else if (cleanedData.password.length < 6) {
       setErrorMessage("Password must be at least 6 characters.");
       return;
     }
@@ -194,13 +193,30 @@ const SignUp = () => {
     setErrorMessage("");
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Form submitted:", cleanedData);
+    try {
+      const response = await fetch('http://localhost:8000/api/signup', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(cleanedData),
+      })
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong.");
+      }
+
       localStorage.setItem("isRegistered", "true");
       localStorage.setItem("loggedIn", "true");
       navigate("/terms");
-    }, 1000);
+    } catch (error) {
+      setErrorMessage(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -247,7 +263,7 @@ const SignUp = () => {
         <div
           className="image-back"
           style={{
-            backgroundImage: `url('https://i.imgur.com/ErEQ4GI.png')`,
+            backgroundImage: "url('https://i.imgur.com/ErEQ4GI.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

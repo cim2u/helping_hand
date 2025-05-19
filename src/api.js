@@ -1,12 +1,27 @@
+const baseURL = "http://localhost:3306"; // Adjust if needed
 
+export async function apiFetch(endpoint, options = {}) {
+  const url = `${baseURL}${endpoint}`;
 
-import axios from "axios";
+  const defaultHeaders = {
+    "Content-Type": "application/json",
+  };
 
-const API = axios.create({
-    baseURL: "http://localhost:8000/api", // Adjust based on your Laravel server
+  const config = {
+    ...options,
     headers: {
-        "Content-Type": "application/json",
+      ...defaultHeaders,
+      ...(options.headers || {}),
     },
-});
+    credentials: "include", // Optional: needed if using cookies/auth
+  };
 
-export default API;
+  const response = await fetch(url, config);
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || "Request failed");
+  }
+
+  return response.json();
+}
