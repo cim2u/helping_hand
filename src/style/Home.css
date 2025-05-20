@@ -394,8 +394,8 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   position: absolute;
   width: 150px;
   height: 39px;
-  left: 143px;
-  top: 261px;
+  margin-left: -0px !important;
+  margin-top: -41px !important;
   font-family: 'Rowdies', sans-serif;
   font-weight: 700;
   font-size: 28px;
@@ -465,7 +465,6 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
 }
 
 
-
 /* Email, Name, Phone Number, Address */
 .email-name,
 .phone-number,
@@ -528,12 +527,12 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   position: absolute;
   width: 516px;
   height: 18px;
-  left: -49px;
-  top: 299px;
+  margin-left: 240px !important;
+  margin-top: -50px !important;
   font-family: 'Outfit', sans-serif; /* Ensuring Outfit font is used */
   font-style: normal;
   font-weight: 600; /* Bold */
-  font-size: 14px;
+  font-size: 14px !important;
   line-height: 18px; /* Ensures the text aligns with the box height */
   color:#7E3550!important; /* Sets the color of the text */
 }
@@ -652,8 +651,8 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   position: absolute;
   width: 157px;
   height: 18px;
-  left: 145px;
-  top: 314px !important;
+  margin-left: -15px !important;
+  margin-top: -40px !important;
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -768,7 +767,7 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   cursor: pointer;
   color:  #7E3550 !important;
   text-decoration: underline;
-margin-top: 25px !important;
+margin-top: 35px !important;
 margin-left: 285px;
   font-size: 1rem;
   left:45px !important;

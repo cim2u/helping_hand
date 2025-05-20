@@ -1,73 +1,74 @@
 .group73HelpCenter {
-    position: absolute;
-    width: 1051px;
-    height: 853px;
-    
-    top: 0px;
-  }
-  
-  .rectangle120HelpCenter {
-    box-sizing: border-box;
-    position: absolute;
-    width: 1051px;
-    height: 830px;
-    left: 347px;
-    top: 143px;
-    background: #FEFEFE;
-    border: 1px solid rgba(30, 30, 30, 0.65);
-  }
-  
-  .titleHelpCenter {
-    position: absolute;
-    width: 129px;
-    height: 19px;
-    left: 347px;
-    top: 120px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-    display: flex;
-    align-items: center;
-    letter-spacing: -0.02em;
-    color: #1E1E1E;
-  }
-  
-  .rectangle124HelpCenter {
-    position: absolute;
-    width: 995px;
-    height: 220px;
-    left: 376px;
-    top: 195px;
-    background: #FEFEFE;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 20px;
-  }
-  
-  .rectangle125HelpCenter {
-    position: absolute;
-    width: 995px;
-    height: 220px;
-    left: 376px;
-    top: 515px;
-    background: #FEFEFE;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 20px;
-  }
-  
-  .reviewTextHelpCenter {
-    font-family: 'Roboto';
-    font-size: 16px;
-    color: #303030;
-    margin-top: 23px !important;;
-    margin-bottom: 10px;
-  }
-  
-  .reviewAuthorHelpCenter {
-    font-family: 'Roboto';
-    font-weight: 500;
-    font-size: 14px;
-    color: #555;
-  }
-  
+  position: absolute;
+  width: 1051px;
+  height: 853px;
+  top: 134px;
+  left: 350px; /* Position relative to page or container */
+  background: transparent;
+  font-family: 'Roboto', sans-serif;
+}
+
+.rectangle120HelpCenter {
+  box-sizing: border-box;
+  position: absolute;
+  width: 1051px;
+  height: 830px;
+  left: 0;  /* relative to .group73HelpCenter */
+  top: 40px;
+  background: #FEFEFE;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Added shadow */
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.titleHelpCenter {
+  position: absolute;
+  width: 150px;
+  height: 24px;
+  left: 0; /* relative to .group73HelpCenter */
+  top: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.02em;
+  color: #1E1E1E;
+}
+
+.rectangle124HelpCenter,
+.rectangle125HelpCenter {
+  position: absolute;
+  width: 995px;
+  height: 220px;
+  left: 25px; /* relative to .group73HelpCenter */
+  background: #FEFEFE;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  color: #303030;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.rectangle124HelpCenter {
+  top: 55px;
+}
+
+.rectangle125HelpCenter {
+  top: 375px;
+}
+
+.reviewTextHelpCenter {
+  margin-top: 23px;
+  margin-bottom: 10px;
+}
+
+.reviewAuthorHelpCenter {
+  font-weight: 500;
+  font-size: 14px;
+  color: #555;
+}

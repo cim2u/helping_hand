@@ -15,6 +15,7 @@ const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
   const [profileImage, setProfileImage] = useState(() => {
     return localStorage.getItem('profileImage') || null;
   });
+  
 
   const [profileData, setProfileData] = useState({
     name: localStorage.getItem('profileName') || 'Sissy Shey',
@@ -52,6 +53,8 @@ const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
       navigate("/login");
     }
   };
+
+  
 
   const handleProfileClick = () => {
     fileInputRef.current.click();
@@ -119,7 +122,7 @@ const ProfileModal = ({ isVisible, loggedIn, onClose }) => {
             onChange={handleFileChange}
           />
 
-          <div className="profileLabel">Profile</div>
+          <div className="profileLabel">Sissy Shey</div>
           <div className="profileCircle">
             <div className="statusPrimary">
               <div className="checkPrimary" />

@@ -5,7 +5,6 @@ import "../style/About.css";
 import logo from "../assets/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBell,
   faHouse,
   faUser,
   faCircleQuestion,
@@ -20,12 +19,11 @@ const AdminDashboard = () => {
     e.preventDefault();
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
-      // Clear session/local storage
       localStorage.removeItem("user");
       localStorage.removeItem("loggedIn");
       localStorage.removeItem("isAdmin");
 
-      navigate("/admin-login"); // Fixed route, assuming your admin login route is '/admin-login'
+      navigate("/admin-login");
     }
   };
 
@@ -40,14 +38,7 @@ const AdminDashboard = () => {
         <h2 className="titleAdmin">DASHBOARD</h2>
       </header>
 
-      {/* Images Section */}
-      <div className="image-section-1">
-        <img
-          src="https://i.imgur.com/H5a9ITt.png"
-          alt="Helping Hand"
-          className="about-image-1"
-        />
-      </div>
+      
       <div className="image-section-2">
         <img
           src="https://i.imgur.com/GT5CDSQ.png"
@@ -61,20 +52,8 @@ const AdminDashboard = () => {
         <div className="avatarAdmin" aria-hidden="true"></div>
 
         <div className="adminNameGroupAdmin">
-          <p className="adminNameAdmin">Chin Chin Admin</p>
-
-          {/* Notification Icon */}
-          <div className="notificationAdmin" aria-label="Notifications">
-            <FontAwesomeIcon
-              icon={faBell}
-              size="2x"
-              className="bellIconAdmin"
-              aria-hidden="true"
-            />
-            <div className="badgeAdmin" aria-live="polite">
-              <span className="badgeLabelAdmin">3</span>
-            </div>
-          </div>
+          <p className="adminNameAdmin">Francim Elorde</p>
+          <p className="adminNameAdminRole">Admin</p>
         </div>
 
         {/* Navigation Menu */}

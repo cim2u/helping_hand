@@ -1221,7 +1221,7 @@
 
   max-width: 2000px;
   box-sizing: border-box;
-  margin-left: -734px;
+  margin-left: -754px;
   margin-top: 295px !important;
 }
 
@@ -1236,6 +1236,7 @@
   transition: transform 0.2s ease;
   width: 220px!important;
   height: 260px !important;
+  margin-left: 230px !important;;
 }
 
 
@@ -1250,18 +1251,7 @@
 
 
 
-/* Style for product names */
-.product2-name {
-  margin-top: 45px;
-  font-family: 'Outfit', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
-  text-align: center;
-  letter-spacing: 0.1px;
-  color: #7E3550;
-}
+
 
 
 /* Product Modal background */
@@ -1524,18 +1514,6 @@
   box-sizing: border-box;
 }
 
-/* Profile picture styling */
-.profilePicture {
-  position: absolute;
-  width: 121px!important;
-  height: 121px!important;
-  left: 152px !important;
-  top: 194px;
-  background: #ffffff url("https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OSgpki4sDiZvJQaaVriuXYw824d-73NRdbbIvtE7QOxa0DEBTnaqr25l809G82VUYfdLi-qzcguGWZw113ZWHPkmCe39wejgx0mHBOZZ5OxXtrimYSAh37as31XlmaTMnXnIYhj-pVIVdnekxH1jYUYbF3lFRFLaOwi~-Op~ZqzpErl-9P6MmxTrDbm6bGuIKtH1xlZ3WPAepIf~Yb~2CYTyJgfjVg9T0mD7BSSVsLvnALAsBk0SPuH0Q~8rjRZmu-AMXGWT0hBvmxajESjf4suTA8ZvQwZGKVe~FZul1XSUnIqjrcerKK7FCVluiENEMOxr0cxaH-XUqwAbUyZCsw__") no-repeat center center;
-  background-size: cover;
-  border: 2px solid #7e3550;
-  border-radius: 100%;
-}
 
 /* Label text for profile */
 .profileLabel {
