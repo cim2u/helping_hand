@@ -3,83 +3,125 @@ import "../style/Order.css";
 import "../style/CartModal.css";
 import "../style/Home.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
-import { useCart } from '../CartContext'; // Added useCart
-
+import { faBagShopping, faCheckCircle, faClock, faTruck } from '@fortawesome/free-solid-svg-icons';
 import logoImage from '../assets/Logo.png';
+import { useOrder } from '../OrderContext'; // Context hook to access orders
 
 const Order = () => {
-  const { cartItems, decrement } = useCart();
+  const { orders } = useOrder(); // Get orders from context
 
   const handleBackHome = () => {
     window.history.back();
   };
 
+  // Returns icon based on order status
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case 'Completed':
+        return <FontAwesomeIcon icon={faCheckCircle} className="status-icon completed" />;
+      case 'Shipped':
+        return <FontAwesomeIcon icon={faTruck} className="status-icon shipped" />;
+      default:
+        return <FontAwesomeIcon icon={faClock} className="status-icon processing" />;
+    }
+  };
+
+  // Format date to a readable string, fallback to "Unknown Date"
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(dateString);
+    return isNaN(date) ? 'Unknown Date' : date.toLocaleDateString(undefined, options);
+  };
+
   return (
     <div className="cart-shop-container">
       <div className="orderContainer">
-        {/* Header */}
         <div className="shop-container">
           <div className="home-wrapper">
+
+            {/* Header */}
             <header className="header-cover">
               <div className="logoContainer">
                 <img src={logoImage} alt="HelpingHand Logo" className="logoLarge" />
               </div>
-              <div className="back-button-container" onClick={handleBackHome}>
-                <button className="home-btn-cart">BACK TO HOME</button>
+              <div className="back-button-container">
+                <button className="home-btn-cart" onClick={handleBackHome}>BACK TO HOME</button>
               </div>
             </header>
 
+            {/* Orders Section */}
             <div className="cart">
               <div className="order-banner">
                 <FontAwesomeIcon icon={faBagShopping} className="order-icon" />
-                <h1 className="order-banner-text">Orders</h1>
+                <h1 className="order-banner-text">My Orders</h1>
               </div>
 
-              <div className="ordersLabel">Orders</div>
+              <div className="ordersLabel">Order History</div>
 
-              {cartItems.length === 0 ? (
-                <p className="empty-cart-text">Your cart is empty.</p>
+              {orders.length === 0 ? (
+                <div className="empty-order-container">
+                  <p className="empty-cart-text">You haven't placed any orders yet.</p>
+                  <button className="shop-now-btn" onClick={handleBackHome}>Shop Now</button>
+                </div>
               ) : (
-                <div className="cart-grid">
-                  {cartItems.map((item) => (
-                    <div className="product-card-cart" key={item.id}>
-                      <div className="product-image-border">
-                        <img
-                          className="product-img-cart"
-                          src={item.imageUrl || 'https://via.placeholder.com/100'}
-                          alt={item.name}
-                        />
-                      </div>
+                <div className="orders-grid">
+                  {orders.map((order, index) => (
+                    <div className="order-card" key={order.id || index}>
 
-                      <div className="product-details-cart">
-                        <h2 className="product-name-cart">{item.name}</h2>
-                        <p className="seller-name-cart">Seller: {item.seller}</p>
-                        <p className="product-price-cart">Price: ₱{item.price?.toFixed(2)}</p>
-                        <p className="product-total-cart">
-                          Total: ₱{(item.price * item.quantity).toFixed(2)}
-                        </p>
-
-                        <div className="quantity-wrapper-cart">
-                          <p className="quantity-label-cart">Quantity:</p>
-                          <div className="quantity-counter-cart">
-                            <button
-                              className="qty-btn-cart"
-                              onClick={() => decrement(item.id)}
-                            >
-                              –
-                            </button>
-                            <span className="qty-display-cart">{item.quantity}</span>
-                          </div>
+                      {/* Order Header */}
+                      <div className="order-header">
+                        <div className="order-meta">
+                          <span className="order-date">{formatDate(order.date)}</span>
+                          <span className="order-id">
+                            Order #{(order.id?.toString().slice(-6)) || '000000'}
+                          </span>
+                        </div>
+                        <div className="order-status">
+                          {getStatusIcon(order.status)}
+                          <span className={`status-text ${order.status?.toLowerCase() || 'processing'}`}>
+                            {order.status || 'Processing'}
+                          </span>
                         </div>
                       </div>
+
+                      {/* Product Details */}
+                      <div className="order-product">
+                        <img
+                          src={order.product?.image || 'https://via.placeholder.com/100'}
+                          alt={order.product?.name || 'Product Image'}
+                          className="order-product-image"
+                        />
+                        <div className="order-product-details">
+                          <h3 className="order-product-name">{order.product?.name || 'Unnamed Product'}</h3>
+                          <p className="order-product-seller">Seller: {order.product?.seller || 'N/A'}</p>
+                          <p className="order-product-quantity">Quantity: {order.quantity || 1}</p>
+                        </div>
+                      </div>
+
+                      {/* Payment Summary */}
+                      <div className="order-summary">
+                        <div className="order-payment-method">
+                          Payment: {order.paymentMethod || 'N/A'}
+                          {order.paymentReference && (
+                            <span className="payment-reference">(Ref: {order.paymentReference})</span>
+                          )}
+                        </div>
+                        <div className="order-total">
+                          Total: ₱{order.total?.toFixed(2) || '0.00'}
+                        </div>
+                      </div>
+
+                      {/* Delivery Address */}
+                      <div className="order-address">
+                        <strong>Delivery Address:</strong> {order.address || 'N/A'}
+                      </div>
+
                     </div>
                   ))}
                 </div>
               )}
-
-              <div className="underlineText">See more orders</div>
             </div>
+
           </div>
         </div>
       </div>

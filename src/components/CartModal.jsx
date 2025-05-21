@@ -71,24 +71,26 @@ const CartModal = () => {
             Total: ₱{(item.price * item.quantity).toFixed(2)}
           </p>
 
-          <div className="quantity-wrapper-cart">
-            <p className="quantity-label-cart">Quantity:</p>
-            <div className="quantity-counter-cart">
-              <button
-                className="qty-btn-cart"
-                onClick={() => decrement(item.id)}
-              >
-                –
-              </button>
-              <span className="qty-display-cart">{item.quantity}</span>
-              <button
-                className="qty-btn-cart"
-                onClick={() => increment(item.id)}
-              >
-                +
-              </button>
-            </div>
-          </div>
+         <div className="quantity-wrapper-cart">
+  <p className="quantity-label-cart">Quantity</p>
+  <div className="quantity-counter-cart">
+    <button
+      className="qty-btn-cart"
+      onClick={() => decrement(item.id)}
+      disabled={item.quantity <= 1}
+    >
+      –
+    </button>
+    <span className="qty-display-cart">{item.quantity}</span>
+    <button
+      className="qty-btn-cart"
+      onClick={() => increment(item.id)}
+    >
+      +
+    </button>
+  </div>
+</div>
+
 
           <button
             className="buy-now-btn-cart"

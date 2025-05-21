@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/SellerInfo.css';
+import "../style/ContinueAs.css";
 import logoImage from "../assets/Logo.png";
+import PaymentConfirmationModal from '../components/PaymentConfirmationModal.jsx';
 
 const SellerInfo = () => {
   const [formData, setFormData] = useState({
@@ -11,27 +13,64 @@ const SellerInfo = () => {
     phone: ''
   });
 
+  const [gcashQR, setGcashQR] = useState(null);
+  const [gcashQRPreview, setGcashQRPreview] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const navigate = useNavigate();
 
-  // Handle changes in form fields
+  useEffect(() => {
+    return () => {
+      if (gcashQRPreview) {
+        URL.revokeObjectURL(gcashQRPreview);
+      }
+    };
+  }, [gcashQRPreview]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
+  const handleGcashQRChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      if (gcashQRPreview) {
+        URL.revokeObjectURL(gcashQRPreview);
+      }
+
+      setGcashQR(file);
+      const previewURL = URL.createObjectURL(file);
+      setGcashQRPreview(previewURL);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Save data to localStorage
+    if (!gcashQR) {
+      alert("Please upload your GCash QR Code");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Save form data and QR preview to localStorage
     localStorage.setItem('shopName', formData.storeName);
     localStorage.setItem('storeAddress', formData.storeAddress);
     localStorage.setItem('gmail', formData.gmail);
     localStorage.setItem('phone', formData.phone);
+    localStorage.setItem('gcashQR', gcashQRPreview);
 
     console.log('Form Submitted:', formData);
 
-    // Navigate to /myshop with form data
-    navigate('/myshop', { state: { formData } });
+    // Show modal and stop loading
+    setShowPaymentModal(true);
+    setIsSubmitting(false);
+  };
+
+  const closeModalAndNavigate = () => {
+    setShowPaymentModal(false);
+    navigate('/store'); // Direct to "/store" after modal
   };
 
   return (
@@ -93,10 +132,45 @@ const SellerInfo = () => {
               />
             </div>
 
-            <button type="submit" className="storeinfo-submit-btn">Submit</button>
+            <div className="gcash-upload-section">
+              <label htmlFor="gcashQR" className="storelabel">GCash QR Code</label>
+              <input
+                type="file"
+                id="gcashQR"
+                accept="image/*"
+                onChange={handleGcashQRChange}
+                required
+                className="gcash-upload-input"
+              />
+              {gcashQR && (
+                <p className="filename-display">Selected: {gcashQR.name}</p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="storeinfo-submit-btn"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="spinner"></div> Submitting...
+                </>
+              ) : (
+                "Submit"
+              )}
+            </button>
           </form>
         </div>
       </div>
+
+      {/* Payment Confirmation Modal */}
+      {showPaymentModal && (
+        <PaymentConfirmationModal
+          gcashQR={gcashQRPreview}
+          onClose={closeModalAndNavigate}
+        />
+      )}
     </div>
   );
 };

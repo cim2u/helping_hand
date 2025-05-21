@@ -135,7 +135,9 @@ const SignupForm = ({
 
     <p className="signup-login-text">
       Already have an account?{" "}
-      <Link to="/login" className="signup-login-link">Login</Link>
+      <Link to="/login" className="signup-login-link">
+        Login
+      </Link>
     </p>
   </form>
 );
@@ -186,6 +188,7 @@ const SignUp = () => {
     setTimeout(() => {
       localStorage.setItem("isRegistered", "true");
       localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("username", username);  // <-- Save username here
       navigate("/terms");
     }, 1000);
   };
@@ -217,8 +220,14 @@ const SignUp = () => {
 
           <p className="by-creat-text">
             By creating an account, you agree to HelpingHand's{" "}
-            <Link to="/terms" className="text-cyan-300">Terms of Service</Link> and{" "}
-            <Link to="/terms" className="text-cyan-300">Privacy Policy</Link>.
+            <Link to="/terms" className="text-cyan-300">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link to="/terms" className="text-cyan-300">
+              Privacy Policy
+            </Link>
+            .
           </p>
         </div>
 

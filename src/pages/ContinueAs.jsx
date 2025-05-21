@@ -3,7 +3,6 @@ import "../style/ContinueAs.css";
 import logoImage from "../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
 
-
 const ContinueAs = () => {
   const [role, setRole] = useState("");
   const [documentFile, setDocumentFile] = useState(null);
@@ -12,11 +11,6 @@ const ContinueAs = () => {
   const [isStudentSelected, setIsStudentSelected] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileDisplayName, setFileDisplayName] = useState("");
-
-  const [gcashQR, setGcashQR] = useState(null);
-  const [isGcashQRValid, setIsGcashQRValid] = useState(false);
-  const [gcashQRDisplayName, setGcashQRDisplayName] = useState("");
-  const [userUploadedQR, setUserUploadedQR] = useState(null);  // New state for QR preview URL
 
   const navigate = useNavigate();
 
@@ -34,31 +28,6 @@ const ContinueAs = () => {
     }
   };
 
-  // Validate GCash QR file: image only & create preview URL
-  const handleGcashQRChange = (e) => {
-    const file = e.target.files[0];
-    setGcashQR(file);
-
-    if (file && file.type.startsWith("image/")) {
-      setIsGcashQRValid(true);
-      setGcashQRDisplayName(file.name);
-
-      // Create a URL for the uploaded image
-      const imageUrl = URL.createObjectURL(file);
-      setUserUploadedQR(imageUrl);
-
-      // Optional: Save to localStorage for access on other pages
-      // localStorage.setItem("userUploadedQR", imageUrl);
-    } else {
-      setIsGcashQRValid(false);
-      setGcashQRDisplayName("Invalid file type");
-      setUserUploadedQR(null);
-
-      // Optional: Remove from localStorage if invalid
-      // localStorage.removeItem("userUploadedQR");
-    }
-  };
-
   // Submit handler with validation and simulated async
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,10 +42,6 @@ const ContinueAs = () => {
         alert("Please upload a valid document.");
         return;
       }
-      if (!gcashQR || !isGcashQRValid) {
-        alert("Please upload a valid GCash QR Code.");
-        return;
-      }
 
       setIsSubmitting(true);
 
@@ -84,7 +49,7 @@ const ContinueAs = () => {
       setTimeout(() => {
         alert("Files are ready to be submitted to the admin.");
         setIsSubmitting(false);
-        navigate("/store");
+        navigate("/seller-info");
       }, 1500);
 
     } else if (role === "buyer") {
@@ -100,13 +65,6 @@ const ContinueAs = () => {
       setDocumentType("");
       setIsStudentSelected(false);
       setFileDisplayName("");
-      setGcashQR(null);
-      setIsGcashQRValid(false);
-      setGcashQRDisplayName("");
-      setUserUploadedQR(null);
-
-      // Optional: Remove QR from localStorage on cancel
-      // localStorage.removeItem("userUploadedQR");
     }
   };
 
@@ -122,13 +80,6 @@ const ContinueAs = () => {
       setIsFileValid(false);
       setFileDisplayName("");
       setDocumentType("");
-      setGcashQR(null);
-      setIsGcashQRValid(false);
-      setGcashQRDisplayName("");
-      setUserUploadedQR(null);
-
-      // Optional: Remove QR from localStorage on role switch
-      // localStorage.removeItem("userUploadedQR");
     }
   };
 
@@ -221,37 +172,6 @@ const ContinueAs = () => {
                     Invalid file type. Please upload a PDF or image (JPG, PNG, etc.).
                   </span>
                 )}
-
-                {/* GCash QR Upload */}
-                <div className="file-input-row">
-                  <label htmlFor="gcashQRUpload">Upload GCash QR Code:</label>
-                  <input
-                    id="gcashQRUpload"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleGcashQRChange}
-                    required
-                  />
-                </div>
-
-                {/* QR Validation Message */}
-                {!isGcashQRValid && gcashQR && (
-                  <span style={{ color: "red" }}>
-                    Invalid QR Code. Please upload an image (JPG, PNG, etc.).
-                  </span>
-                )}
-
-                {/* Preview uploaded QR (optional) */}
-                {isGcashQRValid && userUploadedQR && (
-                  <div className="qr-preview">
-                    <p>Preview:</p>
-                    <img
-                      src={userUploadedQR}
-                      alt="Uploaded GCash QR"
-                      style={{ width: "150px", height: "150px", objectFit: "contain", border: "1px solid #ccc" }}
-                    />
-                  </div>
-                )}
               </div>
             )}
 
@@ -259,7 +179,7 @@ const ContinueAs = () => {
               type="submit"
               className="e-submit-btn"
               disabled={
-                (role === "student" && (!isFileValid || !isGcashQRValid || !documentType)) || isSubmitting
+                (role === "student" && (!isFileValid || !documentType)) || isSubmitting
               }
             >
               {isSubmitting ? (

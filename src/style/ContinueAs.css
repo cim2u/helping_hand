@@ -74,6 +74,7 @@
     padding: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
     width: 450px;
+    height:auto;
     position: absolute;
     top: 210px; /* Change this value as needed */
     left: 0px; /* Change this value as needed */

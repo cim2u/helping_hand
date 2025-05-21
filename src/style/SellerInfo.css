@@ -151,3 +151,11 @@ left: -24px;
  
 }
 
+.filename-display {
+  font-size: 14px;
+  color: #444;
+  margin-top: 60px;
+  font-style: italic;
+  z-index: 30;
+  position: relative;
+}

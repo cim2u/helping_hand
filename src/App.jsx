@@ -13,6 +13,7 @@ import BuyerDashboard from "./pages/BuyerDashboard.jsx";
 import Subscribe from "./pages/Subscribe.jsx";
 import MyShop from "./pages/MyShop.jsx";
 import SellerInfo from "./pages/SellerInfo.jsx";
+
 import ProductDetail from "./components/ProductGrid.jsx";
 import Settings from "./pages/Settings.jsx";
 import Cart from "./components/CartModal.jsx";
@@ -72,6 +73,7 @@ function App() {
           element={<LoginAsAdmin setIsAdmin={setIsAdmin} />}
         />
         <Route path="/continue-as" element={<ContinueAs />} />
+         <Route path="/seller-info" element={<SellerInfo />} />
         <Route path="/terms" element={<TermsAndPolicy />} />
 
         {/* Home Page */}
@@ -90,7 +92,7 @@ function App() {
         {/* Store Pages */}
         <Route path="/store" element={<MyShop />} />
         <Route path="/store/:storeName" element={<MyShop />} />
-        <Route path="/sellerinfo" element={<SellerInfo />} />
+      
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetail />} />
 
