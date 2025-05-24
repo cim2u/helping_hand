@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import '../style/SellerInfo.css';
 import "../style/ContinueAs.css";
 import logoImage from "../assets/Logo.png";
-import PaymentConfirmationModal from '../components/PaymentConfirmationModal.jsx';
 
 const SellerInfo = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +15,6 @@ const SellerInfo = () => {
   const [gcashQR, setGcashQR] = useState(null);
   const [gcashQRPreview, setGcashQRPreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -63,14 +61,8 @@ const SellerInfo = () => {
 
     console.log('Form Submitted:', formData);
 
-    // Show modal and stop loading
-    setShowPaymentModal(true);
-    setIsSubmitting(false);
-  };
-
-  const closeModalAndNavigate = () => {
-    setShowPaymentModal(false);
-    navigate('/store'); // Direct to "/store" after modal
+    // Navigate directly to /store
+    navigate('/store');
   };
 
   return (
@@ -163,14 +155,6 @@ const SellerInfo = () => {
           </form>
         </div>
       </div>
-
-      {/* Payment Confirmation Modal */}
-      {showPaymentModal && (
-        <PaymentConfirmationModal
-          gcashQR={gcashQRPreview}
-          onClose={closeModalAndNavigate}
-        />
-      )}
     </div>
   );
 };

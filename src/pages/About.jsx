@@ -8,21 +8,18 @@ import helpinghand from "../assets/HELPINGHand.png";
 function About() {
   const navigate = useNavigate();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isFirstVisit, setIsFirstVisit] = useState(true);
-  const [isRegistered, setIsRegistered] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     const hasRegistered = localStorage.getItem("isRegistered");
 
     if (token) {
-      setIsLoggedIn(true);
-      setIsRegistered(true);
+      setLoggedIn(true);
       setIsFirstVisit(false);
     } else {
-      setIsLoggedIn(false);
-      setIsRegistered(false);
+      setLoggedIn(false);
     }
 
     if (!hasRegistered) {
@@ -40,10 +37,10 @@ function About() {
       <div className="about-container">
         <div className="about-header">
           <div className="about-header-1"></div>
-          <div className="logo-container">
+        </div>
+         <div className="logo-container">
             <img src={logo} alt="HelpingHand Logo" className="logo" />
           </div>
-        </div>
 
         <div className="nav-container">
           <nav className="nav-links-h">
@@ -80,11 +77,11 @@ function About() {
               HelpingHand is your go-to platform for affordable, one-of-a-kind finds.
               Whether you're hunting for textbooks, handmade crafts, tech gadgets, or even tutoring sessions,
               our community connects you directly to talented students from CDO offering quality products at budget-friendly prices.
-              For students, it’s the perfect space to turn your skills and unused items into cash while building entrepreneurial experience.
+              For students, it's the perfect space to turn your skills and unused items into cash while building entrepreneurial experience.
               Join HelpingHand today, where students thrive, and everyone scores amazing deals!
             </p>
 
-            {isFirstVisit && !isLoggedIn && !isRegistered && (
+            {!isFirstVisit && !loggedIn && (
               <button className="about-signup-btn" onClick={() => navigate("/signup")}>
                 GET STARTED
               </button>

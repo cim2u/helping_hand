@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../style/AdminDashboard.css";
 import "../style/About.css";
@@ -9,11 +9,74 @@ import {
   faUser,
   faCircleQuestion,
   faRightFromBracket,
+  faMoneyBillTransfer,
+  faCheck,
+  faXmark,
+  faClock,
+  faUserCheck 
 } from "@fortawesome/free-solid-svg-icons";
+
+// Import Chart.js components
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+  ArcElement
+} from 'chart.js';
+import { Line, Bar, Pie } from 'react-chartjs-2';
+
+// Register Chart.js components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+  ArcElement
+);
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // State for pending payments
+  const [pendingPayments, setPendingPayments] = useState([
+    {
+      id: 1,
+      user: "Juan Dela Cruz",
+      amount: 1500,
+      reference: "GCASH123456789",
+      date: "2023-05-15",
+      status: "pending"
+    },
+    {
+      id: 2,
+      user: "Maria Santos",
+      amount: 2500,
+      reference: "GCASH987654321",
+      date: "2023-05-16",
+      status: "pending"
+    },
+    {
+      id: 3,
+      user: "Pedro Bautista",
+      amount: 1800,
+      reference: "GCASH567891234",
+      date: "2023-05-17",
+      status: "pending"
+    }
+  ]);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -22,8 +85,232 @@ const AdminDashboard = () => {
       localStorage.removeItem("user");
       localStorage.removeItem("loggedIn");
       localStorage.removeItem("isAdmin");
-
       navigate("/admin-login");
+    }
+  };
+
+  const handlePaymentAction = (id, action) => {
+    setPendingPayments(pendingPayments.map(payment => {
+      if (payment.id === id) {
+        return { ...payment, status: action };
+      }
+      return payment;
+    }));
+    
+    // In a real app, you would also make an API call here to update the payment status
+    console.log(`Payment ${id} ${action}`);
+  };
+
+  // Filter pending payments
+  const activePendingPayments = pendingPayments.filter(payment => payment.status === "pending");
+
+  // Monthly Earnings - Animated Line Chart
+  const monthlyEarningsData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    datasets: [{
+      label: 'Earnings (₱)',
+      data: [12000, 19000, 15000, 22000, 18000, 25000, 21000, 28000, 24000, 30000, 27000, 35000],
+      borderColor: '#4bc0c0',
+      backgroundColor: 'rgba(75, 192, 192, 0.5)',
+      borderWidth: 3,
+      tension: 0.4,
+      fill: true,
+      pointBackgroundColor: '#fff',
+      pointBorderColor: '#4bc0c0',
+      pointBorderWidth: 2,
+      pointRadius: 5,
+      pointHoverRadius: 7
+    }]
+  };
+
+  // Yearly Earnings - Animated Bar Chart
+  const yearlyEarningsData = {
+    labels: ['2019', '2020', '2021', '2022', '2023'],
+    datasets: [{
+      label: 'Yearly Earnings (₱)',
+      data: [150000, 180000, 210000, 240000, 300000],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.7)',
+        'rgba(54, 162, 235, 0.7)',
+        'rgba(255, 206, 86, 0.7)',
+        'rgba(75, 192, 192, 0.7)',
+        'rgba(153, 102, 255, 0.7)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)'
+      ],
+      borderWidth: 2,
+      borderRadius: 6,
+      borderSkipped: false,
+    }]
+  };
+
+  // National Sales - Animated Pie Chart
+  const nationalSalesData = {
+    labels: ['Luzon', 'Visayas', 'Mindanao'],
+    datasets: [{
+      label: 'Sales Distribution',
+      data: [55, 25, 20],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.7)',
+        'rgba(54, 162, 235, 0.7)',
+        'rgba(255, 206, 86, 0.7)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)'
+      ],
+      borderWidth: 2,
+      hoverOffset: 15
+    }]
+  };
+
+  // Enhanced animation options for all charts
+  const chartAnimationOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: '#333',
+          font: {
+            size: 12,
+          },
+        },
+      },
+      tooltip: {
+        enabled: true,
+        mode: 'index',
+        intersect: false,
+      }
+    },
+    animation: {
+      duration: 2000,
+      easing: 'easeOutQuart',
+      animateScale: true,
+      animateRotate: true
+    },
+    transitions: {
+      show: {
+        animations: {
+          x: {
+            from: 0
+          },
+          y: {
+            from: 0
+          }
+        }
+      },
+      hide: {
+        animations: {
+          x: {
+            to: 0
+          },
+          y: {
+            to: 0
+          }
+        }
+      }
+    }
+  };
+
+  // Line Chart with custom animations
+  const lineChartOptions = {
+    ...chartAnimationOptions,
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: '#666',
+        },
+      },
+      y: {
+        grid: {
+          color: 'rgba(0, 0, 0, 0.05)',
+        },
+        ticks: {
+          color: '#666',
+          callback: function(value) {
+            return '₱' + value.toLocaleString();
+          },
+        },
+      },
+    },
+    maintainAspectRatio: false,
+    animation: {
+      ...chartAnimationOptions.animation,
+      delay: (context) => {
+        if (context.type === 'data' && context.mode === 'default') {
+          return context.dataIndex * 100;
+        }
+        return 0;
+      },
+    }
+  };
+
+  // Bar Chart with custom animations
+  const barChartOptions = {
+    ...chartAnimationOptions,
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: '#666',
+        },
+      },
+      y: {
+        grid: {
+          color: 'rgba(0, 0, 0, 0.05)',
+        },
+        ticks: {
+          color: '#666',
+          callback: function(value) {
+            return '₱' + value.toLocaleString();
+          },
+        },
+      },
+    },
+    maintainAspectRatio: false,
+    animation: {
+      ...chartAnimationOptions.animation,
+      delay: (context) => {
+        if (context.type === 'data' && context.mode === 'default') {
+          return context.dataIndex * 200;
+        }
+        return 0;
+      },
+    }
+  };
+
+  // Pie Chart with custom animations
+  const pieChartOptions = {
+    ...chartAnimationOptions,
+    plugins: {
+      ...chartAnimationOptions.plugins,
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return `${context.label}: ${context.raw}%`;
+          }
+        }
+      }
+    },
+    maintainAspectRatio: false,
+    animation: {
+      ...chartAnimationOptions.animation,
+      animateRotate: true,
+      animateScale: true,
+      duration: 2000,
+      easing: 'easeOutBounce'
     }
   };
 
@@ -38,7 +325,6 @@ const AdminDashboard = () => {
         <h2 className="titleAdmin">DASHBOARD</h2>
       </header>
 
-      
       <div className="image-section-2">
         <img
           src="https://i.imgur.com/GT5CDSQ.png"
@@ -79,6 +365,27 @@ const AdminDashboard = () => {
           </Link>
 
           <Link
+            to="/admin/payments"
+            className={`menuItemAdmin ${
+              location.pathname === "/admin/payments" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faMoneyBillTransfer} className="iconAdmin" />
+            <span className="menuTextAdmin">Pending Payments</span>
+          </Link>
+          <Link
+  to="/admin/verify-seller"
+  className={`menuItemAdmin ${
+    location.pathname === "/admin/verify-seller" ? "active" : ""
+  }`}
+>
+  <FontAwesomeIcon icon={faUserCheck} className="iconAdmin" />
+  <span className="menuTextAdmin">Verify Seller</span>
+</Link>
+
+
+
+          <Link
             to="/admin/help-center"
             className={`menuItemAdmin ${
               location.pathname === "/admin/help-center" ? "active" : ""
@@ -88,6 +395,7 @@ const AdminDashboard = () => {
             <span className="menuTextAdmin">Help Center</span>
           </Link>
 
+        
           {/* Logout */}
           <div
             className="Logout-menuItemAdmin"
@@ -112,29 +420,83 @@ const AdminDashboard = () => {
 
       {/* Main Content */}
       <main className="mainContentAdmin" tabIndex={-1}>
+        {/* Pending Payments Section */}
+        <section className="cardAdmin pending-payments" aria-labelledby="pending-payments-title">
+         
+          <div className="payments-container">
+            {activePendingPayments.length > 0 ? (
+              <table className="payments-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Amount</th>
+                    <th>GCash Reference</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {activePendingPayments.map(payment => (
+                    <tr key={payment.id}>
+                      <td>{payment.user}</td>
+                      <td>₱{payment.amount.toLocaleString()}</td>
+                      <td>{payment.reference}</td>
+                      <td>{payment.date}</td>
+                      <td className="actions">
+                        <button 
+                          onClick={() => handlePaymentAction(payment.id, "approved")}
+                          className="approve-btn"
+                          aria-label={`Approve payment from ${payment.user}`}
+                        >
+                          <FontAwesomeIcon icon={faCheck} /> Approve
+                        </button>
+                        <button 
+                          onClick={() => handlePaymentAction(payment.id, "rejected")}
+                          className="reject-btn"
+                          aria-label={`Reject payment from ${payment.user}`}
+                        >
+                          <FontAwesomeIcon icon={faXmark} /> Reject
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="no-payments">No pending payments at this time.</p>
+            )}
+          </div>
+        </section>
+
+        {/* Monthly Earnings - Animated Line Chart */}
         <section className="cardAdmin" aria-labelledby="monthly-earnings-title">
           <h3 id="monthly-earnings-title" className="cardTitleAdmin">
             Monthly Earnings
           </h3>
-          <div className="cardBoxAdmin"></div>
+          <div className="chart-container-3d">
+            <Line 
+              data={monthlyEarningsData} 
+              options={lineChartOptions}
+              redraw
+            />
+          </div>
         </section>
 
-        <section
-          className="cardAdmin rightAdmin"
-          aria-labelledby="yearly-earnings-title"
-        >
+        {/* Yearly Earnings - Animated Bar Chart */}
+        <section className="cardAdmin rightAdmin" aria-labelledby="yearly-earnings-title">
           <h3 id="yearly-earnings-title" className="cardTitleAdmin">
             Yearly Earnings
           </h3>
-          <div className="cardBoxAdmin"></div>
+          <div className="chart-container-3d">
+            <Bar 
+              data={yearlyEarningsData} 
+              options={barChartOptions}
+              redraw
+            />
+          </div>
         </section>
 
-        <section className="salesAdmin" aria-labelledby="national-sales-title">
-          <h3 id="national-sales-title" className="cardTitleAdmin">
-            National Sales
-          </h3>
-          <div className="salesBoxAdmin"></div>
-        </section>
+        
       </main>
     </div>
   );

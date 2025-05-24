@@ -5,7 +5,10 @@ import {
   faHouse,
   faUser,
   faCircleQuestion,
-  faRightFromBracket
+  faRightFromBracket,
+  faMoneyBillTransfer,
+  faUserCheck,
+  faClock
 } from '@fortawesome/free-solid-svg-icons';
 
 import '../style/AdminDashboard.css';
@@ -65,39 +68,76 @@ const AdminHelpCenter = () => {
         </div>
 
         {/* Navigation Menu */}
-        <nav className="menuAdmin">
+        <nav className="menuAdmin" role="navigation" aria-label="Admin menu">
           <Link
-                     to="/admin/dashboard"
-                     className={`menuItemAdmin ${
-                       location.pathname === "/admin/dashboard" ? "active" : ""
-                     }`}
-                   >
-                     <FontAwesomeIcon icon={faHouse} className="iconAdmin" />
-                     <span className="menuTextAdmin">Dashboard</span>
-                   </Link>
-         
-                   <Link
-                     to="/admin/user-management"
-                     className={`menuItemAdmin ${
-                       location.pathname === "/admin/user-management" ? "active" : ""
-                     }`}
-                   >
-                     <FontAwesomeIcon icon={faUser} className="iconAdmin" />
-                     <span className="menuTextAdmin">User Management</span>
-                   </Link>
-         
-                   <Link
-                     to="/admin/help-center"
-                     className={`menuItemAdmin ${
-                       location.pathname === "/admin/help-center" ? "active" : ""
-                     }`}
-                   >
-                     <FontAwesomeIcon icon={faCircleQuestion} className="iconAdmin" />
-                     <span className="menuTextAdmin">Help Center</span>
-                   </Link>
+            to="/admin/dashboard"
+            className={`menuItemAdmin ${
+              location.pathname === "/admin/dashboard" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faHouse} className="iconAdmin" />
+            <span className="menuTextAdmin">Dashboard</span>
+          </Link>
+
+          <Link
+            to="/admin/user-management"
+            className={`menuItemAdmin ${
+              location.pathname === "/admin/user-management" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faUser} className="iconAdmin" />
+            <span className="menuTextAdmin">User Management</span>
+          </Link>
+
+          <Link
+            to="/admin/payments"
+            className={`menuItemAdmin ${
+              location.pathname === "/admin/payments" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faMoneyBillTransfer} className="iconAdmin" />
+            <span className="menuTextAdmin">Pending Payments</span>
+          </Link>
+          
+          <Link
+            to="/admin/verify-seller"
+            className={`menuItemAdmin ${
+              location.pathname === "/admin/verify-seller" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faUserCheck} className="iconAdmin" />
+            <span className="menuTextAdmin">Verify Seller</span>
+          </Link>
+
+          
+
+          <Link
+            to="/admin/help-center"
+            className={`menuItemAdmin ${
+              location.pathname === "/admin/help-center" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faCircleQuestion} className="iconAdmin" />
+            <span className="menuTextAdmin">Help Center</span>
+          </Link>
+
+          
+
           {/* Logout */}
-          <div className="Logout-menuItemAdmin">
-            <div onClick={handleLogout} className="menuItemAdmin" style={{ cursor: "pointer" }}>
+          <div
+            className="Logout-menuItemAdmin"
+            onClick={handleLogout}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                handleLogout(e);
+              }
+            }}
+            style={{ cursor: "pointer" }}
+            aria-label="Log Out"
+          >
+            <div className="menuItemAdmin">
               <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
               <span className="menuTextAdmin">Log Out</span>
             </div>
@@ -112,14 +152,14 @@ const AdminHelpCenter = () => {
 
         <div className="rectangle124HelpCenter">
           <p className="reviewTextHelpCenter">
-            “This product really helped me organize my tasks efficiently. Highly recommended!”
+            "This product really helped me organize my tasks efficiently. Highly recommended!"
           </p>
           <p className="reviewAuthorHelpCenter">– Jane Doe</p>
         </div>
 
         <div className="rectangle125HelpCenter">
           <p className="reviewTextHelpCenter">
-            “Customer support was prompt and very helpful. Great experience overall.”
+            "Customer support was prompt and very helpful. Great experience overall."
           </p>
           <p className="reviewAuthorHelpCenter">– John Smith</p>
         </div>

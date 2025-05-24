@@ -542,3 +542,42 @@ button {
 .deleteBtn:hover {
   background-color: #c0392b;
 }
+
+/* Add this to your About.css file or create a new CSS file for the logo */
+
+.logo-container {
+  display: flex;
+  left: 73px !important;
+  top:10px !important;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  padding: 1rem; /* Adds some space around the logo */
+  margin: 0 auto; /* Centers the container itself if needed */
+  max-width: 200px; /* Adjust based on your design needs */
+}
+
+.logo {
+  width: 100%; /* Makes the image responsive to container size */
+  height: auto; /* Maintains aspect ratio */
+  max-height: 80px; /* Limits maximum height */
+  object-fit: contain; /* Ensures entire logo is visible */
+  transition: transform 0.3s ease; /* Adds smooth hover effect */
+}
+
+/* Optional hover effect */
+.logo:hover {
+  transform: scale(1.05); /* Slightly enlarges on hover */
+  cursor: pointer; /* Changes cursor to indicate interactivity */
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .logo-container {
+    max-width: 150px;
+    padding: 0.5rem;
+  }
+  
+  .logo {
+    max-height: 60px;
+  }
+}

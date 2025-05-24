@@ -55,6 +55,12 @@ const Shop = () => {
     }
   };
 
+
+  
+  const handleBackHome = () => {
+    navigate("/home");
+  };
+
   // Close sidebar on outside click
   useEffect(() => {
     const handleClickOutsideSidebar = (event) => {
@@ -106,24 +112,13 @@ const Shop = () => {
           </div>
 
           
-            <div className="h-subscribe-button" onClick={handleSubscribeClick}>
-              SUBSCRIBE
-            </div>
+     <div className="back-button-container">
+                <button className="home-btn-cart" onClick={handleBackHome}>BACK TO HOME</button>
+              </div>
        
         
 
-          <div className="icon-container">
-            <FontAwesomeIcon icon={faBars} className="icon" onClick={toggleSidebar} />
-            <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
-            <Link to="/cart">
-              <FontAwesomeIcon icon={faCartShopping} className="icon" />
-            </Link>
-            {userRole !== "buyer" && (
-              <Link to="/store">
-                <FontAwesomeIcon icon={faStore} className="icon" />
-              </Link>
-            )}
-          </div>
+       
         </header>
 
         <Profile
@@ -133,24 +128,7 @@ const Shop = () => {
           handleLogoutClick={handleLogoutClick}
         />
 
-        {isSidebarOpen && (
-          <aside className="sidebar" ref={sidebarRef}>
-            <div className="sidebar-header">
-              <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={toggleSidebar} />
-            </div>
-            <ul className="sidebar-menu">
-              <li onClick={() => navigate('/about')}>ABOUT</li>
-              <li onClick={() => navigate('/home')}>HOME</li>
-              <li onClick={() => navigate('/support')}>SUPPORT</li>
-              {isRegistered && (
-                <>
-                  <li onClick={() => navigate('/shop')}>SHOPS</li>
-                  <li onClick={() => navigate('/settings')}>SETTINGS</li>
-                </>
-              )}
-            </ul>
-          </aside>
-        )}
+       
 
         <div className="shop-rectangle98"></div>
         <div className="shop-shops">SHOPS</div>
@@ -176,44 +154,7 @@ const Shop = () => {
           <div className="shop-icon"></div>
         </div>
 
-        {isProfileVisible && (
-          <div className="profileWrapper" ref={profileRef}>
-            <div className="profileCard">
-              <div className="profileBackground">
-                <div className="profilePicture" />
-                <div className="profileLabel">Profile</div>
-                <div className="profileCircle">
-                  <div className="statusPrimary">
-                    <div className="checkPrimary" />
-                  </div>
-                </div>
-                <div className="profileBanner" />
-                <div className="profileBanner_1" />
-                <div className="profileRec" />
-
-                <div className="profileLinkOr" onClick={() => navigate('/order')}>
-                  <FontAwesomeIcon icon={faBagShopping} className="iconStyleProfile" /> Order
-                </div>
-
-                <div className="profileLinkCar" onClick={() => navigate('/cart')}>
-                  <FontAwesomeIcon icon={faCartPlus} className="iconStyleProfile" /> Cart
-                </div>
-
-                <div className="profileSellerLabel">Seller</div>
-                <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
-                <div className="profileOrdersTitle">Orders & Purchases</div>
-                <div className="profileInfoTitle">Personal Information</div>
-
-                <div className="profileEmail">Name: Sissy Shey</div>
-                <div className="profileEmail">Email: shelayamba@gmail.com</div>
-                <div className="profilePhone">Phone Number: 63+ 9771234545</div>
-                <div className="profileAddress">Address: Sto. Nino, Lapasan, CDO</div>
-
-                <div className="profileLogout1" onClick={handleLogoutClick}>Log out</div>
-              </div>
-            </div>
-          </div>
-        )}
+       
       </div>
     </div>
   );

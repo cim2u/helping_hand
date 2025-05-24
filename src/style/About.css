@@ -23,7 +23,7 @@
   background-color: rgba(126, 53, 80, 1);
   border-bottom: 2px solid rgba(30, 30, 30, 0.65);
   display: flex;
-  z-index: 3;
+  z-index: 12;
   align-items: left;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -36,6 +36,11 @@
 }
 
 
+
+
+
+
+
 /* Navigation Section */
 .nav-container {
   width: 100%;
@@ -44,7 +49,7 @@
   position: absolute; /* Corrected spelling */
   top: 44px; /* Align the nav at the top of the page */
   left: 605px; /* Align to the left side */
-  z-index: 30; /* Make sure it's on top of other content */
+  z-index: 2330; /* Make sure it's on top of other content */
 }
 
 .nav-links-h {
@@ -166,6 +171,7 @@
   
 }
 
+
 .about-image {
   width: 370px;
   max-width: 374px;
@@ -177,7 +183,7 @@
   margin-top:23px;
   object-fit: none;
   margin-right:103px;
-  
+
   
 }
 
@@ -185,8 +191,9 @@
 .image-section-2 {
   position: absolute;
   top: 33px;
-  z-index: 9;
+  z-index: 929 !important;
   left: 23px!important;
+
 }
 
 .about-image-1 {
@@ -194,15 +201,18 @@
   height: 80px;
   position: fixed;
   top: 10px;
-  z-index: 24;
+  z-index: 42;
   left: 0;
   opacity: 100%;
   border: 1px solid rgba(254, 254, 254, 1);
   object-fit: cover;
+ 
+
 }
 
 .about-image-2 {
   width: 44px;
+  position:fixed;
   height: 44px;
   border-radius: 50%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);

@@ -3,14 +3,26 @@
   top: 26px; /* Adjust as needed */
   left: 81px; /* Center horizontally */
   
-  z-index: 150; /* Ensure it stays on top */
+  z-index: 150!important; /* Ensure it stays on top */
 }
 
 /* Logo.module.css */
 .logo {
+  position:fixed;
 width: 160px; /* Default width */
 height: auto;
-z-index: 25;
+left: -570px !important;
+top:15px;
+z-index: 225!important;
+  pointer-events: none;
+}
+
+/* Explicitly reset any hover states */
+.logo:hover {
+  transform: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+ 
 }
 
 .logoLarge {

@@ -1,7 +1,8 @@
 .helping-hand-icon {
   width: 523px; /* Adjust the size */
   height: auto;
-  position: absolute;
-  top: 20px; /* Move the image below the text */
+  position: sticky;
+  top: 20px; 
   left: 81px;
+  z-index: 234 !important;
 }

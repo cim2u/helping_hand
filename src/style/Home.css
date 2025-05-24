@@ -275,7 +275,7 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
 
 /* Sidebar Styles */
 .sidebar {
-  position: fixed;
+  position: fixed!important;
   top: 0;
   left: 0;
   width: 250px;
@@ -625,7 +625,7 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   width: 150px;
   height: 39px;
   left: 135px!important;
-  top: 251px!important;
+  margin-top: -51px!important;
   font-family: 'Rowdies', sans-serif;
   font-weight: 700;
   font-size: 28px;

@@ -7,6 +7,9 @@ import {
   faCircleQuestion,
   faRightFromBracket,
   faChevronDown,
+  faMoneyBillTransfer,
+  faClock,
+  faUserCheck 
 } from '@fortawesome/free-solid-svg-icons';
 
 import '../style/AdminDashboard.css';
@@ -95,7 +98,8 @@ const AdminUserManagement = () => {
       {/* Header */}
       <header className="about-header">
         <div className="about-header-1"></div>
-        <div className="logo-container">
+        
+        <div className="logo-container-2">
           <img src={logo} alt="HelpingHand Logo" className="logo" />
         </div>
         <h2 className="titleAdmin">USER MANAGEMENT</h2>
@@ -117,29 +121,57 @@ const AdminUserManagement = () => {
         </div>
 
         <nav className="menuAdmin">
-          <Link
-            to="/admin/dashboard"
-            className={`menuItemAdmin ${location.pathname === '/admin/dashboard' ? 'active' : ''}`}
+           <Link
+                      to="/admin/dashboard"
+                      className={`menuItemAdmin ${
+                        location.pathname === "/admin/dashboard" ? "active" : ""
+                      }`}
+                    >
+                      <FontAwesomeIcon icon={faHouse} className="iconAdmin" />
+                      <span className="menuTextAdmin">Dashboard</span>
+                    </Link>
+          
+                    <Link
+                      to="/admin/user-management"
+                      className={`menuItemAdmin ${
+                        location.pathname === "/admin/user-management" ? "active" : ""
+                      }`}
+                    >
+                      <FontAwesomeIcon icon={faUser} className="iconAdmin" />
+                      <span className="menuTextAdmin">User Management</span>
+                    </Link>
+          
+                    <Link
+                      to="/admin/payments"
+                      className={`menuItemAdmin ${
+                        location.pathname === "/admin/payments" ? "active" : ""
+                      }`}
+                    >
+                      <FontAwesomeIcon icon={faMoneyBillTransfer} className="iconAdmin" />
+                      <span className="menuTextAdmin">Pending Payments</span>
+                    </Link>
+                    <Link
+            to="/admin/verify-seller"
+            className={`menuItemAdmin ${
+              location.pathname === "/admin/verify-seller" ? "active" : ""
+            }`}
           >
-            <FontAwesomeIcon icon={faHouse} className="iconAdmin" />
-            <span className="menuTextAdmin">Dashboard</span>
+            <FontAwesomeIcon icon={faUserCheck} className="iconAdmin" />
+            <span className="menuTextAdmin">Verify Seller</span>
           </Link>
-
-          <Link
-            to="/admin/user-management"
-            className={`menuItemAdmin ${location.pathname === '/admin/user-management' ? 'active' : ''}`}
-          >
-            <FontAwesomeIcon icon={faUser} className="iconAdmin" />
-            <span className="menuTextAdmin">User Management</span>
-          </Link>
-
-          <Link
-            to="/admin/help-center"
-            className={`menuItemAdmin ${location.pathname === '/admin/help-center' ? 'active' : ''}`}
-          >
-            <FontAwesomeIcon icon={faCircleQuestion} className="iconAdmin" />
-            <span className="menuTextAdmin">Help Center</span>
-          </Link>
+          
+          
+         
+          
+                    <Link
+                      to="/admin/help-center"
+                      className={`menuItemAdmin ${
+                        location.pathname === "/admin/help-center" ? "active" : ""
+                      }`}
+                    >
+                      <FontAwesomeIcon icon={faCircleQuestion} className="iconAdmin" />
+                      <span className="menuTextAdmin">Help Center</span>
+                    </Link>
 
           <div className="Logout-menuItemAdmin">
             <div onClick={handleLogout} className="menuItemAdmin" style={{ cursor: 'pointer' }}>
