@@ -295,7 +295,7 @@ const handleLogoutClick = () => {
         </div>
 
         <div className="buttons-container">
-          { isRegistered &&  !loggedIn &&(
+          { !isRegistered &&(
             <>
               <button className="login-button" onClick={handleLoginClick}>LOGIN</button>
               <button className="signup-button" onClick={handleSignUpClick}>SIGN UP</button>
