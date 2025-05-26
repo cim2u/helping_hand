@@ -58,12 +58,13 @@ const Home = () => {
       setTheme(localStorage.getItem('theme') || 'default');
     }, []);
     
-     // Handle adding a product to the cart (increment quantity)
-  const increment = (productId) => {
-    setCartItems(prevItems => prevItems.map(item =>
-      item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-    ));
-  };
+ const increment = (productId) => {
+  setCartItems(prevItems =>
+    prevItems.map(item =>
+      item.id === productId ? { ...item, quantity: item.quantity + 2 } : item
+    )
+  );
+};
 
 const { addToCart, cartItems } = useCart();
 

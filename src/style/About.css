@@ -17,7 +17,7 @@
 
 /* Header */
 .about-header {
-  width: 1560px; /* Full width */
+  width: 100%; /* Full width */
   height: 104px;
   padding: 48px 2rem;
   background-color: rgba(126, 53, 80, 1);
