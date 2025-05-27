@@ -37,22 +37,23 @@ const ContinueAs = () => {
       return;
     }
 
+    // Save the role to localStorage
     if (role === "student") {
       if (!documentFile || !isFileValid) {
         alert("Please upload a valid document.");
         return;
       }
 
+      localStorage.setItem("userRole", "seller"); // student = seller
       setIsSubmitting(true);
 
-      // Simulate API call or form submission delay
       setTimeout(() => {
         alert("Files are ready to be submitted to the admin.");
         setIsSubmitting(false);
         navigate("/seller-info");
       }, 1500);
-
     } else if (role === "buyer") {
+      localStorage.setItem("userRole", "buyer");
       navigate("/home");
     }
   };
@@ -74,7 +75,6 @@ const ContinueAs = () => {
     if (selectedRole === "student") {
       setIsStudentSelected(true);
     } else {
-      // Reset student-specific fields when switching to buyer
       setIsStudentSelected(false);
       setDocumentFile(null);
       setIsFileValid(false);
@@ -140,7 +140,6 @@ const ContinueAs = () => {
 
             {role === "student" && isStudentSelected && (
               <div className="file-upload">
-                {/* Document Type Select */}
                 <label>
                   Select Document Type:
                   <select
@@ -154,7 +153,6 @@ const ContinueAs = () => {
                   </select>
                 </label>
 
-                {/* Document Upload */}
                 <div className="file-input-row">
                   <label htmlFor="fileUpload">Upload a File:</label>
                   <input
@@ -166,7 +164,6 @@ const ContinueAs = () => {
                   />
                 </div>
 
-                {/* File Validation Message */}
                 {!isFileValid && documentFile && (
                   <span style={{ color: "red" }}>
                     Invalid file type. Please upload a PDF or image (JPG, PNG, etc.).

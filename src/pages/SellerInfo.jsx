@@ -16,7 +16,14 @@ const SellerInfo = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => {
+      const newData = { ...prev, [name]: value };
+      if (name === "storeAddress") {
+        localStorage.setItem("storeAddress", value); // Save address to localStorage immediately if you want live updates
+      }
+      return newData;
+    });
   };
 
   const handleSubmit = (e) => {
@@ -31,8 +38,10 @@ const SellerInfo = () => {
     localStorage.setItem('phone', formData.phone);
 
     console.log('Form Submitted:', formData);
+    localStorage.setItem('profilePhone', formData.phone);
 
-    // Navigate directly to /store
+
+    // Navigate to /store after submit
     navigate('/store');
   };
 

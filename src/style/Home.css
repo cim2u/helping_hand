@@ -536,36 +536,32 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   line-height: 18px; /* Ensures the text aligns with the box height */
   color:#7E3550!important; /* Sets the color of the text */
 }
-
-
 .profileCard {
-  position: relative!important;
+  position: relative !important;
   width: 415px !important;
-  height: 790px !important;
+  height: 15px !important; /* Shorter height */
   left: 0;
   top: 0;
-  background: #FFFFFF;
+  background: #c52222;
   border: 2px solid #7E3550;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   overflow-y: scroll; /* Enable vertical scroll */
   overflow-x: hidden;
-  padding: 1px; /* Optional: adds spacing inside */
+  padding: 1px;
+  
+  /* Hide scrollbar in Firefox */
+  scrollbar-width: none;
 }
 
-/* Hide scrollbar but keep scroll functionality */
+/* Hide scrollbar in WebKit (Chrome, Edge, Safari) */
 .profileCard::-webkit-scrollbar {
-  width: 0px; /* Hides the scrollbar */
-  height: 0px; /* Hides the scrollbar */
+  width: 0px;
+  height: 23px!important;
 }
 
 .profileCard::-webkit-scrollbar-thumb {
-  background: transparent; /* Hide the thumb */
-}
-
-/* Optional: For Firefox (using scrollbar-width) */
-.profileCard {
-  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  background: transparent;
 }
 
 .profileBackground {
@@ -594,13 +590,14 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
   box-sizing: border-box;
   position: absolute;
   width: 378px;
-  height: 846px;
+  height: 846px!important;
   left: 16px;
   top: 25px !important;
   z-index:-2px;
-  background: #fefefe00;
+  background: #f11515;
   border: 2px solid #7E3550;
   border-radius: 8px;
+  margin-bottom: -234px!important ;
 }
 
 

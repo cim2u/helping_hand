@@ -55,6 +55,9 @@ const SignupForm = ({
       />
     </div>
 
+    
+
+
     <div className="signup-form-group">
       <label htmlFor="username">Username</label>
       <input
@@ -94,6 +97,8 @@ const SignupForm = ({
         )}
       </div>
     </div>
+
+    
 
     <div className="signup-form-group">
       <label htmlFor="confirmPassword">Confirm Password</label>
@@ -152,6 +157,11 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
+
+localStorage.setItem('profileName', formData.username); // match profileModal
+localStorage.setItem('profileEmail', formData.email);
+
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -166,6 +176,7 @@ const SignUp = () => {
     }));
   };
 
+   localStorage.setItem("sellerUsername", formData.username);
   const handleSubmit = (event) => {
     event.preventDefault();
 

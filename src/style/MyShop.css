@@ -322,6 +322,8 @@
   flex-wrap: wrap;
 
 }
+
+
 .shop-owner-name {
   font-family: 'Rowdies', sans-serif;
   font-weight: 700 !important;
@@ -335,11 +337,12 @@
 
   position: absolute;
   top: 33px;
-  left: 173px;
+  left: 233px;
+    text-align: left !important;
 
-  display: inline-block; /* Ensures it sizes to content */
-  width: auto; /* Important: allows width to adjust with content */
-  height: 45px; /* Allow content to grow */
+  display: inline-block; 
+  width: auto;
+  height: 45px; 
 }
 
 .shop-owner-name::after {

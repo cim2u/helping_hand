@@ -34,6 +34,7 @@ const Home = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isProfileVisible, setIsProfileVisible] = useState(false);
   const [products, setProducts] = useState([]);
+  
   const [userRole, setUserRole] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false); // Modal visibility state
   const [selectedProduct, setSelectedProduct] = useState(null); // Selected product for the modal
@@ -52,6 +53,11 @@ const Home = () => {
   ]);
     const paymentModalRef = useRef();
   
+
+  useEffect(() => {
+    const role = localStorage.getItem("userRole");
+    setUserRole(role);
+  }, []);
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'default');
 
     useEffect(() => {
@@ -116,6 +122,7 @@ const handleAddToCart = (product) => {
     ));
   };
 
+  
 
   // Inside your component
 useEffect(() => {
@@ -241,6 +248,8 @@ const handleLogoutClick = () => {
   navigate("/about");           // Go back to About or Login
 };
 
+
+
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleProfile = () => setIsProfileVisible(!isProfileVisible);
 
@@ -273,19 +282,19 @@ const handleLogoutClick = () => {
           <FontAwesomeIcon icon={faBars} className="icon" onClick={toggleSidebar} />
           
           
-    {loggedIn &&  isRegistered && (
+    {  isRegistered && (
   <>
     <FontAwesomeIcon icon={faUser} className="icon" onClick={toggleProfile} />
     <Link to="/cart">
       <FontAwesomeIcon icon={faCartShopping} className="icon" />
     </Link>
-    {userRole === "buyer" ? (
-      <></> // Nothing for buyers here if cart icon is already above
-    ) : (
-      <Link to="/store">
-        <FontAwesomeIcon icon={faStore} className="icon" />
-      </Link>
-    )}
+   
+   {userRole === "buyer" ? <></> : (
+  <Link to="/store">
+    <FontAwesomeIcon icon={faStore} className="icon" />
+  </Link>
+)}
+
   </>
 )}
 
@@ -302,7 +311,7 @@ const handleLogoutClick = () => {
             </>
           )}
 
-          {loggedIn && isRegistered && !isSubscribed && (
+          {isRegistered && !isSubscribed && (
             <button className="h-subscribe-button" onClick={handleSubscribeClick}>SUBSCRIBE</button>
           )}
         </div>
@@ -317,7 +326,7 @@ const handleLogoutClick = () => {
   <li style={{ cursor: 'pointer' }} onClick={() => navigate('/about')}>ABOUT</li>
   <li style={{ cursor: 'pointer' }} onClick={() => navigate('/home')}>HOME</li>
   <li style={{ cursor: 'pointer' }} onClick={() => navigate('/support')}>SUPPORT</li>
-  {isRegistered && loggedIn && (
+  {isRegistered && (
     <>
       <li style={{ cursor: 'pointer' }} onClick={() => navigate('/shop')}>SHOPS</li>
       <li style={{ cursor: 'pointer' }} onClick={() => navigate('/settings')}>SETTINGS</li>
@@ -334,7 +343,7 @@ const handleLogoutClick = () => {
 
 
         <div className="banner">
-          { loggedIn && isRegistered && <h1 className="banner-text">WELCOME TO HELPING HAND!</h1>}
+          {  isRegistered && <h1 className="banner-text">WELCOME TO HELPING HAND!</h1>}
         </div>
 
    

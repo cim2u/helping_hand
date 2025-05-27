@@ -17,8 +17,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../assets/Logo.png";
 import Profile from '../components/ProfileModal';
-import { useCart } from '../CartContext'; // Adjust path if necessary
-
 import { Link } from 'react-router-dom';
 import PostProduct from '../components/PostProduct.jsx'; // Import the PostProduct component
 
@@ -28,7 +26,6 @@ const MyShop = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { state } = location;
-  
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Or false depending on logic
     const [isRegistered, setIsRegistered] = useState(false);
  const paymentModalRef = useRef();
@@ -46,6 +43,17 @@ const MyShop = () => {
 
   const fileInputRef = useRef(null);
 
+  
+    // Profile data state loaded from localStorage or fallback defaults
+    const [profileData, setProfileData] = useState({
+       name: localStorage.getItem('profileName') || '', // this will load correctly
+        email: localStorage.getItem('profileEmail') || '',
+      phone: localStorage.getItem('profilePhone') || '63+',
+      address: localStorage.getItem('profileAddress') || '',
+    });
+  
+  
+  
 
 const handleFileChange = (e) => {
   const file = e.target.files[0];
@@ -74,8 +82,8 @@ const handleFileChange = (e) => {
     setIsRatingVisible(false); // Close rating section after submission
   };
 
-  
-  
+const [userRole, setUserRole] = useState(localStorage.getItem("userRole") || "student");
+
   const [activeTab, setActiveTab] = useState("products");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -86,7 +94,7 @@ const handleFileChange = (e) => {
   const [scrolledRightProduct2, setScrolledRightProduct2] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 const [selectedProduct, setSelectedProduct] = useState(null);
-const [userRole, setUserRole] = useState("student"); // Can be "student", "seller", or "buyer"
+
 const [loggedIn, setLoggedIn] = useState(false); // or set it to true based on your logic
 const [showProfile, setShowProfile] = useState(false);
 
@@ -136,66 +144,18 @@ useEffect(() => {
     paymentModalRef.current?.openModal(); // Triggers the modal
   };
   
-  const { cartItems } = useCart();
 
+// Add to Cart Handler
+  // Add to Cart Handler
+  const handleAddToCart = () => {
+    // Logic to add the product to the cart
+    console.log('Product added to cart:', selectedProduct);
 
-
-    const [setCartItems] = useState([
-       {
-         id: 1, // Unique ID for the product
-         name: 'Ribbon Keychain',
-         seller: 'Sissy Shey',
-         image: '', // Replace with your image
-         quantity: 1,
-         price: 10.0, // Example price
-       },
-     ]);
-     // Handle adding a product to the cart (increment quantity)
-  const increment = (productId) => {
-    setCartItems(prevItems => prevItems.map(item =>
-      item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-    ));
+    // Navigate to the /cart page after adding to cart
+    navigate('/cart');
   };
-
-const { addToCart} = useCart();
-
-  // Handle removing a product from the cart (decrement quantity)
-  const decrement = (productId) => {
-    setCartItems(prevItems => prevItems.map(item =>
-      item.id === productId && item.quantity > 1
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    ));
-  };
-
-
-
-
-const handleAddToCart = (product) => {
-  const productId = product.id;
-
-  // Check if the product is already in the cart
-  const isInCart = cartItems.some(item => item.id === productId);
-  if (isInCart) {
-    alert("This product is already in your cart.");
-    return;
-  }
-
-  const productToAdd = {
-    id: product.id,
-    name: product.name || "Unnamed Product",
-    price: product.price || 0,
-    seller: product.seller || "Unknown Seller",
-    imageUrl: product.image || product.imageUrl || "https://via.placeholder.com/100",
-    quantity: 1,
-  };
-
-  // Add to cart
-  addToCart(productToAdd);
-  alert("Product added to cart!");
-};
-
-const cartProduct = cartItems.find(item => item.id === selectedProduct?.id);
+  
+  
   const closeModal = () => {
     setIsModalVisible(false);
     setSelectedProduct(null);
@@ -329,14 +289,7 @@ const cartProduct = cartItems.find(item => item.id === selectedProduct?.id);
     }
   };
 
-  //
-  // Add these to your component's state or as functions
-const [profileData, setProfileData] = useState({
-    name: localStorage.getItem('profileName') || 'Sissy Shey',
-    email: localStorage.getItem('profileEmail') || 'shelayamba@gmail.com',
-    phone: localStorage.getItem('profilePhone') || '63+ 9771234545',
-    address: localStorage.getItem('profileAddress') || 'Sto. Nino, Lapasan, CDO',
-  });
+
 const [isEditing, setIsEditing] = useState(false);
 
  const goToOrders = () => {
@@ -360,6 +313,10 @@ const handleSave = () => {
   // save logic
   setIsEditing(false);
 };
+
+console.log('Current userRole:', userRole);
+
+localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
 
   
   return (
@@ -497,13 +454,15 @@ const handleSave = () => {
   {/* Only show button if the user is a student or seller */}
      <div>
       {/* Add button visible only for student or seller roles */}
-      {(userRole === 'student' || userRole === 'seller') && (
-        <FontAwesomeIcon
-          icon={faCirclePlus}
-          className="home-add-button"
-          onClick={() => setIsModalOpen(true)}
-        />
-      )}
+ {userRole === 'seller' && (
+  <FontAwesomeIcon
+    icon={faCirclePlus}
+    className="home-add-button"
+    onClick={() => setIsModalOpen(true)}
+  />
+)}
+
+
 
       {/* Post Product Modal */}
       {isModalOpen && (
@@ -520,12 +479,7 @@ const handleSave = () => {
         </div>
       )}
     </div>
-  {/* Only show subscribe button if the user is a buyer */}
-  {userRole === "buyer" && (
-    <button className="subscribe-button">
-      Subscribe
-    </button>
-  )}
+
 
       </div>
 
@@ -697,51 +651,37 @@ const handleSave = () => {
 
      
          
-{isModalVisible && selectedProduct && (
+  {isModalVisible && selectedProduct && (
   <div className="product-modal" onClick={closeModal}>
     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
       <div className="modal-rec"></div>
 
       {/* Product Image */}
-      {(cartProduct?.image || selectedProduct.image) ? (
-        <div className="modal-rec-product">
-          <img
-            src={cartProduct?.image || selectedProduct.image}
-            alt={cartProduct?.name || selectedProduct.name}
-            className="modal-product-image"
-          />
-        </div>
+     {selectedProduct.image ? (
+          <div className="modal-rec-product">
+            <img
+              src={selectedProduct.image}
+              alt={selectedProduct.name}
+              className="modal-product-image"
+            />
+          </div>
       ) : (
         <p>Image not available</p>
       )}
 
       {/* Product Details */}
-      <p className="product-name-display-2">
-        {cartProduct?.name || selectedProduct.name || "Product Name"}
-      </p>
-      <p className="seller-display">
-        {cartProduct?.seller || selectedProduct.seller || "Unknown Seller"}
-      </p>
-      <p className="price-display">
-        ₱{cartProduct?.price || selectedProduct.price || "0.00"}
-      </p>
-
-      {/* Product Quantity if already in cart */}
-      {cartProduct && (
-        <p className="quantity-display">
-          Quantity in Cart: {cartProduct.quantity}
-        </p>
-      )}
+      <p className="seller-display">{selectedProduct.seller || "Unknown Seller"}</p>
+      <p className="price-display">₱{selectedProduct.price}</p>
 
       {/* Product Rating */}
       <div className="rating-display">
         <p>Rating:</p>
-        <span className="rating">
-          {cartProduct?.rating || selectedProduct.rating || "No ratings yet"}
-        </span>
+        {/* Display the average rating */}
+        <span className="rating">{selectedProduct.rating || "No ratings yet"}</span>
+        {/* You can also implement a rating system (stars, etc.) here */}
       </div>
 
-      {/* Action Buttons */}
+   
       <div className="modal-actions">
         <button className="add-to-cart-button-home" onClick={handleAddToCart}>
           Add to Cart
@@ -756,7 +696,6 @@ const handleSave = () => {
     </div>
   </div>
 )}
-
 
 {/* Payment Confirmation Modal */}
 <PaymentConfirmationModal
@@ -776,7 +715,7 @@ const handleSave = () => {
                       ) : (
                         <>
                           <FontAwesomeIcon icon={faCircleUser} className="defaultProfileIcon" />
-                          <span className="uploadText">Upload Profile</span>
+                          <span className="uploadText"></span>
                         </>
                       )}
                       <div className="cameraOverlay">
@@ -791,8 +730,8 @@ const handleSave = () => {
                       style={{ display: 'none' }}
                       onChange={handleFileChange}
                     />
-          
-                    <div className="profileLabel">Sissy Shey</div>
+             <div className="profileLabel">{profileData.name}</div>
+
                     <div className="profileCircle">
                       <div className="statusPrimary">
                         <div className="checkPrimary" />
@@ -811,8 +750,13 @@ const handleSave = () => {
             </div>
           </div>
           
-                    <div className="profileSellerLabel">Seller</div>
-                    <div className="profileAddressLabel">Sto. Nino, Lapasan, CDO</div>
+                    {/* Display user role */}
+          <div className="profileSellerLabel">
+            {userRole === "seller" ? "Seller" : userRole === "buyer" ? "Buyer" : ""}
+          </div>
+ <div className="profileAddressLabel">
+      {profileData.address || (userRole === "buyer" ? "No address yet." : "")}
+    </div>
                     <div className="profileOrdersTitle">Orders & Purchases</div>
                     <div className="profileInfoTitle">Personal Information</div>
           
@@ -857,7 +801,13 @@ const handleSave = () => {
                         <div className="profileEmail">Name: {profileData.name}</div>
                         <div className="profileEmail">Email: {profileData.email}</div>
                         <div className="profilePhone">Phone Number: {profileData.phone}</div>
-                        <div className="profileAddress">Address: {profileData.address}</div>
+                       {userRole === "buyer" && !profileData.address ? (
+                <div className="profileAddress">
+                  <em>No address yet.</em> <span onClick={() => setIsEditing(true)} className="editProfileLink">Add Address</span>
+                </div>
+              ) : (
+                <div className="profileAddress">Address: {profileData.address}</div>
+              )}
                         <div className="editProfileLink" onClick={() => setIsEditing(true)}>Edit</div>
                       </>
                     )}

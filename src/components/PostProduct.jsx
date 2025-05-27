@@ -162,14 +162,6 @@ const PostProduct = () => {
           display: block;
         }
 
-        .closeButton {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-        }
       `}</style>
     </div>
   );
