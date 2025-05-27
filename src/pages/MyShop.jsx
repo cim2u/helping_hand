@@ -17,6 +17,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../assets/Logo.png";
 import Profile from '../components/ProfileModal';
+import { useCart } from '../CartContext'; // Adjust path if necessary
+
 import { Link } from 'react-router-dom';
 import PostProduct from '../components/PostProduct.jsx'; // Import the PostProduct component
 
@@ -26,6 +28,7 @@ const MyShop = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { state } = location;
+  
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Or false depending on logic
     const [isRegistered, setIsRegistered] = useState(false);
  const paymentModalRef = useRef();
@@ -133,18 +136,66 @@ useEffect(() => {
     paymentModalRef.current?.openModal(); // Triggers the modal
   };
   
+  const { cartItems } = useCart();
 
-// Add to Cart Handler
-  // Add to Cart Handler
-  const handleAddToCart = () => {
-    // Logic to add the product to the cart
-    console.log('Product added to cart:', selectedProduct);
 
-    // Navigate to the /cart page after adding to cart
-    navigate('/cart');
+
+    const [setCartItems] = useState([
+       {
+         id: 1, // Unique ID for the product
+         name: 'Ribbon Keychain',
+         seller: 'Sissy Shey',
+         image: '', // Replace with your image
+         quantity: 1,
+         price: 10.0, // Example price
+       },
+     ]);
+     // Handle adding a product to the cart (increment quantity)
+  const increment = (productId) => {
+    setCartItems(prevItems => prevItems.map(item =>
+      item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+    ));
   };
-  
-  
+
+const { addToCart} = useCart();
+
+  // Handle removing a product from the cart (decrement quantity)
+  const decrement = (productId) => {
+    setCartItems(prevItems => prevItems.map(item =>
+      item.id === productId && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    ));
+  };
+
+
+
+
+const handleAddToCart = (product) => {
+  const productId = product.id;
+
+  // Check if the product is already in the cart
+  const isInCart = cartItems.some(item => item.id === productId);
+  if (isInCart) {
+    alert("This product is already in your cart.");
+    return;
+  }
+
+  const productToAdd = {
+    id: product.id,
+    name: product.name || "Unnamed Product",
+    price: product.price || 0,
+    seller: product.seller || "Unknown Seller",
+    imageUrl: product.image || product.imageUrl || "https://via.placeholder.com/100",
+    quantity: 1,
+  };
+
+  // Add to cart
+  addToCart(productToAdd);
+  alert("Product added to cart!");
+};
+
+const cartProduct = cartItems.find(item => item.id === selectedProduct?.id);
   const closeModal = () => {
     setIsModalVisible(false);
     setSelectedProduct(null);
@@ -646,37 +697,51 @@ const handleSave = () => {
 
      
          
-  {isModalVisible && selectedProduct && (
+{isModalVisible && selectedProduct && (
   <div className="product-modal" onClick={closeModal}>
     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
       <div className="modal-rec"></div>
 
       {/* Product Image */}
-     {selectedProduct.image ? (
-          <div className="modal-rec-product">
-            <img
-              src={selectedProduct.image}
-              alt={selectedProduct.name}
-              className="modal-product-image"
-            />
-          </div>
+      {(cartProduct?.image || selectedProduct.image) ? (
+        <div className="modal-rec-product">
+          <img
+            src={cartProduct?.image || selectedProduct.image}
+            alt={cartProduct?.name || selectedProduct.name}
+            className="modal-product-image"
+          />
+        </div>
       ) : (
         <p>Image not available</p>
       )}
 
       {/* Product Details */}
-      <p className="seller-display">{selectedProduct.seller || "Unknown Seller"}</p>
-      <p className="price-display">₱{selectedProduct.price}</p>
+      <p className="product-name-display-2">
+        {cartProduct?.name || selectedProduct.name || "Product Name"}
+      </p>
+      <p className="seller-display">
+        {cartProduct?.seller || selectedProduct.seller || "Unknown Seller"}
+      </p>
+      <p className="price-display">
+        ₱{cartProduct?.price || selectedProduct.price || "0.00"}
+      </p>
+
+      {/* Product Quantity if already in cart */}
+      {cartProduct && (
+        <p className="quantity-display">
+          Quantity in Cart: {cartProduct.quantity}
+        </p>
+      )}
 
       {/* Product Rating */}
       <div className="rating-display">
         <p>Rating:</p>
-        {/* Display the average rating */}
-        <span className="rating">{selectedProduct.rating || "No ratings yet"}</span>
-        {/* You can also implement a rating system (stars, etc.) here */}
+        <span className="rating">
+          {cartProduct?.rating || selectedProduct.rating || "No ratings yet"}
+        </span>
       </div>
 
-   
+      {/* Action Buttons */}
       <div className="modal-actions">
         <button className="add-to-cart-button-home" onClick={handleAddToCart}>
           Add to Cart
@@ -691,6 +756,7 @@ const handleSave = () => {
     </div>
   </div>
 )}
+
 
 {/* Payment Confirmation Modal */}
 <PaymentConfirmationModal

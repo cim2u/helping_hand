@@ -24,17 +24,16 @@ body html {
   }
   
   .headerImageSupport {
-    width: 1513px;
-    height: 80px;
-    position: absolute;
-    top: 10px;
-    left: 0;
-    background: url("https://i.imgur.com/8PRNbQU.png");
-    background-size: cover;
-    background-position: center;
-    object-fit: cover; /* Will not affect divs directly but kept in case used on images */
-    opacity: 200%;
-    border: 1px solid #FEFEFE;
+  width: 1529px !important;
+  height: 80px;
+  position: fixed;
+  top: 10px;
+  z-index: 42;
+  left: 0;
+  opacity: 100%;
+  border: 1px solid rgba(254, 254, 254, 1);
+  object-fit: cover;
+  background: url("https://i.imgur.com/8PRNbQU.png");
   }
   
   .logoSupport {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/SellerInfo.css';
 import "../style/ContinueAs.css";
@@ -12,52 +12,23 @@ const SellerInfo = () => {
     phone: ''
   });
 
-  const [gcashQR, setGcashQR] = useState(null);
-  const [gcashQRPreview, setGcashQRPreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    return () => {
-      if (gcashQRPreview) {
-        URL.revokeObjectURL(gcashQRPreview);
-      }
-    };
-  }, [gcashQRPreview]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleGcashQRChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      if (gcashQRPreview) {
-        URL.revokeObjectURL(gcashQRPreview);
-      }
-
-      setGcashQR(file);
-      const previewURL = URL.createObjectURL(file);
-      setGcashQRPreview(previewURL);
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!gcashQR) {
-      alert("Please upload your GCash QR Code");
-      return;
-    }
-
     setIsSubmitting(true);
 
-    // Save form data and QR preview to localStorage
+    // Save form data to localStorage
     localStorage.setItem('shopName', formData.storeName);
     localStorage.setItem('storeAddress', formData.storeAddress);
     localStorage.setItem('gmail', formData.gmail);
     localStorage.setItem('phone', formData.phone);
-    localStorage.setItem('gcashQR', gcashQRPreview);
 
     console.log('Form Submitted:', formData);
 
@@ -122,21 +93,6 @@ const SellerInfo = () => {
                 required
                 className="phone-input"
               />
-            </div>
-
-            <div className="gcash-upload-section">
-              <label htmlFor="gcashQR" className="storelabel">GCash QR Code</label>
-              <input
-                type="file"
-                id="gcashQR"
-                accept="image/*"
-                onChange={handleGcashQRChange}
-                required
-                className="gcash-upload-input"
-              />
-              {gcashQR && (
-                <p className="filename-display">Selected: {gcashQR.name}</p>
-              )}
             </div>
 
             <button

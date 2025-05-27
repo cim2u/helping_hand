@@ -2,35 +2,38 @@ import React from 'react';
 import "../style/Order.css";
 import "../style/CartModal.css";
 import "../style/Home.css";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping, faCheckCircle, faClock, faTruck } from '@fortawesome/free-solid-svg-icons';
+
 import logoImage from '../assets/Logo.png';
-import { useOrder } from '../OrderContext'; // Context hook to access orders
+import { useOrder } from '../OrderContext';
 
 const Order = () => {
-  const { orders } = useOrder(); // Get orders from context
+  const { orders } = useOrder();
 
   const handleBackHome = () => {
     window.history.back();
   };
 
-  // Returns icon based on order status
   const getStatusIcon = (status) => {
-    switch (status) {
-      case 'Completed':
+    switch (status?.toLowerCase()) {
+      case 'completed':
         return <FontAwesomeIcon icon={faCheckCircle} className="status-icon completed" />;
-      case 'Shipped':
+      case 'shipped':
         return <FontAwesomeIcon icon={faTruck} className="status-icon shipped" />;
       default:
         return <FontAwesomeIcon icon={faClock} className="status-icon processing" />;
     }
   };
 
-  // Format date to a readable string, fallback to "Unknown Date"
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const date = new Date(dateString);
-    return isNaN(date) ? 'Unknown Date' : date.toLocaleDateString(undefined, options);
+    return isNaN(date) ? 'Unknown Date' : date.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   };
 
   return (
@@ -38,7 +41,6 @@ const Order = () => {
       <div className="orderContainer">
         <div className="shop-container">
           <div className="home-wrapper">
-
             {/* Header */}
             <header className="header-cover">
               <div className="logoContainer">
@@ -67,7 +69,6 @@ const Order = () => {
                 <div className="orders-grid">
                   {orders.map((order, index) => (
                     <div className="order-card" key={order.id || index}>
-
                       {/* Order Header */}
                       <div className="order-header">
                         <div className="order-meta">
@@ -115,7 +116,6 @@ const Order = () => {
                       <div className="order-address">
                         <strong>Delivery Address:</strong> {order.address || 'N/A'}
                       </div>
-
                     </div>
                   ))}
                 </div>
