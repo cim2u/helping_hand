@@ -825,7 +825,7 @@
   width: 110px;
   height: 34px;
 
-  margin-top: 11px;
+  margin-top: 300px;
   margin-bottom: 17px;
   margin-left: 30px;
   font-family: 'Roboto Flex', sans-serif;
@@ -839,6 +839,30 @@
   border-radius: 8px; 
 }
 
+.delete-action {
+  margin-top: -75px;
+  position: relative;
+}
+
+.delete-product-btn {
+  background-color: #e74c3c;
+  color: #fff; /* Better contrast than red text */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 90px;
+  cursor: pointer;
+
+  /* Positioning */
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  z-index: 999; /* High but not excessive */
+}
+
+.delete-product-btn:hover {
+  background-color: #c0392b;
+}
 
 .service-label
 {
@@ -867,7 +891,7 @@
   gap: 0px;
   margin-top:25px;
   margin-left: 13px;
-  justify-content: space-between;
+  justify-content: left;
 }
 
 /* Service Item */
@@ -1212,6 +1236,7 @@
   background-color: #a8000000; /* Light background color */
   border-top: 2px solid   #ffffff00; /* Optional border at the top */
   height: 400px;
+ 
 }
 
 /* Style for the product grid inside product2-section */
@@ -1219,12 +1244,12 @@
   display: flex;
   flex-wrap: wrap; /* Allow items to wrap onto the next row if needed */
   gap: 38px; /* Space between items */
-  justify-content: center; /* Center the items horizontally */
+  justify-content: left; /* Center the items horizontally */
   padding: 2rem 0;
 
   max-width: 2000px;
   box-sizing: border-box;
-  margin-left: -754px;
+ 
   margin-top: 295px !important;
 }
 
@@ -1417,7 +1442,7 @@
 
 .service-image-gradient {
   width: 170px;
-  height: 170px;
+  height: 170px !important;
   border-radius: 8px;
   background:#7E3550;
   display: flex;

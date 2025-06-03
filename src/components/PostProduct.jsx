@@ -1,80 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../style/PostProduct.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const PostProduct = () => {
+const PostProduct = ({ onPost, currentUser }) => {
   const [productName, setProductName] = useState('');
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('product');
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
   const [error, setError] = useState('');
-  const [isVisible, setIsVisible] = useState(true);  // For toggling visibility
+  const [isVisible, setIsVisible] = useState(true);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImagePreview(imageUrl);
-    }
-  };
+  const modalRef = useRef();
 
   const handleSubmit = () => {
-    if (!productName || !price || !category || !imagePreview) {
-      setError('Please fill out all fields and upload an image.');
+    if (!productName || !price || !category || !imageUrl) {
+      setError('Please fill out all fields and provide an image URL.');
       return;
     }
-    setError('');
-    console.log('Product Name:', productName);
-    console.log('Price:', price);
-    console.log('Category:', category);
-    console.log('Image:', imagePreview);
 
-    // Reset form fields after submission
+    const newProduct = {
+      id: Date.now(),
+      productName,
+      price: parseFloat(price),
+      category,
+      imageUrl,
+      seller: currentUser?.username || 'Anonymous',
+    };
+
+    const existing = JSON.parse(localStorage.getItem('products') || '[]');
+    const updated = [newProduct, ...existing];
+    localStorage.setItem('products', JSON.stringify(updated));
+
+    if (onPost) onPost(updated);
+
+    // Reset form
     setProductName('');
     setPrice('');
     setCategory('product');
-    setImagePreview(null);
+    setImageUrl('');
+    setError('');
   };
 
-  const handleClose = () => {
-    setIsVisible(false);
+  const handleClose = () => setIsVisible(false);
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      handleClose();
+    }
   };
 
-  if (!isVisible) return null; // Hide component when closed
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  if (!isVisible) return null;
 
   return (
     <div className="postProductContainer">
-      <div className="postProductCard">
-        {/* Close Button */}
-        <button className="closeButton" onClick={handleClose} aria-label="Close form">
+      <div className="postProductCard" ref={modalRef}>
+        <button className="closeButton" onClick={handleClose}>
           <FontAwesomeIcon icon={faTimes} size="lg" color="#843b62" />
         </button>
 
         <div className="postHeader">POST A NEW PRODUCT</div>
         <div className="productForm">
-          {/* Image Upload */}
-          <div className="imageUploadSectionPost">
-            {imagePreview ? (
-              <img src={imagePreview} alt="Preview" className="previewImagePost" />
-            ) : (
-              <div className="uploadPlaceholderPost">Post your image</div>
-            )}
 
-            <input
-              type="file"
-              id="imageUpload"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: 'none' }}
-            />
-
-            <label htmlFor="imageUpload" className="circlePlusPost">
-              <FontAwesomeIcon icon={faCirclePlus} size="2x" color="#843b62" />
-            </label>
+          <div className="textFieldPost">
+            <div className="inputContentPost">
+              <label className="inputTextPost">Image URL</label>
+              <input
+                type="text"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                placeholder="Enter image URL"
+                className="inputBoxPost"
+              />
+            </div>
           </div>
 
-          {/* Product Name */}
           <div className="textFieldPost">
             <div className="inputContentPost">
               <label className="inputTextPost">Product Name</label>
@@ -88,12 +95,13 @@ const PostProduct = () => {
             </div>
           </div>
 
-          {/* Price */}
           <div className="textFieldPost">
             <div className="inputContentPost">
               <label className="inputTextPost">Price</label>
               <input
                 type="number"
+                min="0"
+                step="0.01"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="Enter price"
@@ -102,7 +110,6 @@ const PostProduct = () => {
             </div>
           </div>
 
-          {/* Category Radio */}
           <div className="categorySelectionPost">
             <label className="inputTextPost">Select Category</label>
             <div className="radioButtonsPost">
@@ -129,40 +136,13 @@ const PostProduct = () => {
             </div>
           </div>
 
-          {/* Error Message */}
           {error && <div className="errorText">{error}</div>}
 
-          {/* Submit */}
           <button className="submitButton" onClick={handleSubmit}>
             <span className="labelText">Post</span>
           </button>
         </div>
       </div>
-
-      {/* Inline CSS styles for preview image and container */}
-      <style jsx>{`
-        .imageUploadSectionPost {
-          width: 250px;
-          height: 250px;
-          border: 2px dashed #ccc;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-          position: relative;
-          border-radius: 8px;
-          margin-bottom: 1rem;
-        }
-
-        .previewImagePost {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          border-radius: 8px;
-          display: block;
-        }
-
-      `}</style>
     </div>
   );
 };

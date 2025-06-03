@@ -1,5 +1,9 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
+import axios from 'axios';
+
 import { useLocation, useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from '../AuthContext'; // adjust the path as needed
 
 import "../style/MyShop.css";
 import "../style/Home.css"
@@ -83,6 +87,7 @@ const handleFileChange = (e) => {
   };
 
 const [userRole, setUserRole] = useState(localStorage.getItem("userRole") || "student");
+  const [ setProducts] = useState([]);
 
   const [activeTab, setActiveTab] = useState("products");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -126,6 +131,12 @@ useEffect(() => {
     document.body.style.width = '';
   };
 }, [isModalVisible]);
+
+
+  const handleNewPost = (updatedProducts) => {
+    setProducts(updatedProducts);
+  };
+
 
 
   const productListRef = useRef(null);
@@ -289,7 +300,7 @@ useEffect(() => {
     }
   };
 
-
+  const { currentUser } = useContext(AuthContext);
 const [isEditing, setIsEditing] = useState(false);
 
  const goToOrders = () => {
@@ -299,7 +310,24 @@ const [isEditing, setIsEditing] = useState(false);
   const goToCart = () => {
     navigate('/cart');
   };
+    const handleNewProduct = (newProduct) => {
+    setProducts(prev => [newProduct, ...prev]);
+  };
 
+
+  const products = JSON.parse(localStorage.getItem('products')) || [];
+
+const handleDeleteProduct = async (id) => {
+  const confirmed = window.confirm("Are you sure you want to delete this product?");
+  if (!confirmed) return;
+
+  try {
+    await axios.delete(`/api/products/${id}`);
+    closeModal(); // then refresh product list if needed
+  } catch (err) {
+    console.error("Failed to delete product:", err);
+  }
+};
 
 const handleInputChange = (e) => {
   const { name, value } = e.target;
@@ -313,6 +341,7 @@ const handleSave = () => {
   // save logic
   setIsEditing(false);
 };
+
 
 console.log('Current userRole:', userRole);
 
@@ -413,7 +442,10 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
             <h2 className="shop-owner-name">{shopName}</h2>
             <p className="shop-owner-handle">{sellerUsername}</p>
           
+  
+      
 
+    
 {/* Tabs */}
 <div className="shop-tabs">
   <a
@@ -474,6 +506,7 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
               className="post-close-button"
             >
               Close
+
             </button>
           </div>
         </div>
@@ -495,7 +528,7 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
      
   {/* Popular Products Section */}
 <div className="popular-products">
-  <span className="popular-label">POPULAR</span>
+  <span className="popular-label"></span>
 
   <div className="relative">
    
@@ -512,47 +545,17 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
       }}
     >
     <>
-  <div className="product1-grid">
-    {/* Product 1 */}
-    <div className="product-item" onClick={() => handleProductClick({
-    name: "Ribbon Keychain",
-    image: "https://i.imgur.com/YP2DSeS.png",
-    seller: "Sissy Shyey.",
-    price: 15.00
-  })}>
-    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
-    <div className="product-name">Ribbon Keychain</div>
-  </div>
-    {/* Product 2 */}
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Ukay-Ukay",
-    image: "https://i.imgur.com/v1VcOJ8.jpeg",
-    description: "Reusable eco-friendly tote bag.",
-    price: 20.00
-  })}>
-    <img src="https://i.imgur.com/v1VcOJ8.jpeg" alt="Ukay-Ukay" className="product-image" />
-    <div className="product-name">Ukay-Ukay</div>
-  </div>
-    <div className="product-item" onClick={() => handleProductClick({
-    name: "Handmade Flower Bouquet",
-    image: "https://i.imgur.com/mLTxJQf.png",
-    description: "Handcrafted notebook made from recycled materials.",
-    price: 18.00
-  })}>
-    <img src="https://i.imgur.com/mLTxJQf.png" alt="handmade Flower Bouquet" className="product-image" />
-    <div className="product-name">Handmade Flower Bouquet</div>
-  </div>
+ <div className="product1-grid">
+  {/* Product 1 */}
+  {/* You can keep or remove other products here */}
 
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Handmade Flower Bouquet",
-    image: "https://i.imgur.com/Tc4gW95.png",
-    description: "Set of 4 wooden coasters with a rustic feel.",
-    price: 12.00
-  })}>
-    <img src="https://i.imgur.com/Tc4gW95.png" alt="Handmade Flower Bouquet" className="product-image" />
-    <div className="product-name">Handmade Flower Bouquet</div>
-  </div>
-  </div>
+  {/* Removed the Handmade Flower Bouquet product here */}
+
+</div>
+
+
+  
+  
 </>
 
     </div>
@@ -573,18 +576,7 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
     
 
 
-   {/* Horizontally scrolling container */}
-   <div
-      ref={productList2Ref}
-      className="product2-list no-scrollbar"
-      style={{
-        overflowX: "auto",
-        scrollBehavior: "smooth",
-        display: "flex",
-        gap: "0px",
-        paddingRight: "40px",
-      }}
-    ></div>
+   
 {/* SERVICE SECTION - shows only when "services" is active */}
 {activeTab === "services" && (
   <>
@@ -615,33 +607,78 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
 
 
 
-    {/* PRODUCT SECTION - shows only when "products" is active */}
-    {activeTab === "products" && (
-      <div className="product2-grid">
-        {/* Product 1 */}
-        <div className="product-item" onClick={() => handleProductClick({
-    name: "Ribbon Keychain",
-    image: "https://i.imgur.com/YP2DSeS.png",
-    seller: "Sissy Shyey.",
-    price: 15.00
-  })}>
-    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
-    <div className="product-name">Ribon Keychain</div>
-  </div>
+   <div>
+      <PostProduct onPost={handleNewPost} />
 
-   
- <div className="product-item" onClick={() => handleProductClick({
-    name: "Handmade Flower Bouquet",
-    image: "https://i.imgur.com/63rt8SJ.png",
-    description: "Handmade bracelet with colorful beads.",
-    price: 10.00
-  })}>
-    <img src="https://i.imgur.com/63rt8SJ.png" alt="Handmade Flower Bouquet" className="product-image" />
-    <div className="product-name">Handmade Flower Bouquet</div>
-  </div>
-      </div>
-    )}
- 
+      {/* PRODUCT SECTION - shows only when "products" is active */}
+      {activeTab === "products" && (
+        <div className="product2-grid">
+          {/* Dynamically render posted products */}
+          {products
+            .filter((p) => p.category === "product")
+            .map((product) => (
+              <div
+                key={product.id}
+                className="product-item"
+                onClick={() =>
+                  handleProductClick({
+                    name: product.productName,
+                    image: product.imageUrl,
+                    seller: product.seller || "Unknown",
+                    price: parseFloat(product.price),
+                  })
+                }
+              >
+                <img
+                  src={product.imageUrl}
+                  alt={product.productName}
+                  className="product-image"
+                />
+                <div className="product-name">{product.productName}</div>
+              </div>
+            ))}
+
+          {/* Optional static products if you want to keep */}
+          <div
+            className="product-item"
+            onClick={() =>
+              handleProductClick({
+                name: "Ribbon Keychain",
+                image: "https://i.imgur.com/YP2DSeS.png",
+                seller: "Sissy Shyey.",
+                price: 15.0,
+              })
+            }
+          >
+            <img
+              src="https://i.imgur.com/YP2DSeS.png"
+              alt="Ribbon Keychain"
+              className="product-image"
+            />
+            <div className="product-name">Ribbon Keychain</div>
+          </div>
+
+          <div
+            className="product-item"
+            onClick={() =>
+              handleProductClick({
+                name: "Handmade Flower Bouquet",
+                image: "https://i.imgur.com/63rt8SJ.png",
+                description: "Handmade bracelet with colorful beads.",
+                price: 10.0,
+              })
+            }
+          >
+            <img
+              src="https://i.imgur.com/63rt8SJ.png"
+              alt="Handmade Flower Bouquet"
+              className="product-image"
+            />
+            <div className="product-name">Handmade Flower Bouquet</div>
+          </div>
+        </div>
+      )}
+    </div>
 
 
     <div
@@ -657,31 +694,29 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
       <div className="modal-rec"></div>
 
       {/* Product Image */}
-     {selectedProduct.image ? (
-          <div className="modal-rec-product">
-            <img
-              src={selectedProduct.image}
-              alt={selectedProduct.name}
-              className="modal-product-image"
-            />
-          </div>
+      {selectedProduct.image ? (
+        <div className="modal-rec-product">
+          <img
+            src={selectedProduct.image}
+            alt={selectedProduct.name}
+            className="modal-product-image"
+          />
+        </div>
       ) : (
         <p>Image not available</p>
       )}
 
       {/* Product Details */}
+      <p className="product-name-display-2">{selectedProduct.name || "Product Name"}</p>
       <p className="seller-display">{selectedProduct.seller || "Unknown Seller"}</p>
       <p className="price-display">₱{selectedProduct.price}</p>
 
       {/* Product Rating */}
       <div className="rating-display">
         <p>Rating:</p>
-        {/* Display the average rating */}
         <span className="rating">{selectedProduct.rating || "No ratings yet"}</span>
-        {/* You can also implement a rating system (stars, etc.) here */}
       </div>
 
-   
       <div className="modal-actions">
         <button className="add-to-cart-button-home" onClick={handleAddToCart}>
           Add to Cart
@@ -691,11 +726,29 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
           onClick={() => handleBuyNow(selectedProduct)}
         >
           BUY NOW
-        </button>
+</button>
       </div>
+      
+          
+{currentUser?.role !== 'buyer' && currentUser?.id === selectedProduct.userId && (
+  <div className="delete-action">
+    <button
+      className="delete-product-btn"
+      onClick={() => handleDeleteProduct(selectedProduct.id)}
+    >
+      Delete this post
+    </button>
+  </div>
+)}
+
+
+
+    
+      
     </div>
   </div>
 )}
+
 
 {/* Payment Confirmation Modal */}
 <PaymentConfirmationModal

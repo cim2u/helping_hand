@@ -8,17 +8,24 @@ body html{
 }
 
 .postProductContainer {
-  position: absolute;
-  width: 480px!important;
+  position: fixed; /* fixed to viewport */
+  width: 480px !important;
   height: 701px;
   background: #ffffff;
   border-radius: 12px;
-  z-index:4300; 
-  border-color: #ffffff ;
-  margin-left: -525px;
-  top:-292px;
-  left:933px;
+  z-index: 10000; /* make sure it’s above backdrop */
+  border-color: #ffffff;
+  top: 49%;
+  left: 250px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center !important;
+  /* Remove margin-left, top, left offsets */
+  margin: 0;
+  /* Optional: add box-shadow for better modal look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+
 
 .imageUploadSectionPost {
   width: 390px!important;      /* fixed width */
