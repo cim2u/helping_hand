@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -18,6 +20,7 @@ import ApprovalModal from "../components/ApprovalModal";
 
 const DocumentPreview = ({ url, type, user }) => {
   const isPdf = url?.toLowerCase()?.endsWith(".pdf");
+const navigate = useNavigate();
 
   return (
     <a
@@ -89,6 +92,8 @@ const ActionButtons = ({ status, onApprove, onReject, user }) => {
 };
 
 const VerifySeller = () => {
+
+  const navigate = useNavigate(); // ✅ Correct placement
   const sampleRequests = [
     {
       id: 1,
@@ -222,9 +227,15 @@ const VerifySeller = () => {
     closeModal();
   };
 
-  const handleLogout = () => {
-    // Implement your logout logic here
-    console.log("Admin logged out");
+  const handleLogout = (e) => {
+    e.preventDefault();
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("isAdmin");
+      navigate("/login-admin");
+    }
   };
 
   return (

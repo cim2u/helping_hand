@@ -35,7 +35,7 @@ const AdminHelpCenter = () => {
       localStorage.removeItem("user");
       localStorage.removeItem("loggedIn");
       localStorage.removeItem("isAdmin");
-      navigate("/login-admin");
+      navigate("/admin-login");
     }
   };
 

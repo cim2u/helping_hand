@@ -44,14 +44,14 @@ const AdminUserManagement = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Logout handler with confirmation
   const handleLogout = (e) => {
     e.preventDefault();
-    if (window.confirm('Are you sure you want to log out?')) {
-      localStorage.removeItem('user');
-      localStorage.removeItem('loggedIn');
-      localStorage.removeItem('isAdmin');
-      navigate('/login-admin');
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("isAdmin");
+      navigate("/admin-login");
     }
   };
 
@@ -164,6 +164,9 @@ const AdminUserManagement = () => {
                      <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
                      <span className="menuTextAdmin">Log Out</span>
                    </div>
+
+
+                   
         </nav>
       </aside>
 
