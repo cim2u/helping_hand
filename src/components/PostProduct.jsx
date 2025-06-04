@@ -57,7 +57,10 @@ const PostProduct = ({ onPost, currentUser }) => {
     };
   }, []);
 
-  if (!isVisible) return null;
+  // 🔒 Prevent access if current user is a buyer
+  if (!isVisible || currentUser?.role === 'buyer') return null;
+const storedRole = localStorage.getItem('userRole');
+if (storedRole === 'buyer') return null; // or navigate away
 
   return (
     <div className="postProductContainer">
@@ -68,7 +71,6 @@ const PostProduct = ({ onPost, currentUser }) => {
 
         <div className="postHeader">POST A NEW PRODUCT</div>
         <div className="productForm">
-
           <div className="textFieldPost">
             <div className="inputContentPost">
               <label className="inputTextPost">Image URL</label>

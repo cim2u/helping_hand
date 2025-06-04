@@ -78,6 +78,34 @@ const AdminDashboard = () => {
     }
   ]);
 
+  // State for registered users
+  const [registeredUsers] = useState([
+    {
+      id: 1,
+      name: "John Doe",
+      email: "john@example.com",
+      role: "Buyer"
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      email: "jane@example.com",
+      role: "Seller"
+    },
+    {
+      id: 3,
+      name: "Bob Johnson",
+      email: "bob@example.com",
+      role: "Buyer"
+    },
+    {
+      id: 4,
+      name: "Alice Williams",
+      email: "alice@example.com",
+      role: "Seller"
+    }
+  ]);
+
   const handleLogout = (e) => {
     e.preventDefault();
     const confirmLogout = window.confirm("Are you sure you want to log out?");
@@ -365,25 +393,14 @@ const AdminDashboard = () => {
           </Link>
 
           <Link
-            to="/admin/payments"
+            to="/admin/verify-seller"
             className={`menuItemAdmin ${
-              location.pathname === "/admin/payments" ? "active" : ""
+              location.pathname === "/admin/verify-seller" ? "active" : ""
             }`}
           >
-            <FontAwesomeIcon icon={faMoneyBillTransfer} className="iconAdmin" />
-            <span className="menuTextAdmin">Pending Payments</span>
+            <FontAwesomeIcon icon={faUserCheck} className="iconAdmin" />
+            <span className="menuTextAdmin">Verify Seller</span>
           </Link>
-          <Link
-  to="/admin/verify-seller"
-  className={`menuItemAdmin ${
-    location.pathname === "/admin/verify-seller" ? "active" : ""
-  }`}
->
-  <FontAwesomeIcon icon={faUserCheck} className="iconAdmin" />
-  <span className="menuTextAdmin">Verify Seller</span>
-</Link>
-
-
 
           <Link
             to="/admin/help-center"
@@ -395,26 +412,20 @@ const AdminDashboard = () => {
             <span className="menuTextAdmin">Help Center</span>
           </Link>
 
-        
-          {/* Logout */}
-          <div
-            className="Logout-menuItemAdmin"
-            onClick={handleLogout}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleLogout(e);
-              }
-            }}
-            style={{ cursor: "pointer" }}
-            aria-label="Log Out"
-          >
-            <div className="menuItemAdmin">
-              <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
-              <span className="menuTextAdmin">Log Out</span>
-            </div>
-          </div>
+         <div
+                     className="Logout-menuItemAdmin"
+                     style={{ cursor: "pointer" }}
+                     onClick={handleLogout}
+                     role="button"
+                     tabIndex={0}
+                     onKeyPress={(e) => {
+                       if (e.key === "Enter" || e.key === " ") handleLogout();
+                     }}
+                     aria-label="Log out"
+                   >
+                     <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
+                     <span className="menuTextAdmin">Log Out</span>
+                   </div>
         </nav>
       </aside>
 
@@ -422,7 +433,6 @@ const AdminDashboard = () => {
       <main className="mainContentAdmin" tabIndex={-1}>
         {/* Pending Payments Section */}
         <section className="cardAdmin pending-payments" aria-labelledby="pending-payments-title">
-         
           <div className="payments-container">
             {activePendingPayments.length > 0 ? (
               <table className="payments-table">
@@ -482,21 +492,18 @@ const AdminDashboard = () => {
           </div>
         </section>
 
-        {/* Yearly Earnings - Animated Bar Chart */}
-        <section className="cardAdmin rightAdmin" aria-labelledby="yearly-earnings-title">
-          <h3 id="yearly-earnings-title" className="cardTitleAdmin">
-            Yearly Earnings
-          </h3>
-          <div className="chart-container-3d">
-            <Bar 
-              data={yearlyEarningsData} 
-              options={barChartOptions}
-              redraw
-            />
-          </div>
-        </section>
-
-        
+       {/* Registered Users Count Section */}
+<section className="cardAdmin" aria-labelledby="registered-users-title">
+  <h3 id="registered-users-title" className="cardTitleAdmin">
+    Registered Users
+  </h3>
+  <div className="users-count-container">
+    <div className="users-count">
+      {registeredUsers.length}
+    </div>
+    <p className="users-count-label">Total Registered Users</p>
+  </div>
+</section>
       </main>
     </div>
   );

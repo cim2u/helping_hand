@@ -5,8 +5,8 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--color-text-darker, #2c3e50);
-  width: 1000px;
-  margin-left: 430px !important;
+  width: 1180px;
+  margin-left: 330px !important;
   position: relative;
   top: 150px !important;
   transition: box-shadow 0.3s ease;
@@ -250,7 +250,7 @@
 .approve-btn {
   background-color: #28a745;
   color: white;
-  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.45);
+  box-shadow: 0 6px 6px rgba(40, 167, 69, 0.45);
 }
 
 .approve-btn:hover {
@@ -278,5 +278,163 @@
     margin-left: auto !important;
     margin-right: auto !important;
     top: 100px !important;
+  }
+}
+
+.cardTitleAdmin {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  
+}
+
+/* Table styles */
+.verify-seller-table {
+  width: -10%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  color: #444;
+    table-layout: fixed; /* Force fixed column widths */
+}
+
+.verify-seller-table thead {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.verify-seller-table th,
+.verify-seller-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+  position:sticky;
+  vertical-align: middle;
+  width: 220px!important;
+  word-wrap: break-word;
+  background-color: #ffffff;
+}
+
+.verify-seller-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.verify-seller-table tbody tr:hover {
+  background-color: #e3f2fd;
+  cursor: default;
+}
+
+/* Document preview */
+.document-link {
+  color: #479dff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.document-link:hover {
+  text-decoration: underline;
+}
+
+.document-image {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 4px;
+  object-fit: contain;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Status badges */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.status-pending {
+  background-color: #ffcc00;
+  color: #664d00;
+}
+
+.status-approved {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status-rejected {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Action buttons */
+.action-btns {
+  display: flex;
+  gap: 0.5rem;        /* space between buttons */
+  align-items: center; /* vertically center */
+  justify-content: flex-start; /* align buttons to the left, change if needed */
+}
+
+.approve-btn,
+.reject-btn {
+  padding: 7px 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.approve-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.reject-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.approve-btn:hover {
+  background-color: #45a049;
+}
+
+.reject-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .containerAdmin {
+    flex-direction: column;
+  }
+
+  .sidebarAdmin {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .cardAdmin {
+    margin-left: 0;
+    margin-top: 10px;
+    padding: 15px 15px;
+    overflow-x: auto;
+  }
+
+  .about-header {
+    left: 0;
+  }
+
+  .verify-seller-table th,
+  .verify-seller-table td {
+    padding: 8px 10px;
+    font-size: 0.9rem;
   }
 }

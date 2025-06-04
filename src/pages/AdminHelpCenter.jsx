@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -7,8 +7,7 @@ import {
   faCircleQuestion,
   faRightFromBracket,
   faMoneyBillTransfer,
-  faUserCheck,
-  faClock
+  faUserCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 import '../style/AdminDashboard.css';
@@ -22,12 +21,13 @@ const AdminHelpCenter = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [replyInputs, setReplyInputs] = useState({});
 
   const toggleDropdown = () => {
     setShowDropdown(prev => !prev);
   };
 
-  // Logout handler with confirmation
   const handleLogout = (e) => {
     e.preventDefault();
     const confirmLogout = window.confirm("Are you sure you want to log out?");
@@ -37,6 +37,27 @@ const AdminHelpCenter = () => {
       localStorage.removeItem("isAdmin");
       navigate("/login-admin");
     }
+  };
+
+  useEffect(() => {
+    const storedMessages = JSON.parse(localStorage.getItem("supportMessages")) || [];
+    setMessages(storedMessages);
+  }, []);
+
+  const handleReplyChange = (id, text) => {
+    setReplyInputs(prev => ({ ...prev, [id]: text }));
+  };
+
+  const handleReplySubmit = (id) => {
+    const updatedMessages = messages.map(msg => {
+      if (msg.id === id) {
+        return { ...msg, reply: replyInputs[id] };
+      }
+      return msg;
+    });
+    setMessages(updatedMessages);
+    localStorage.setItem("supportMessages", JSON.stringify(updatedMessages));
+    setReplyInputs(prev => ({ ...prev, [id]: "" }));
   };
 
   return (
@@ -71,9 +92,7 @@ const AdminHelpCenter = () => {
         <nav className="menuAdmin" role="navigation" aria-label="Admin menu">
           <Link
             to="/admin/dashboard"
-            className={`menuItemAdmin ${
-              location.pathname === "/admin/dashboard" ? "active" : ""
-            }`}
+            className={`menuItemAdmin ${location.pathname === "/admin/dashboard" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faHouse} className="iconAdmin" />
             <span className="menuTextAdmin">Dashboard</span>
@@ -81,88 +100,85 @@ const AdminHelpCenter = () => {
 
           <Link
             to="/admin/user-management"
-            className={`menuItemAdmin ${
-              location.pathname === "/admin/user-management" ? "active" : ""
-            }`}
+            className={`menuItemAdmin ${location.pathname === "/admin/user-management" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faUser} className="iconAdmin" />
             <span className="menuTextAdmin">User Management</span>
           </Link>
 
-          <Link
-            to="/admin/payments"
-            className={`menuItemAdmin ${
-              location.pathname === "/admin/payments" ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={faMoneyBillTransfer} className="iconAdmin" />
-            <span className="menuTextAdmin">Pending Payments</span>
-          </Link>
-          
+
           <Link
             to="/admin/verify-seller"
-            className={`menuItemAdmin ${
-              location.pathname === "/admin/verify-seller" ? "active" : ""
-            }`}
+            className={`menuItemAdmin ${location.pathname === "/admin/verify-seller" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faUserCheck} className="iconAdmin" />
             <span className="menuTextAdmin">Verify Seller</span>
           </Link>
 
-          
-
           <Link
             to="/admin/help-center"
-            className={`menuItemAdmin ${
-              location.pathname === "/admin/help-center" ? "active" : ""
-            }`}
+            className={`menuItemAdmin ${location.pathname === "/admin/help-center" ? "active" : ""}`}
           >
             <FontAwesomeIcon icon={faCircleQuestion} className="iconAdmin" />
             <span className="menuTextAdmin">Help Center</span>
           </Link>
 
-          
-
-          {/* Logout */}
-          <div
-            className="Logout-menuItemAdmin"
-            onClick={handleLogout}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleLogout(e);
-              }
-            }}
-            style={{ cursor: "pointer" }}
-            aria-label="Log Out"
-          >
-            <div className="menuItemAdmin">
-              <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
-              <span className="menuTextAdmin">Log Out</span>
-            </div>
-          </div>
+         <div
+                     className="Logout-menuItemAdmin"
+                     style={{ cursor: "pointer" }}
+                     onClick={handleLogout}
+                     role="button"
+                     tabIndex={0}
+                     onKeyPress={(e) => {
+                       if (e.key === "Enter" || e.key === " ") handleLogout();
+                     }}
+                     aria-label="Log out"
+                   >
+                     <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
+                     <span className="menuTextAdmin">Log Out</span>
+                   </div>
         </nav>
       </aside>
 
       {/* Help Center Main Content */}
       <main className="group73HelpCenter">
         <div className="rectangle120HelpCenter"></div>
-        <h2 className="titleHelpCenter">Customer Reviews</h2>
+        <h2 className="titleHelpCenter">Support Messages</h2>
 
-        <div className="rectangle124HelpCenter">
-          <p className="reviewTextHelpCenter">
-            "This product really helped me organize my tasks efficiently. Highly recommended!"
-          </p>
-          <p className="reviewAuthorHelpCenter">– Jane Doe</p>
-        </div>
+        {messages.length === 0 ? (
+          <div className="rectangle124HelpCenter">
+            <p className="reviewTextHelpCenter">No support messages yet.</p>
+          </div>
+        ) : (
+          messages.map((msg) => (
+            <div key={msg.id} className="rectangle124HelpCenter">
+              <p className="reviewTextHelpCenter">"{msg.text}"</p>
+              <p className="reviewAuthorHelpCenter">– Sent on: {msg.timestamp}</p>
 
-        <div className="rectangle125HelpCenter">
-          <p className="reviewTextHelpCenter">
-            "Customer support was prompt and very helpful. Great experience overall."
-          </p>
-          <p className="reviewAuthorHelpCenter">– John Smith</p>
-        </div>
+              {msg.reply ? (
+                <div className="replyBoxHelpCenter">
+                  <p className="replyLabelHelpCenter">Admin Reply:</p>
+                  <p className="replyTextHelpCenter">{msg.reply}</p>
+                </div>
+              ) : (
+                <div className="replyFormHelpCenter">
+                  <textarea
+                    value={replyInputs[msg.id] || ""}
+                    onChange={(e) => handleReplyChange(msg.id, e.target.value)}
+                    placeholder="Type your reply here..."
+                    className="replyTextareaHelpCenter"
+                  />
+                  <button
+                    onClick={() => handleReplySubmit(msg.id)}
+                    className="replyButtonHelpCenter"
+                  >
+                    Send Reply
+                  </button>
+                </div>
+              )}
+            </div>
+          ))
+        )}
       </main>
     </div>
   );

@@ -8,8 +8,7 @@ import {
   faRightFromBracket,
   faChevronDown,
   faMoneyBillTransfer,
-  faClock,
-  faUserCheck 
+  faUserCheck,
 } from '@fortawesome/free-solid-svg-icons';
 
 import '../style/AdminDashboard.css';
@@ -20,44 +19,35 @@ import logo from '../assets/Logo.png';
 const AdminUserManagement = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dropdownRef = useRef(null);
 
+  // Sample user data (replace with API or state management as needed)
   const [users, setUsers] = useState([
-    {
-      id: 1,
-      name: 'Shelamae',
-      role: 'Seller',
-      email: 'shelamae@yamba',
-      createDate: '2025-02-03',
-    },
-    {
-      id: 2,
-      name: 'John Doe',
-      role: 'Buyer',
-      email: 'john.doe@example.com',
-      createDate: '2024-12-15',
-    },
+    { id: 1, name: 'Shelamae', role: 'Seller', email: 'shelamae@yamba', createDate: '2025-02-03' },
+    { id: 2, name: 'John Doe', role: 'Buyer', email: 'john.doe@example.com', createDate: '2024-12-15' },
   ]);
 
+  // User selected for deletion confirmation
   const [userToDelete, setUserToDelete] = useState(null);
-  const [dropdownOpenForUserId, setDropdownOpenForUserId] = useState(null);
-  const boxRef = useRef(null);
 
+  // Tracks which user's dropdown is open (user ID)
+  const [dropdownOpenForUserId, setDropdownOpenForUserId] = useState(null);
+
+  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (boxRef.current && !boxRef.current.contains(event.target)) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpenForUserId(null);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Logout handler with confirmation
   const handleLogout = (e) => {
     e.preventDefault();
-    const confirmLogout = window.confirm('Are you sure you want to log out?');
-    if (confirmLogout) {
+    if (window.confirm('Are you sure you want to log out?')) {
       localStorage.removeItem('user');
       localStorage.removeItem('loggedIn');
       localStorage.removeItem('isAdmin');
@@ -65,29 +55,33 @@ const AdminUserManagement = () => {
     }
   };
 
+  // Open delete confirmation modal
   const handleDeleteClick = (user) => {
     setUserToDelete(user);
     setDropdownOpenForUserId(null);
   };
 
+  // Confirm user deletion
   const confirmDelete = () => {
     setUsers(users.filter((u) => u.id !== userToDelete.id));
     setUserToDelete(null);
   };
 
-  const cancelDelete = () => {
-    setUserToDelete(null);
-  };
+  // Cancel deletion modal
+  const cancelDelete = () => setUserToDelete(null);
 
+  // Toggle dropdown for specific user ID
   const toggleDropdown = (userId) => {
     setDropdownOpenForUserId((prev) => (prev === userId ? null : userId));
   };
 
+  // Navigate to transaction history for user
   const handleTransactionClick = (user) => {
     setDropdownOpenForUserId(null);
     navigate('/admin/transaction-history', { state: { user } });
   };
 
+  // Navigate to donation history for user
   const handleDonationClick = (user) => {
     setDropdownOpenForUserId(null);
     navigate('/admin/donation-history', { state: { user } });
@@ -95,16 +89,16 @@ const AdminUserManagement = () => {
 
   return (
     <div className="containerAdmin">
-      {/* Header */}
+      {/* Header Section */}
       <header className="about-header">
         <div className="about-header-1"></div>
-        
         <div className="logo-container-2">
           <img src={logo} alt="HelpingHand Logo" className="logo" />
         </div>
         <h2 className="titleAdmin">USER MANAGEMENT</h2>
       </header>
 
+      {/* Decorative Image */}
       <div className="image-section-2">
         <img
           src="https://i.imgur.com/GT5CDSQ.png"
@@ -113,220 +107,132 @@ const AdminUserManagement = () => {
         />
       </div>
 
-      {/* Sidebar */}
+      {/* Sidebar Navigation */}
       <aside className="sidebarAdmin">
-        <div className="avatarAdmin"></div>
+        <div className="avatarAdmin" />
         <div className="adminNameGroupAdmin">
           <p className="adminNameAdmin">Francim Elorde</p>
+          <p className="adminNameAdminRole">Admin</p>
         </div>
 
         <nav className="menuAdmin">
-           <Link
-                      to="/admin/dashboard"
-                      className={`menuItemAdmin ${
-                        location.pathname === "/admin/dashboard" ? "active" : ""
-                      }`}
-                    >
-                      <FontAwesomeIcon icon={faHouse} className="iconAdmin" />
-                      <span className="menuTextAdmin">Dashboard</span>
-                    </Link>
+          <Link
+            to="/admin/dashboard"
+            className={`menuItemAdmin ${location.pathname === '/admin/dashboard' ? 'active' : ''}`}
+          >
+            <FontAwesomeIcon icon={faHouse} className="iconAdmin" />
+            <span className="menuTextAdmin">Dashboard</span>
+          </Link>
+
+          <Link
+            to="/admin/user-management"
+            className={`menuItemAdmin ${location.pathname === '/admin/user-management' ? 'active' : ''}`}
+          >
+            <FontAwesomeIcon icon={faUser} className="iconAdmin" />
+            <span className="menuTextAdmin">User Management</span>
+          </Link>
+
           
-                    <Link
-                      to="/admin/user-management"
-                      className={`menuItemAdmin ${
-                        location.pathname === "/admin/user-management" ? "active" : ""
-                      }`}
-                    >
-                      <FontAwesomeIcon icon={faUser} className="iconAdmin" />
-                      <span className="menuTextAdmin">User Management</span>
-                    </Link>
-          
-                    <Link
-                      to="/admin/payments"
-                      className={`menuItemAdmin ${
-                        location.pathname === "/admin/payments" ? "active" : ""
-                      }`}
-                    >
-                      <FontAwesomeIcon icon={faMoneyBillTransfer} className="iconAdmin" />
-                      <span className="menuTextAdmin">Pending Payments</span>
-                    </Link>
-                    <Link
+
+          <Link
             to="/admin/verify-seller"
-            className={`menuItemAdmin ${
-              location.pathname === "/admin/verify-seller" ? "active" : ""
-            }`}
+            className={`menuItemAdmin ${location.pathname === '/admin/verify-seller' ? 'active' : ''}`}
           >
             <FontAwesomeIcon icon={faUserCheck} className="iconAdmin" />
             <span className="menuTextAdmin">Verify Seller</span>
           </Link>
-          
-          
-         
-          
-                    <Link
-                      to="/admin/help-center"
-                      className={`menuItemAdmin ${
-                        location.pathname === "/admin/help-center" ? "active" : ""
-                      }`}
-                    >
-                      <FontAwesomeIcon icon={faCircleQuestion} className="iconAdmin" />
-                      <span className="menuTextAdmin">Help Center</span>
-                    </Link>
 
-          <div className="Logout-menuItemAdmin">
-            <div onClick={handleLogout} className="menuItemAdmin" style={{ cursor: 'pointer' }}>
-              <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
-              <span className="menuTextAdmin">Log Out</span>
-            </div>
-          </div>
+          <Link
+            to="/admin/help-center"
+            className={`menuItemAdmin ${location.pathname === '/admin/help-center' ? 'active' : ''}`}
+          >
+            <FontAwesomeIcon icon={faCircleQuestion} className="iconAdmin" />
+            <span className="menuTextAdmin">Help Center</span>
+          </Link>
+
+         <div
+                     className="Logout-menuItemAdmin"
+                     style={{ cursor: "pointer" }}
+                     onClick={handleLogout}
+                     role="button"
+                     tabIndex={0}
+                     onKeyPress={(e) => {
+                       if (e.key === "Enter" || e.key === " ") handleLogout();
+                     }}
+                     aria-label="Log out"
+                   >
+                     <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
+                     <span className="menuTextAdmin">Log Out</span>
+                   </div>
         </nav>
       </aside>
 
-      {/* Main User Table */}
-      <div className="userGroupContainer">
-        <div className="userBackgroundLayer"></div>
-        <div className="userContentBox"></div>
-
+      {/* Main Content: User Table */}
+      <main className="userGroupContainer">
         <h1 className="userTitle">Users</h1>
 
-        <div className="userColumnHeaders" style={{ display: 'flex', fontWeight: 'bold', padding: '10px 0' }}>
-          <span style={{ flexBasis: '50px' }}>ID</span>
-          <span style={{ flexBasis: '150px' }}>Name</span>
-          <span style={{ flexBasis: '100px' }}>Role</span>
-          <span style={{ flexBasis: '200px' }}>Email</span>
-          <span style={{ flexBasis: '150px' }}>Create Date</span>
-          <span style={{ flexBasis: '250px' }}>Actions</span>
+        <div className="userTableContainer">
+          <table className="userTable" role="table" aria-label="User management table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Role</th>
+                <th scope="col">Email</th>
+                <th scope="col">Create Date</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.length === 0 ? (
+                <tr>
+                  <td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>
+                    No users found.
+                  </td>
+                </tr>
+              ) : (
+                users.map((user) => (
+                  <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.role}</td>
+                    <td>{user.email}</td>
+                    <td>{user.createDate}</td>
+                    <td className="userActionsCell">
+                      <button
+                        className="deleteBtn"
+                        onClick={() => handleDeleteClick(user)}
+                        aria-label={`Delete user ${user.name}`}
+                      >
+                        Delete
+                      </button>
+                  
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
         </div>
-
-        {users.map((user) => (
-          <div
-            key={user.id}
-            className="userRow"
-            style={{
-              display: 'flex',
-              padding: '10px 0',
-              borderBottom: '1px solid #ddd',
-              alignItems: 'center',
-              position: 'relative',
-            }}
-          >
-            <span style={{ flexBasis: '50px' }}>{user.id}</span>
-            <span style={{ flexBasis: '150px' }}>{user.name}</span>
-            <span style={{ flexBasis: '100px' }}>{user.role}</span>
-            <span style={{ flexBasis: '200px' }}>{user.email}</span>
-            <span style={{ flexBasis: '150px' }}>{user.createDate}</span>
-            <div style={{ flexBasis: '250px', display: 'flex', gap: '10px' }}>
-              <button className="deleteBtn" onClick={() => handleDeleteClick(user)}>
-                Delete
-              </button>
-              <button
-                className="dropdownToggleBtn"
-                onClick={() => toggleDropdown(user.id)}
-                style={{ cursor: 'pointer' }}
-                aria-label="Toggle dropdown"
-              >
-                <FontAwesomeIcon icon={faChevronDown} />
-              </button>
-            </div>
-
-            {dropdownOpenForUserId === user.id && (
-              <div
-                ref={boxRef}
-                className="chover-down-arrow-container"
-                style={{
-                  position: 'absolute',
-                  width: 273,
-                  height: 153,
-                  background: '#FEFEFE',
-                  borderRadius: 28,
-                  top: '40px',
-                  right: '10px',
-                  boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                  zIndex: 10,
-                }}
-              >
-                <div
-                  style={{
-                    width: '100%',
-                    height: 31,
-                    background: '#1E1E1E',
-                    borderTopLeftRadius: 28,
-                    borderTopRightRadius: 28,
-                  }}
-                />
-                <div
-                  onClick={() => handleTransactionClick(user)}
-                  style={{
-                    position: 'absolute',
-                    left: 27,
-                    top: 58,
-                    fontWeight: 500,
-                    fontSize: 15,
-                    textDecoration: 'underline',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Transaction History
-                </div>
-                <div
-                  onClick={() => handleDonationClick(user)}
-                  style={{
-                    position: 'absolute',
-                    left: 27,
-                    top: 97,
-                    fontWeight: 500,
-                    fontSize: 15,
-                    textDecoration: 'underline',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Donation History
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
 
         {/* Delete Confirmation Modal */}
         {userToDelete && (
-          <div
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              zIndex: 1000,
-            }}
-          >
-            <div
-              style={{
-                background: 'white',
-                padding: '20px',
-                borderRadius: '10px',
-                maxWidth: '400px',
-                textAlign: 'center',
-              }}
-            >
-              <p>
-                Are you sure you want to delete user <strong>{userToDelete.name}</strong>?
+          <div className="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div className="modalBox">
+              <p id="modalTitle">
+                Are you sure you want to delete user{' '}
+                <strong>{userToDelete.name}</strong>?
               </p>
-              <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '15px' }}>
-                <button onClick={confirmDelete} style={{ padding: '8px 16px' }}>
+              <div className="modalButtons">
+                <button onClick={confirmDelete} autoFocus>
                   Yes
                 </button>
-                <button onClick={cancelDelete} style={{ padding: '8px 16px' }}>
-                  No
-                </button>
+                <button onClick={cancelDelete}>No</button>
               </div>
             </div>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 };

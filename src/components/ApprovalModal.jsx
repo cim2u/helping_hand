@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import "../style/ApprovalModal.css"; // Update your styles here
+import "../style/ApprovalModal.css";
 
-const ApprovalModal = ({
-  isOpen,
-  onClose,
-  user,
-  action,
-  onSubmitComment
-}) => {
+const ApprovalModal = ({ isOpen, onClose, user, action, onSubmitComment }) => {
   const [comment, setComment] = useState("");
 
   if (!isOpen) return null;
 
   const handleSubmit = () => {
-    onSubmitComment(comment);
-    setComment(""); // clear after submit
+    onSubmitComment(user, action, comment);
+    setComment("");
+    onClose();
   };
 
   return (

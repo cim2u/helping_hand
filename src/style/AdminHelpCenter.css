@@ -8,6 +8,50 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.replyFormHelpCenter {
+  margin-top: 10px;
+}
+
+.replyTextareaHelpCenter {
+  width: 100%;
+  min-height: 60px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+  font-family: 'Outfit', sans-serif;
+  resize: vertical;
+}
+
+.replyButtonHelpCenter {
+  padding: 6px 12px;
+  background-color: #3d8bfd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+}
+
+.replyBoxHelpCenter {
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-left: 4px solid #3d8bfd;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.replyLabelHelpCenter {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.replyTextHelpCenter {
+  font-style: italic;
+  color: #444;
+}
+
 .rectangle120HelpCenter {
   box-sizing: border-box;
   position: absolute;

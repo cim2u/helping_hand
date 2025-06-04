@@ -274,3 +274,67 @@ body html {
   90%  { opacity: 1; }
   100% { opacity: 0; }
 }
+
+.viewMessagesButtonSupport {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #777dc4;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modalOverlaySupport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContentSupport {
+  background: white;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 12px;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.closeModalSupport {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+}
+
+.modalMessageItemSupport {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f4f6fa;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.timestampSupport {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.adminReplySupport {
+  margin-top: 10px;
+  color: #3b3b3b;
+  font-style: italic;
+}

@@ -3,40 +3,36 @@ import { useNavigate } from 'react-router-dom';
 import '../style/Support.css';
 import logo from "../assets/Logo.png";
 
-
 const Support = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isFirstVisit, setIsFirstVisit] = useState(false);
   const [message, setMessage] = useState('');
   const [showNotification, setShowNotification] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [currentUser, setCurrentUser] = useState("guestUser"); // Replace with actual username if you have login system
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    setIsLoggedIn(!!token); // Sets isLoggedIn based on token presence
-  }, []);
+    setIsLoggedIn(!!token);
 
-  useEffect(() => {
-    const hasVisited = localStorage.getItem("isRegistered");
-    if (!hasVisited) {
-      setIsFirstVisit(true);
-      localStorage.setItem("isRegistered", "true");
-    }
+    const savedMessages = JSON.parse(localStorage.getItem("supportMessages")) || [];
+    setMessages(savedMessages);
   }, []);
 
   const handleNavigation = (page, e) => {
-    if (e) e.preventDefault();  // Prevent default anchor behavior
+    if (e) e.preventDefault();
     if (page === "home" && !isLoggedIn) {
-      handleLogout(); // Logs out if user is not logged in
+      handleLogout();
     } else {
       navigate(`/${page}`);
     }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken"); // Logs out the user
+    localStorage.removeItem("authToken");
     setIsLoggedIn(false);
-    navigate("/home"); // Redirects to the home page after logout
+    navigate("/home");
   };
 
   const handleSendClick = () => {
@@ -45,20 +41,24 @@ const Support = () => {
       return;
     }
 
-    // Simulate sending message to ADMINHELPCENTER
-    console.log("Sending message to ADMINHELPCENTER:", message);
+    const newMessage = {
+      id: Date.now(),
+      user: currentUser,
+      text: message,
+      timestamp: new Date().toLocaleString(),
+      reply: null
+    };
 
-    // Show success notification
+    const updatedMessages = [...messages, newMessage];
+    localStorage.setItem("supportMessages", JSON.stringify(updatedMessages));
+    setMessages(updatedMessages);
+    setMessage('');
     setShowNotification(true);
 
-    // Clear the message after sending
-    setMessage('');
-
-    // Hide notification after 3 seconds
-    setTimeout(() => {
-      setShowNotification(false);
-    }, 3000);
+    setTimeout(() => setShowNotification(false), 3000);
   };
+
+  const userMessages = messages.filter(msg => msg.user === currentUser || msg.user === "system");
 
   return (
     <div className="account-info-wrapper">
@@ -67,27 +67,19 @@ const Support = () => {
         <div className="headerImageSupport"></div>
 
         <div className="logoContainerSupport">
-          <img
-            src="https://i.imgur.com/GT5CDSQ.png"
-
-            alt="logo"
-            className="logoSupport"
-          />
+          <img src="https://i.imgur.com/GT5CDSQ.png" alt="logo" className="logoSupport" />
           <div className="logo-container">
             <img src={logo} alt="HelpingHand Logo" className="logo" />
           </div>
         </div>
 
-        {/* Navigation Links */}
         <div className="nav-container">
           <nav className="nav-links-h">
             <a href="#" onClick={(e) => handleNavigation("about", e)}>About</a>
             <a href="#" onClick={(e) => handleNavigation("support", e)}>Support</a>
             <a href="#" onClick={(e) => {
-              e.preventDefault(); // Prevent default behavior
-              localStorage.removeItem("authToken"); // Logs out the user
-              setIsLoggedIn(false); // Update the login status in state
-              navigate("/home"); // Navigate to the home page
+              e.preventDefault();
+              handleLogout();
             }}>Home</a>
           </nav>
         </div>
@@ -107,6 +99,9 @@ const Support = () => {
             />
           </div>
           <button className="sendButtonSupport" onClick={handleSendClick}>Send</button>
+          <button className="viewMessagesButtonSupport" onClick={() => setShowModal(true)}>
+            View Messages
+          </button>
         </div>
 
         {showNotification && (
@@ -114,11 +109,33 @@ const Support = () => {
         )}
 
         <div className="emailTextSupport">
-          Email HelpingHand at <span className="underlineEmail">HelpingHandSupport@gmail.com</span>
+          Email HelpingHand at <span className="underlineEmail">helpinghandofficial@gmail.com</span>
         </div>
-      </div>
 
-    
+        {showModal && (
+          <div className="modalOverlaySupport">
+            <div className="modalContentSupport">
+              <span className="closeModalSupport" onClick={() => setShowModal(false)}>&times;</span>
+              <h3>Message History</h3>
+              {userMessages.length === 0 ? (
+                <p>No messages yet.</p>
+              ) : (
+                userMessages.map(msg => (
+                  <div key={msg.id} className="modalMessageItemSupport">
+                    <div><strong>You:</strong> {msg.text}</div>
+                    <div className="timestampSupport">{msg.timestamp}</div>
+                    {msg.reply && (
+                      <div className="adminReplySupport">
+                        <strong>Admin:</strong> {msg.reply}
+                      </div>
+                    )}
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

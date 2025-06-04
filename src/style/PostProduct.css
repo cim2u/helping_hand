@@ -8,6 +8,21 @@ body html{
 }
 
 .postProductContainer {
+  /* previous styles... */
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.postProductContainer {
   position: fixed; /* fixed to viewport */
   width: 480px !important;
   height: 701px;

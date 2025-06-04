@@ -370,35 +370,7 @@ const handleLogoutClick = () => {
 
 
 {/* Row 1 */}
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Ribbon Keychain",
-    image: "https://i.imgur.com/YP2DSeS.png",
-    seller: "Sissy Shyey.",
-    price: 15.00
-  })}>
-    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
-    <div className="product-name">Ribbon Keychain</div>
-  </div>
-
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Ribbon Keychain",
-    image: "https://i.imgur.com/YP2DSeS.png",
-    seller: "Sissy Shyey.",
-    price: 15.00
-  })}>
-    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
-    <div className="product-name">Ribbon Keychain</div>
-  </div>
-
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Ribbon Keychain",
-    image: "https://i.imgur.com/YP2DSeS.png",
-    seller: "Sissy Shyey.",
-    price: 15.00
-  })}>
-    <img src="https://i.imgur.com/YP2DSeS.png" alt="Ribbon Keychain" className="product-image" />
-    <div className="product-name">Ribbon Keychain</div>
-  </div>
+ 
 
   <div className="product-item" onClick={() => handleProductClick({
     name: "Handmade Flower Bouquet",
@@ -410,35 +382,7 @@ const handleLogoutClick = () => {
     <div className="product-name">Handmade Flower Bouquet</div>
   </div>
 
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Handmade Flower Bouquet",
-    image: "https://i.imgur.com/63rt8SJ.png",
-    description: "Handmade bracelet with colorful beads.",
-    price: 10.00
-  })}>
-    <img src="https://i.imgur.com/63rt8SJ.png" alt="Handmade Flower Bouquet" className="product-image" />
-    <div className="product-name">Handmade Flower Bouquet</div>
-  </div>
-
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Handmade Flower Bouquet",
-    image: "https://i.imgur.com/mLTxJQf.png",
-    description: "Handcrafted notebook made from recycled materials.",
-    price: 18.00
-  })}>
-    <img src="https://i.imgur.com/mLTxJQf.png" alt="handmade Flower Bouquet" className="product-image" />
-    <div className="product-name">Handmade Flower Bouquet</div>
-  </div>
-
-  <div className="product-item" onClick={() => handleProductClick({
-    name: "Handmade Flower Bouquet",
-    image: "https://i.imgur.com/Tc4gW95.png",
-    description: "Set of 4 wooden coasters with a rustic feel.",
-    price: 12.00
-  })}>
-    <img src="https://i.imgur.com/Tc4gW95.png" alt="Handmade Flower Bouquet" className="product-image" />
-    <div className="product-name">Handmade Flower Bouquet</div>
-  </div>
+  
 
   <div className="product-item" onClick={() => handleProductClick({
     name: "Mini Petals",

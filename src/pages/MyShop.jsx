@@ -92,7 +92,8 @@ const [userRole, setUserRole] = useState(localStorage.getItem("userRole") || "st
   const [activeTab, setActiveTab] = useState("products");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const [isModalOpen, setIsModalOpen] = useState(false);
+ 
   const [profileImage, setProfileImage] = useState(localStorage.getItem("profileImage") || "");
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const [scrolledRight, setScrolledRight] = useState(false);
@@ -281,6 +282,7 @@ useEffect(() => {
       });
     }
   }, [activeTab]);
+
 
   const handleMenuClick = useCallback((route) => {
     navigate(route);
@@ -483,10 +485,9 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
           
                
 <div>
-  {/* Only show button if the user is a student or seller */}
+ {/* Only show button if the user is a student or seller */}
      <div>
-      {/* Add button visible only for student or seller roles */}
- {userRole === 'seller' && (
+  {(userRole === 'student' || userRole === 'seller') && (
   <FontAwesomeIcon
     icon={faCirclePlus}
     className="home-add-button"
@@ -495,30 +496,24 @@ localStorage.setItem('userRole', 'buyer'); // or 'student' or 'seller'
 )}
 
 
-
       {/* Post Product Modal */}
       {isModalOpen && (
         <div className="post-modal-overlay">
           <div className="post-modal-content" ref={modalRef}>
             <PostProduct />
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="post-close-button"
-            >
-              Close
-
-            </button>
+           
           </div>
         </div>
       )}
+    </div>
+  
+    </div>
     </div>
 
 
       </div>
 
-        </div>
-      </div>
-
+    
 
       {/* Rest of your components remain the same... */}
 

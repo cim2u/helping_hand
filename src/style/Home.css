@@ -4,6 +4,7 @@
 
 
 body {
+
   max-height: 90vh;
   overflow-y: auto;
 
@@ -13,6 +14,7 @@ body {
 
 /* Container wrapper */
 .home-wrapper {
+
   
   display: flex;
   flex-direction: column;
@@ -28,6 +30,7 @@ body {
 
 /* Background cover image */
 .header-cover {
+
   width: 1521px; /* Makes it responsive */
   height: 276px;
   background-image: url('https://i.imgur.com/65FnVGb.png');
@@ -43,6 +46,7 @@ body {
 
 /* Logo.module.css */
 .logoContainer {
+
   position: absolute;    /* Absolute positioning */
   top: -30px;             /* Place it at the top of header-cover */
   left: -0px;            /* Horizontal position */
@@ -55,6 +59,7 @@ body {
 
 /* Login button styles */
 .login-button {
+
   width: 120px;                   /* Set width to 120px */
   height: 35px;                   /* Set height to 35px */
   font-family: 'Roboto', sans-serif;
@@ -76,6 +81,7 @@ body {
 
 /* Hover effect for Login button */
 .login-button:hover {
+
   background-color: #00bcd4; /* Blue on hover */
   transform: scale(1.05); /* Slight zoom effect */
 }
@@ -392,15 +398,17 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
 /* Label text for profile */
 .profileLabel {
   position: absolute;
+  margin-top: 50%!important; /* Adjust this as needed */
+  margin-left: 15% !important;
+  transform: translateX(-50%);
   width: 150px;
   height: 39px;
-  margin-left: -0px !important;
-  margin-top: -91px !important;
   font-family: 'Rowdies', sans-serif;
   font-weight: 700;
   font-size: 28px;
   color: #7e3550;
   text-align: center;
+  justify-content: center !important;
 }
 
 /* Circle next to status */
@@ -645,10 +653,11 @@ background: linear-gradient(180deg, #CFB8F8 0%, #FEFEFE 100%);
 
 /* Profile Address */
 .profileAddressLabel {
+
   position: absolute;
   width: 157px;
   height: 18px;
-  margin-left: -15px !important;
+  margin-left: 25px !important;
   margin-top: -40px !important;
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
@@ -1152,39 +1161,44 @@ margin-left: 285px;
 }
 
 
-
-
-/* Modal for Unregistered User */
 .unregisteredModalHome {
-  position: absolute;
+  position: fixed !important; /* Ensure it stays in place on scroll */
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
   width: 457.93px;
   height: 295.16px;
-  left: 0;
-  top: -6px;
   border-radius: 28px;
   background: #FEFEFE;
   border: 1px solid #7E3550;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(90px);
   z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Inner Rectangle */
+
+
 .unregisteredModalInnerHome {
   box-sizing: border-box;
-  position: absolute;
   width: 409.1px;
   height: 250.67px;
-  left: 23.87px;
-  top: 16.79px;
   background: #FEFEFE;
   border: 2px solid #7E3550;
   border-radius: 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
 
 /* Message */
 .unregisteredMessageHome {
   position: absolute;
-  width: 208.35px;
+  width: 308.35px!important;
   height: 54.26px;
   left: 65.11px;
   top: 49.34px;
@@ -1297,6 +1311,7 @@ margin-left: 285px;
 }
 
 .description-display {
+
   font-size: 14px!important;
   font-weight: bold;
   width: 25px;
@@ -1309,3 +1324,4 @@ margin-left: 285px;
   line-height: 19px;
 
 }
+

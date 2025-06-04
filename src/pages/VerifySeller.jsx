@@ -1,134 +1,174 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-  faCheck, 
-  faXmark, 
-  faFilePdf, 
+import {
+  faCheck,
+  faXmark,
+  faFilePdf,
   faHouse,
   faUser,
-  faMoneyBillTransfer,
   faUserCheck,
   faCircleQuestion,
-  faClock,
-  faRightFromBracket
+  faRightFromBracket,
+  faFilter,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import "../style/AdminDashboard.css";
-import "../style/About.css";
 import "../style/VerifySeller.css";
 import logo from "../assets/Logo.png";
 import ApprovalModal from "../components/ApprovalModal";
 
-// DocumentPreview: preview PDF or image link
 const DocumentPreview = ({ url, type, user }) => {
-  const isPdf = url.toLowerCase().endsWith(".pdf");
-  if (isPdf) {
-    return (
-      <a 
-        href={url} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        aria-label={`View ${type} document for ${user}`}
-        className="document-link"
-      >
-        <FontAwesomeIcon icon={faFilePdf} /> View PDF
-      </a>
-    );
-  } else {
-    return (
-      <a 
-        href={url} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        aria-label={`View ${type} image for ${user}`}
-      >
-        <img 
-          src={url} 
-          alt={`${user} ${type}`} 
-          className="document-image" 
+  const isPdf = url?.toLowerCase()?.endsWith(".pdf");
+
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="document-link"
+      aria-label={`View ${type} document for ${user}`}
+    >
+      {isPdf ? (
+        <>
+          <FontAwesomeIcon icon={faFilePdf} /> View PDF
+        </>
+      ) : (
+        <img
+          src={url}
+          alt={`${user} ${type}`}
+          className="document-image"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://via.placeholder.com/150?text=Document+Not+Found";
+          }}
         />
-      </a>
-    );
-  }
+      )}
+    </a>
+  );
 };
 
-// Status badge with colors
 const StatusBadge = ({ status }) => {
-  const statusText = {
-    pending: "Pending",
-    approved: "Approved",
-    rejected: "Rejected",
+  const statusConfig = {
+    pending: { text: "Pending" },
+    approved: { text: "Approved"},
+    rejected: { text: "Rejected" },
   };
+
+  const { text, color, icon } = statusConfig[status] || statusConfig.pending;
+
   return (
-    <span className={`status-badge status-${status}`}>
-      {status === "approved" && "✅ "}
-      {status === "rejected" && "❌ "}
-      {statusText[status]}
+    <span className="status-badge" style={{ backgroundColor: color }}>
+      {icon} {text}
     </span>
   );
 };
 
-// Buttons for approve/reject actions
 const ActionButtons = ({ status, onApprove, onReject, user }) => {
   if (status !== "pending") {
-    return <span>No actions available</span>;
+    return <span className="no-actions">Action completed</span>;
   }
+
   return (
-    <>
+    <div className="action-btns">
       <button
         className="approve-btn"
         onClick={onApprove}
-        aria-label={`Approve verification for ${user}`}
+        aria-label={`Approve request for ${user}`}
       >
         <FontAwesomeIcon icon={faCheck} /> Approve
       </button>
       <button
         className="reject-btn"
         onClick={onReject}
-        aria-label={`Reject verification for ${user}`}
-        style={{ marginLeft: "0.5rem" }}
+        aria-label={`Reject request for ${user}`}
       >
         <FontAwesomeIcon icon={faXmark} /> Reject
       </button>
-    </>
+    </div>
   );
 };
 
 const VerifySeller = () => {
-  const [requests, setRequests] = useState([
+  const sampleRequests = [
     {
       id: 1,
+      userId: "user123",
       user: "Juan Dela Cruz",
-      documentType: "CCOR",
+      email: "juan@example.com",
+      documentType: "COR",
       documentUrl: "https://example.com/sample-ccor.pdf",
-      gcashQrCodeUrl: "https://i.imgur.com/GT5CDSQ.png",
       status: "pending",
       dateSubmitted: "2023-05-15",
+      businessName: "Juan's Store",
     },
-    {
-      id: 2,
-      user: "Maria Santos",
-      documentType: "ID",
-      documentUrl: "https://i.imgur.com/GT5CDSQ.png",
-      gcashQrCodeUrl: "https://i.imgur.com/GT5CDSQ.png",
-      status: "pending",
-      dateSubmitted: "2023-05-16",
-    },
+  
     {
       id: 3,
+      userId: "user789",
       user: "Pedro Reyes",
+      email: "pedro@example.com",
       documentType: "Business Permit",
       documentUrl: "https://example.com/business-permit.pdf",
-      gcashQrCodeUrl: "https://i.imgur.com/GT5CDSQ.png",
       status: "approved",
       dateSubmitted: "2023-05-10",
+      businessName: "Pedro Enterprises",
     },
-  ]);
+  ];
 
-  // Modal state
+  const [requests, setRequests] = useState(sampleRequests);
+  const [filteredRequests, setFilteredRequests] = useState(sampleRequests);
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [sortConfig, setSortConfig] = useState({
+    key: "dateSubmitted",
+    direction: "desc",
+  });
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [actionType, setActionType] = useState(null);
+  const [notification, setNotification] = useState({
+    show: false,
+    message: "",
+  });
+
+  // Filter and sort requests whenever dependencies change
+  useEffect(() => {
+    let result = requests;
+
+    // Filter by status if not "all"
+    if (statusFilter !== "all") {
+      result = result.filter((request) => request.status === statusFilter);
+    }
+
+    // Sort by key and direction
+    if (sortConfig.key) {
+      result = [...result].sort((a, b) => {
+        const aVal = a[sortConfig.key];
+        const bVal = b[sortConfig.key];
+
+        // If sorting by date, parse to Date for accurate comparison
+        if (sortConfig.key === "dateSubmitted") {
+          return sortConfig.direction === "asc"
+            ? new Date(aVal) - new Date(bVal)
+            : new Date(bVal) - new Date(aVal);
+        }
+
+        // For strings
+        if (aVal < bVal) return sortConfig.direction === "asc" ? -1 : 1;
+        if (aVal > bVal) return sortConfig.direction === "asc" ? 1 : -1;
+        return 0;
+      });
+    }
+
+    setFilteredRequests(result);
+  }, [requests, statusFilter, sortConfig]);
+
+  const requestSort = (key) => {
+    let direction = "asc";
+    if (sortConfig.key === key && sortConfig.direction === "asc") {
+      direction = "desc";
+    }
+    setSortConfig({ key, direction });
+  };
 
   const openModal = (request, action) => {
     setSelectedRequest(request);
@@ -143,19 +183,48 @@ const VerifySeller = () => {
   };
 
   const handleSubmitComment = (comment) => {
-    if (selectedRequest && actionType) {
-      setRequests((prev) =>
-        prev.map((req) =>
-          req.id === selectedRequest.id ? { ...req, status: actionType } : req
-        )
-      );
-      console.log(`User "${selectedRequest.user}" was ${actionType} with comment: "${comment}"`);
-      closeModal();
-    }
+    if (!selectedRequest || !actionType) return;
+
+    // Update the status of the selected request
+    const updatedRequests = requests.map((req) =>
+      req.id === selectedRequest.id ? { ...req, status: actionType } : req
+    );
+    setRequests(updatedRequests);
+
+    // Save notification to localStorage
+    const supportMessages =
+      JSON.parse(localStorage.getItem("supportMessages")) || [];
+
+    const notificationMessage = {
+      id: Date.now(),
+      userId: selectedRequest.userId,
+      text: `Your ${selectedRequest.documentType} verification has been ${actionType}. ${
+        comment ? `Admin comment: ${comment}` : ""
+      }`,
+      timestamp: new Date().toISOString(),
+      isRead: false,
+      type: "verification",
+    };
+
+    localStorage.setItem(
+      "supportMessages",
+      JSON.stringify([...supportMessages, notificationMessage])
+    );
+
+    setNotification({
+      show: true,
+      message: `Successfully ${actionType} ${selectedRequest.user}'s request`,
+    });
+
+    // Hide notification after 3 seconds
+    setTimeout(() => setNotification({ show: false, message: "" }), 3000);
+
+    closeModal();
   };
 
   const handleLogout = () => {
-    console.log("Logging out...");
+    // Implement your logout logic here
+    console.log("Admin logged out");
   };
 
   return (
@@ -166,9 +235,10 @@ const VerifySeller = () => {
         <div className="logo-container">
           <img src={logo} alt="Helping Hand Logo" className="logo" />
         </div>
-        <h2 className="titleAdmin">DASHBOARD</h2>
+        <h2 className="titleAdmin">VERIFY SELLER</h2>
       </header>
 
+      {/* Image Section */}
       <div className="image-section-2">
         <img
           src="https://i.imgur.com/GT5CDSQ.png"
@@ -178,137 +248,212 @@ const VerifySeller = () => {
       </div>
 
       {/* Sidebar */}
-      <aside className="sidebarAdmin" aria-label="Admin sidebar navigation">
-        <div className="avatarAdmin" aria-hidden="true"></div>
+      <aside className="sidebarAdmin" aria-label="Admin navigation">
+        <div className="avatarAdmin"></div>
         <div className="adminNameGroupAdmin">
           <p className="adminNameAdmin">Francim Elorde</p>
           <p className="adminNameAdminRole">Admin</p>
         </div>
-        <nav className="menuAdmin" role="navigation" aria-label="Admin menu">
-          <Link
-            to="/admin/dashboard"
-            className={`menuItemAdmin ${window.location.pathname === "/admin/dashboard" ? "active" : ""}`}
-          >
+        <nav className="menuAdmin">
+          <Link to="/admin/dashboard" className="menuItemAdmin">
             <FontAwesomeIcon icon={faHouse} className="iconAdmin" />
             <span className="menuTextAdmin">Dashboard</span>
           </Link>
-
-          <Link
-            to="/admin/user-management"
-            className={`menuItemAdmin ${window.location.pathname === "/admin/user-management" ? "active" : ""}`}
-          >
+          <Link to="/admin/user-management" className="menuItemAdmin">
             <FontAwesomeIcon icon={faUser} className="iconAdmin" />
             <span className="menuTextAdmin">User Management</span>
           </Link>
-
-          <Link
-            to="/admin/payments"
-            className={`menuItemAdmin ${window.location.pathname === "/admin/payments" ? "active" : ""}`}
-          >
-            <FontAwesomeIcon icon={faMoneyBillTransfer} className="iconAdmin" />
-            <span className="menuTextAdmin">Pending Payments</span>
-          </Link>
-          
-          <Link
-            to="/admin/verify-seller"
-            className={`menuItemAdmin ${window.location.pathname === "/admin/verify-seller" ? "active" : ""}`}
-          >
+          <Link to="/admin/verify-seller" className="menuItemAdmin active">
             <FontAwesomeIcon icon={faUserCheck} className="iconAdmin" />
             <span className="menuTextAdmin">Verify Seller</span>
           </Link>
-
-          <Link
-            to="/admin/help-center"
-            className={`menuItemAdmin ${window.location.pathname === "/admin/help-center" ? "active" : ""}`}
-          >
+          <Link to="/admin/help-center" className="menuItemAdmin">
             <FontAwesomeIcon icon={faCircleQuestion} className="iconAdmin" />
             <span className="menuTextAdmin">Help Center</span>
           </Link>
-
-
-          {/* Logout */}
           <div
             className="Logout-menuItemAdmin"
+            style={{ cursor: "pointer" }}
             onClick={handleLogout}
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleLogout(e);
-              }
+            onKeyPress={(e) => {
+              if (e.key === "Enter" || e.key === " ") handleLogout();
             }}
-            style={{ cursor: "pointer" }}
-            aria-label="Log Out"
+            aria-label="Log out"
           >
-            <div className="menuItemAdmin">
-              <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
-              <span className="menuTextAdmin">Log Out</span>
-            </div>
+            <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
+            <span className="menuTextAdmin">Log Out</span>
           </div>
         </nav>
       </aside>
 
-      {/* Main content */}
-      <section className="cardAdmin verify-seller" aria-labelledby="verify-seller-title">
+      {/* Main Content */}
+      <section className="cardAdmin verify-seller" aria-label="Seller verification requests">
         <div className="verify-seller-header">
-          <h3 id="verify-seller-title" className="cardTitleAdmin">Seller Verification Requests</h3>
+          <h3 className="cardTitleAdmin">Seller Verification Requests</h3>
+          <div className="controls-row">
+            <div className="filter-group">
+              
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className="status-filter"
+                aria-label="Filter requests by status"
+              >
+                <option value="all">All Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+              </select>
+            </div>
+          </div>
         </div>
 
-        <table className="verify-seller-table" role="table">
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Document</th>
-              <th>GCash QR Code</th>
-              <th>Date Submitted</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {requests.map((request) => (
-              <tr key={request.id}>
-                <td>{request.user}</td>
-                <td>
-                  <DocumentPreview
-                    url={request.documentUrl}
-                    type={request.documentType}
-                    user={request.user}
-                  />
-                </td>
-                <td>
-                  <a href={request.gcashQrCodeUrl} target="_blank" rel="noopener noreferrer" aria-label={`View GCash QR code for ${request.user}`}>
-                    <img
-                      src={request.gcashQrCodeUrl}
-                      alt={`GCash QR code for ${request.user}`}
-                      className="gcash-qr-code"
-                    />
-                  </a>
-                </td>
-                <td>{request.dateSubmitted}</td>
-                <td><StatusBadge status={request.status} /></td>
-                <td>
-                  <ActionButtons
-                    status={request.status}
-                    onApprove={() => openModal(request, "approved")}
-                    onReject={() => openModal(request, "rejected")}
-                    user={request.user}
-                  />
-                </td>
+        <div className="table-responsive">
+          <table className="verify-seller-table" role="table">
+            <thead>
+              <tr>
+                <th
+                  onClick={() => requestSort("user")}
+                  role="columnheader"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && requestSort("user")}
+                  aria-sort={
+                    sortConfig.key === "user"
+                      ? sortConfig.direction === "asc"
+                        ? "ascending"
+                        : "descending"
+                      : "none"
+                  }
+                >
+                  User
+                </th>
+                <th
+                  onClick={() => requestSort("email")}
+                  role="columnheader"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && requestSort("email")}
+                  aria-sort={
+                    sortConfig.key === "email"
+                      ? sortConfig.direction === "asc"
+                        ? "ascending"
+                        : "descending"
+                      : "none"
+                  }
+                >
+                  Email
+                </th>
+                <th
+                  onClick={() => requestSort("documentType")}
+                  role="columnheader"
+                  tabIndex={0}
+                  onKeyDown={(e) =>
+                    e.key === "Enter" && requestSort("documentType")
+                  }
+                  aria-sort={
+                    sortConfig.key === "documentType"
+                      ? sortConfig.direction === "asc"
+                        ? "ascending"
+                        : "descending"
+                      : "none"
+                  }
+                >
+                  Document Type
+                </th>
+                <th>Document Preview</th>
+                <th
+                  onClick={() => requestSort("status")}
+                  role="columnheader"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && requestSort("status")}
+                  aria-sort={
+                    sortConfig.key === "status"
+                      ? sortConfig.direction === "asc"
+                        ? "ascending"
+                        : "descending"
+                      : "none"
+                  }
+                >
+                  Status
+                </th>
+                <th
+                  onClick={() => requestSort("dateSubmitted")}
+                  role="columnheader"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && requestSort("dateSubmitted")}
+                  aria-sort={
+                    sortConfig.key === "dateSubmitted"
+                      ? sortConfig.direction === "asc"
+                        ? "ascending"
+                        : "descending"
+                      : "none"
+                  }
+                >
+                  Date Submitted
+                </th>
+                <th>Business Name</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {/* Approval/Rejection Modal */}
+            </thead>
+            <tbody>
+              {filteredRequests.length === 0 && (
+                <tr>
+                  <td colSpan="8" style={{ textAlign: "center", padding: "1em" }}>
+                    No requests found.
+                  </td>
+                </tr>
+              )}
+              {filteredRequests.map((request) => (
+                <tr key={request.id}>
+                  <td>{request.user}</td>
+                  <td>{request.email}</td>
+                  <td>{request.documentType}</td>
+                  <td>
+                    <DocumentPreview
+                      url={request.documentUrl}
+                      type={request.documentType}
+                      user={request.user}
+                    />
+                  </td>
+                  <td>
+                    <StatusBadge status={request.status} />
+                  </td>
+                  <td>{new Date(request.dateSubmitted).toLocaleDateString()}</td>
+                  <td>{request.businessName}</td>
+                  <td>
+                    <ActionButtons
+                      status={request.status}
+                      user={request.user}
+                      onApprove={() => openModal(request, "approved")}
+                      onReject={() => openModal(request, "rejected")}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+    {modalOpen && selectedRequest && (
         <ApprovalModal
           isOpen={modalOpen}
           onClose={closeModal}
-          user={selectedRequest?.user || ""}
-          action={actionType}
           onSubmitComment={handleSubmitComment}
+          user={selectedRequest.user}
+          action={actionType}
         />
+      )}
+
+        {notification.show && (
+          <div
+            className="notification"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            {notification.message}
+          </div>
+        )}
       </section>
     </div>
   );

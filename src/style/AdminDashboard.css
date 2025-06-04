@@ -1,6 +1,6 @@
 .containerAdmin {
-  position: relative;
-  width: 100%;
+  position: fixed;
+  width: 110%;
   height: 50vh!important;
   background: rgb(255, 255, 255);
   font-family: 'Roboto', sans-serif;
@@ -43,12 +43,73 @@
   font-size: 32px;
   color: #FEFEFE;
 }
+/* Registered Users Title Styling */
+#registered-users-title {
+  font-size: 1.25rem;          /* 20px equivalent */
+  color: #2c3e50;              /* Dark blue-gray color */
+  margin: 0 0 16px 0;          /* Top Right Bottom Left */
+  font-weight: 600;            /* Semi-bold */
+  padding-bottom: 8px;         /* Space below title */
+  border-bottom: 2px solid #e9ecef; /* Subtle underline */
+  display: inline-block;       /* Makes border only as wide as text */
+}
+
+/* Optional: Add an icon before the title */
+#registered-users-title::before {
+  margin-right: 8px;
+  font-size: 1.1rem;
+}
+
+/* Dark mode variation */
+@media (prefers-color-scheme: dark) {
+  #registered-users-title {
+    color: #f8f9fa;            /* Light text for dark mode */
+    border-bottom-color: #495057; /* Darker underline for dark mode */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #registered-users-title {
+    font-size: 1.1rem;         /* Slightly smaller on mobile */
+    padding-bottom: 6px;
+  }
+}
 
 .titleAdmin {
   font-weight: 900;
   font-size: 36px;
   color: #FEFEFE;
   z-index:27;
+}
+
+/* Registered Users Count Section */
+.users-count-container {
+  display: flex;
+  flex-direction: column;
+  align-items: c  enter;
+  justify-content: center;
+  padding: 20px;
+}
+
+.users-count {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #4bc0c0;
+  line-height: 1;
+}
+
+.users-count-label {
+  margin-top: 8px;
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .users-count {
+    font-size: 2.5rem;
+  }
 }
 
 .sidebarAdmin {
@@ -64,11 +125,13 @@
 
 
 .avatarAdmin {
-  width: 40px;
-  height: 40px;
+  position: relative;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  margin: 25px 0 0 21px;
-  background: url('') center/cover no-repeat;
+  top: 10px;
+  margin-left: 24px !important;
+  background: url('https://i.imgur.com/g6FXyJ9.png') center/cover no-repeat;
   box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1);
 }
 
@@ -121,8 +184,8 @@
 .Logout-menuItemAdmin{
     display: flex;
     position: relative;
-    margin-left: -23px!important;
-    margin-top: 460px!important;
+    
+    margin-top: 140px!important;
   align-items: center;
   margin: 16px 0;
   padding: 10px 20px;
@@ -173,12 +236,13 @@
 
 .mainContentAdmin {
   position: absolute;
-  left: 308px;
-  top: 85px;
+  left: 428px;
+  top: 125px;
   padding: 40px;
   display: flex;
   flex-wrap: wrap;
-  gap: 60px;
+  gap: 200px;
+
 }
 
 .cardAdmin {
@@ -225,7 +289,7 @@
   grid-column: 1 / -1;
   margin-bottom: 20px;
   margin-top: 284px;
-  margin-left: 34px;
+  margin-left: -15px;
   width: 900px;
   position:absolute;
 }
