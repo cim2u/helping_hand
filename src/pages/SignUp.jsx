@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 import styles from "../style/Logo.module.css";
 import logoImage from "../assets/Logo.png";
 import "../style/SignUp.css";
@@ -55,9 +56,6 @@ const SignupForm = ({
       />
     </div>
 
-    
-
-
     <div className="signup-form-group">
       <label htmlFor="username">Username</label>
       <input
@@ -82,9 +80,10 @@ const SignupForm = ({
           required
         />
         {formData.password.length > 0 && (
-          <FontAwesomeIcon
-            icon={showPassword ? faEye : faEyeSlash}
+          <button
+            type="button"
             onClick={togglePasswordVisibility}
+            aria-label={showPassword ? "Hide password" : "Show password"}
             style={{
               position: "absolute",
               right: "10px",
@@ -92,13 +91,16 @@ const SignupForm = ({
               transform: "translateY(-50%)",
               cursor: "pointer",
               fontSize: "12px",
+              border: "none",
+              background: "transparent",
+              padding: 0,
             }}
-          />
+          >
+            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+          </button>
         )}
       </div>
     </div>
-
-    
 
     <div className="signup-form-group">
       <label htmlFor="confirmPassword">Confirm Password</label>
@@ -112,9 +114,10 @@ const SignupForm = ({
           required
         />
         {formData.confirmPassword.length > 0 && (
-          <FontAwesomeIcon
-            icon={showConfirmPassword ? faEye : faEyeSlash}
+          <button
+            type="button"
             onClick={toggleConfirmPasswordVisibility}
+            aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
             style={{
               position: "absolute",
               right: "10px",
@@ -122,8 +125,13 @@ const SignupForm = ({
               transform: "translateY(-50%)",
               cursor: "pointer",
               fontSize: "12px",
+              border: "none",
+              background: "transparent",
+              padding: 0,
             }}
-          />
+          >
+            <FontAwesomeIcon icon={showConfirmPassword ? faEye : faEyeSlash} />
+          </button>
         )}
       </div>
     </div>
@@ -157,11 +165,6 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
-
-localStorage.setItem('profileName', formData.username); // match profileModal
-localStorage.setItem('profileEmail', formData.email);
-
-
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -172,12 +175,11 @@ localStorage.setItem('profileEmail', formData.email);
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value.trimStart(),
+      [name]: value.trim(), // trim both ends
     }));
   };
 
-   localStorage.setItem("sellerUsername", formData.username);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const { firstName, lastName, email, username, password, confirmPassword } = formData;
@@ -195,13 +197,36 @@ localStorage.setItem('profileEmail', formData.email);
     setErrorMessage("");
     setIsSubmitting(true);
 
-    // Simulate success
-    setTimeout(() => {
+    try {
+      const response = await axios.post("http://localhost:8000/api/signup", {
+        name: `${firstName} ${lastName}`,
+        email,
+        username,
+        password,
+        password_confirmation: confirmPassword,
+      });
+
+      // Save user info and token if returned
+      localStorage.setItem("profileName", username);
+      localStorage.setItem("profileEmail", email);
       localStorage.setItem("isRegistered", "true");
       localStorage.setItem("loggedIn", "true");
-      localStorage.setItem("username", username);  // <-- Save username here
+      localStorage.setItem("username", username);
+
+      if (response.data.access_token) {
+        localStorage.setItem("accessToken", response.data.access_token);
+      }
+
       navigate("/terms");
-    }, 1000);
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage("Registration failed. Please try again.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
@@ -215,7 +240,9 @@ localStorage.setItem('profileEmail', formData.email);
             <img src={logoImage} alt="HelpingHand Logo" className={styles.logoLarge} />
           </div>
 
-          <p className="create-text">Create a free account and join our growing community!</p>
+          <p className="create-text">
+            Create a free account and join our growing community!
+          </p>
 
           <SignupForm
             handleChange={handleChange}

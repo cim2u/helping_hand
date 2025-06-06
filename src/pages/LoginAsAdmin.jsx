@@ -1,48 +1,53 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../style/LogIn.css";
 import logoImage from "../assets/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-// Optional: import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 const LoginAsAdmin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Handle input change
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Toggle password visibility
   const togglePasswordVisibility = () => setPasswordVisible((prev) => !prev);
 
-  // Handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { username, password } = formData;
+    setLoading(true);
 
-    const adminUsername = "admin_user01";
-    const adminPassword = "admin123";
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/public/admin/login",
+        formData
+      );
 
-    if (username === adminUsername && password === adminPassword) {
-      console.log("Admin login successful");
+      const data = response.data;
 
-      localStorage.setItem("user", JSON.stringify({ role: "admin", username }));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ role: "admin", username: data.username })
+      );
+      localStorage.setItem("token", data.token);
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("isAdmin", "true");
 
-      // Optional: show success toast
-      // toast.success("Logged in as admin");
-
       navigate("/admin/dashboard");
-    } else {
-      alert("Invalid admin credentials.");
-      // Optional: toast.error("Invalid admin credentials");
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        alert(error.response.data.message);
+      } else {
+        alert("Network error. Please try again later.");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,17 +66,14 @@ const LoginAsAdmin = () => {
     >
       <div className="b-container">
         <div className="login-container">
-          {/* Logo */}
           <div className="logo-wrapper">
             <img src={logoImage} alt="Helping Hand Logo" className="logo-image" />
           </div>
 
-          {/* Heading */}
           <div className="welcome-heading">
             <h2>Admin Login</h2>
           </div>
 
-          {/* Login Form */}
           <form onSubmit={handleSubmit} className="login-form">
             <label htmlFor="username">Username</label>
             <input
@@ -81,6 +83,7 @@ const LoginAsAdmin = () => {
               value={formData.username}
               onChange={handleChange}
               required
+              disabled={loading}
             />
 
             <div className="form-group">
@@ -95,6 +98,7 @@ const LoginAsAdmin = () => {
                   required
                   autoComplete="current-password"
                   className="form-input"
+                  disabled={loading}
                 />
                 {formData.password && (
                   <FontAwesomeIcon
@@ -107,10 +111,10 @@ const LoginAsAdmin = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
-            <button type="submit" className="login-btn">Login</button>
+            <button type="submit" className="login-btn" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
+            </button>
 
-            {/* Link to user login */}
             <div className="admin-login">
               <Link to="/login">Login as User</Link>
             </div>
