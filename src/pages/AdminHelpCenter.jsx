@@ -6,7 +6,6 @@ import {
   faUser,
   faCircleQuestion,
   faRightFromBracket,
-  faMoneyBillTransfer,
   faUserCheck
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,12 +19,58 @@ import logo from '../assets/Logo.png';
 const AdminHelpCenter = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [showDropdown, setShowDropdown] = useState(false);
+
   const [messages, setMessages] = useState([]);
   const [replyInputs, setReplyInputs] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const toggleDropdown = () => {
-    setShowDropdown(prev => !prev);
+  // Fetch support messages from API without token/authentication
+ useEffect(() => {
+  fetch('http://localhost:8000/api/support-messages')
+    .then(res => res.json())
+    .then(data => setMessages(data))
+    .catch(err => console.error(err));
+}, []);
+
+// Then submit reply function inside AdminHelpCenter:
+// POST /api/support-messages/:id
+
+  const handleReplyChange = (id, text) => {
+    setReplyInputs(prev => ({ ...prev, [id]: text }));
+  };
+
+  // Submit reply to API without token/authentication headers
+  const handleReplySubmit = (id) => {
+    const replyText = replyInputs[id];
+    if (!replyText || replyText.trim() === '') {
+      alert("Reply can't be empty");
+      return;
+    }
+
+    const msgToUpdate = messages.find(msg => msg.id === id);
+    if (!msgToUpdate) return;
+
+    fetch(`http://localhost:8000/api/support-messages/${id}`, {
+      method: 'POST', // or PUT/PATCH based on your backend
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ reply: replyText }),
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to send reply');
+        return res.json();
+      })
+      .then(updatedMsgFromServer => {
+        setMessages(prev =>
+          prev.map(msg => (msg.id === id ? updatedMsgFromServer : msg))
+        );
+        setReplyInputs(prev => ({ ...prev, [id]: '' }));
+      })
+      .catch(err => {
+        alert("Error sending reply: " + err.message);
+      });
   };
 
   const handleLogout = (e) => {
@@ -35,29 +80,9 @@ const AdminHelpCenter = () => {
       localStorage.removeItem("user");
       localStorage.removeItem("loggedIn");
       localStorage.removeItem("isAdmin");
+      localStorage.removeItem("token"); // remove token if stored
       navigate("/admin-login");
     }
-  };
-
-  useEffect(() => {
-    const storedMessages = JSON.parse(localStorage.getItem("supportMessages")) || [];
-    setMessages(storedMessages);
-  }, []);
-
-  const handleReplyChange = (id, text) => {
-    setReplyInputs(prev => ({ ...prev, [id]: text }));
-  };
-
-  const handleReplySubmit = (id) => {
-    const updatedMessages = messages.map(msg => {
-      if (msg.id === id) {
-        return { ...msg, reply: replyInputs[id] };
-      }
-      return msg;
-    });
-    setMessages(updatedMessages);
-    localStorage.setItem("supportMessages", JSON.stringify(updatedMessages));
-    setReplyInputs(prev => ({ ...prev, [id]: "" }));
   };
 
   return (
@@ -106,7 +131,6 @@ const AdminHelpCenter = () => {
             <span className="menuTextAdmin">User Management</span>
           </Link>
 
-
           <Link
             to="/admin/verify-seller"
             className={`menuItemAdmin ${location.pathname === "/admin/verify-seller" ? "active" : ""}`}
@@ -123,20 +147,20 @@ const AdminHelpCenter = () => {
             <span className="menuTextAdmin">Help Center</span>
           </Link>
 
-         <div
-                     className="Logout-menuItemAdmin"
-                     style={{ cursor: "pointer" }}
-                     onClick={handleLogout}
-                     role="button"
-                     tabIndex={0}
-                     onKeyPress={(e) => {
-                       if (e.key === "Enter" || e.key === " ") handleLogout();
-                     }}
-                     aria-label="Log out"
-                   >
-                     <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
-                     <span className="menuTextAdmin">Log Out</span>
-                   </div>
+          <div
+            className="Logout-menuItemAdmin"
+            style={{ cursor: "pointer" }}
+            onClick={handleLogout}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => {
+              if (e.key === "Enter" || e.key === " ") handleLogout();
+            }}
+            aria-label="Log out"
+          >
+            <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
+            <span className="menuTextAdmin">Log Out</span>
+          </div>
         </nav>
       </aside>
 
@@ -145,40 +169,43 @@ const AdminHelpCenter = () => {
         <div className="rectangle120HelpCenter"></div>
         <h2 className="titleHelpCenter">Support Messages</h2>
 
-        {messages.length === 0 ? (
+        {loading && <p>Loading messages...</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+
+        {!loading && messages.length === 0 && (
           <div className="rectangle124HelpCenter">
             <p className="reviewTextHelpCenter">No support messages yet.</p>
           </div>
-        ) : (
-          messages.map((msg) => (
-            <div key={msg.id} className="rectangle124HelpCenter">
-              <p className="reviewTextHelpCenter">"{msg.text}"</p>
-              <p className="reviewAuthorHelpCenter">– Sent on: {msg.timestamp}</p>
-
-              {msg.reply ? (
-                <div className="replyBoxHelpCenter">
-                  <p className="replyLabelHelpCenter">Admin Reply:</p>
-                  <p className="replyTextHelpCenter">{msg.reply}</p>
-                </div>
-              ) : (
-                <div className="replyFormHelpCenter">
-                  <textarea
-                    value={replyInputs[msg.id] || ""}
-                    onChange={(e) => handleReplyChange(msg.id, e.target.value)}
-                    placeholder="Type your reply here..."
-                    className="replyTextareaHelpCenter"
-                  />
-                  <button
-                    onClick={() => handleReplySubmit(msg.id)}
-                    className="replyButtonHelpCenter"
-                  >
-                    Send Reply
-                  </button>
-                </div>
-              )}
-            </div>
-          ))
         )}
+
+        {!loading && messages.map((msg) => (
+          <div key={msg.id} className="rectangle124HelpCenter">
+            <p className="reviewTextHelpCenter">"{msg.text}"</p>
+            <p className="reviewAuthorHelpCenter">– Sent on: {msg.timestamp}</p>
+
+            {msg.reply ? (
+              <div className="replyBoxHelpCenter">
+                <p className="replyLabelHelpCenter">Admin Reply:</p>
+                <p className="replyTextHelpCenter">{msg.reply}</p>
+              </div>
+            ) : (
+              <div className="replyFormHelpCenter">
+                <textarea
+                  value={replyInputs[msg.id] || ""}
+                  onChange={(e) => handleReplyChange(msg.id, e.target.value)}
+                  placeholder="Type your reply here..."
+                  className="replyTextareaHelpCenter"
+                />
+                <button
+                  onClick={() => handleReplySubmit(msg.id)}
+                  className="replyButtonHelpCenter"
+                >
+                  Send Reply
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
       </main>
     </div>
   );

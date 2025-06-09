@@ -6,8 +6,6 @@ import {
   faUser,
   faCircleQuestion,
   faRightFromBracket,
-  faChevronDown,
-  faMoneyBillTransfer,
   faUserCheck,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,17 +19,51 @@ const AdminUserManagement = () => {
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
-  // Sample user data (replace with API or state management as needed)
-  const [users, setUsers] = useState([
-    { id: 1, name: 'Shelamae', role: 'Seller', email: 'shelamae@yamba', createDate: '2025-02-03' },
-    { id: 2, name: 'John Doe', role: 'Buyer', email: 'john.doe@example.com', createDate: '2024-12-15' },
-  ]);
-
-  // User selected for deletion confirmation
+  const [users, setUsers] = useState([]);
   const [userToDelete, setUserToDelete] = useState(null);
-
-  // Tracks which user's dropdown is open (user ID)
   const [dropdownOpenForUserId, setDropdownOpenForUserId] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
+
+  
+
+  // Fetch users on mount
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      console.error('No token found. Redirecting to login...');
+      navigate('/admin-login');
+      return;
+    }
+
+    setLoading(true);
+    setFetchError(null);
+
+    fetch('http://localhost:8000/api/users', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          const errorText = await res.text();
+          throw new Error(`HTTP ${res.status} - ${res.statusText}: ${errorText}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setUsers(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+        setFetchError(error.message);
+        setLoading(false);
+      });
+  }, [navigate]);
 
   // Close dropdown if clicked outside
   useEffect(() => {
@@ -44,44 +76,40 @@ const AdminUserManagement = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Logout handler
   const handleLogout = (e) => {
     e.preventDefault();
-    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    const confirmLogout = window.confirm('Are you sure you want to log out?');
     if (confirmLogout) {
-      localStorage.removeItem("user");
-      localStorage.removeItem("loggedIn");
-      localStorage.removeItem("isAdmin");
-      navigate("/admin-login");
+      localStorage.removeItem('user');
+      localStorage.removeItem('loggedIn');
+      localStorage.removeItem('isAdmin');
+      localStorage.removeItem('token');
+      navigate('/admin-login');
     }
   };
 
-  // Open delete confirmation modal
   const handleDeleteClick = (user) => {
     setUserToDelete(user);
     setDropdownOpenForUserId(null);
   };
 
-  // Confirm user deletion
   const confirmDelete = () => {
     setUsers(users.filter((u) => u.id !== userToDelete.id));
     setUserToDelete(null);
   };
 
-  // Cancel deletion modal
   const cancelDelete = () => setUserToDelete(null);
 
-  // Toggle dropdown for specific user ID
   const toggleDropdown = (userId) => {
     setDropdownOpenForUserId((prev) => (prev === userId ? null : userId));
   };
 
-  // Navigate to transaction history for user
   const handleTransactionClick = (user) => {
     setDropdownOpenForUserId(null);
     navigate('/admin/transaction-history', { state: { user } });
   };
 
-  // Navigate to donation history for user
   const handleDonationClick = (user) => {
     setDropdownOpenForUserId(null);
     navigate('/admin/donation-history', { state: { user } });
@@ -132,8 +160,6 @@ const AdminUserManagement = () => {
             <span className="menuTextAdmin">User Management</span>
           </Link>
 
-          
-
           <Link
             to="/admin/verify-seller"
             className={`menuItemAdmin ${location.pathname === '/admin/verify-seller' ? 'active' : ''}`}
@@ -150,23 +176,20 @@ const AdminUserManagement = () => {
             <span className="menuTextAdmin">Help Center</span>
           </Link>
 
-         <div
-                     className="Logout-menuItemAdmin"
-                     style={{ cursor: "pointer" }}
-                     onClick={handleLogout}
-                     role="button"
-                     tabIndex={0}
-                     onKeyPress={(e) => {
-                       if (e.key === "Enter" || e.key === " ") handleLogout();
-                     }}
-                     aria-label="Log out"
-                   >
-                     <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
-                     <span className="menuTextAdmin">Log Out</span>
-                   </div>
-
-
-                   
+          <div
+            className="Logout-menuItemAdmin"
+            style={{ cursor: 'pointer' }}
+            onClick={handleLogout}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') handleLogout(e);
+            }}
+            aria-label="Log out"
+          >
+            <FontAwesomeIcon icon={faRightFromBracket} className="iconAdmin" />
+            <span className="menuTextAdmin">Log Out</span>
+          </div>
         </nav>
       </aside>
 
@@ -174,57 +197,70 @@ const AdminUserManagement = () => {
       <main className="userGroupContainer">
         <h1 className="userTitle">Users</h1>
 
-        <div className="userTableContainer">
-          <table className="userTable" role="table" aria-label="User management table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Role</th>
-                <th scope="col">Email</th>
-                <th scope="col">Create Date</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.length === 0 ? (
+        {loading && <p style={{ padding: '20px', textAlign: 'center' }}>Loading users...</p>}
+
+        {fetchError && (
+          <p style={{ color: 'red', padding: '20px', textAlign: 'center' }}>
+            Error: {fetchError}
+          </p>
+        )}
+
+        {!loading && !fetchError && (
+          <div className="userTableContainer">
+            <table className="userTable" role="table" aria-label="User management table">
+              <thead>
                 <tr>
-                  <td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>
-                    No users found.
-                  </td>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Create Date</th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ) : (
-                users.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.role}</td>
-                    <td>{user.email}</td>
-                    <td>{user.createDate}</td>
-                    <td className="userActionsCell">
-                      <button
-                        className="deleteBtn"
-                        onClick={() => handleDeleteClick(user)}
-                        aria-label={`Delete user ${user.name}`}
-                      >
-                        Delete
-                      </button>
-                  
+              </thead>
+              <tbody>
+                {users.length === 0 ? (
+                  <tr>
+                    <td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>
+                      No users found.
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
+                ) : (
+                  users.map((user) => (
+                    <tr key={user.id}>
+                      <td>{user.id}</td>
+                      <td>{user.name}</td>
+                      <td>{user.role}</td>
+                      <td>{user.email}</td>
+                      <td>{user.createDate}</td>
+                      <td className="userActionsCell">
+                        <button
+                          className="deleteBtn"
+                          onClick={() => handleDeleteClick(user)}
+                          aria-label={`Delete user ${user.name}`}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
 
         {/* Delete Confirmation Modal */}
         {userToDelete && (
-          <div className="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+          <div
+            className="modalOverlay"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalTitle"
+          >
             <div className="modalBox">
               <p id="modalTitle">
-                Are you sure you want to delete user{' '}
-                <strong>{userToDelete.name}</strong>?
+                Are you sure you want to delete user <strong>{userToDelete.name}</strong>?
               </p>
               <div className="modalButtons">
                 <button onClick={confirmDelete} autoFocus>

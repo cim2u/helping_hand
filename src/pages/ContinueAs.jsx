@@ -1,112 +1,134 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import "../style/ContinueAs.css";
 import logoImage from "../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
 
 const ContinueAs = () => {
-  // Role can be "student" or "buyer"
   const [role, setRole] = useState("");
-  // Uploaded document file object
   const [documentFile, setDocumentFile] = useState(null);
-  // Validity of the uploaded file type
   const [isFileValid, setIsFileValid] = useState(false);
-  // Selected document type (e.g., COR or ID)
   const [documentType, setDocumentType] = useState("");
-  // Flag for UI when student role is selected
-  const [isStudentSelected, setIsStudentSelected] = useState(false);
-  // Submission loading state
+  const [isSellerSelected, setIsSellerSelected] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // Display filename or error message
   const [fileDisplayName, setFileDisplayName] = useState("");
 
   const navigate = useNavigate();
 
-  // Handle file input change: validate type and update state
-  const handleFileChange = (e) => {
+  const fileValidationRef = useRef(null);
+
+  // Handle file input change with validation
+  const handleFileChange = useCallback((e) => {
     const file = e.target.files[0];
     setDocumentFile(file);
 
-    if (file && (file.type === "application/pdf" || file.type.startsWith("image/"))) {
+    if (!file) {
+      setIsFileValid(false);
+      setFileDisplayName("");
+      return;
+    }
+
+    // Accept PDF or image files only
+    const validTypes = ["application/pdf"];
+    if (file.type.startsWith("image/") || validTypes.includes(file.type)) {
       setIsFileValid(true);
       setFileDisplayName(file.name);
     } else {
       setIsFileValid(false);
-      setFileDisplayName("Invalid file type");
+      setFileDisplayName("Invalid file type. Please upload a PDF or image.");
     }
-  };
+  }, []);
 
-  // Handle role selection change, reset related states if needed
-  const handleRoleChange = (selectedRole) => {
+  // Handle role change and reset dependent states
+  const handleRoleChange = useCallback((selectedRole) => {
     setRole(selectedRole);
-    if (selectedRole === "student") {
-      setIsStudentSelected(true);
+    if (selectedRole === "seller") {
+      setIsSellerSelected(true);
     } else {
-      setIsStudentSelected(false);
+      setIsSellerSelected(false);
       setDocumentFile(null);
       setIsFileValid(false);
       setFileDisplayName("");
       setDocumentType("");
     }
-  };
+  }, []);
 
-  // Submit form handler
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Submit handler with validation and simulated async
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
 
-    if (!role) {
-      alert("Please select a role.");
-      return;
-    }
-
-    if (role === "student") {
-      if (!documentFile || !isFileValid) {
-        alert("Please upload a valid document.");
-        return;
-      }
-      if (!documentType) {
-        alert("Please select a document type.");
+      if (!role) {
+        alert("Please select a role.");
         return;
       }
 
-      setIsSubmitting(true);
+      if (role === "seller") {
+        if (!documentFile || !isFileValid) {
+          alert("Please upload a valid document.");
+          return;
+        }
+        if (!documentType) {
+          alert("Please select a document type.");
+          return;
+        }
 
-      // Save role as "seller" because student = seller in your app logic
-      localStorage.setItem("userRole", "seller");
+        setIsSubmitting(true);
 
-      // Simulate async submission (e.g., API call)
-      setTimeout(() => {
-        alert("Files are ready to be submitted to the admin.");
-        setIsSubmitting(false);
-        navigate("/seller-info");
-      }, 1500);
-    } else if (role === "buyer") {
-      // For buyer role, save and navigate directly
-      localStorage.setItem("userRole", "buyer");
-      navigate("/home");
-    }
-  };
+        // Store "seller" role in localStorage for app logic
+        localStorage.setItem("userRole", "seller");
 
-  // Cancel/reset the form with confirmation
-  const handleCancel = () => {
+        // Simulate API submission delay
+        setTimeout(() => {
+          alert("Files are ready to be submitted to the admin.");
+          setIsSubmitting(false);
+          navigate("/seller-info");
+        }, 1500);
+      } else if (role === "buyer") {
+        localStorage.setItem("userRole", "buyer");
+        navigate("/home");
+      }
+    },
+    [role, documentFile, isFileValid, documentType, navigate]
+  );
+
+  // Cancel/reset form with user confirmation
+  const handleCancel = useCallback(() => {
     if (window.confirm("Are you sure you want to cancel and reset the form?")) {
       setRole("");
       setDocumentFile(null);
       setIsFileValid(false);
       setDocumentType("");
-      setIsStudentSelected(false);
+      setIsSellerSelected(false);
       setFileDisplayName("");
     }
-  };
+  }, []);
+
+  // Focus the first input when switching to seller form for accessibility
+  useEffect(() => {
+    if (isSellerSelected) {
+      const selectInput = document.getElementById("documentTypeSelect");
+      if (selectInput) {
+        selectInput.focus();
+      }
+    }
+  }, [isSellerSelected]);
 
   return (
     <div className="d-container">
       <div className="continue-as-page">
         <div className="card-background" />
-        <div className="overlay-card">
-          <img src={logoImage} alt="Helping Hand Logo" className="logo-image" />
+        <div className="overlay-card" role="main" aria-labelledby="continue-as-title">
+          <img
+            src={logoImage}
+            alt="Helping Hand logo"
+            className="logo-image"
+            width={150}
+            height={150}
+            loading="lazy"
+          />
 
-          {/* Show cancel button only when student form is open */}
-          {role === "student" && isStudentSelected && (
+          {/* Cancel button only when seller form active */}
+          {isSellerSelected && (
             <button
               type="button"
               onClick={handleCancel}
@@ -118,21 +140,29 @@ const ContinueAs = () => {
             </button>
           )}
 
-          <form onSubmit={handleSubmit} className="continueas-form" aria-label="Role selection form">
-            {/* Show role selection if student form is not open */}
-            {!isStudentSelected && (
+          <form onSubmit={handleSubmit} className="continueas-form" aria-describedby="form-instructions">
+            <h1 id="continue-as-title" className="form-title">
+              Continue As
+            </h1>
+            <p id="form-instructions" className="form-instructions">
+              Please select your role to continue.
+            </p>
+
+            {/* Role selection options */}
+            {!isSellerSelected && (
               <>
                 <div className="role-option">
                   <label>
                     <input
                       type="radio"
                       name="role"
-                      value="student"
-                      checked={role === "student"}
-                      onChange={() => handleRoleChange("student")}
+                      value="seller"
+                      checked={role === "seller"}
+                      onChange={() => handleRoleChange("seller")}
+                      aria-describedby="seller-desc"
                     />
-                    <span className="role-title">Student</span>
-                    <p className="role-description">
+                    <span className="role-title">Seller</span>
+                    <p id="seller-desc" className="role-description">
                       I would like to sell my products & services.
                     </p>
                   </label>
@@ -146,9 +176,10 @@ const ContinueAs = () => {
                       value="buyer"
                       checked={role === "buyer"}
                       onChange={() => handleRoleChange("buyer")}
+                      aria-describedby="buyer-desc"
                     />
                     <span className="role-title">Buyer</span>
-                    <p className="role-description">
+                    <p id="buyer-desc" className="role-description">
                       I would like to browse for products & services.
                     </p>
                   </label>
@@ -156,10 +187,17 @@ const ContinueAs = () => {
               </>
             )}
 
-            {/* Student document upload form */}
-            {role === "student" && isStudentSelected && (
-              <div className="file-upload">
-                <label htmlFor="documentTypeSelect">
+            {/* Seller document upload section */}
+            {isSellerSelected && (
+              <fieldset
+                className="file-upload"
+                aria-live="polite"
+                aria-relevant="additions removals"
+                aria-atomic="true"
+              >
+                <legend>Seller Document Verification</legend>
+
+                <label htmlFor="documentTypeSelect" className="document-label">
                   Select Document Type:
                   <select
                     id="documentTypeSelect"
@@ -175,11 +213,13 @@ const ContinueAs = () => {
                 </label>
 
                 <div className="file-input-row">
-                  <label htmlFor="fileUpload">Upload a File:</label>
+                  <label htmlFor="fileUpload" className="document-label">
+                    Upload a File:
+                  </label>
                   <input
                     id="fileUpload"
                     type="file"
-                    accept=".pdf, image/*"
+                    accept=".pdf,image/*"
                     onChange={handleFileChange}
                     required
                     aria-required="true"
@@ -187,22 +227,20 @@ const ContinueAs = () => {
                   />
                 </div>
 
-                <div id="fileHelp" className="file-help-text">
+                <div id="fileHelp" className="file-help-text" ref={fileValidationRef}>
                   {fileDisplayName && (
                     <span style={{ color: isFileValid ? "green" : "red" }}>
                       {fileDisplayName}
                     </span>
                   )}
                 </div>
-              </div>
+              </fieldset>
             )}
 
             <button
               type="submit"
               className="e-submit-btn"
-              disabled={
-                (role === "student" && (!isFileValid || !documentType)) || isSubmitting
-              }
+              disabled={(role === "seller" && (!isFileValid || !documentType)) || isSubmitting}
               aria-busy={isSubmitting}
             >
               {isSubmitting ? (

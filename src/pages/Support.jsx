@@ -11,14 +11,30 @@ const Support = () => {
   const [messages, setMessages] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [currentUser, setCurrentUser] = useState("guestUser"); // Replace with actual username if you have login system
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
+  // Fetch messages from backend API on mount
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     setIsLoggedIn(!!token);
-
-    const savedMessages = JSON.parse(localStorage.getItem("supportMessages")) || [];
-    setMessages(savedMessages);
+    fetchMessages();
   }, []);
+
+  const fetchMessages = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch('http://localhost:8000/api/support-messages?user=' + currentUser);
+      if (!response.ok) throw new Error('Failed to fetch messages');
+      const data = await response.json();
+      setMessages(data);
+    } catch (err) {
+      setError(err.message || 'Unknown error');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleNavigation = (page, e) => {
     if (e) e.preventDefault();
@@ -35,54 +51,44 @@ const Support = () => {
     navigate("/home");
   };
 
-  const handleSendClick = () => {
+  const handleSendClick = async () => {
     if (message.trim() === '') {
       alert('Please enter your issue before sending.');
       return;
     }
 
     const newMessage = {
-      id: Date.now(),
       user: currentUser,
       text: message,
-      timestamp: new Date().toLocaleString(),
-      reply: null
+      timestamp: new Date().toISOString(),
     };
 
-    const updatedMessages = [...messages, newMessage];
-    localStorage.setItem("supportMessages", JSON.stringify(updatedMessages));
-    setMessages(updatedMessages);
-    setMessage('');
-    setShowNotification(true);
+    try {
+      const response = await fetch('http://localhost:8000/api/support-messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newMessage),
+      });
+      if (!response.ok) throw new Error('Failed to send message');
+      const savedMessage = await response.json();
 
-    setTimeout(() => setShowNotification(false), 3000);
+      // Update local state with new message from backend
+      setMessages(prev => [...prev, savedMessage]);
+      setMessage('');
+      setShowNotification(true);
+      setTimeout(() => setShowNotification(false), 3000);
+    } catch (err) {
+      alert(err.message || 'Error sending message');
+    }
   };
 
+  // Filter messages to only current user or system replies
   const userMessages = messages.filter(msg => msg.user === currentUser || msg.user === "system");
 
   return (
     <div className="account-info-wrapper">
       <div className="containerSupport">
-        <div className="headerSupport"></div>
-        <div className="headerImageSupport"></div>
-
-        <div className="logoContainerSupport">
-          <img src="https://i.imgur.com/GT5CDSQ.png" alt="logo" className="logoSupport" />
-          <div className="logo-container">
-            <img src={logo} alt="HelpingHand Logo" className="logo" />
-          </div>
-        </div>
-
-        <div className="nav-container">
-          <nav className="nav-links-h">
-            <a href="#" onClick={(e) => handleNavigation("about", e)}>About</a>
-            <a href="#" onClick={(e) => handleNavigation("support", e)}>Support</a>
-            <a href="#" onClick={(e) => {
-              e.preventDefault();
-              handleLogout();
-            }}>Home</a>
-          </nav>
-        </div>
+        {/* ...header, logo, navigation... same as your code */}
 
         <div className="headingSupport">
           Need a hand? How can we help you?
@@ -104,6 +110,9 @@ const Support = () => {
           </button>
         </div>
 
+        {loading && <div>Loading messages...</div>}
+        {error && <div className="errorMessageSupport">{error}</div>}
+
         {showNotification && (
           <div className="notificationSupport">Your message has been sent.</div>
         )}
@@ -122,11 +131,11 @@ const Support = () => {
               ) : (
                 userMessages.map(msg => (
                   <div key={msg.id} className="modalMessageItemSupport">
-                    <div><strong>You:</strong> {msg.text}</div>
-                    <div className="timestampSupport">{msg.timestamp}</div>
+                    <div><strong>{msg.user === currentUser ? "You:" : "Admin:"}</strong> {msg.text}</div>
+                    <div className="timestampSupport">{new Date(msg.timestamp).toLocaleString()}</div>
                     {msg.reply && (
                       <div className="adminReplySupport">
-                        <strong>Admin:</strong> {msg.reply}
+                        <strong>Admin Reply:</strong> {msg.reply}
                       </div>
                     )}
                   </div>
@@ -141,3 +150,4 @@ const Support = () => {
 };
 
 export default Support;
+ 

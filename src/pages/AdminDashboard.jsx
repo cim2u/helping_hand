@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../style/AdminDashboard.css";
 import "../style/About.css";
@@ -78,33 +78,14 @@ const AdminDashboard = () => {
     }
   ]);
 
-  // State for registered users
-  const [registeredUsers] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      email: "john@example.com",
-      role: "Buyer"
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane@example.com",
-      role: "Seller"
-    },
-    {
-      id: 3,
-      name: "Bob Johnson",
-      email: "bob@example.com",
-      role: "Buyer"
-    },
-    {
-      id: 4,
-      name: "Alice Williams",
-      email: "alice@example.com",
-      role: "Seller"
-    }
-  ]);
+  const [registeredUsersCount, setRegisteredUsersCount] = useState(0);
+
+  useEffect(() => {
+    fetch('/api/registered-users-count')
+      .then(res => res.json())
+      .then(data => setRegisteredUsersCount(data.count))
+      .catch(console.error);
+  }, []);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -499,7 +480,7 @@ const AdminDashboard = () => {
   </h3>
   <div className="users-count-container">
     <div className="users-count">
-      {registeredUsers.length}
+      {registeredUsersCount} {/* Display the count number directly */}
     </div>
     <p className="users-count-label">Total Registered Users</p>
   </div>

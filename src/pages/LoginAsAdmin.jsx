@@ -24,28 +24,33 @@ const LoginAsAdmin = () => {
     setLoading(true);
 
     try {
+      const cleanedFormData = {
+        username: formData.username.trim(),
+        password: formData.password,
+      };
+
       const response = await axios.post(
-        "http://localhost:8000/api/public/admin/login",
-        formData
+        "http://localhost:8000/api/admin/login",
+        cleanedFormData
       );
 
       const data = response.data;
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ role: "admin", username: data.username })
-      );
+      if (!data.token || !data.username) {
+        alert("Invalid response from server.");
+        setLoading(false);
+        return;
+      }
+
+      localStorage.setItem("user", JSON.stringify({ role: "admin", username: data.username }));
       localStorage.setItem("token", data.token);
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("isAdmin", "true");
 
       navigate("/admin/dashboard");
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        alert(error.response.data.message);
-      } else {
-        alert("Network error. Please try again later.");
-      }
+      console.error("Login error:", error);
+      alert(error.response?.data?.message || error.message || "Network error. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -106,12 +111,17 @@ const LoginAsAdmin = () => {
                     onClick={togglePasswordVisibility}
                     className="password-toggle-icon"
                     title={passwordVisible ? "Hide password" : "Show password"}
+                    style={{ cursor: "pointer" }}
                   />
                 )}
               </div>
             </div>
 
-            <button type="submit" className="login-btn" disabled={loading}>
+            <button
+              type="submit"
+              className="login-btn"
+              disabled={loading || !formData.username || !formData.password}
+            >
               {loading ? "Logging in..." : "Login"}
             </button>
 
