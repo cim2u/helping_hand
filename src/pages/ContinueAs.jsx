@@ -1,7 +1,8 @@
-import React, { useState, useCallback, useEffect, useRef } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import "../style/ContinueAs.css";
 import logoImage from "../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ContinueAs = () => {
   const [role, setRole] = useState("");
@@ -14,9 +15,6 @@ const ContinueAs = () => {
 
   const navigate = useNavigate();
 
-  const fileValidationRef = useRef(null);
-
-  // Handle file input change with validation
   const handleFileChange = useCallback((e) => {
     const file = e.target.files[0];
     setDocumentFile(file);
@@ -27,7 +25,6 @@ const ContinueAs = () => {
       return;
     }
 
-    // Accept PDF or image files only
     const validTypes = ["application/pdf"];
     if (file.type.startsWith("image/") || validTypes.includes(file.type)) {
       setIsFileValid(true);
@@ -38,7 +35,6 @@ const ContinueAs = () => {
     }
   }, []);
 
-  // Handle role change and reset dependent states
   const handleRoleChange = useCallback((selectedRole) => {
     setRole(selectedRole);
     if (selectedRole === "seller") {
@@ -52,7 +48,6 @@ const ContinueAs = () => {
     }
   }, []);
 
-  // Submit handler with validation and simulated async
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
@@ -62,36 +57,61 @@ const ContinueAs = () => {
         return;
       }
 
+      localStorage.setItem("pendingUserRole", role);
+
       if (role === "seller") {
         if (!documentFile || !isFileValid) {
           alert("Please upload a valid document.");
           return;
         }
+
         if (!documentType) {
           alert("Please select a document type.");
           return;
         }
 
+        const userId = localStorage.getItem("userId");
+        if (!userId) {
+          alert("User not logged in. Please log in first.");
+          return;
+        }
+
         setIsSubmitting(true);
 
-        // Store "seller" role in localStorage for app logic
-        localStorage.setItem("userRole", "seller");
+        const formData = new FormData();
+        formData.append("document", documentFile);
+        formData.append("document_type", documentType);
+        formData.append("role", "seller");
+        formData.append("user_id", userId);
 
-        // Simulate API submission delay
-        setTimeout(() => {
-          alert("Files are ready to be submitted to the admin.");
+        try {
+          const response = await axios.post("http://localhost:8000/api/seller-verification-requests", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+
+          if (response.status === 200 || response.status === 201) {
+            alert("Document uploaded successfully. Please complete your signup.");
+            navigate("/signup");
+          } else {
+            alert("Unexpected response from server. Please try again.");
+            console.warn("Unexpected status:", response.status);
+          }
+        } catch (error) {
+          alert("Error uploading document. Please try again.");
+          console.error("Upload error:", error);
+        } finally {
           setIsSubmitting(false);
-          navigate("/seller-info");
-        }, 1500);
+        }
       } else if (role === "buyer") {
-        localStorage.setItem("userRole", "buyer");
-        navigate("/home");
+        alert("You selected Buyer. Please complete your signup.");
+        navigate("/signup");
       }
     },
     [role, documentFile, isFileValid, documentType, navigate]
   );
 
-  // Cancel/reset form with user confirmation
   const handleCancel = useCallback(() => {
     if (window.confirm("Are you sure you want to cancel and reset the form?")) {
       setRole("");
@@ -103,13 +123,9 @@ const ContinueAs = () => {
     }
   }, []);
 
-  // Focus the first input when switching to seller form for accessibility
   useEffect(() => {
     if (isSellerSelected) {
-      const selectInput = document.getElementById("documentTypeSelect");
-      if (selectInput) {
-        selectInput.focus();
-      }
+      document.getElementById("documentTypeSelect")?.focus();
     }
   }, [isSellerSelected]);
 
@@ -127,7 +143,6 @@ const ContinueAs = () => {
             loading="lazy"
           />
 
-          {/* Cancel button only when seller form active */}
           {isSellerSelected && (
             <button
               type="button"
@@ -141,15 +156,10 @@ const ContinueAs = () => {
           )}
 
           <form onSubmit={handleSubmit} className="continueas-form" aria-describedby="form-instructions">
-            <h1 id="continue-as-title" className="form-title">
-              Continue As
-            </h1>
-            <p id="form-instructions" className="form-instructions">
-              Please select your role to continue.
-            </p>
+            <h1 id="continue-as-title" className="form-title">Continue As</h1>
+            <p id="form-instructions" className="form-instructions">Please select your role to continue.</p>
 
-            {/* Role selection options */}
-            {!isSellerSelected && (
+            {!isSellerSelected ? (
               <>
                 <div className="role-option">
                   <label>
@@ -185,16 +195,8 @@ const ContinueAs = () => {
                   </label>
                 </div>
               </>
-            )}
-
-            {/* Seller document upload section */}
-            {isSellerSelected && (
-              <fieldset
-                className="file-upload"
-                aria-live="polite"
-                aria-relevant="additions removals"
-                aria-atomic="true"
-              >
+            ) : (
+              <fieldset className="file-upload" aria-live="polite">
                 <legend>Seller Document Verification</legend>
 
                 <label htmlFor="documentTypeSelect" className="document-label">
@@ -204,7 +206,6 @@ const ContinueAs = () => {
                     value={documentType}
                     onChange={(e) => setDocumentType(e.target.value)}
                     required
-                    aria-required="true"
                   >
                     <option value="">Select a document</option>
                     <option value="COR">Certificate of Enrollment (COR)</option>
@@ -222,16 +223,12 @@ const ContinueAs = () => {
                     accept=".pdf,image/*"
                     onChange={handleFileChange}
                     required
-                    aria-required="true"
                     aria-describedby="fileHelp"
                   />
-                </div>
-
-                <div id="fileHelp" className="file-help-text" ref={fileValidationRef}>
                   {fileDisplayName && (
-                    <span style={{ color: isFileValid ? "green" : "red" }}>
+                    <p id="fileHelp" className={isFileValid ? "file-valid" : "file-invalid"}>
                       {fileDisplayName}
-                    </span>
+                    </p>
                   )}
                 </div>
               </fieldset>

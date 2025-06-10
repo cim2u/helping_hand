@@ -175,7 +175,7 @@ const SignUp = () => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value.trim(), // trim both ends
+      [name]: value.trim(),
     }));
   };
 
@@ -207,6 +207,11 @@ const SignUp = () => {
       });
 
       // Save user info and token if returned
+      const userId = response.data?.user?.id || response.data?.id;
+      if (userId) {
+        localStorage.setItem("userId", userId);
+      }
+
       localStorage.setItem("profileName", username);
       localStorage.setItem("profileEmail", email);
       localStorage.setItem("isRegistered", "true");

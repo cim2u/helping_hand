@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const LoginAsAdmin = () => {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  // Pre-filled with default credentials
+  const [formData, setFormData] = useState({ username: "admin1", password: "secret" });
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -17,22 +18,19 @@ const LoginAsAdmin = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const togglePasswordVisibility = () => setPasswordVisible((prev) => !prev);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
     try {
-      const cleanedFormData = {
-        username: formData.username.trim(),
+      const response = await axios.post("http://localhost:8000/api/admin/login", {
+        username: formData.username,
         password: formData.password,
-      };
-
-      const response = await axios.post(
-        "http://localhost:8000/api/admin/login",
-        cleanedFormData
-      );
+      });
 
       const data = response.data;
 
@@ -42,15 +40,21 @@ const LoginAsAdmin = () => {
         return;
       }
 
+      // Store login details
       localStorage.setItem("user", JSON.stringify({ role: "admin", username: data.username }));
       localStorage.setItem("token", data.token);
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("isAdmin", "true");
 
+      // Navigate to admin dashboard
       navigate("/admin/dashboard");
     } catch (error) {
-      console.error("Login error:", error);
-      alert(error.response?.data?.message || error.message || "Network error. Please try again later.");
+      console.error("Login error:", error.response || error.message);
+      alert(
+        error.response?.data?.message ||
+        error.message ||
+        "Login failed. Please try again later."
+      );
     } finally {
       setLoading(false);
     }
